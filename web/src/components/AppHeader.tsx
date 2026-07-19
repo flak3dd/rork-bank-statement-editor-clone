@@ -1,10 +1,13 @@
 import { ScanSearch } from "lucide-react";
+import type { ApiStatusReport } from "@/lib/api-status";
+import { ApiStatusStrip } from "@/components/ApiStatusPanel";
 
 interface AppHeaderProps {
   subtitle?: string;
+  apiStatus?: ApiStatusReport | null;
 }
 
-export function AppHeader({ subtitle }: AppHeaderProps) {
+export function AppHeader({ subtitle, apiStatus }: AppHeaderProps) {
   return (
     <header className="sticky top-0 z-30 border-b border-border/60 surface-glass">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
@@ -15,13 +18,16 @@ export function AppHeader({ subtitle }: AppHeaderProps) {
           <div className="min-w-0">
             <p className="font-semibold tracking-tight leading-none">Statement Lens</p>
             <p className="text-[11px] text-muted-foreground truncate mt-0.5">
-              {subtitle ?? "View · analyze · export"}
+              {subtitle ?? "Parse · edit · balance · verify · Test Lab"}
             </p>
           </div>
         </div>
-        <p className="hidden sm:block text-xs text-muted-foreground">
-          Analysis only · PDF never rewritten
-        </p>
+        <div className="hidden sm:flex flex-col items-end gap-0.5 min-w-0">
+          <ApiStatusStrip report={apiStatus ?? null} />
+          <p className="text-[10px] text-muted-foreground">
+            Pdfium · SSIM · tile · pHash · Eyes optional
+          </p>
+        </div>
       </div>
     </header>
   );

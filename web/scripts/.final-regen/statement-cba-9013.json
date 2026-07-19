@@ -1,0 +1,2047 @@
+{
+  "bank": "cba",
+  "seed": 9013,
+  "config": {
+    "periodStart": "2026-03-01",
+    "periodDays": 31,
+    "openingBalance": 3240.55,
+    "savingsOpeningBalance": 12500,
+    "salaryDescription": "CBA PAYROLL CREDIT",
+    "salaryAmount": 3850,
+    "salaryFrequency": "fortnightly",
+    "salaryAccount": "PAYROLL",
+    "income": {
+      "amount": 3850,
+      "frequency": "fortnightly"
+    },
+    "rentalDescription": "RENTAL INCOME",
+    "rentalAmount": 650,
+    "hasRentalIncome": true,
+    "savingsDescription": "TRANSFER TO BONUS SAVER",
+    "savingsAmount": 250,
+    "savingsFrequency": "fortnightly",
+    "savingsAccount": "BONUS",
+    "savings": {
+      "amount": 250,
+      "frequency": "fortnightly"
+    },
+    "mortgageDescription": "HOME LOAN REPAYMENT",
+    "mortgageLender": "HOME LENDER",
+    "mortgageAmount": 1680,
+    "mortgageFrequency": "monthly",
+    "loanReference": "LN-cba-9013",
+    "mortgage": {
+      "amount": 1680,
+      "frequency": "monthly"
+    },
+    "cardLast4": "8013",
+    "cardSpendPct": 26,
+    "billsSubsPct": 20,
+    "billSpendMultiplier": 1,
+    "cardSpendIncomeShare": 0.26,
+    "billsIncomeShare": 0.2,
+    "hasDirectDebits": true,
+    "enableDirectDebits": true,
+    "hasSubscriptions": true,
+    "selectedBillCategories": [
+      "Telecom",
+      "Utilities",
+      "Health",
+      "Insurance",
+      "Entertainment",
+      "Financial",
+      "TaxSuper",
+      "Other"
+    ],
+    "seed": 9013,
+    "account": {
+      "accountName": "Everyday Transaction Account",
+      "productName": "Everyday Transaction Account",
+      "holderName": "Regen Customer CBA",
+      "accountHolder": "Regen Customer CBA",
+      "customerID": "CUS-cba-9013",
+      "customerNumber": "CUS-1002941",
+      "bsb": "062-000",
+      "bsbCode": "062-000",
+      "accountNumber": "10009013",
+      "interestRate": 0.05,
+      "interestRatePct": 0.05,
+      "brandLabel": "CBA Demo Bank",
+      "branch": "Main Branch",
+      "timezone": "Australia/Sydney",
+      "bonusAccount": "9876 5432",
+      "bonusBsb": "062-001",
+      "everydayAccount": "1234 5678",
+      "everydayBsb": "062-000"
+    },
+    "address": {
+      "addressLine1": "12 Sample Street",
+      "addressLine2": "",
+      "addressStreet": "12 Sample Street",
+      "addressCity": "Sydney NSW 2000"
+    },
+    "entity": {
+      "entityName": "Statement Demo Bank Pty Ltd",
+      "entityAddress": "100 Demo Tower",
+      "entityCity": "Sydney",
+      "entityState": "NSW",
+      "entityCountry": "Australia"
+    },
+    "directDebits": [
+      {
+        "merchant": "STREAMING SUBSCRIPTION",
+        "baseAmount": 16.99,
+        "intervalDays": 30,
+        "offsetDays": 3,
+        "category": "Entertainment",
+        "isSubscription": true
+      },
+      {
+        "merchant": "MOBILE PLAN",
+        "baseAmount": 49,
+        "intervalDays": 30,
+        "offsetDays": 7,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "HEALTH FUND",
+        "baseAmount": 128.4,
+        "intervalDays": 14,
+        "offsetDays": 2,
+        "category": "Health"
+      },
+      {
+        "merchant": "INSURANCE PREMIUM",
+        "baseAmount": 89.5,
+        "intervalDays": 30,
+        "offsetDays": 12,
+        "category": "Insurance"
+      },
+      {
+        "merchant": "INTERNET NBN",
+        "baseAmount": 79,
+        "intervalDays": 30,
+        "offsetDays": 18,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "ELECTRICITY",
+        "baseAmount": 145,
+        "intervalDays": 30,
+        "offsetDays": 9,
+        "category": "Utilities"
+      },
+      {
+        "merchant": "COUNCIL RATES",
+        "baseAmount": 210,
+        "intervalDays": 90,
+        "offsetDays": 5,
+        "category": "Utilities"
+      }
+    ]
+  },
+  "summary": {
+    "openingBalance": 3240.55,
+    "closingBalance": 7801.16,
+    "totalCredits": 12850,
+    "totalDebits": 8289.39,
+    "transactionCount": 53,
+    "expectedIncome": 12200
+  },
+  "periodEnd": "2026-03-31",
+  "quality": {
+    "score": 100,
+    "grade": "A",
+    "ok": true
+  },
+  "qualityAfterRewrite": {
+    "score": 86,
+    "grade": "B",
+    "ok": false
+  },
+  "rows": [
+    {
+      "id": "open-6yd-0",
+      "description": "OPENING BALANCE",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 0,
+      "balance": 3240.55,
+      "type": "opening",
+      "category": "BalanceMarker"
+    },
+    {
+      "id": "inc-6yd-1",
+      "description": "CBA PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 3850,
+      "balance": 7090.55,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6yd-2",
+      "description": "Direct Credit 141000 MICHAEL CHEN COFFEE",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -250,
+      "balance": 6840.55,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6yd-3",
+      "description": "Direct Credit 141000 EMILY WATSON THANKS",
+      "secondaryDescription": "HOME LENDER · REF LN-cba-9013",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -1680,
+      "balance": 5160.55,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6yd-4",
+      "description": "Direct Credit 141000 LISA BROWN GROCERIES",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -321.43,
+      "balance": 4839.12,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6yd-5",
+      "description": "Fast Transfer From RACHEL TAYLOR INTERNET",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -15.89,
+      "balance": 4823.23,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-6yd-6",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 100900088178265",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -42.53,
+      "balance": 4780.7,
+      "type": "direct_debit",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6yd-7",
+      "description": "Direct Debit 184534 World Gym Staffo A00E988756123X96",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -49.29,
+      "balance": 4731.41,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6yd-8",
+      "description": "Fast Transfer From MICHAEL CHEN COIN 8/8/24",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -28.43,
+      "balance": 4702.98,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "p2p-6yd-9",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD TAYLOR",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -87.38,
+      "balance": 4615.6,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6yd-10",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -27.24,
+      "balance": 4588.36,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6yd-11",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -52.59,
+      "balance": 4535.77,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "dd-6yd-12",
+      "description": "Fast Transfer From RACHEL TAYLOR INTERNET 17/12/24",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -525.71,
+      "balance": 4010.06,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6yd-13",
+      "description": "Fast Transfer From EMILY WATSON GROCERIES",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -14.8,
+      "balance": 3995.26,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "dd-6yd-14",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 668830325998596",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -122.66,
+      "balance": 3872.6,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6yd-15",
+      "description": "Fast Transfer From LISA BROWN DINNER 5/10/24",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -33.76,
+      "balance": 3838.84,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6yd-16",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 836529440233509",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -96.48,
+      "balance": 3742.36,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6yd-17",
+      "description": "Fast Transfer From EMILY WATSON UTILITIES 8/2/24",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-09",
+      "effectiveDate": "2026-03-09",
+      "amount": -84.07,
+      "balance": 3658.29,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "dd-6yd-18",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -362.99,
+      "balance": 3295.3,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "dd-6yd-19",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 198093001824456",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -224.05,
+      "balance": 3071.25,
+      "type": "direct_debit",
+      "category": "Insurance"
+    },
+    {
+      "id": "pos-6yd-20",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -18.06,
+      "balance": 3053.19,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6yd-21",
+      "description": "Direct Credit 141000 MICHAEL CHEN RENT",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -19.1,
+      "balance": 3034.09,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yd-22",
+      "description": "Direct Credit 141000 EMILY WATSON BILLS",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -38.63,
+      "balance": 2995.46,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "inc-6yd-23",
+      "description": "CBA PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 3850,
+      "balance": 6845.46,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "rent-6yd-24",
+      "description": "Fast Transfer From RACHEL TAYLOR COIN 14/10/24",
+      "secondaryDescription": "DIRECT CREDIT",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 650,
+      "balance": 7495.46,
+      "type": "rental",
+      "category": "Other"
+    },
+    {
+      "id": "sav-6yd-25",
+      "description": "Fast Transfer From ROBERT WILSON INTERNET",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -250,
+      "balance": 7245.46,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "rent-6yd-26",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD SMITH",
+      "secondaryDescription": "DIRECT CREDIT",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": 650,
+      "balance": 7895.46,
+      "type": "rental",
+      "category": "Other"
+    },
+    {
+      "id": "p2p-6yd-27",
+      "description": "Direct Credit 141000 LISA BROWN FISH",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -100.24,
+      "balance": 7795.22,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6yd-28",
+      "description": "Transfer to xx9562 CommBank app GOVERNMENT BENEFIT",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -9.57,
+      "balance": 7785.65,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6yd-29",
+      "description": "Fast Transfer From MICHAEL CHEN COFFEE",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -37.3,
+      "balance": 7748.35,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6yd-30",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 533774083451191",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -321.43,
+      "balance": 7426.92,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6yd-31",
+      "description": "Transfer to xx6657 CommBank app WAGES",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -38.6,
+      "balance": 7388.32,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "dd-6yd-32",
+      "description": "Fast Transfer From SARAH JOHNSON COIN 4/2/24",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -197.77,
+      "balance": 7190.55,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6yd-33",
+      "description": "Transfer to xx5722 CommBank app SALARY",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -84.77,
+      "balance": 7105.78,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yd-34",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -228.33,
+      "balance": 6877.45,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6yd-35",
+      "description": "Fast Transfer From LISA BROWN INTERNET",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -39.15,
+      "balance": 6838.3,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6yd-36",
+      "description": "Fast Transfer From MICHAEL CHEN DINNER",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -61.78,
+      "balance": 6776.52,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6yd-37",
+      "description": "Transfer to xx4878 CommBank app OTHER INCOME",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -2.64,
+      "balance": 6773.88,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6yd-38",
+      "description": "Fast Transfer From DAVID NGUYEN GROCERIES 24/11/24",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -17.36,
+      "balance": 6756.52,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6yd-39",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD JOHNSON",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -80.94,
+      "balance": 6675.58,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yd-40",
+      "description": "Direct Debit 184534 World Gym Staffo A00E660282183X30",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -18.55,
+      "balance": 6657.03,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yd-41",
+      "description": "Transfer to xx9535 CommBank app INVESTMENT INCOME",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -48.27,
+      "balance": 6608.76,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yd-42",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD BROWN",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -14.59,
+      "balance": 6594.17,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6yd-43",
+      "description": "Fast Transfer From SARAH JOHNSON THANKS",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-26",
+      "effectiveDate": "2026-03-26",
+      "amount": -92.29,
+      "balance": 6501.88,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6yd-44",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-26",
+      "effectiveDate": "2026-03-26",
+      "amount": -22.5,
+      "balance": 6479.38,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "p2p-6yd-45",
+      "description": "Fast Transfer From JAMES SMITH INTERNET 1/10/24",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -64.55,
+      "balance": 6414.83,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6yd-46",
+      "description": "Direct Credit 141000 EMILY WATSON GROCERIES",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -21.72,
+      "balance": 6393.11,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "inc-6yd-47",
+      "description": "CBA PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": 3850,
+      "balance": 10243.11,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6yd-48",
+      "description": "Direct Credit 141000 MICHAEL CHEN GROCERIES",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -250,
+      "balance": 9993.11,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-6yd-49",
+      "description": "Direct Credit 141000 EMILY WATSON BILLS",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -54.37,
+      "balance": 9938.74,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6yd-50",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 720691228278741",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -33.01,
+      "balance": 9905.73,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "mtg-6yd-51",
+      "description": "Transfer to xx5165 CommBank app OTHER INCOME",
+      "secondaryDescription": "HOME LENDER · REF LN-cba-9013",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -1680,
+      "balance": 8225.73,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6yd-52",
+      "description": "Transfer to xx4745 CommBank app SALARY",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -321.43,
+      "balance": 7904.3,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6yd-53",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 346780691609186",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -103.14,
+      "balance": 7801.16,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "close-6yd-54",
+      "description": "CLOSING BALANCE",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": 0,
+      "balance": 7801.16,
+      "type": "closing",
+      "category": "BalanceMarker"
+    }
+  ],
+  "appTransactions": [
+    {
+      "id": "inc-6yd-1",
+      "date": "2026-03-01",
+      "description": "CBA PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 7090.55,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "CBA PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 7090.55
+      }
+    },
+    {
+      "id": "sav-6yd-2",
+      "date": "2026-03-01",
+      "description": "Direct Credit 141000 MICHAEL CHEN COFFEE — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6840.55,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "Direct Credit 141000 MICHAEL CHEN COFFEE — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6840.55
+      }
+    },
+    {
+      "id": "mtg-6yd-3",
+      "date": "2026-03-01",
+      "description": "Direct Credit 141000 EMILY WATSON THANKS — HOME LENDER · REF LN-cba-9013",
+      "debit": 1680,
+      "credit": null,
+      "balance": 5160.55,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "Direct Credit 141000 EMILY WATSON THANKS — HOME LENDER · REF LN-cba-9013",
+        "debit": 1680,
+        "credit": null,
+        "balance": 5160.55
+      }
+    },
+    {
+      "id": "dd-6yd-4",
+      "date": "2026-03-03",
+      "description": "Direct Credit 141000 LISA BROWN GROCERIES — DIRECT DEBIT",
+      "debit": 321.43,
+      "credit": null,
+      "balance": 4839.12,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "Direct Credit 141000 LISA BROWN GROCERIES — DIRECT DEBIT",
+        "debit": 321.43,
+        "credit": null,
+        "balance": 4839.12
+      }
+    },
+    {
+      "id": "pos-6yd-5",
+      "date": "2026-03-03",
+      "description": "Fast Transfer From RACHEL TAYLOR INTERNET",
+      "debit": 15.89,
+      "credit": null,
+      "balance": 4823.23,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "Fast Transfer From RACHEL TAYLOR INTERNET",
+        "debit": 15.89,
+        "credit": null,
+        "balance": 4823.23
+      }
+    },
+    {
+      "id": "dd-6yd-6",
+      "date": "2026-03-04",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 100900088178265 — SUBSCRIPTION",
+      "debit": 42.53,
+      "credit": null,
+      "balance": 4780.7,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 100900088178265 — SUBSCRIPTION",
+        "debit": 42.53,
+        "credit": null,
+        "balance": 4780.7
+      }
+    },
+    {
+      "id": "pos-6yd-7",
+      "date": "2026-03-04",
+      "description": "Direct Debit 184534 World Gym Staffo A00E988756123X96 — METRO",
+      "debit": 49.29,
+      "credit": null,
+      "balance": 4731.41,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "Direct Debit 184534 World Gym Staffo A00E988756123X96 — METRO",
+        "debit": 49.29,
+        "credit": null,
+        "balance": 4731.41
+      }
+    },
+    {
+      "id": "pos-6yd-8",
+      "date": "2026-03-04",
+      "description": "Fast Transfer From MICHAEL CHEN COIN 8/8/24 — RETAIL",
+      "debit": 28.43,
+      "credit": null,
+      "balance": 4702.98,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "Fast Transfer From MICHAEL CHEN COIN 8/8/24 — RETAIL",
+        "debit": 28.43,
+        "credit": null,
+        "balance": 4702.98
+      }
+    },
+    {
+      "id": "p2p-6yd-9",
+      "date": "2026-03-05",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD TAYLOR — OSKO / PAYID",
+      "debit": 87.38,
+      "credit": null,
+      "balance": 4615.6,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD TAYLOR — OSKO / PAYID",
+        "debit": 87.38,
+        "credit": null,
+        "balance": 4615.6
+      }
+    },
+    {
+      "id": "pos-6yd-10",
+      "date": "2026-03-05",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON — MALL",
+      "debit": 27.24,
+      "credit": null,
+      "balance": 4588.36,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON — MALL",
+        "debit": 27.24,
+        "credit": null,
+        "balance": 4588.36
+      }
+    },
+    {
+      "id": "pos-6yd-11",
+      "date": "2026-03-05",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON — WEB",
+      "debit": 52.59,
+      "credit": null,
+      "balance": 4535.77,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON — WEB",
+        "debit": 52.59,
+        "credit": null,
+        "balance": 4535.77
+      }
+    },
+    {
+      "id": "dd-6yd-12",
+      "date": "2026-03-06",
+      "description": "Fast Transfer From RACHEL TAYLOR INTERNET 17/12/24 — DIRECT DEBIT",
+      "debit": 525.71,
+      "credit": null,
+      "balance": 4010.06,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "Fast Transfer From RACHEL TAYLOR INTERNET 17/12/24 — DIRECT DEBIT",
+        "debit": 525.71,
+        "credit": null,
+        "balance": 4010.06
+      }
+    },
+    {
+      "id": "pos-6yd-13",
+      "date": "2026-03-06",
+      "description": "Fast Transfer From EMILY WATSON GROCERIES — MALL",
+      "debit": 14.8,
+      "credit": null,
+      "balance": 3995.26,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "Fast Transfer From EMILY WATSON GROCERIES — MALL",
+        "debit": 14.8,
+        "credit": null,
+        "balance": 3995.26
+      }
+    },
+    {
+      "id": "dd-6yd-14",
+      "date": "2026-03-08",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 668830325998596 — SUBSCRIPTION",
+      "debit": 122.66,
+      "credit": null,
+      "balance": 3872.6,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 668830325998596 — SUBSCRIPTION",
+        "debit": 122.66,
+        "credit": null,
+        "balance": 3872.6
+      }
+    },
+    {
+      "id": "pos-6yd-15",
+      "date": "2026-03-08",
+      "description": "Fast Transfer From LISA BROWN DINNER 5/10/24 — CITY",
+      "debit": 33.76,
+      "credit": null,
+      "balance": 3838.84,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "Fast Transfer From LISA BROWN DINNER 5/10/24 — CITY",
+        "debit": 33.76,
+        "credit": null,
+        "balance": 3838.84
+      }
+    },
+    {
+      "id": "pos-6yd-16",
+      "date": "2026-03-08",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 836529440233509 — WEB",
+      "debit": 96.48,
+      "credit": null,
+      "balance": 3742.36,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 836529440233509 — WEB",
+        "debit": 96.48,
+        "credit": null,
+        "balance": 3742.36
+      }
+    },
+    {
+      "id": "pos-6yd-17",
+      "date": "2026-03-09",
+      "description": "Fast Transfer From EMILY WATSON UTILITIES 8/2/24 — HWY",
+      "debit": 84.07,
+      "credit": null,
+      "balance": 3658.29,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-09",
+      "original": {
+        "date": "2026-03-09",
+        "description": "Fast Transfer From EMILY WATSON UTILITIES 8/2/24 — HWY",
+        "debit": 84.07,
+        "credit": null,
+        "balance": 3658.29
+      }
+    },
+    {
+      "id": "dd-6yd-18",
+      "date": "2026-03-10",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON — DIRECT DEBIT",
+      "debit": 362.99,
+      "credit": null,
+      "balance": 3295.3,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON — DIRECT DEBIT",
+        "debit": 362.99,
+        "credit": null,
+        "balance": 3295.3
+      }
+    },
+    {
+      "id": "dd-6yd-19",
+      "date": "2026-03-13",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 198093001824456 — DIRECT DEBIT",
+      "debit": 224.05,
+      "credit": null,
+      "balance": 3071.25,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Insurance"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 198093001824456 — DIRECT DEBIT",
+        "debit": 224.05,
+        "credit": null,
+        "balance": 3071.25
+      }
+    },
+    {
+      "id": "pos-6yd-20",
+      "date": "2026-03-13",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON — CBD",
+      "debit": 18.06,
+      "credit": null,
+      "balance": 3053.19,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON — CBD",
+        "debit": 18.06,
+        "credit": null,
+        "balance": 3053.19
+      }
+    },
+    {
+      "id": "pos-6yd-21",
+      "date": "2026-03-14",
+      "description": "Direct Credit 141000 MICHAEL CHEN RENT — SUBURB",
+      "debit": 19.1,
+      "credit": null,
+      "balance": 3034.09,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "Direct Credit 141000 MICHAEL CHEN RENT — SUBURB",
+        "debit": 19.1,
+        "credit": null,
+        "balance": 3034.09
+      }
+    },
+    {
+      "id": "pos-6yd-22",
+      "date": "2026-03-14",
+      "description": "Direct Credit 141000 EMILY WATSON BILLS — HWY",
+      "debit": 38.63,
+      "credit": null,
+      "balance": 2995.46,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "Direct Credit 141000 EMILY WATSON BILLS — HWY",
+        "debit": 38.63,
+        "credit": null,
+        "balance": 2995.46
+      }
+    },
+    {
+      "id": "inc-6yd-23",
+      "date": "2026-03-15",
+      "description": "CBA PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 6845.46,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "CBA PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 6845.46
+      }
+    },
+    {
+      "id": "rent-6yd-24",
+      "date": "2026-03-15",
+      "description": "Fast Transfer From RACHEL TAYLOR COIN 14/10/24 — DIRECT CREDIT",
+      "debit": null,
+      "credit": 650,
+      "balance": 7495.46,
+      "category": "Other",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "rental",
+        "Other"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "Fast Transfer From RACHEL TAYLOR COIN 14/10/24 — DIRECT CREDIT",
+        "debit": null,
+        "credit": 650,
+        "balance": 7495.46
+      }
+    },
+    {
+      "id": "sav-6yd-25",
+      "date": "2026-03-15",
+      "description": "Fast Transfer From ROBERT WILSON INTERNET — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 7245.46,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "Fast Transfer From ROBERT WILSON INTERNET — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 7245.46
+      }
+    },
+    {
+      "id": "rent-6yd-26",
+      "date": "2026-03-16",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD SMITH — DIRECT CREDIT",
+      "debit": null,
+      "credit": 650,
+      "balance": 7895.46,
+      "category": "Other",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "rental",
+        "Other"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD SMITH — DIRECT CREDIT",
+        "debit": null,
+        "credit": 650,
+        "balance": 7895.46
+      }
+    },
+    {
+      "id": "p2p-6yd-27",
+      "date": "2026-03-16",
+      "description": "Direct Credit 141000 LISA BROWN FISH — OSKO / PAYID",
+      "debit": 100.24,
+      "credit": null,
+      "balance": 7795.22,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "Direct Credit 141000 LISA BROWN FISH — OSKO / PAYID",
+        "debit": 100.24,
+        "credit": null,
+        "balance": 7795.22
+      }
+    },
+    {
+      "id": "pos-6yd-28",
+      "date": "2026-03-16",
+      "description": "Transfer to xx9562 CommBank app GOVERNMENT BENEFIT — LOCAL",
+      "debit": 9.57,
+      "credit": null,
+      "balance": 7785.65,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "Transfer to xx9562 CommBank app GOVERNMENT BENEFIT — LOCAL",
+        "debit": 9.57,
+        "credit": null,
+        "balance": 7785.65
+      }
+    },
+    {
+      "id": "pos-6yd-29",
+      "date": "2026-03-16",
+      "description": "Fast Transfer From MICHAEL CHEN COFFEE — METRO",
+      "debit": 37.3,
+      "credit": null,
+      "balance": 7748.35,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "Fast Transfer From MICHAEL CHEN COFFEE — METRO",
+        "debit": 37.3,
+        "credit": null,
+        "balance": 7748.35
+      }
+    },
+    {
+      "id": "dd-6yd-30",
+      "date": "2026-03-17",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 533774083451191 — DIRECT DEBIT",
+      "debit": 321.43,
+      "credit": null,
+      "balance": 7426.92,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 533774083451191 — DIRECT DEBIT",
+        "debit": 321.43,
+        "credit": null,
+        "balance": 7426.92
+      }
+    },
+    {
+      "id": "pos-6yd-31",
+      "date": "2026-03-18",
+      "description": "Transfer to xx6657 CommBank app WAGES — RETAIL",
+      "debit": 38.6,
+      "credit": null,
+      "balance": 7388.32,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "Transfer to xx6657 CommBank app WAGES — RETAIL",
+        "debit": 38.6,
+        "credit": null,
+        "balance": 7388.32
+      }
+    },
+    {
+      "id": "dd-6yd-32",
+      "date": "2026-03-19",
+      "description": "Fast Transfer From SARAH JOHNSON COIN 4/2/24 — SUBSCRIPTION",
+      "debit": 197.77,
+      "credit": null,
+      "balance": 7190.55,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "Fast Transfer From SARAH JOHNSON COIN 4/2/24 — SUBSCRIPTION",
+        "debit": 197.77,
+        "credit": null,
+        "balance": 7190.55
+      }
+    },
+    {
+      "id": "pos-6yd-33",
+      "date": "2026-03-19",
+      "description": "Transfer to xx5722 CommBank app SALARY — CITY",
+      "debit": 84.77,
+      "credit": null,
+      "balance": 7105.78,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "Transfer to xx5722 CommBank app SALARY — CITY",
+        "debit": 84.77,
+        "credit": null,
+        "balance": 7105.78
+      }
+    },
+    {
+      "id": "pos-6yd-34",
+      "date": "2026-03-19",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON — MALL",
+      "debit": 228.33,
+      "credit": null,
+      "balance": 6877.45,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD WATSON — MALL",
+        "debit": 228.33,
+        "credit": null,
+        "balance": 6877.45
+      }
+    },
+    {
+      "id": "pos-6yd-35",
+      "date": "2026-03-20",
+      "description": "Fast Transfer From LISA BROWN INTERNET — CITY",
+      "debit": 39.15,
+      "credit": null,
+      "balance": 6838.3,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "Fast Transfer From LISA BROWN INTERNET — CITY",
+        "debit": 39.15,
+        "credit": null,
+        "balance": 6838.3
+      }
+    },
+    {
+      "id": "pos-6yd-36",
+      "date": "2026-03-20",
+      "description": "Fast Transfer From MICHAEL CHEN DINNER",
+      "debit": 61.78,
+      "credit": null,
+      "balance": 6776.52,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "Fast Transfer From MICHAEL CHEN DINNER",
+        "debit": 61.78,
+        "credit": null,
+        "balance": 6776.52
+      }
+    },
+    {
+      "id": "pos-6yd-37",
+      "date": "2026-03-21",
+      "description": "Transfer to xx4878 CommBank app OTHER INCOME",
+      "debit": 2.64,
+      "credit": null,
+      "balance": 6773.88,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "Transfer to xx4878 CommBank app OTHER INCOME",
+        "debit": 2.64,
+        "credit": null,
+        "balance": 6773.88
+      }
+    },
+    {
+      "id": "pos-6yd-38",
+      "date": "2026-03-21",
+      "description": "Fast Transfer From DAVID NGUYEN GROCERIES 24/11/24 — METRO",
+      "debit": 17.36,
+      "credit": null,
+      "balance": 6756.52,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "Fast Transfer From DAVID NGUYEN GROCERIES 24/11/24 — METRO",
+        "debit": 17.36,
+        "credit": null,
+        "balance": 6756.52
+      }
+    },
+    {
+      "id": "pos-6yd-39",
+      "date": "2026-03-23",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD JOHNSON — CITY",
+      "debit": 80.94,
+      "credit": null,
+      "balance": 6675.58,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD JOHNSON — CITY",
+        "debit": 80.94,
+        "credit": null,
+        "balance": 6675.58
+      }
+    },
+    {
+      "id": "pos-6yd-40",
+      "date": "2026-03-23",
+      "description": "Direct Debit 184534 World Gym Staffo A00E660282183X30 — CITY",
+      "debit": 18.55,
+      "credit": null,
+      "balance": 6657.03,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "Direct Debit 184534 World Gym Staffo A00E660282183X30 — CITY",
+        "debit": 18.55,
+        "credit": null,
+        "balance": 6657.03
+      }
+    },
+    {
+      "id": "pos-6yd-41",
+      "date": "2026-03-24",
+      "description": "Transfer to xx9535 CommBank app INVESTMENT INCOME — SUBURB",
+      "debit": 48.27,
+      "credit": null,
+      "balance": 6608.76,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "Transfer to xx9535 CommBank app INVESTMENT INCOME — SUBURB",
+        "debit": 48.27,
+        "credit": null,
+        "balance": 6608.76
+      }
+    },
+    {
+      "id": "pos-6yd-42",
+      "date": "2026-03-24",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD BROWN — CBD",
+      "debit": 14.59,
+      "credit": null,
+      "balance": 6594.17,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD BROWN — CBD",
+        "debit": 14.59,
+        "credit": null,
+        "balance": 6594.17
+      }
+    },
+    {
+      "id": "pos-6yd-43",
+      "date": "2026-03-26",
+      "description": "Fast Transfer From SARAH JOHNSON THANKS — HWY",
+      "debit": 92.29,
+      "credit": null,
+      "balance": 6501.88,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-26",
+      "original": {
+        "date": "2026-03-26",
+        "description": "Fast Transfer From SARAH JOHNSON THANKS — HWY",
+        "debit": 92.29,
+        "credit": null,
+        "balance": 6501.88
+      }
+    },
+    {
+      "id": "pos-6yd-44",
+      "date": "2026-03-26",
+      "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON — CITY",
+      "debit": 22.5,
+      "credit": null,
+      "balance": 6479.38,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-26",
+      "original": {
+        "date": "2026-03-26",
+        "description": "Direct Credit 002962 CITIGROUP PTYLTD WILSON — CITY",
+        "debit": 22.5,
+        "credit": null,
+        "balance": 6479.38
+      }
+    },
+    {
+      "id": "p2p-6yd-45",
+      "date": "2026-03-27",
+      "description": "Fast Transfer From JAMES SMITH INTERNET 1/10/24 — OSKO / PAYID",
+      "debit": 64.55,
+      "credit": null,
+      "balance": 6414.83,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "Fast Transfer From JAMES SMITH INTERNET 1/10/24 — OSKO / PAYID",
+        "debit": 64.55,
+        "credit": null,
+        "balance": 6414.83
+      }
+    },
+    {
+      "id": "pos-6yd-46",
+      "date": "2026-03-28",
+      "description": "Direct Credit 141000 EMILY WATSON GROCERIES — WEB",
+      "debit": 21.72,
+      "credit": null,
+      "balance": 6393.11,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "Direct Credit 141000 EMILY WATSON GROCERIES — WEB",
+        "debit": 21.72,
+        "credit": null,
+        "balance": 6393.11
+      }
+    },
+    {
+      "id": "inc-6yd-47",
+      "date": "2026-03-29",
+      "description": "CBA PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 10243.11,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "CBA PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 10243.11
+      }
+    },
+    {
+      "id": "sav-6yd-48",
+      "date": "2026-03-29",
+      "description": "Direct Credit 141000 MICHAEL CHEN GROCERIES — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 9993.11,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "Direct Credit 141000 MICHAEL CHEN GROCERIES — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 9993.11
+      }
+    },
+    {
+      "id": "pos-6yd-49",
+      "date": "2026-03-29",
+      "description": "Direct Credit 141000 EMILY WATSON BILLS — METRO",
+      "debit": 54.37,
+      "credit": null,
+      "balance": 9938.74,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "Direct Credit 141000 EMILY WATSON BILLS — METRO",
+        "debit": 54.37,
+        "credit": null,
+        "balance": 9938.74
+      }
+    },
+    {
+      "id": "pos-6yd-50",
+      "date": "2026-03-29",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 720691228278741 — LOCAL",
+      "debit": 33.01,
+      "credit": null,
+      "balance": 9905.73,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 720691228278741 — LOCAL",
+        "debit": 33.01,
+        "credit": null,
+        "balance": 9905.73
+      }
+    },
+    {
+      "id": "mtg-6yd-51",
+      "date": "2026-03-31",
+      "description": "Transfer to xx5165 CommBank app OTHER INCOME — HOME LENDER · REF LN-cba-9013",
+      "debit": 1680,
+      "credit": null,
+      "balance": 8225.73,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "Transfer to xx5165 CommBank app OTHER INCOME — HOME LENDER · REF LN-cba-9013",
+        "debit": 1680,
+        "credit": null,
+        "balance": 8225.73
+      }
+    },
+    {
+      "id": "dd-6yd-52",
+      "date": "2026-03-31",
+      "description": "Transfer to xx4745 CommBank app SALARY — DIRECT DEBIT",
+      "debit": 321.43,
+      "credit": null,
+      "balance": 7904.3,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "Transfer to xx4745 CommBank app SALARY — DIRECT DEBIT",
+        "debit": 321.43,
+        "credit": null,
+        "balance": 7904.3
+      }
+    },
+    {
+      "id": "pos-6yd-53",
+      "date": "2026-03-31",
+      "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 346780691609186 — CITY",
+      "debit": 103.14,
+      "credit": null,
+      "balance": 7801.16,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "TAX OFFICE PAYMENTS NetBank BPAY 000000 346780691609186 — CITY",
+        "debit": 103.14,
+        "credit": null,
+        "balance": 7801.16
+      }
+    }
+  ],
+  "sampleDescriptions": [
+    "CBA PAYROLL CREDIT",
+    "Direct Credit 141000 MICHAEL CHEN COFFEE",
+    "Direct Credit 141000 EMILY WATSON THANKS",
+    "Direct Credit 141000 LISA BROWN GROCERIES",
+    "Fast Transfer From RACHEL TAYLOR INTERNET"
+  ]
+}

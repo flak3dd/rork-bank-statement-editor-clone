@@ -2,13 +2,22 @@ import { useCallback, useRef, useState } from "react";
 import { FileText, ShieldCheck, UploadCloud } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ParserSelector } from "@/components/ParserSelector";
+import type { DocumentParserId } from "@/lib/parsers";
 
 interface UploadDropzoneProps {
   disabled?: boolean;
   onFile: (file: File) => void;
+  parserId: DocumentParserId;
+  onParserChange: (id: DocumentParserId) => void;
 }
 
-export function UploadDropzone({ disabled, onFile }: UploadDropzoneProps) {
+export function UploadDropzone({
+  disabled,
+  onFile,
+  parserId,
+  onParserChange,
+}: UploadDropzoneProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -31,7 +40,15 @@ export function UploadDropzone({ disabled, onFile }: UploadDropzoneProps) {
   );
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto space-y-4">
+      <div className="rounded-2xl border border-border/70 bg-card/80 p-4 shadow-sm">
+        <ParserSelector
+          value={parserId}
+          onChange={onParserChange}
+          disabled={disabled}
+        />
+      </div>
+
       <div
         role="button"
         tabIndex={0}
@@ -79,8 +96,8 @@ export function UploadDropzone({ disabled, onFile }: UploadDropzoneProps) {
               Drop a statement PDF
             </h2>
             <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-              Extract transactions, review categories, check completeness, and export CSV or JSON.
-              Your original PDF is never rewritten.
+              Parse with Mindee, LlamaParse, Document AI, PyMuPDF, Local OCR, or offline
+              YAML templates — then edit, balance, and export. Original PDF file is not rewritten.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">

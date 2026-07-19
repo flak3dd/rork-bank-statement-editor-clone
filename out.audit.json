@@ -1,0 +1,1522 @@
+{
+  "input": "/Users/adminuser/Downloads/eStateemnt(1).pdf",
+  "output": "out.pdf",
+  "bank": "anz",
+  "seed": 42,
+  "replace": [
+    "descriptions"
+  ],
+  "spans_total": 128,
+  "spans_by_kind": {
+    "description": 79,
+    "amount": 18,
+    "date": 9,
+    "skip": 22
+  },
+  "planned": 79,
+  "dry_run": false,
+  "replacements": [
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Tax File Number/Australian Business Number Information: Tax File Numbers or Australian",
+      "replacement": "TRANSFER FROM BP",
+      "bbox": [
+        62.279998779296875,
+        400.3981018066406,
+        532.3024291992188,
+        412.2120056152344
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Business Numbers are not held and Pay As You Go withholding tax may be deducted from",
+      "replacement": "PENDING - POS AUTHORISATION OPTUS STREAKY BAY AU Card Used VISA DEBIT PURCHASE CARD 6294",
+      "bbox": [
+        62.279998779296875,
+        412.34912109375,
+        532.4812622070312,
+        424.16302490234375
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "interest.",
+      "replacement": "PENDING - EFTPOS UB\u2026",
+      "bbox": [
+        62.279998779296875,
+        424.3011474609375,
+        100.93102264404297,
+        436.11505126953125
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Total Credits",
+      "replacement": "TRANSFER FROM MYER",
+      "bbox": [
+        311.6884765625,
+        229.44720458984375,
+        366.90277099609375,
+        241.78770446777344
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Total Debits",
+      "replacement": "PENDING - MTS OFFIC\u2026",
+      "bbox": [
+        311.6884765625,
+        253.35125732421875,
+        363.5940856933594,
+        265.6917724609375
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "TRANSACTION DESCRIPTION",
+      "replacement": "PENDING - POS AUTHORISATION MCDONALD\u2026",
+      "bbox": [
+        115.05599975585938,
+        494.88751220703125,
+        230.05279541015625,
+        504.3899841308594
+      ],
+      "size": 7.992000102996826,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Effective Date",
+      "replacement": "EFTPOS COLES AU",
+      "bbox": [
+        62.279998779296875,
+        335.4690246582031,
+        121.79698944091797,
+        346.1700134277344
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Over",
+      "replacement": "EFTPOS APPLE.COM/BI\u2026",
+      "bbox": [
+        169.55999755859375,
+        335.4690246582031,
+        235.1069793701172,
+        346.1700134277344
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Please check all entries on this statement and promptly inform Westpac of any possible error or unauthorised transaction",
+      "replacement": "EFTPOS MYER STREAKY BAY AU",
+      "bbox": [
+        93.52790069580078,
+        482.5119323730469,
+        520.24462890625,
+        492.43798828125
+      ],
+      "size": 7.992000102996826,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Account Name",
+      "replacement": "PAYMENT TO DAVID NG\u2026",
+      "bbox": [
+        311.68792724609375,
+        73.62369537353516,
+        364.09942626953125,
+        83.54975891113281
+      ],
+      "size": 7.992000102996826,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Customer ID",
+      "replacement": "ANZ MOBILE BANKING\u2026",
+      "bbox": [
+        311.68792724609375,
+        110.2718276977539,
+        356.5390319824219,
+        120.19789123535156
+      ],
+      "size": 7.992000102996826,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Deposit Online 2077468 Tfr Westpac Cho",
+      "replacement": "PENDING - EFTPOS JB HI FI",
+      "bbox": [
+        115.05599975585938,
+        529.463134765625,
+        281.303955078125,
+        540.64111328125
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Deposit Online 2483883 Tfr Westpac Cho",
+      "replacement": "VISA DEBIT DEPOSIT OPTUS 32608513",
+      "bbox": [
+        115.05599975585938,
+        543.864013671875,
+        281.303955078125,
+        555.0419921875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Deposit Online 2903252 Tfr Westpac Lif",
+      "replacement": "PENDING - PAYMENT FROM JAMES SMITH inv 2674 MDE",
+      "bbox": [
+        115.05599975585938,
+        558.2640380859375,
+        274.3019714355469,
+        569.4420166015625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Deposit Online 2908121 Tfr Westpac Cho",
+      "replacement": "PENDING - MTS TARGET Inv 2584 SMITH",
+      "bbox": [
+        115.05598449707031,
+        572.6640014648438,
+        281.3039245605469,
+        583.8419799804688
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Withdrawal-Osko Payment 1030344 Aleisha",
+      "replacement": "VISA DEBIT DEPOSIT TELSTRA 30728977",
+      "bbox": [
+        115.05596923828125,
+        587.0631103515625,
+        290.6278991699219,
+        598.2410888671875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Paige Coyle",
+      "replacement": "EFTPOS WOOLWORTHS O\u2026",
+      "bbox": [
+        115.05596923828125,
+        601.4630737304688,
+        163.574951171875,
+        612.6410522460938
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Withdrawal Mobile 1910182 Tfr Westpac Cho",
+      "replacement": "EFTPOS BP AU",
+      "bbox": [
+        115.05595397949219,
+        615.8630981445312,
+        295.79388427734375,
+        627.0410766601562
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Use Online, Mobile or Tablet Banking to pay bills, transfer funds, check your account balances and much more",
+      "replacement": "PAYMENT TO MICHAEL CHEN 678856",
+      "bbox": [
+        62.28082275390625,
+        682.3199462890625,
+        501.3099670410156,
+        693.4979248046875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "MR REECE MICHAEL CARLSON",
+      "replacement": "VISA DEBIT PURCHASE CARD VISA CREDIT C\u2026",
+      "bbox": [
+        311.68798828125,
+        82.439697265625,
+        491.8763122558594,
+        97.2840805053711
+      ],
+      "size": 11.95199966430664,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "CARLSON, REECE",
+      "replacement": "ANZ MOBILE BANKING PAY\u2026",
+      "bbox": [
+        388.36724853515625,
+        119.0869140625,
+        493.963134765625,
+        133.93130493164062
+      ],
+      "size": 11.95199966430664,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "MICHAEL",
+      "replacement": "PENDING - POS AUTHO\u2026",
+      "bbox": [
+        388.36724853515625,
+        131.83135986328125,
+        441.493896484375,
+        146.67575073242188
+      ],
+      "size": 11.95199966430664,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "INTEREST RATES (PER ANNUM) ON CREDIT BALANCES",
+      "replacement": "PENDING - PAYMENT FROM MICHAEL CHEN inv 7227 MDE",
+      "bbox": [
+        62.279998779296875,
+        309.73956298828125,
+        358.98291015625,
+        322.7519836425781
+      ],
+      "size": 10.944000244140625,
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "TRANSACTIONS",
+      "replacement": "VISA DEBIT PURCHASE\u2026",
+      "bbox": [
+        62.279998779296875,
+        456.2589111328125,
+        149.21913146972656,
+        469.2713317871094
+      ],
+      "size": 10.944000244140625,
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "CONVENIENCE AT YOUR FINGERTIPS",
+      "replacement": "PENDING - EFTPOS TERRY WHITE CHEMIST",
+      "bbox": [
+        62.279998779296875,
+        661.8189697265625,
+        262.13934326171875,
+        674.8314208984375
+      ],
+      "size": 10.944000244140625,
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "22 May 2026 - 22 May 2026",
+      "replacement": "VISA DEBIT DEPOSIT AMAZON MARKETPLACE 34\u2026",
+      "bbox": [
+        311.68719482421875,
+        34.840511322021484,
+        447.950927734375,
+        48.432960510253906
+      ],
+      "size": 10.944000244140625,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714",
+      "replacement": "EFTPOS KFC STREAKY BAY AU",
+      "bbox": [
+        62.279998779296875,
+        767.8399658203125,
+        354.21844482421875,
+        776.5140380859375
+      ],
+      "size": 6.984000205993652,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "Westpac Choice",
+      "replacement": "ANZ MOBILE BANKING PAY\u2026",
+      "bbox": [
+        62.279998779296875,
+        69.42303466796875,
+        185.4527130126953,
+        88.42800903320312
+      ],
+      "size": 15.984000205993652,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Understanding comprehensive credit reporting",
+      "replacement": "EFTPOS NETFLIX AU",
+      "bbox": [
+        62.279998779296875,
+        415.0290222167969,
+        263.3219299316406,
+        425.7300109863281
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Complaints",
+      "replacement": "PENDING - EFTPOS WO\u2026",
+      "bbox": [
+        62.279998779296875,
+        538.6530151367188,
+        111.28499603271484,
+        549.35400390625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Further information in relation to your account, including details of product benefits and applicable fees and charges, is",
+      "replacement": "PAYMENT TO RACHEL TAYLOR 771088",
+      "bbox": [
+        62.279998779296875,
+        99.76798248291016,
+        533.0070190429688,
+        110.94598388671875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "available on request. That information is also contained in the Product Disclosure Statement (PDS) or other disclosure",
+      "replacement": "EFTPOS DAVID JONES STREAKY BAY AU",
+      "bbox": [
+        62.279998779296875,
+        111.7190933227539,
+        531.8101196289062,
+        122.8970947265625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "document for your account. For a copy of that document, or if you have any other enquiries, you can call Telephone",
+      "replacement": "PENDING - PAYMENT FROM JAMES SMITH inv 1916 MDE",
+      "bbox": [
+        62.279998779296875,
+        123.6719741821289,
+        520.3530883789062,
+        134.8499755859375
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Banking on 132 032 from Australia or +61 2 9155 7700 from overseas.",
+      "replacement": "PENDING - PAYMENT FROM SARAH JOHNSON inv 6168 MDE",
+      "bbox": [
+        62.279998779296875,
+        135.6230926513672,
+        342.68402099609375,
+        146.80108642578125
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "The above Closing Balance amount may not be the same as the balance payable to you on closure of your account",
+      "replacement": "PAYMENT TO RACHEL TAYLOR 169403",
+      "bbox": [
+        62.279998779296875,
+        159.5279998779297,
+        521.5231323242188,
+        170.70599365234375
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "(the 'termination value'). Details of the termination value can be obtained by calling Telephone Banking on the numbers",
+      "replacement": "PENDING - PAYMENT FROM JAMES SMITH inv 4483 MDE",
+      "bbox": [
+        62.279998779296875,
+        171.47911071777344,
+        534.2850341796875,
+        182.6571044921875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "quoted above. Further information on how to close accounts, including calculation of the termination value, is contained",
+      "replacement": "TRANSFER FROM AMAZON AU",
+      "bbox": [
+        62.279998779296875,
+        183.43199157714844,
+        536.0130615234375,
+        194.6099853515625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "in the Product Disclosure Statement (PDS) booklet or other disclosure document for your account.",
+      "replacement": "PAYMENT TO ROBERT WILSON 249811",
+      "bbox": [
+        62.279998779296875,
+        195.3831024169922,
+        452.4391174316406,
+        206.56109619140625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "We have an internal process for handling and resolving any problem you may have with, or complaints relating to, your",
+      "replacement": "VISA DEBIT PURCHASE CARD VISA DEBIT PURCHASE CARD 6294 NETFLIX",
+      "bbox": [
+        62.279998779296875,
+        219.2880096435547,
+        533.8170776367188,
+        230.46600341796875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "account or this product. Information about this process can be found in the Product Disclosure Statement (PDS) or",
+      "replacement": "EFTPOS DAVID JONES STREAKY BAY AU",
+      "bbox": [
+        62.279998779296875,
+        231.23912048339844,
+        516.987060546875,
+        242.4171142578125
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "other disclosure document for your account, or you can contact us on 1300 130 467.",
+      "replacement": "EFTPOS TELSTRA AU",
+      "bbox": [
+        62.279998779296875,
+        243.19200134277344,
+        397.9620361328125,
+        254.3699951171875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Remember, if you have a card, always keep your passcode (PIN) secret - don't tell anyone or let them see it. Never",
+      "replacement": "EFTPOS OFFICEWORKS STREAKY BAY AU",
+      "bbox": [
+        62.279998779296875,
+        267.0950622558594,
+        519.6871948242188,
+        278.2730712890625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "write your passcode on your card or on anything that could be lost or stolen. If you do need to record a reminder, you",
+      "replacement": "PAYMENT TO INTERNAL TRANSFER 518801",
+      "bbox": [
+        62.279998779296875,
+        279.0479431152344,
+        526.5182495117188,
+        290.2259521484375
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "must make every effort to disguise it. You may be liable for losses if you don't protect your passcode. To help you learn",
+      "replacement": "VISA DEBIT DEPOSIT DISNEY PLUS 32320821",
+      "bbox": [
+        62.279998779296875,
+        290.9990539550781,
+        532.899169921875,
+        302.17706298828125
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "how you can protect your card against unauthorised transactions, you can find more information at",
+      "replacement": "EFTPOS AMAZON AU AU",
+      "bbox": [
+        62.279998779296875,
+        302.9519348144531,
+        453.4650573730469,
+        314.12994384765625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "westpac.com.au/dispute. If you are a business customer, please go to westpac.com.au/businessdispute",
+      "replacement": "PENDING - MTS IGA Inv 2796 WATSON",
+      "bbox": [
+        62.279998779296875,
+        314.9030456542969,
+        474.48004150390625,
+        326.0810546875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "If any loan you hold with us is secured by a real property mortgage; the mortgage terms require the property to be",
+      "replacement": "TRANSFER FROM WOOLWORTHS PETROL",
+      "bbox": [
+        62.279998779296875,
+        354.79193115234375,
+        513.990234375,
+        365.9699401855469
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "insured. Please review the replacement value of the property and check with your insurer to ensure you have adequate",
+      "replacement": "TRANSFER FROM JB HI FI",
+      "bbox": [
+        62.279998779296875,
+        366.7430419921875,
+        535.5092163085938,
+        377.9210510253906
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "cover. For general information on property insurance, visit the Australian Securities and Investments Commission's",
+      "replacement": "ANZ MOBILE BANKING PAYMENT 166613 TO LISA BROWN",
+      "bbox": [
+        62.279998779296875,
+        378.6959533691406,
+        517.6710205078125,
+        389.87396240234375
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "MoneySmart website: www.moneysmart.gov.au.",
+      "replacement": "PAYMENT TO INTERNAL TRANSFER 590785",
+      "bbox": [
+        62.279998779296875,
+        390.6470642089844,
+        253.6739501953125,
+        401.8250732421875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "It's more important than ever to pay on time as this is shown on your consumer credit report as part of comprehensive",
+      "replacement": "EFTPOS TELSTRA AU",
+      "bbox": [
+        62.279998779296875,
+        434.4959716796875,
+        530.190185546875,
+        445.6739807128906
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "credit reporting (CCR).",
+      "replacement": "EFTPOS WOOLWORTHS AU",
+      "bbox": [
+        62.279998779296875,
+        446.44708251953125,
+        152.79298400878906,
+        457.6250915527344
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "CCR provides you with a more complete picture of your credit history including your on time and late repayments. You",
+      "replacement": "TRANSFER FROM BP",
+      "bbox": [
+        62.279998779296875,
+        466.3919982910156,
+        530.4691772460938,
+        477.57000732421875
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "can also see your consumer credit account open and closed dates, type of credit, credit limit and it now includes",
+      "replacement": "TRANSFER FROM MYER",
+      "bbox": [
+        62.279998779296875,
+        478.3431091308594,
+        507.4830322265625,
+        489.5211181640625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "whether you are in a financial hardship arrangement.",
+      "replacement": "VISA DEBIT PURCHASE CARD VISA CREDIT CARD 4567 CHEMIST WAREHOUSE",
+      "bbox": [
+        62.279998779296875,
+        490.2960205078125,
+        272.3759460449219,
+        501.4740295410156
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "For more information please see our website, our Privacy Statement  or visit CreditSmart.org.au.",
+      "replacement": "PENDING - MTS ORIGIN ENERGY Inv 8123 WATSON",
+      "bbox": [
+        62.279998779296875,
+        510.2400207519531,
+        445.9140930175781,
+        521.4180297851562
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "If you have a complaint, contact our dedicated Customer Solutions team on 132 032 or write to us at Westpac",
+      "replacement": "ANZ INTERNET BANKING BPAY HOST PLUS {857168}",
+      "bbox": [
+        62.279998779296875,
+        550.1271362304688,
+        498.33013916015625,
+        561.3051147460938
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Customer Solutions, Reply Paid 5265, Sydney NSW 2001. If an issue has not been resolved to your satisfaction, you",
+      "replacement": "EFTPOS TELSTRA STREAKY BAY AU",
+      "bbox": [
+        62.279998779296875,
+        562.080078125,
+        527.0042114257812,
+        573.258056640625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "can lodge a complaint with the Australian Financial Complaints Authority (AFCA). AFCA provides fair and independent",
+      "replacement": "EFTPOS COLES EXPRESS AU",
+      "bbox": [
+        62.279998779296875,
+        574.0320434570312,
+        530.487060546875,
+        585.2100219726562
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "financial services complaint resolution that is free to consumers.",
+      "replacement": "EFTPOS UBER EATS AU",
+      "bbox": [
+        62.279998779296875,
+        585.983154296875,
+        316.87200927734375,
+        597.1611328125
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Online: www.afca.org.au",
+      "replacement": "TRANSFER FROM AGL",
+      "bbox": [
+        62.279998779296875,
+        597.9351196289062,
+        159.8219757080078,
+        609.1130981445312
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Email: info@afca.org.au",
+      "replacement": "TRANSFER FROM THE ICONIC",
+      "bbox": [
+        62.279998779296875,
+        609.8880615234375,
+        158.4539794921875,
+        621.0660400390625
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Phone 1800 931 678",
+      "replacement": "ANZ MOBILE BANKING PAYMENT 3\u2026",
+      "bbox": [
+        62.279998779296875,
+        621.8400268554688,
+        145.844970703125,
+        633.0180053710938
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Mail: Australian Financial Complaints Authority GPO Box 3 Melbourne VIC 3001",
+      "replacement": "VISA DEBIT DEPOSIT WOOLWORTHS PETROL 39049278",
+      "bbox": [
+        62.279998779296875,
+        633.7919921875,
+        379.9079895019531,
+        644.969970703125
+      ],
+      "size": 9.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Westpac Choice",
+      "replacement": "EFTPOS WOOLWORTHS AU",
+      "bbox": [
+        44.20800018310547,
+        25.48773193359375,
+        549.6587524414062,
+        40.332115173339844
+      ],
+      "size": 11.95199966430664,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "MORE INFORMATION",
+      "replacement": "ANZ MOBILE BANKING PAYMEN\u2026",
+      "bbox": [
+        62.279998779296875,
+        74.51557922363281,
+        174.55450439453125,
+        87.52799224853516
+      ],
+      "size": 10.944000244140625,
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 1,
+      "kind": "description",
+      "original": "Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714",
+      "replacement": "PENDING - POS AUTHORISATION BP AU AU Card Used VISA DEBIT PURCHASE CARD 5076",
+      "bbox": [
+        62.279998779296875,
+        767.8399658203125,
+        354.21844482421875,
+        776.5140380859375
+      ],
+      "size": 6.984000205993652,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "THANK YOU FOR BANKING WITH WESTPAC",
+      "replacement": "PENDING - PAYMENT FROM SARAH JOHNSON inv 4946 MDE",
+      "bbox": [
+        158.68789672851562,
+        199.49703979492188,
+        433.1535949707031,
+        213.70797729492188
+      ],
+      "size": 11.95199966430664,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Westpac Live",
+      "replacement": "ANZ MOBILE BANKING\u2026",
+      "bbox": [
+        107.13632202148438,
+        87.77410125732422,
+        170.45843505859375,
+        99.58800506591797
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Telephone Banking",
+      "replacement": "EFTPOS AMAZON AU STREAKY BA\u2026",
+      "bbox": [
+        255.959716796875,
+        87.77410125732422,
+        346.87408447265625,
+        99.58800506591797
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Local Branch",
+      "replacement": "PENDING - MTS MYER\u2026",
+      "bbox": [
+        443.08740234375,
+        87.77410125732422,
+        506.0319519042969,
+        99.58800506591797
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Find out about Online Banking",
+      "replacement": "TRANSFER FROM COLES ONLINE",
+      "bbox": [
+        41.328216552734375,
+        147.53318786621094,
+        210.8263702392578,
+        159.3470916748047
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Call us on 132 032",
+      "replacement": "EFTPOS WOOLWORTHS PETROL AU",
+      "bbox": [
+        242.13577270507812,
+        147.53318786621094,
+        344.8640441894531,
+        159.3470916748047
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Find branches and ATMs at",
+      "replacement": "VISA DEBIT PURCHASE CARD VISA CREDIT CAR\u2026",
+      "bbox": [
+        409.4639587402344,
+        147.53318786621094,
+        538.1053466796875,
+        159.3470916748047
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "at westpac.com.au/westpaclive",
+      "replacement": "PENDING - PAYMENT FROM DAVID NGUYEN inv 6107 MDE",
+      "bbox": [
+        34.63232421875,
+        159.48521423339844,
+        211.91036987304688,
+        171.2991180419922
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "+61 2 9155 7700 if overseas",
+      "replacement": "PAYMENT TO JAMES SMITH 559381",
+      "bbox": [
+        231.3353271484375,
+        159.48521423339844,
+        366.3953552246094,
+        171.2991180419922
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "westpac.com.au/locateus",
+      "replacement": "EFTPOS REBEL SPORT AU",
+      "bbox": [
+        414.43194580078125,
+        159.48521423339844,
+        534.2601318359375,
+        171.2991180419922
+      ],
+      "size": 9.935999870300293,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica-Bold"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Westpac Choice",
+      "replacement": "PENDING - MTS NETFLIX\u2026",
+      "bbox": [
+        44.20800018310547,
+        25.48773193359375,
+        549.6587524414062,
+        40.332115173339844
+      ],
+      "size": 11.95199966430664,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 2,
+      "kind": "description",
+      "original": "Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714",
+      "replacement": "VISA DEBIT DEPOSIT COLES 39870182",
+      "bbox": [
+        62.279998779296875,
+        767.8399658203125,
+        354.21844482421875,
+        776.5140380859375
+      ],
+      "size": 6.984000205993652,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    }
+  ],
+  "applied": 79
+}

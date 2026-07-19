@@ -1,0 +1,19 @@
+id: westpac
+name: Westpac
+match:
+  - Westpac
+  - westpac.com.au
+  - St.George
+  - Bank of Melbourne
+dateOrder: dmy
+columnOrder:
+  - date
+  - description
+  - debit
+  - credit
+  - balance
+noise:
+  - westpac banking corporation
+  - bsb
+  - account summary
+currency: AUD

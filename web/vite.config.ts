@@ -18,6 +18,11 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Ensure PDFium WASM is treated as a static asset (browser init needs wasmUrl).
+  assetsInclude: ["**/*.wasm"],
+  optimizeDeps: {
+    exclude: ["@hyzyla/pdfium"],
+  },
   // Expose both VITE_* (Vite default) and EXPO_PUBLIC_* (Rork's cross-platform
   // public-env convention, written by tools like getOrCreateAuthConfig).
   envPrefix: ["VITE_", "EXPO_PUBLIC_"],

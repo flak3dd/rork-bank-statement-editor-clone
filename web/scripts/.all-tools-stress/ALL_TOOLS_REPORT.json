@@ -1,0 +1,70 @@
+{
+  "pdf": "/Users/adminuser/Downloads/1132%20(2)/698/St George Bank Acc Statement #726 - 21.08.24 to 19.11.24.pdf",
+  "baselineCount": 22,
+  "advancedEdits": 40,
+  "allOk": true,
+  "passCount": 12,
+  "failCount": 0,
+  "results": [
+    {
+      "tool": "bank-descriptions",
+      "ok": true,
+      "detail": "9 banks · rewrite ok"
+    },
+    {
+      "tool": "advancedGenerator+run-match+font-edits",
+      "ok": true,
+      "detail": "txns=22 runs=348 linked=53 edits=40"
+    },
+    {
+      "tool": "pymupdf-replace (bank-desc)",
+      "ok": true,
+      "detail": "mode=table+geometry edits=22 material=queued-edits"
+    },
+    {
+      "tool": "date-shift",
+      "ok": true,
+      "detail": "period 2024-08-24→2024-11-18 · shifted 22"
+    },
+    {
+      "tool": "font-analysis",
+      "ok": true,
+      "detail": "2 fonts · complete=\"Helvetica Neue, Arial, sans-serif\", \"Times New Roman\", Georgia, serif"
+    },
+    {
+      "tool": "hybrid-geometry",
+      "ok": true,
+      "detail": "txns=39 notes=3"
+    },
+    {
+      "tool": "pdf-runs",
+      "ok": true,
+      "detail": "251 runs page1-2"
+    },
+    {
+      "tool": "run-match",
+      "ok": true,
+      "detail": "fields=90 linked=53 paired=53"
+    },
+    {
+      "tool": "docai-admin",
+      "ok": true,
+      "detail": "configured · snapshot ok · train soft-fail: Train HTTP 401: {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had inva"
+    },
+    {
+      "tool": "remote-engine",
+      "ok": true,
+      "detail": "mode=local · probe.ok=false · not configured for parse"
+    },
+    {
+      "tool": "pymupdfCliHint",
+      "ok": true,
+      "detail": "python tools/pymupdf_pipeline/replace_statement.py --pdf statement.pdf --bank an"
+    },
+    {
+      "tool": "advancedGenerator(locale=us)",
+      "ok": true,
+      "detail": "txns=6"
+    }
+  ]
+}

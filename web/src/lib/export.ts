@@ -59,10 +59,14 @@ export function buildExportPayload(
       exportedAt: new Date().toISOString(),
       tool: "Statement Lens",
       disclaimer:
-        "Analysis and export only. Original PDF was not modified or rewritten.",
+        "Structured data edit and export only. Original PDF file was not modified or rewritten.",
+      completenessScore: result.completenessScore,
+      hybrid: result.hybrid ?? null,
+      parser: result.parser ?? null,
     },
     summary: result.summary,
     findings: result.findings,
+    completenessScore: result.completenessScore,
     transactions: transactions.map((t) => ({
       date: t.date,
       description: t.description,
@@ -73,6 +77,14 @@ export function buildExportPayload(
       categorySource: t.categorySource,
       categoryConfidence: t.categoryConfidence,
       flags: t.flags,
+      edited: Boolean(
+        t.original &&
+          (t.date !== t.original.date ||
+            t.description !== t.original.description ||
+            t.debit !== t.original.debit ||
+            t.credit !== t.original.credit ||
+            t.balance !== t.original.balance),
+      ),
       ...(options?.includeNotes !== false ? { notes: t.notes ?? null } : {}),
     })),
   };
@@ -115,4 +127,14 @@ export function exportJson(
 export function summaryLine(result: ExtractionResult): string {
   const s = result.summary;
   return `${s.transactionCount} txns · in ${formatMoney(s.totalIn)} · out ${formatMoney(s.totalOut)}`;
+}
+
+export function downloadBytes(filename: string, data: Uint8Array, mime: string): void {
+  const blob = new Blob([data as BlobPart], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
 }

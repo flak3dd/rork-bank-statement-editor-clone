@@ -1,0 +1,18 @@
+id: nab
+name: NAB
+match:
+  - National Australia Bank
+  - NAB
+  - nab.com.au
+dateOrder: dmy
+columnOrder:
+  - date
+  - description
+  - debit
+  - credit
+  - balance
+noise:
+  - national australia bank
+  - bsb
+  - nab connect
+currency: AUD

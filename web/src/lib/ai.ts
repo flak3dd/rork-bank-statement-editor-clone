@@ -144,12 +144,33 @@ confidence is 0..1. notes optional short string. Do not invent transactions.`,
   return out;
 }
 
-/** AI completeness review — report only, never suggests PDF edits. */
+export interface AiValidateResult {
+  findings: CompletenessFinding[];
+  /** Optional 0–100 completeness nudge from the model. */
+  scoreHint: number | null;
+  validated: boolean;
+}
+
+/** AI completeness review + optional score hint for hybrid scoring. */
 export async function aiCompletenessCheck(
   transactions: Transaction[],
   localFindings: CompletenessFinding[],
 ): Promise<CompletenessFinding[]> {
-  if (transactions.length === 0) return localFindings;
+  const result = await aiHybridValidate(transactions, localFindings);
+  return result.findings;
+}
+
+/**
+ * Hybrid AI validation: findings + optional completeness score hint.
+ * Merges with local findings; never invents transactions.
+ */
+export async function aiHybridValidate(
+  transactions: Transaction[],
+  localFindings: CompletenessFinding[],
+): Promise<AiValidateResult> {
+  if (transactions.length === 0) {
+    return { findings: localFindings, scoreHint: null, validated: false };
+  }
 
   const sample = transactions.slice(0, 60).map((t) => ({
     id: t.id,
@@ -165,10 +186,12 @@ export async function aiCompletenessCheck(
       [
         {
           role: "system",
-          content: `You review extracted bank statement transactions for a READ-ONLY analyzer.
-Return ONLY JSON: {"findings":[{"severity":"info|warning|error","title":"...","detail":"...","transactionId":"optional"}]}
-Look for: possible missing rows, odd duplicates, inconsistent balances, suspicious gaps.
-Do NOT suggest rewriting, forging, or editing the PDF. Max 8 findings. Be concise.`,
+          content: `You validate hybrid-extracted bank statement transactions.
+Return ONLY JSON:
+{"scoreHint":0-100,"findings":[{"severity":"info|warning|error","title":"...","detail":"...","transactionId":"optional"}]}
+scoreHint: overall extraction completeness (coverage, consistency, realism).
+Look for: missing rows, duplicates, inconsistent balances, suspicious gaps, garbled descriptions.
+Do NOT invent transactions. Do NOT suggest forging PDFs. Max 8 findings. Be concise.`,
         },
         {
           role: "user",
@@ -183,6 +206,7 @@ Do NOT suggest rewriting, forging, or editing the PDF. Max 8 findings. Be concis
     );
 
     const parsed = extractJson(content) as {
+      scoreHint?: number;
       findings?: Array<{
         severity?: string;
         title?: string;
@@ -205,9 +229,18 @@ Do NOT suggest rewriting, forging, or editing the PDF. Max 8 findings. Be concis
         transactionId: f.transactionId,
       }));
 
-    return [...localFindings, ...extra];
+    const scoreHint =
+      typeof parsed.scoreHint === "number" && Number.isFinite(parsed.scoreHint)
+        ? Math.min(100, Math.max(0, parsed.scoreHint))
+        : null;
+
+    return {
+      findings: [...localFindings, ...extra],
+      scoreHint,
+      validated: true,
+    };
   } catch {
-    return localFindings;
+    return { findings: localFindings, scoreHint: null, validated: false };
   }
 }
 

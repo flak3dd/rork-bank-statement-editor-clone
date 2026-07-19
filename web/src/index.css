@@ -135,4 +135,34 @@
     background-size: 28px 28px;
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
   }
+
+  /* Inline edit dirty cells */
+  .cell-dirty {
+    background: hsl(48 96% 53% / 0.22);
+    box-shadow: inset 0 0 0 1px hsl(45 93% 47% / 0.35);
+  }
+
+  /* Balance mismatch yellow overlays */
+  .row-balance-mismatch {
+    background: linear-gradient(
+      90deg,
+      hsl(48 96% 53% / 0.16),
+      hsl(48 96% 53% / 0.06) 40%,
+      transparent
+    ) !important;
+  }
+
+  .cell-balance-mismatch {
+    background: hsl(48 96% 53% / 0.35);
+    box-shadow: inset 0 0 0 1px hsl(45 93% 47% / 0.55);
+    color: hsl(32 95% 24%);
+  }
+
+  .dark .cell-balance-mismatch {
+    color: hsl(48 96% 80%);
+  }
+
+  .row-dirty {
+    box-shadow: inset 3px 0 0 0 hsl(45 93% 47% / 0.75);
+  }
 }

@@ -12,10 +12,15 @@
     "test": "vitest run && vitest run --config vitest.browser.config.ts",
     "test:browser": "vitest --config vitest.browser.config.ts",
     "test:browser:run": "vitest run --config vitest.browser.config.ts",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "font-cli": "node scripts/font-cli.mjs",
+    "regen:final": "vitest run src/test/final-statement-regen.test.ts",
+    "stress:workflow": "vitest run src/test/full-workflow-stress.test.ts",
+    "stress:all-tools": "vitest run src/test/all-tools-stress.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@hyzyla/pdfium": "^2.1.13",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -50,6 +55,7 @@
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.577.0",
+    "mupdf": "^1.28.0",
     "next-themes": "^0.4.6",
     "pdfjs-dist": "^6.1.200",
     "react": "^19.2.7",

@@ -1,0 +1,208 @@
+{
+  "pdf": "/Users/adminuser/Downloads/1132%20(2)/698/St George Bank Acc Statement #726 - 21.08.24 to 19.11.24.pdf",
+  "targetStreak": 5,
+  "bestStreak": 5,
+  "achieved": true,
+  "finalStreak": 5,
+  "streakFingerprints": [
+    "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":true,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"PENDING - POS AUTHORISATION TELSTRA STREAKY BAY AU Card Used VISA DEBIT PURCHASE CARD 5076\"}",
+    "{\"parser\":\"pymupdf\",\"bank\":\"cba\",\"seed\":11110,\"periodDays\":28,\"salaryAmount\":3050,\"cardSpendPct\":20,\"billsSubsPct\":14,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":false,\"genClose\":66843.73,\"rewriteClose\":67999.11,\"editCount\":39,\"sampleDesc\":\"CBA SALARY 11110 — FROM PAYROLL\"}",
+    "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"runVisual\":true,\"genClose\":67584.53,\"rewriteClose\":67351.4,\"editCount\":22,\"sampleDesc\":\"INTEREST\"}",
+    "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":false,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"Transfer from SAV 00299053 Mobile# 560565467\"}",
+    "{\"parser\":\"local-ocr\",\"bank\":\"bankwest\",\"seed\":11440,\"periodDays\":49,\"salaryAmount\":3800,\"cardSpendPct\":35,\"billsSubsPct\":26,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":true,\"genClose\":69688.05,\"rewriteClose\":68381.29,\"editCount\":40,\"sampleDesc\":\"BANKWEST SALARY 11440 — FROM PAYROLL\"}"
+  ],
+  "totalAttempts": 5,
+  "passCount": 5,
+  "failCount": 0,
+  "results": [
+    {
+      "id": "v1-anz-bank-desc-offline-heuristic",
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "math score=16 (expected after description-only rewrite)"
+      ],
+      "stats": {
+        "id": "v1-anz-bank-desc-offline-heuristic",
+        "parser": "offline-heuristic",
+        "bank": "anz",
+        "seed": 11000,
+        "replaceMode": "bank-desc",
+        "parseCount": 22,
+        "pageCount": 3,
+        "rawTextLen": 3840,
+        "linkStats": "linked 53/90 · edits 22 · runs 348",
+        "sampleDesc": "PENDING - POS AUTHORISATION TELSTRA STREAKY BAY AU Card Used VISA DEBIT PURCHASE CARD 5076",
+        "editCount": 22,
+        "workingCount": 22,
+        "genClose": null,
+        "rewriteClose": 5,
+        "compareChanged": 22,
+        "compareAdded": 0,
+        "balanceMismatches": 3,
+        "mathStatus": "fail",
+        "mathScore": 16,
+        "materialMode": "queued-edits",
+        "materialEdits": 22,
+        "materialNotes": [
+          "Candidate built from 22 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+        ],
+        "visualStatus": "pass",
+        "visualScore": 100,
+        "visualMode": "edited",
+        "rendererOk": true,
+        "exportBytes": 22547
+      },
+      "fingerprint": "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"run"
+    },
+    {
+      "id": "v2-cba-generate-apply-pymupdf",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "id": "v2-cba-generate-apply-pymupdf",
+        "parser": "pymupdf",
+        "bank": "cba",
+        "seed": 11110,
+        "replaceMode": "generate-apply",
+        "parseCount": 22,
+        "pageCount": 3,
+        "rawTextLen": 3840,
+        "qualityOk": true,
+        "sampleDesc": "CBA SALARY 11110 — FROM PAYROLL",
+        "linkStats": "gen-link 53/90 edits=39",
+        "editCount": 39,
+        "workingCount": 22,
+        "genClose": 66843.73,
+        "rewriteClose": 67999.11,
+        "compareChanged": 22,
+        "compareAdded": 0,
+        "balanceMismatches": 0,
+        "mathStatus": "pass",
+        "mathScore": 100,
+        "materialMode": "queued-edits",
+        "materialEdits": 39,
+        "materialNotes": [
+          "Candidate built from 39 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+        ],
+        "exportBytes": 22547
+      },
+      "fingerprint": "{\"parser\":\"pymupdf\",\"bank\":\"cba\",\"seed\":11110,\"periodDays\":28,\"salaryAmount\":3050,\"cardSpendPct\":20,\"billsSubsPct\":14,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runV"
+    },
+    {
+      "id": "v3-westpac-hybrid-offline-heuristic",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "id": "v3-westpac-hybrid-offline-heuristic",
+        "parser": "offline-heuristic",
+        "bank": "westpac",
+        "seed": 11220,
+        "replaceMode": "hybrid",
+        "parseCount": 22,
+        "pageCount": 3,
+        "rawTextLen": 3840,
+        "linkStats": "linked 53/90 · edits 22 · runs 348",
+        "qualityOk": true,
+        "sampleDesc": "INTEREST",
+        "editCount": 22,
+        "workingCount": 22,
+        "genClose": 67584.53,
+        "rewriteClose": 67351.4,
+        "compareChanged": 22,
+        "compareAdded": 0,
+        "balanceMismatches": 0,
+        "mathStatus": "pass",
+        "mathScore": 100,
+        "materialMode": "queued-edits",
+        "materialEdits": 22,
+        "materialNotes": [
+          "Candidate built from 22 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+        ],
+        "visualStatus": "pass",
+        "visualScore": 100,
+        "visualMode": "edited",
+        "rendererOk": true,
+        "exportBytes": 22547
+      },
+      "fingerprint": "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"r"
+    },
+    {
+      "id": "v4-ing-bank-desc-pymupdf",
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "math score=16 (expected after description-only rewrite)"
+      ],
+      "stats": {
+        "id": "v4-ing-bank-desc-pymupdf",
+        "parser": "pymupdf",
+        "bank": "ing",
+        "seed": 11330,
+        "replaceMode": "bank-desc",
+        "parseCount": 22,
+        "pageCount": 3,
+        "rawTextLen": 3840,
+        "linkStats": "linked 53/90 · edits 22 · runs 348",
+        "sampleDesc": "Transfer from SAV 00299053 Mobile# 560565467",
+        "editCount": 22,
+        "workingCount": 22,
+        "genClose": null,
+        "rewriteClose": 5,
+        "compareChanged": 22,
+        "compareAdded": 0,
+        "balanceMismatches": 3,
+        "mathStatus": "fail",
+        "mathScore": 16,
+        "materialMode": "queued-edits",
+        "materialEdits": 22,
+        "materialNotes": [
+          "Candidate built from 22 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+        ],
+        "exportBytes": 22547
+      },
+      "fingerprint": "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":fa"
+    },
+    {
+      "id": "v5-bankwest-generate-apply-local-ocr",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "id": "v5-bankwest-generate-apply-local-ocr",
+        "parser": "local-ocr",
+        "bank": "bankwest",
+        "seed": 11440,
+        "replaceMode": "generate-apply",
+        "parseCount": 22,
+        "pageCount": 3,
+        "rawTextLen": 4205,
+        "qualityOk": true,
+        "sampleDesc": "BANKWEST SALARY 11440 — FROM PAYROLL",
+        "linkStats": "gen-link 53/90 edits=40",
+        "editCount": 40,
+        "workingCount": 22,
+        "genClose": 69688.05,
+        "rewriteClose": 68381.29,
+        "compareChanged": 22,
+        "compareAdded": 0,
+        "balanceMismatches": 0,
+        "mathStatus": "pass",
+        "mathScore": 100,
+        "materialMode": "queued-edits",
+        "materialEdits": 40,
+        "materialNotes": [
+          "Candidate built from 40 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+        ],
+        "visualStatus": "pass",
+        "visualScore": 100,
+        "visualMode": "edited",
+        "rendererOk": true,
+        "exportBytes": 22547
+      },
+      "fingerprint": "{\"parser\":\"local-ocr\",\"bank\":\"bankwest\",\"seed\":11440,\"periodDays\":49,\"salaryAmount\":3800,\"cardSpendPct\":35,\"billsSubsPct\":26,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute"
+    }
+  ]
+}

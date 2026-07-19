@@ -1,0 +1,2048 @@
+{
+  "bank": "macquarie",
+  "seed": 9078,
+  "config": {
+    "periodStart": "2026-03-01",
+    "periodDays": 31,
+    "openingBalance": 3240.55,
+    "savingsOpeningBalance": 12500,
+    "salaryDescription": "MACQUARIE PAYROLL CREDIT",
+    "salaryAmount": 3850,
+    "salaryFrequency": "fortnightly",
+    "salaryAccount": "PAYROLL",
+    "income": {
+      "amount": 3850,
+      "frequency": "fortnightly"
+    },
+    "rentalDescription": "RENTAL INCOME",
+    "rentalAmount": 0,
+    "hasRentalIncome": false,
+    "savingsDescription": "TRANSFER TO BONUS SAVER",
+    "savingsAmount": 250,
+    "savingsFrequency": "fortnightly",
+    "savingsAccount": "BONUS",
+    "savings": {
+      "amount": 250,
+      "frequency": "fortnightly"
+    },
+    "mortgageDescription": "HOME LOAN REPAYMENT",
+    "mortgageLender": "HOME LENDER",
+    "mortgageAmount": 1680,
+    "mortgageFrequency": "monthly",
+    "loanReference": "LN-macquarie-9078",
+    "mortgage": {
+      "amount": 1680,
+      "frequency": "monthly"
+    },
+    "cardLast4": "8078",
+    "cardSpendPct": 26,
+    "billsSubsPct": 20,
+    "billSpendMultiplier": 1,
+    "cardSpendIncomeShare": 0.26,
+    "billsIncomeShare": 0.2,
+    "hasDirectDebits": true,
+    "enableDirectDebits": true,
+    "hasSubscriptions": true,
+    "selectedBillCategories": [
+      "Telecom",
+      "Utilities",
+      "Health",
+      "Insurance",
+      "Entertainment",
+      "Financial",
+      "TaxSuper",
+      "Other"
+    ],
+    "seed": 9078,
+    "account": {
+      "accountName": "Everyday Transaction Account",
+      "productName": "Everyday Transaction Account",
+      "holderName": "Regen Customer MACQUARIE",
+      "accountHolder": "Regen Customer MACQUARIE",
+      "customerID": "CUS-macquarie-9078",
+      "customerNumber": "CUS-1002941",
+      "bsb": "062-000",
+      "bsbCode": "062-000",
+      "accountNumber": "10009078",
+      "interestRate": 0.05,
+      "interestRatePct": 0.05,
+      "brandLabel": "MACQUARIE Demo Bank",
+      "branch": "Main Branch",
+      "timezone": "Australia/Sydney",
+      "bonusAccount": "9876 5432",
+      "bonusBsb": "062-001",
+      "everydayAccount": "1234 5678",
+      "everydayBsb": "062-000"
+    },
+    "address": {
+      "addressLine1": "12 Sample Street",
+      "addressLine2": "",
+      "addressStreet": "12 Sample Street",
+      "addressCity": "Sydney NSW 2000"
+    },
+    "entity": {
+      "entityName": "Statement Demo Bank Pty Ltd",
+      "entityAddress": "100 Demo Tower",
+      "entityCity": "Sydney",
+      "entityState": "NSW",
+      "entityCountry": "Australia"
+    },
+    "directDebits": [
+      {
+        "merchant": "STREAMING SUBSCRIPTION",
+        "baseAmount": 16.99,
+        "intervalDays": 30,
+        "offsetDays": 3,
+        "category": "Entertainment",
+        "isSubscription": true
+      },
+      {
+        "merchant": "MOBILE PLAN",
+        "baseAmount": 49,
+        "intervalDays": 30,
+        "offsetDays": 7,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "HEALTH FUND",
+        "baseAmount": 128.4,
+        "intervalDays": 14,
+        "offsetDays": 2,
+        "category": "Health"
+      },
+      {
+        "merchant": "INSURANCE PREMIUM",
+        "baseAmount": 89.5,
+        "intervalDays": 30,
+        "offsetDays": 12,
+        "category": "Insurance"
+      },
+      {
+        "merchant": "INTERNET NBN",
+        "baseAmount": 79,
+        "intervalDays": 30,
+        "offsetDays": 18,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "ELECTRICITY",
+        "baseAmount": 145,
+        "intervalDays": 30,
+        "offsetDays": 9,
+        "category": "Utilities"
+      },
+      {
+        "merchant": "COUNCIL RATES",
+        "baseAmount": 210,
+        "intervalDays": 90,
+        "offsetDays": 5,
+        "category": "Utilities"
+      }
+    ]
+  },
+  "summary": {
+    "openingBalance": 3240.55,
+    "closingBalance": 6339.07,
+    "totalCredits": 11550,
+    "totalDebits": 8451.48,
+    "transactionCount": 53,
+    "expectedIncome": 11550
+  },
+  "periodEnd": "2026-03-31",
+  "quality": {
+    "score": 100,
+    "grade": "A",
+    "ok": true
+  },
+  "qualityAfterRewrite": {
+    "score": 86,
+    "grade": "B",
+    "ok": false
+  },
+  "rows": [
+    {
+      "id": "open-706-0",
+      "description": "OPENING BALANCE",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 0,
+      "balance": 3240.55,
+      "type": "opening",
+      "category": "BalanceMarker"
+    },
+    {
+      "id": "inc-706-1",
+      "description": "MACQUARIE PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 3850,
+      "balance": 7090.55,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-706-2",
+      "description": "Interest charged",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -250,
+      "balance": 6840.55,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-706-3",
+      "description": "From EMILY WATSON - CREDIT TO ACCOUNT",
+      "secondaryDescription": "HOME LENDER · REF LN-macquarie-9078",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -1680,
+      "balance": 5160.55,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "pos-706-4",
+      "description": "From HOSTPLUS PENSION - 005973644",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-02",
+      "effectiveDate": "2026-03-02",
+      "amount": -45.42,
+      "balance": 5115.13,
+      "type": "card",
+      "category": "Alcohol"
+    },
+    {
+      "id": "dd-706-5",
+      "description": "Funds transfer",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -304.31,
+      "balance": 4810.82,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-706-6",
+      "description": "Sign Up",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -24.63,
+      "balance": 4786.19,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-706-7",
+      "description": "From HOSTPLUS PENSION - 005374458",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -70.59,
+      "balance": 4715.6,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-706-8",
+      "description": "From HOSTPLUS PENSION - 005040202",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -40.27,
+      "balance": 4675.33,
+      "type": "direct_debit",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-706-9",
+      "description": "from account xx8320",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -14.39,
+      "balance": 4660.94,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "p2p-706-10",
+      "description": "From RACHEL TAYLOR - Transfer",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -28.33,
+      "balance": 4632.61,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "dd-706-11",
+      "description": "from account xx1744",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -497.7,
+      "balance": 4134.91,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-706-12",
+      "description": "From EMILY WATSON - CREDIT TO ACCOUNT",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-07",
+      "effectiveDate": "2026-03-07",
+      "amount": -16.76,
+      "balance": 4118.15,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-706-13",
+      "description": "From HOSTPLUS PENSION - 005682135",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-07",
+      "effectiveDate": "2026-03-07",
+      "amount": -73.77,
+      "balance": 4044.38,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-706-14",
+      "description": "Sign Up",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -116.13,
+      "balance": 3928.25,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-706-15",
+      "description": "Sign Up",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -33.15,
+      "balance": 3895.1,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-706-16",
+      "description": "From HOSTPLUS PENSION - 005465851",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-09",
+      "effectiveDate": "2026-03-09",
+      "amount": -89.3,
+      "balance": 3805.8,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-706-17",
+      "description": "Funds transfer",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-09",
+      "effectiveDate": "2026-03-09",
+      "amount": -53.86,
+      "balance": 3751.94,
+      "type": "card",
+      "category": "Alcohol"
+    },
+    {
+      "id": "dd-706-18",
+      "description": "Funds transfer",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -343.65,
+      "balance": 3408.29,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-706-19",
+      "description": "Sign Up",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-11",
+      "effectiveDate": "2026-03-11",
+      "amount": -10.99,
+      "balance": 3397.3,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-706-20",
+      "description": "Interest charged",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-12",
+      "effectiveDate": "2026-03-12",
+      "amount": -63.89,
+      "balance": 3333.41,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-706-21",
+      "description": "Funds transfer",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -212.11,
+      "balance": 3121.3,
+      "type": "direct_debit",
+      "category": "Insurance"
+    },
+    {
+      "id": "pos-706-22",
+      "description": "Funds transfer",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -163.19,
+      "balance": 2958.11,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-706-23",
+      "description": "Interest charged",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -15.58,
+      "balance": 2942.53,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "inc-706-24",
+      "description": "MACQUARIE PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 3850,
+      "balance": 6792.53,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-706-25",
+      "description": "to account xx1338",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -250,
+      "balance": 6542.53,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-706-26",
+      "description": "Interest charged",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -68.64,
+      "balance": 6473.89,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "p2p-706-27",
+      "description": "to account xx8983",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -97.52,
+      "balance": 6376.37,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-706-28",
+      "description": "to account xx2479",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -37.51,
+      "balance": 6338.86,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-706-29",
+      "description": "Funds transfer",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -304.31,
+      "balance": 6034.55,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-706-30",
+      "description": "Interest charged",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -17.24,
+      "balance": 6017.31,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "dd-706-31",
+      "description": "Interest charged",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -187.23,
+      "balance": 5830.08,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-706-32",
+      "description": "from account xx9009",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -43.51,
+      "balance": 5786.57,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-706-33",
+      "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -177.42,
+      "balance": 5609.15,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-706-34",
+      "description": "to account xx2256",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -13.79,
+      "balance": 5595.36,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-706-35",
+      "description": "Package fee",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -68.8,
+      "balance": 5526.56,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-706-36",
+      "description": "From HOSTPLUS PENSION - 005675762",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -51.84,
+      "balance": 5474.72,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-706-37",
+      "description": "Package fee",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-22",
+      "effectiveDate": "2026-03-22",
+      "amount": -29.06,
+      "balance": 5445.66,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-706-38",
+      "description": "from account xx7778",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -165.76,
+      "balance": 5279.9,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "pos-706-39",
+      "description": "Sign Up",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -15.1,
+      "balance": 5264.8,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-706-40",
+      "description": "Funds transfer",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -23.91,
+      "balance": 5240.89,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-706-41",
+      "description": "From HOSTPLUS PENSION - 005297056",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-25",
+      "effectiveDate": "2026-03-25",
+      "amount": -51.54,
+      "balance": 5189.35,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-706-42",
+      "description": "to account xx7918",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-25",
+      "effectiveDate": "2026-03-25",
+      "amount": -49.36,
+      "balance": 5139.99,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-706-43",
+      "description": "From SARAH JOHNSON - Transfer",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-26",
+      "effectiveDate": "2026-03-26",
+      "amount": -23.67,
+      "balance": 5116.32,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-706-44",
+      "description": "Package fee",
+      "date": "2026-03-26",
+      "effectiveDate": "2026-03-26",
+      "amount": -3.27,
+      "balance": 5113.05,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "p2p-706-45",
+      "description": "From LISA BROWN - Transfer",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -87.33,
+      "balance": 5025.72,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-706-46",
+      "description": "to account xx4941",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -86.23,
+      "balance": 4939.49,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "inc-706-47",
+      "description": "MACQUARIE PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": 3850,
+      "balance": 8789.49,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-706-48",
+      "description": "Sign Up",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -250,
+      "balance": 8539.49,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-706-49",
+      "description": "Funds transfer",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-30",
+      "effectiveDate": "2026-03-30",
+      "amount": -133.11,
+      "balance": 8406.38,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "mtg-706-50",
+      "description": "Interest charged",
+      "secondaryDescription": "HOME LENDER · REF LN-macquarie-9078",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -1680,
+      "balance": 6726.38,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-706-51",
+      "description": "to account xx8696",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -304.31,
+      "balance": 6422.07,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-706-52",
+      "description": "From SARAH JOHNSON - CREDIT TO ACCOUNT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -6.64,
+      "balance": 6415.43,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-706-53",
+      "description": "Sign Up",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -76.36,
+      "balance": 6339.07,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "close-706-54",
+      "description": "CLOSING BALANCE",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": 0,
+      "balance": 6339.07,
+      "type": "closing",
+      "category": "BalanceMarker"
+    }
+  ],
+  "appTransactions": [
+    {
+      "id": "inc-706-1",
+      "date": "2026-03-01",
+      "description": "MACQUARIE PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 7090.55,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "MACQUARIE PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 7090.55
+      }
+    },
+    {
+      "id": "sav-706-2",
+      "date": "2026-03-01",
+      "description": "Interest charged — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6840.55,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "Interest charged — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6840.55
+      }
+    },
+    {
+      "id": "mtg-706-3",
+      "date": "2026-03-01",
+      "description": "From EMILY WATSON - CREDIT TO ACCOUNT — HOME LENDER · REF LN-macquarie-9078",
+      "debit": 1680,
+      "credit": null,
+      "balance": 5160.55,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "From EMILY WATSON - CREDIT TO ACCOUNT — HOME LENDER · REF LN-macquarie-9078",
+        "debit": 1680,
+        "credit": null,
+        "balance": 5160.55
+      }
+    },
+    {
+      "id": "pos-706-4",
+      "date": "2026-03-02",
+      "description": "From HOSTPLUS PENSION - 005973644 — LOCAL",
+      "debit": 45.42,
+      "credit": null,
+      "balance": 5115.13,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Alcohol"
+      ],
+      "notes": "effective 2026-03-02",
+      "original": {
+        "date": "2026-03-02",
+        "description": "From HOSTPLUS PENSION - 005973644 — LOCAL",
+        "debit": 45.42,
+        "credit": null,
+        "balance": 5115.13
+      }
+    },
+    {
+      "id": "dd-706-5",
+      "date": "2026-03-03",
+      "description": "Funds transfer — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 4810.82,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "Funds transfer — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 4810.82
+      }
+    },
+    {
+      "id": "pos-706-6",
+      "date": "2026-03-03",
+      "description": "Sign Up — MALL",
+      "debit": 24.63,
+      "credit": null,
+      "balance": 4786.19,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "Sign Up — MALL",
+        "debit": 24.63,
+        "credit": null,
+        "balance": 4786.19
+      }
+    },
+    {
+      "id": "pos-706-7",
+      "date": "2026-03-03",
+      "description": "From HOSTPLUS PENSION - 005374458 — SUBURB",
+      "debit": 70.59,
+      "credit": null,
+      "balance": 4715.6,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "From HOSTPLUS PENSION - 005374458 — SUBURB",
+        "debit": 70.59,
+        "credit": null,
+        "balance": 4715.6
+      }
+    },
+    {
+      "id": "dd-706-8",
+      "date": "2026-03-04",
+      "description": "From HOSTPLUS PENSION - 005040202 — SUBSCRIPTION",
+      "debit": 40.27,
+      "credit": null,
+      "balance": 4675.33,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "From HOSTPLUS PENSION - 005040202 — SUBSCRIPTION",
+        "debit": 40.27,
+        "credit": null,
+        "balance": 4675.33
+      }
+    },
+    {
+      "id": "pos-706-9",
+      "date": "2026-03-04",
+      "description": "from account xx8320 — CBD",
+      "debit": 14.39,
+      "credit": null,
+      "balance": 4660.94,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "from account xx8320 — CBD",
+        "debit": 14.39,
+        "credit": null,
+        "balance": 4660.94
+      }
+    },
+    {
+      "id": "p2p-706-10",
+      "date": "2026-03-05",
+      "description": "From RACHEL TAYLOR - Transfer — OSKO / PAYID",
+      "debit": 28.33,
+      "credit": null,
+      "balance": 4632.61,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "From RACHEL TAYLOR - Transfer — OSKO / PAYID",
+        "debit": 28.33,
+        "credit": null,
+        "balance": 4632.61
+      }
+    },
+    {
+      "id": "dd-706-11",
+      "date": "2026-03-06",
+      "description": "from account xx1744 — DIRECT DEBIT",
+      "debit": 497.7,
+      "credit": null,
+      "balance": 4134.91,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "from account xx1744 — DIRECT DEBIT",
+        "debit": 497.7,
+        "credit": null,
+        "balance": 4134.91
+      }
+    },
+    {
+      "id": "pos-706-12",
+      "date": "2026-03-07",
+      "description": "From EMILY WATSON - CREDIT TO ACCOUNT — METRO",
+      "debit": 16.76,
+      "credit": null,
+      "balance": 4118.15,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-07",
+      "original": {
+        "date": "2026-03-07",
+        "description": "From EMILY WATSON - CREDIT TO ACCOUNT — METRO",
+        "debit": 16.76,
+        "credit": null,
+        "balance": 4118.15
+      }
+    },
+    {
+      "id": "pos-706-13",
+      "date": "2026-03-07",
+      "description": "From HOSTPLUS PENSION - 005682135 — SUBURB",
+      "debit": 73.77,
+      "credit": null,
+      "balance": 4044.38,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-07",
+      "original": {
+        "date": "2026-03-07",
+        "description": "From HOSTPLUS PENSION - 005682135 — SUBURB",
+        "debit": 73.77,
+        "credit": null,
+        "balance": 4044.38
+      }
+    },
+    {
+      "id": "dd-706-14",
+      "date": "2026-03-08",
+      "description": "Sign Up — SUBSCRIPTION",
+      "debit": 116.13,
+      "credit": null,
+      "balance": 3928.25,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "Sign Up — SUBSCRIPTION",
+        "debit": 116.13,
+        "credit": null,
+        "balance": 3928.25
+      }
+    },
+    {
+      "id": "pos-706-15",
+      "date": "2026-03-08",
+      "description": "Sign Up — SUBURB",
+      "debit": 33.15,
+      "credit": null,
+      "balance": 3895.1,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "Sign Up — SUBURB",
+        "debit": 33.15,
+        "credit": null,
+        "balance": 3895.1
+      }
+    },
+    {
+      "id": "pos-706-16",
+      "date": "2026-03-09",
+      "description": "From HOSTPLUS PENSION - 005465851 — HWY",
+      "debit": 89.3,
+      "credit": null,
+      "balance": 3805.8,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-09",
+      "original": {
+        "date": "2026-03-09",
+        "description": "From HOSTPLUS PENSION - 005465851 — HWY",
+        "debit": 89.3,
+        "credit": null,
+        "balance": 3805.8
+      }
+    },
+    {
+      "id": "pos-706-17",
+      "date": "2026-03-09",
+      "description": "Funds transfer — LOCAL",
+      "debit": 53.86,
+      "credit": null,
+      "balance": 3751.94,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Alcohol"
+      ],
+      "notes": "effective 2026-03-09",
+      "original": {
+        "date": "2026-03-09",
+        "description": "Funds transfer — LOCAL",
+        "debit": 53.86,
+        "credit": null,
+        "balance": 3751.94
+      }
+    },
+    {
+      "id": "dd-706-18",
+      "date": "2026-03-10",
+      "description": "Funds transfer — DIRECT DEBIT",
+      "debit": 343.65,
+      "credit": null,
+      "balance": 3408.29,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "Funds transfer — DIRECT DEBIT",
+        "debit": 343.65,
+        "credit": null,
+        "balance": 3408.29
+      }
+    },
+    {
+      "id": "pos-706-19",
+      "date": "2026-03-11",
+      "description": "Sign Up — CBD",
+      "debit": 10.99,
+      "credit": null,
+      "balance": 3397.3,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-11",
+      "original": {
+        "date": "2026-03-11",
+        "description": "Sign Up — CBD",
+        "debit": 10.99,
+        "credit": null,
+        "balance": 3397.3
+      }
+    },
+    {
+      "id": "pos-706-20",
+      "date": "2026-03-12",
+      "description": "Interest charged — MALL",
+      "debit": 63.89,
+      "credit": null,
+      "balance": 3333.41,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-12",
+      "original": {
+        "date": "2026-03-12",
+        "description": "Interest charged — MALL",
+        "debit": 63.89,
+        "credit": null,
+        "balance": 3333.41
+      }
+    },
+    {
+      "id": "dd-706-21",
+      "date": "2026-03-13",
+      "description": "Funds transfer — DIRECT DEBIT",
+      "debit": 212.11,
+      "credit": null,
+      "balance": 3121.3,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Insurance"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "Funds transfer — DIRECT DEBIT",
+        "debit": 212.11,
+        "credit": null,
+        "balance": 3121.3
+      }
+    },
+    {
+      "id": "pos-706-22",
+      "date": "2026-03-14",
+      "description": "Funds transfer — MALL",
+      "debit": 163.19,
+      "credit": null,
+      "balance": 2958.11,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "Funds transfer — MALL",
+        "debit": 163.19,
+        "credit": null,
+        "balance": 2958.11
+      }
+    },
+    {
+      "id": "pos-706-23",
+      "date": "2026-03-14",
+      "description": "Interest charged — MALL",
+      "debit": 15.58,
+      "credit": null,
+      "balance": 2942.53,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "Interest charged — MALL",
+        "debit": 15.58,
+        "credit": null,
+        "balance": 2942.53
+      }
+    },
+    {
+      "id": "inc-706-24",
+      "date": "2026-03-15",
+      "description": "MACQUARIE PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 6792.53,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "MACQUARIE PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 6792.53
+      }
+    },
+    {
+      "id": "sav-706-25",
+      "date": "2026-03-15",
+      "description": "to account xx1338 — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6542.53,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "to account xx1338 — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6542.53
+      }
+    },
+    {
+      "id": "pos-706-26",
+      "date": "2026-03-15",
+      "description": "Interest charged — WEB",
+      "debit": 68.64,
+      "credit": null,
+      "balance": 6473.89,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "Interest charged — WEB",
+        "debit": 68.64,
+        "credit": null,
+        "balance": 6473.89
+      }
+    },
+    {
+      "id": "p2p-706-27",
+      "date": "2026-03-16",
+      "description": "to account xx8983 — OSKO / PAYID",
+      "debit": 97.52,
+      "credit": null,
+      "balance": 6376.37,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "to account xx8983 — OSKO / PAYID",
+        "debit": 97.52,
+        "credit": null,
+        "balance": 6376.37
+      }
+    },
+    {
+      "id": "pos-706-28",
+      "date": "2026-03-16",
+      "description": "to account xx2479 — METRO",
+      "debit": 37.51,
+      "credit": null,
+      "balance": 6338.86,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "to account xx2479 — METRO",
+        "debit": 37.51,
+        "credit": null,
+        "balance": 6338.86
+      }
+    },
+    {
+      "id": "dd-706-29",
+      "date": "2026-03-17",
+      "description": "Funds transfer — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 6034.55,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "Funds transfer — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 6034.55
+      }
+    },
+    {
+      "id": "pos-706-30",
+      "date": "2026-03-17",
+      "description": "Interest charged — CBD",
+      "debit": 17.24,
+      "credit": null,
+      "balance": 6017.31,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "Interest charged — CBD",
+        "debit": 17.24,
+        "credit": null,
+        "balance": 6017.31
+      }
+    },
+    {
+      "id": "dd-706-31",
+      "date": "2026-03-19",
+      "description": "Interest charged — SUBSCRIPTION",
+      "debit": 187.23,
+      "credit": null,
+      "balance": 5830.08,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "Interest charged — SUBSCRIPTION",
+        "debit": 187.23,
+        "credit": null,
+        "balance": 5830.08
+      }
+    },
+    {
+      "id": "pos-706-32",
+      "date": "2026-03-19",
+      "description": "from account xx9009 — METRO",
+      "debit": 43.51,
+      "credit": null,
+      "balance": 5786.57,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "from account xx9009 — METRO",
+        "debit": 43.51,
+        "credit": null,
+        "balance": 5786.57
+      }
+    },
+    {
+      "id": "pos-706-33",
+      "date": "2026-03-20",
+      "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT — WEB",
+      "debit": 177.42,
+      "credit": null,
+      "balance": 5609.15,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT — WEB",
+        "debit": 177.42,
+        "credit": null,
+        "balance": 5609.15
+      }
+    },
+    {
+      "id": "pos-706-34",
+      "date": "2026-03-20",
+      "description": "to account xx2256 — WEB",
+      "debit": 13.79,
+      "credit": null,
+      "balance": 5595.36,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "to account xx2256 — WEB",
+        "debit": 13.79,
+        "credit": null,
+        "balance": 5595.36
+      }
+    },
+    {
+      "id": "pos-706-35",
+      "date": "2026-03-21",
+      "description": "Package fee — HWY",
+      "debit": 68.8,
+      "credit": null,
+      "balance": 5526.56,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "Package fee — HWY",
+        "debit": 68.8,
+        "credit": null,
+        "balance": 5526.56
+      }
+    },
+    {
+      "id": "pos-706-36",
+      "date": "2026-03-21",
+      "description": "From HOSTPLUS PENSION - 005675762 — HWY",
+      "debit": 51.84,
+      "credit": null,
+      "balance": 5474.72,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "From HOSTPLUS PENSION - 005675762 — HWY",
+        "debit": 51.84,
+        "credit": null,
+        "balance": 5474.72
+      }
+    },
+    {
+      "id": "pos-706-37",
+      "date": "2026-03-22",
+      "description": "Package fee — SUBURB",
+      "debit": 29.06,
+      "credit": null,
+      "balance": 5445.66,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-22",
+      "original": {
+        "date": "2026-03-22",
+        "description": "Package fee — SUBURB",
+        "debit": 29.06,
+        "credit": null,
+        "balance": 5445.66
+      }
+    },
+    {
+      "id": "pos-706-38",
+      "date": "2026-03-23",
+      "description": "from account xx7778 — RETAIL",
+      "debit": 165.76,
+      "credit": null,
+      "balance": 5279.9,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "from account xx7778 — RETAIL",
+        "debit": 165.76,
+        "credit": null,
+        "balance": 5279.9
+      }
+    },
+    {
+      "id": "pos-706-39",
+      "date": "2026-03-23",
+      "description": "Sign Up — WEB",
+      "debit": 15.1,
+      "credit": null,
+      "balance": 5264.8,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "Sign Up — WEB",
+        "debit": 15.1,
+        "credit": null,
+        "balance": 5264.8
+      }
+    },
+    {
+      "id": "pos-706-40",
+      "date": "2026-03-24",
+      "description": "Funds transfer — CBD",
+      "debit": 23.91,
+      "credit": null,
+      "balance": 5240.89,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "Funds transfer — CBD",
+        "debit": 23.91,
+        "credit": null,
+        "balance": 5240.89
+      }
+    },
+    {
+      "id": "pos-706-41",
+      "date": "2026-03-25",
+      "description": "From HOSTPLUS PENSION - 005297056 — LOCAL",
+      "debit": 51.54,
+      "credit": null,
+      "balance": 5189.35,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-25",
+      "original": {
+        "date": "2026-03-25",
+        "description": "From HOSTPLUS PENSION - 005297056 — LOCAL",
+        "debit": 51.54,
+        "credit": null,
+        "balance": 5189.35
+      }
+    },
+    {
+      "id": "pos-706-42",
+      "date": "2026-03-25",
+      "description": "to account xx7918 — LOCAL",
+      "debit": 49.36,
+      "credit": null,
+      "balance": 5139.99,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-25",
+      "original": {
+        "date": "2026-03-25",
+        "description": "to account xx7918 — LOCAL",
+        "debit": 49.36,
+        "credit": null,
+        "balance": 5139.99
+      }
+    },
+    {
+      "id": "pos-706-43",
+      "date": "2026-03-26",
+      "description": "From SARAH JOHNSON - Transfer — METRO",
+      "debit": 23.67,
+      "credit": null,
+      "balance": 5116.32,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-26",
+      "original": {
+        "date": "2026-03-26",
+        "description": "From SARAH JOHNSON - Transfer — METRO",
+        "debit": 23.67,
+        "credit": null,
+        "balance": 5116.32
+      }
+    },
+    {
+      "id": "pos-706-44",
+      "date": "2026-03-26",
+      "description": "Package fee",
+      "debit": 3.27,
+      "credit": null,
+      "balance": 5113.05,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-26",
+      "original": {
+        "date": "2026-03-26",
+        "description": "Package fee",
+        "debit": 3.27,
+        "credit": null,
+        "balance": 5113.05
+      }
+    },
+    {
+      "id": "p2p-706-45",
+      "date": "2026-03-27",
+      "description": "From LISA BROWN - Transfer — OSKO / PAYID",
+      "debit": 87.33,
+      "credit": null,
+      "balance": 5025.72,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "From LISA BROWN - Transfer — OSKO / PAYID",
+        "debit": 87.33,
+        "credit": null,
+        "balance": 5025.72
+      }
+    },
+    {
+      "id": "pos-706-46",
+      "date": "2026-03-28",
+      "description": "to account xx4941 — WEB",
+      "debit": 86.23,
+      "credit": null,
+      "balance": 4939.49,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "to account xx4941 — WEB",
+        "debit": 86.23,
+        "credit": null,
+        "balance": 4939.49
+      }
+    },
+    {
+      "id": "inc-706-47",
+      "date": "2026-03-29",
+      "description": "MACQUARIE PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 8789.49,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "MACQUARIE PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 8789.49
+      }
+    },
+    {
+      "id": "sav-706-48",
+      "date": "2026-03-29",
+      "description": "Sign Up — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 8539.49,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "Sign Up — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 8539.49
+      }
+    },
+    {
+      "id": "pos-706-49",
+      "date": "2026-03-30",
+      "description": "Funds transfer — MALL",
+      "debit": 133.11,
+      "credit": null,
+      "balance": 8406.38,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-30",
+      "original": {
+        "date": "2026-03-30",
+        "description": "Funds transfer — MALL",
+        "debit": 133.11,
+        "credit": null,
+        "balance": 8406.38
+      }
+    },
+    {
+      "id": "mtg-706-50",
+      "date": "2026-03-31",
+      "description": "Interest charged — HOME LENDER · REF LN-macquarie-9078",
+      "debit": 1680,
+      "credit": null,
+      "balance": 6726.38,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "Interest charged — HOME LENDER · REF LN-macquarie-9078",
+        "debit": 1680,
+        "credit": null,
+        "balance": 6726.38
+      }
+    },
+    {
+      "id": "dd-706-51",
+      "date": "2026-03-31",
+      "description": "to account xx8696 — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 6422.07,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "to account xx8696 — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 6422.07
+      }
+    },
+    {
+      "id": "pos-706-52",
+      "date": "2026-03-31",
+      "description": "From SARAH JOHNSON - CREDIT TO ACCOUNT",
+      "debit": 6.64,
+      "credit": null,
+      "balance": 6415.43,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "From SARAH JOHNSON - CREDIT TO ACCOUNT",
+        "debit": 6.64,
+        "credit": null,
+        "balance": 6415.43
+      }
+    },
+    {
+      "id": "pos-706-53",
+      "date": "2026-03-31",
+      "description": "Sign Up — HWY",
+      "debit": 76.36,
+      "credit": null,
+      "balance": 6339.07,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "Sign Up — HWY",
+        "debit": 76.36,
+        "credit": null,
+        "balance": 6339.07
+      }
+    }
+  ],
+  "sampleDescriptions": [
+    "MACQUARIE PAYROLL CREDIT",
+    "Interest charged",
+    "From EMILY WATSON - CREDIT TO ACCOUNT",
+    "From HOSTPLUS PENSION - 005973644",
+    "Funds transfer"
+  ]
+}

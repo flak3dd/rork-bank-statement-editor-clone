@@ -1,0 +1,2012 @@
+{
+  "bank": "ing",
+  "seed": 9039,
+  "config": {
+    "periodStart": "2026-03-01",
+    "periodDays": 31,
+    "openingBalance": 3240.55,
+    "savingsOpeningBalance": 12500,
+    "salaryDescription": "ING PAYROLL CREDIT",
+    "salaryAmount": 3850,
+    "salaryFrequency": "fortnightly",
+    "salaryAccount": "PAYROLL",
+    "income": {
+      "amount": 3850,
+      "frequency": "fortnightly"
+    },
+    "rentalDescription": "RENTAL INCOME",
+    "rentalAmount": 0,
+    "hasRentalIncome": false,
+    "savingsDescription": "TRANSFER TO BONUS SAVER",
+    "savingsAmount": 250,
+    "savingsFrequency": "fortnightly",
+    "savingsAccount": "BONUS",
+    "savings": {
+      "amount": 250,
+      "frequency": "fortnightly"
+    },
+    "mortgageDescription": "HOME LOAN REPAYMENT",
+    "mortgageLender": "HOME LENDER",
+    "mortgageAmount": 1680,
+    "mortgageFrequency": "monthly",
+    "loanReference": "LN-ing-9039",
+    "mortgage": {
+      "amount": 1680,
+      "frequency": "monthly"
+    },
+    "cardLast4": "8039",
+    "cardSpendPct": 26,
+    "billsSubsPct": 20,
+    "billSpendMultiplier": 1,
+    "cardSpendIncomeShare": 0.26,
+    "billsIncomeShare": 0.2,
+    "hasDirectDebits": true,
+    "enableDirectDebits": true,
+    "hasSubscriptions": true,
+    "selectedBillCategories": [
+      "Telecom",
+      "Utilities",
+      "Health",
+      "Insurance",
+      "Entertainment",
+      "Financial",
+      "TaxSuper",
+      "Other"
+    ],
+    "seed": 9039,
+    "account": {
+      "accountName": "Everyday Transaction Account",
+      "productName": "Everyday Transaction Account",
+      "holderName": "Regen Customer ING",
+      "accountHolder": "Regen Customer ING",
+      "customerID": "CUS-ing-9039",
+      "customerNumber": "CUS-1002941",
+      "bsb": "062-000",
+      "bsbCode": "062-000",
+      "accountNumber": "10009039",
+      "interestRate": 0.05,
+      "interestRatePct": 0.05,
+      "brandLabel": "ING Demo Bank",
+      "branch": "Main Branch",
+      "timezone": "Australia/Sydney",
+      "bonusAccount": "9876 5432",
+      "bonusBsb": "062-001",
+      "everydayAccount": "1234 5678",
+      "everydayBsb": "062-000"
+    },
+    "address": {
+      "addressLine1": "12 Sample Street",
+      "addressLine2": "",
+      "addressStreet": "12 Sample Street",
+      "addressCity": "Sydney NSW 2000"
+    },
+    "entity": {
+      "entityName": "Statement Demo Bank Pty Ltd",
+      "entityAddress": "100 Demo Tower",
+      "entityCity": "Sydney",
+      "entityState": "NSW",
+      "entityCountry": "Australia"
+    },
+    "directDebits": [
+      {
+        "merchant": "STREAMING SUBSCRIPTION",
+        "baseAmount": 16.99,
+        "intervalDays": 30,
+        "offsetDays": 3,
+        "category": "Entertainment",
+        "isSubscription": true
+      },
+      {
+        "merchant": "MOBILE PLAN",
+        "baseAmount": 49,
+        "intervalDays": 30,
+        "offsetDays": 7,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "HEALTH FUND",
+        "baseAmount": 128.4,
+        "intervalDays": 14,
+        "offsetDays": 2,
+        "category": "Health"
+      },
+      {
+        "merchant": "INSURANCE PREMIUM",
+        "baseAmount": 89.5,
+        "intervalDays": 30,
+        "offsetDays": 12,
+        "category": "Insurance"
+      },
+      {
+        "merchant": "INTERNET NBN",
+        "baseAmount": 79,
+        "intervalDays": 30,
+        "offsetDays": 18,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "ELECTRICITY",
+        "baseAmount": 145,
+        "intervalDays": 30,
+        "offsetDays": 9,
+        "category": "Utilities"
+      },
+      {
+        "merchant": "COUNCIL RATES",
+        "baseAmount": 210,
+        "intervalDays": 90,
+        "offsetDays": 5,
+        "category": "Utilities"
+      }
+    ]
+  },
+  "summary": {
+    "openingBalance": 3240.55,
+    "closingBalance": 6268.37,
+    "totalCredits": 11550,
+    "totalDebits": 8522.18,
+    "transactionCount": 52,
+    "expectedIncome": 11550
+  },
+  "periodEnd": "2026-03-31",
+  "quality": {
+    "score": 100,
+    "grade": "A",
+    "ok": true
+  },
+  "qualityAfterRewrite": {
+    "score": 86,
+    "grade": "B",
+    "ok": false
+  },
+  "rows": [
+    {
+      "id": "open-6z3-0",
+      "description": "OPENING BALANCE",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 0,
+      "balance": 3240.55,
+      "type": "opening",
+      "category": "BalanceMarker"
+    },
+    {
+      "id": "inc-6z3-1",
+      "description": "ING PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 3850,
+      "balance": 7090.55,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6z3-2",
+      "description": "VISA-UNITED AU#1234(TXN517650)",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -250,
+      "balance": 6840.55,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6z3-3",
+      "description": "Debit Adjustment#926307-Int Tran Fee - JB HI FI",
+      "secondaryDescription": "HOME LENDER · REF LN-ing-9039",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -1680,
+      "balance": 5160.55,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6z3-4",
+      "description": "Ext Tfr - NET#1057572388 to 47464893 EMILY WATSON ING - ING Direct",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -304.31,
+      "balance": 4856.24,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6z3-5",
+      "description": "VISA-CALTEX AU#1234(TXN987262) Apple Pay",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -52.48,
+      "balance": 4803.76,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "dd-6z3-6",
+      "description": "Transfer from SAV 00299053 Mobile# 562868387",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -40.27,
+      "balance": 4763.49,
+      "type": "direct_debit",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6z3-7",
+      "description": "Transfer from SAV 00299053 Mobile# 567560009",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -93.52,
+      "balance": 4669.97,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6z3-8",
+      "description": "Ext Tfr - NET#1059394457 to 47351877 RACHEL TAYLOR ING - ING Direct",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -34.88,
+      "balance": 4635.09,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "p2p-6z3-9",
+      "description": "VISA-ORIGIN ENERGY AU#1234(TXN442132) Apple Pay",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -119.12,
+      "balance": 4515.97,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6z3-10",
+      "description": "EFT Declined #51 - ALDI",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -40.04,
+      "balance": 4475.93,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6z3-11",
+      "description": "Ext Tfr - NET#1013399730 to 47203504 JAMES SMITH ING - ING Direct",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -43.42,
+      "balance": 4432.51,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-6z3-12",
+      "description": "Debit Adjustment#928537-Int Tran Fee - DISNEY PLUS",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -497.7,
+      "balance": 3934.81,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6z3-13",
+      "description": "VISA-ALDI AU#1234(TXN829437)",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -42.63,
+      "balance": 3892.18,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6z3-14",
+      "description": "VISA-UNITED AU#1234(TXN827428)",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -187.06,
+      "balance": 3705.12,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "dd-6z3-15",
+      "description": "Transfer from SAV 00299053 Mobile# 565533152",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -116.13,
+      "balance": 3588.99,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6z3-16",
+      "description": "Ext Tfr - NET#1085350083 to 47225490 DAVID NGUYEN ING - ING Direct",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -71.31,
+      "balance": 3517.68,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6z3-17",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN655983)",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -28.32,
+      "balance": 3489.36,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "dd-6z3-18",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN359390)",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -343.65,
+      "balance": 3145.71,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6z3-19",
+      "description": "Transfer from SAV 00299053 Mobile# 567299829",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -26.95,
+      "balance": 3118.76,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6z3-20",
+      "description": "EFT Declined #51 - BP",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -212.11,
+      "balance": 2906.65,
+      "type": "direct_debit",
+      "category": "Insurance"
+    },
+    {
+      "id": "pos-6z3-21",
+      "description": "Transfer from SAV 00299053 Mobile# 561849242",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -131.43,
+      "balance": 2775.22,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6z3-22",
+      "description": "Debit Adjustment#928304-Int Tran Fee - VODAFONE",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -22.52,
+      "balance": 2752.7,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "inc-6z3-23",
+      "description": "ING PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 3850,
+      "balance": 6602.7,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6z3-24",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN559848)",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -250,
+      "balance": 6352.7,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-6z3-25",
+      "description": "Transfer from SAV 00299053 Mobile# 565436495",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -22.76,
+      "balance": 6329.94,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "pos-6z3-26",
+      "description": "Transfer from SAV 00299053 Mobile# 568064877",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -6.99,
+      "balance": 6322.95,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "p2p-6z3-27",
+      "description": "VISA-BUNNINGS AU#1234(TXN511128) Apple Pay",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -99.89,
+      "balance": 6223.06,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "dd-6z3-28",
+      "description": "EFT Declined #51 - BUNNINGS",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -304.31,
+      "balance": 5918.75,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6z3-29",
+      "description": "EFT Declined #51 - NETFLIX",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -223.27,
+      "balance": 5695.48,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6z3-30",
+      "description": "Ext Tfr - NET#1027597813 to 47202093 MICHAEL CHEN ING - ING Direct",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -54.92,
+      "balance": 5640.56,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6z3-31",
+      "description": "VISA-APPLE.COM/BILL AU#1234(TXN338002)",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -187.23,
+      "balance": 5453.33,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6z3-32",
+      "description": "VISA-FOODLAND AU#1234(TXN776265)",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -23.28,
+      "balance": 5430.05,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6z3-33",
+      "description": "Ext Tfr - NET#1056734430 to 47005470 JAMES SMITH ING - ING Direct",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -93.11,
+      "balance": 5336.94,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6z3-34",
+      "description": "Transfer from SAV 00299053 Mobile# 564559462",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -73.6,
+      "balance": 5263.34,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6z3-35",
+      "description": "EFT Declined #51 - WESTFIELD",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-22",
+      "effectiveDate": "2026-03-22",
+      "amount": -54.51,
+      "balance": 5208.83,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6z3-36",
+      "description": "VISA-PRICELINE PHARMACY AU#1234(TXN225890)",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-22",
+      "effectiveDate": "2026-03-22",
+      "amount": -31.71,
+      "balance": 5177.12,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6z3-37",
+      "description": "Ext Tfr - NET#1018758940 to 47106240 MICHAEL CHEN ING - ING Direct",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -9.06,
+      "balance": 5168.06,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6z3-38",
+      "description": "Transfer from SAV 00299053 Mobile# 561076268",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -101.19,
+      "balance": 5066.87,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6z3-39",
+      "description": "Transfer from SAV 00299053 Mobile# 569144994",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -52.8,
+      "balance": 5014.07,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6z3-40",
+      "description": "Transfer from SAV 00299053 Mobile# 567642437",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-26",
+      "effectiveDate": "2026-03-26",
+      "amount": -8.57,
+      "balance": 5005.5,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "p2p-6z3-41",
+      "description": "VISA-HARRIS FARM AU#1234(TXN593891)",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -43.48,
+      "balance": 4962.02,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6z3-42",
+      "description": "Debit Adjustment#994137-Int Tran Fee - BP",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -14.59,
+      "balance": 4947.43,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6z3-43",
+      "description": "VISA-JB HI FI AU#1234(TXN163444) Apple Pay",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -50.48,
+      "balance": 4896.95,
+      "type": "card",
+      "category": "Alcohol"
+    },
+    {
+      "id": "inc-6z3-44",
+      "description": "ING PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": 3850,
+      "balance": 8746.95,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6z3-45",
+      "description": "Debit Adjustment#961586-Int Tran Fee - VODAFONE",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -250,
+      "balance": 8496.95,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-6z3-46",
+      "description": "Ext Tfr - NET#1070429550 to 47510347 EMILY WATSON ING - ING Direct",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -77.65,
+      "balance": 8419.3,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6z3-47",
+      "description": "Transfer from SAV 00299053 Mobile# 568820334",
+      "date": "2026-03-30",
+      "effectiveDate": "2026-03-30",
+      "amount": -52.08,
+      "balance": 8367.22,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6z3-48",
+      "description": "Transfer from SAV 00299053 Mobile# 564932110",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-30",
+      "effectiveDate": "2026-03-30",
+      "amount": -49.39,
+      "balance": 8317.83,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "mtg-6z3-49",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN976388)",
+      "secondaryDescription": "HOME LENDER · REF LN-ing-9039",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -1680,
+      "balance": 6637.83,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6z3-50",
+      "description": "Ext Tfr - NET#1045001290 to 47008899 LISA BROWN ING - ING Direct",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -304.31,
+      "balance": 6333.52,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6z3-51",
+      "description": "Debit Adjustment#996928-Int Tran Fee - HARRIS FARM",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -31.55,
+      "balance": 6301.97,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6z3-52",
+      "description": "EFT Declined #51 - JB HI FI",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -33.6,
+      "balance": 6268.37,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "close-6z3-53",
+      "description": "CLOSING BALANCE",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": 0,
+      "balance": 6268.37,
+      "type": "closing",
+      "category": "BalanceMarker"
+    }
+  ],
+  "appTransactions": [
+    {
+      "id": "inc-6z3-1",
+      "date": "2026-03-01",
+      "description": "ING PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 7090.55,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "ING PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 7090.55
+      }
+    },
+    {
+      "id": "sav-6z3-2",
+      "date": "2026-03-01",
+      "description": "VISA-UNITED AU#1234(TXN517650) — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6840.55,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "VISA-UNITED AU#1234(TXN517650) — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6840.55
+      }
+    },
+    {
+      "id": "mtg-6z3-3",
+      "date": "2026-03-01",
+      "description": "Debit Adjustment#926307-Int Tran Fee - JB HI FI — HOME LENDER · REF LN-ing-9039",
+      "debit": 1680,
+      "credit": null,
+      "balance": 5160.55,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "Debit Adjustment#926307-Int Tran Fee - JB HI FI — HOME LENDER · REF LN-ing-9039",
+        "debit": 1680,
+        "credit": null,
+        "balance": 5160.55
+      }
+    },
+    {
+      "id": "dd-6z3-4",
+      "date": "2026-03-03",
+      "description": "Ext Tfr - NET#1057572388 to 47464893 EMILY WATSON ING - ING Direct — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 4856.24,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "Ext Tfr - NET#1057572388 to 47464893 EMILY WATSON ING - ING Direct — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 4856.24
+      }
+    },
+    {
+      "id": "pos-6z3-5",
+      "date": "2026-03-03",
+      "description": "VISA-CALTEX AU#1234(TXN987262) Apple Pay — LOCAL",
+      "debit": 52.48,
+      "credit": null,
+      "balance": 4803.76,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "VISA-CALTEX AU#1234(TXN987262) Apple Pay — LOCAL",
+        "debit": 52.48,
+        "credit": null,
+        "balance": 4803.76
+      }
+    },
+    {
+      "id": "dd-6z3-6",
+      "date": "2026-03-04",
+      "description": "Transfer from SAV 00299053 Mobile# 562868387 — SUBSCRIPTION",
+      "debit": 40.27,
+      "credit": null,
+      "balance": 4763.49,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "Transfer from SAV 00299053 Mobile# 562868387 — SUBSCRIPTION",
+        "debit": 40.27,
+        "credit": null,
+        "balance": 4763.49
+      }
+    },
+    {
+      "id": "pos-6z3-7",
+      "date": "2026-03-04",
+      "description": "Transfer from SAV 00299053 Mobile# 567560009 — CITY",
+      "debit": 93.52,
+      "credit": null,
+      "balance": 4669.97,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "Transfer from SAV 00299053 Mobile# 567560009 — CITY",
+        "debit": 93.52,
+        "credit": null,
+        "balance": 4669.97
+      }
+    },
+    {
+      "id": "pos-6z3-8",
+      "date": "2026-03-04",
+      "description": "Ext Tfr - NET#1059394457 to 47351877 RACHEL TAYLOR ING - ING Direct — SUBURB",
+      "debit": 34.88,
+      "credit": null,
+      "balance": 4635.09,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "Ext Tfr - NET#1059394457 to 47351877 RACHEL TAYLOR ING - ING Direct — SUBURB",
+        "debit": 34.88,
+        "credit": null,
+        "balance": 4635.09
+      }
+    },
+    {
+      "id": "p2p-6z3-9",
+      "date": "2026-03-05",
+      "description": "VISA-ORIGIN ENERGY AU#1234(TXN442132) Apple Pay — OSKO / PAYID",
+      "debit": 119.12,
+      "credit": null,
+      "balance": 4515.97,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "VISA-ORIGIN ENERGY AU#1234(TXN442132) Apple Pay — OSKO / PAYID",
+        "debit": 119.12,
+        "credit": null,
+        "balance": 4515.97
+      }
+    },
+    {
+      "id": "pos-6z3-10",
+      "date": "2026-03-05",
+      "description": "EFT Declined #51 - ALDI — METRO",
+      "debit": 40.04,
+      "credit": null,
+      "balance": 4475.93,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "EFT Declined #51 - ALDI — METRO",
+        "debit": 40.04,
+        "credit": null,
+        "balance": 4475.93
+      }
+    },
+    {
+      "id": "pos-6z3-11",
+      "date": "2026-03-05",
+      "description": "Ext Tfr - NET#1013399730 to 47203504 JAMES SMITH ING - ING Direct — SUBURB",
+      "debit": 43.42,
+      "credit": null,
+      "balance": 4432.51,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "Ext Tfr - NET#1013399730 to 47203504 JAMES SMITH ING - ING Direct — SUBURB",
+        "debit": 43.42,
+        "credit": null,
+        "balance": 4432.51
+      }
+    },
+    {
+      "id": "dd-6z3-12",
+      "date": "2026-03-06",
+      "description": "Debit Adjustment#928537-Int Tran Fee - DISNEY PLUS — DIRECT DEBIT",
+      "debit": 497.7,
+      "credit": null,
+      "balance": 3934.81,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "Debit Adjustment#928537-Int Tran Fee - DISNEY PLUS — DIRECT DEBIT",
+        "debit": 497.7,
+        "credit": null,
+        "balance": 3934.81
+      }
+    },
+    {
+      "id": "pos-6z3-13",
+      "date": "2026-03-06",
+      "description": "VISA-ALDI AU#1234(TXN829437)",
+      "debit": 42.63,
+      "credit": null,
+      "balance": 3892.18,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "VISA-ALDI AU#1234(TXN829437)",
+        "debit": 42.63,
+        "credit": null,
+        "balance": 3892.18
+      }
+    },
+    {
+      "id": "pos-6z3-14",
+      "date": "2026-03-06",
+      "description": "VISA-UNITED AU#1234(TXN827428) — WEB",
+      "debit": 187.06,
+      "credit": null,
+      "balance": 3705.12,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "VISA-UNITED AU#1234(TXN827428) — WEB",
+        "debit": 187.06,
+        "credit": null,
+        "balance": 3705.12
+      }
+    },
+    {
+      "id": "dd-6z3-15",
+      "date": "2026-03-08",
+      "description": "Transfer from SAV 00299053 Mobile# 565533152 — SUBSCRIPTION",
+      "debit": 116.13,
+      "credit": null,
+      "balance": 3588.99,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "Transfer from SAV 00299053 Mobile# 565533152 — SUBSCRIPTION",
+        "debit": 116.13,
+        "credit": null,
+        "balance": 3588.99
+      }
+    },
+    {
+      "id": "pos-6z3-16",
+      "date": "2026-03-08",
+      "description": "Ext Tfr - NET#1085350083 to 47225490 DAVID NGUYEN ING - ING Direct — WEB",
+      "debit": 71.31,
+      "credit": null,
+      "balance": 3517.68,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "Ext Tfr - NET#1085350083 to 47225490 DAVID NGUYEN ING - ING Direct — WEB",
+        "debit": 71.31,
+        "credit": null,
+        "balance": 3517.68
+      }
+    },
+    {
+      "id": "pos-6z3-17",
+      "date": "2026-03-08",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN655983) — RETAIL",
+      "debit": 28.32,
+      "credit": null,
+      "balance": 3489.36,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN655983) — RETAIL",
+        "debit": 28.32,
+        "credit": null,
+        "balance": 3489.36
+      }
+    },
+    {
+      "id": "dd-6z3-18",
+      "date": "2026-03-10",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN359390) — DIRECT DEBIT",
+      "debit": 343.65,
+      "credit": null,
+      "balance": 3145.71,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN359390) — DIRECT DEBIT",
+        "debit": 343.65,
+        "credit": null,
+        "balance": 3145.71
+      }
+    },
+    {
+      "id": "pos-6z3-19",
+      "date": "2026-03-10",
+      "description": "Transfer from SAV 00299053 Mobile# 567299829 — METRO",
+      "debit": 26.95,
+      "credit": null,
+      "balance": 3118.76,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "Transfer from SAV 00299053 Mobile# 567299829 — METRO",
+        "debit": 26.95,
+        "credit": null,
+        "balance": 3118.76
+      }
+    },
+    {
+      "id": "dd-6z3-20",
+      "date": "2026-03-13",
+      "description": "EFT Declined #51 - BP — DIRECT DEBIT",
+      "debit": 212.11,
+      "credit": null,
+      "balance": 2906.65,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Insurance"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "EFT Declined #51 - BP — DIRECT DEBIT",
+        "debit": 212.11,
+        "credit": null,
+        "balance": 2906.65
+      }
+    },
+    {
+      "id": "pos-6z3-21",
+      "date": "2026-03-14",
+      "description": "Transfer from SAV 00299053 Mobile# 561849242 — WEB",
+      "debit": 131.43,
+      "credit": null,
+      "balance": 2775.22,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "Transfer from SAV 00299053 Mobile# 561849242 — WEB",
+        "debit": 131.43,
+        "credit": null,
+        "balance": 2775.22
+      }
+    },
+    {
+      "id": "pos-6z3-22",
+      "date": "2026-03-14",
+      "description": "Debit Adjustment#928304-Int Tran Fee - VODAFONE — LOCAL",
+      "debit": 22.52,
+      "credit": null,
+      "balance": 2752.7,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "Debit Adjustment#928304-Int Tran Fee - VODAFONE — LOCAL",
+        "debit": 22.52,
+        "credit": null,
+        "balance": 2752.7
+      }
+    },
+    {
+      "id": "inc-6z3-23",
+      "date": "2026-03-15",
+      "description": "ING PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 6602.7,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "ING PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 6602.7
+      }
+    },
+    {
+      "id": "sav-6z3-24",
+      "date": "2026-03-15",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN559848) — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6352.7,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN559848) — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6352.7
+      }
+    },
+    {
+      "id": "pos-6z3-25",
+      "date": "2026-03-15",
+      "description": "Transfer from SAV 00299053 Mobile# 565436495 — RETAIL",
+      "debit": 22.76,
+      "credit": null,
+      "balance": 6329.94,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "Transfer from SAV 00299053 Mobile# 565436495 — RETAIL",
+        "debit": 22.76,
+        "credit": null,
+        "balance": 6329.94
+      }
+    },
+    {
+      "id": "pos-6z3-26",
+      "date": "2026-03-15",
+      "description": "Transfer from SAV 00299053 Mobile# 568064877 — CBD",
+      "debit": 6.99,
+      "credit": null,
+      "balance": 6322.95,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "Transfer from SAV 00299053 Mobile# 568064877 — CBD",
+        "debit": 6.99,
+        "credit": null,
+        "balance": 6322.95
+      }
+    },
+    {
+      "id": "p2p-6z3-27",
+      "date": "2026-03-16",
+      "description": "VISA-BUNNINGS AU#1234(TXN511128) Apple Pay — OSKO / PAYID",
+      "debit": 99.89,
+      "credit": null,
+      "balance": 6223.06,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "VISA-BUNNINGS AU#1234(TXN511128) Apple Pay — OSKO / PAYID",
+        "debit": 99.89,
+        "credit": null,
+        "balance": 6223.06
+      }
+    },
+    {
+      "id": "dd-6z3-28",
+      "date": "2026-03-17",
+      "description": "EFT Declined #51 - BUNNINGS — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 5918.75,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "EFT Declined #51 - BUNNINGS — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 5918.75
+      }
+    },
+    {
+      "id": "pos-6z3-29",
+      "date": "2026-03-18",
+      "description": "EFT Declined #51 - NETFLIX — MALL",
+      "debit": 223.27,
+      "credit": null,
+      "balance": 5695.48,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "EFT Declined #51 - NETFLIX — MALL",
+        "debit": 223.27,
+        "credit": null,
+        "balance": 5695.48
+      }
+    },
+    {
+      "id": "pos-6z3-30",
+      "date": "2026-03-18",
+      "description": "Ext Tfr - NET#1027597813 to 47202093 MICHAEL CHEN ING - ING Direct — METRO",
+      "debit": 54.92,
+      "credit": null,
+      "balance": 5640.56,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "Ext Tfr - NET#1027597813 to 47202093 MICHAEL CHEN ING - ING Direct — METRO",
+        "debit": 54.92,
+        "credit": null,
+        "balance": 5640.56
+      }
+    },
+    {
+      "id": "dd-6z3-31",
+      "date": "2026-03-19",
+      "description": "VISA-APPLE.COM/BILL AU#1234(TXN338002) — SUBSCRIPTION",
+      "debit": 187.23,
+      "credit": null,
+      "balance": 5453.33,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "VISA-APPLE.COM/BILL AU#1234(TXN338002) — SUBSCRIPTION",
+        "debit": 187.23,
+        "credit": null,
+        "balance": 5453.33
+      }
+    },
+    {
+      "id": "pos-6z3-32",
+      "date": "2026-03-19",
+      "description": "VISA-FOODLAND AU#1234(TXN776265) — LOCAL",
+      "debit": 23.28,
+      "credit": null,
+      "balance": 5430.05,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "VISA-FOODLAND AU#1234(TXN776265) — LOCAL",
+        "debit": 23.28,
+        "credit": null,
+        "balance": 5430.05
+      }
+    },
+    {
+      "id": "pos-6z3-33",
+      "date": "2026-03-19",
+      "description": "Ext Tfr - NET#1056734430 to 47005470 JAMES SMITH ING - ING Direct — CITY",
+      "debit": 93.11,
+      "credit": null,
+      "balance": 5336.94,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "Ext Tfr - NET#1056734430 to 47005470 JAMES SMITH ING - ING Direct — CITY",
+        "debit": 93.11,
+        "credit": null,
+        "balance": 5336.94
+      }
+    },
+    {
+      "id": "pos-6z3-34",
+      "date": "2026-03-20",
+      "description": "Transfer from SAV 00299053 Mobile# 564559462 — CITY",
+      "debit": 73.6,
+      "credit": null,
+      "balance": 5263.34,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "Transfer from SAV 00299053 Mobile# 564559462 — CITY",
+        "debit": 73.6,
+        "credit": null,
+        "balance": 5263.34
+      }
+    },
+    {
+      "id": "pos-6z3-35",
+      "date": "2026-03-22",
+      "description": "EFT Declined #51 - WESTFIELD — CITY",
+      "debit": 54.51,
+      "credit": null,
+      "balance": 5208.83,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-22",
+      "original": {
+        "date": "2026-03-22",
+        "description": "EFT Declined #51 - WESTFIELD — CITY",
+        "debit": 54.51,
+        "credit": null,
+        "balance": 5208.83
+      }
+    },
+    {
+      "id": "pos-6z3-36",
+      "date": "2026-03-22",
+      "description": "VISA-PRICELINE PHARMACY AU#1234(TXN225890) — LOCAL",
+      "debit": 31.71,
+      "credit": null,
+      "balance": 5177.12,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-22",
+      "original": {
+        "date": "2026-03-22",
+        "description": "VISA-PRICELINE PHARMACY AU#1234(TXN225890) — LOCAL",
+        "debit": 31.71,
+        "credit": null,
+        "balance": 5177.12
+      }
+    },
+    {
+      "id": "pos-6z3-37",
+      "date": "2026-03-23",
+      "description": "Ext Tfr - NET#1018758940 to 47106240 MICHAEL CHEN ING - ING Direct",
+      "debit": 9.06,
+      "credit": null,
+      "balance": 5168.06,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "Ext Tfr - NET#1018758940 to 47106240 MICHAEL CHEN ING - ING Direct",
+        "debit": 9.06,
+        "credit": null,
+        "balance": 5168.06
+      }
+    },
+    {
+      "id": "pos-6z3-38",
+      "date": "2026-03-23",
+      "description": "Transfer from SAV 00299053 Mobile# 561076268 — CITY",
+      "debit": 101.19,
+      "credit": null,
+      "balance": 5066.87,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "Transfer from SAV 00299053 Mobile# 561076268 — CITY",
+        "debit": 101.19,
+        "credit": null,
+        "balance": 5066.87
+      }
+    },
+    {
+      "id": "pos-6z3-39",
+      "date": "2026-03-24",
+      "description": "Transfer from SAV 00299053 Mobile# 569144994 — LOCAL",
+      "debit": 52.8,
+      "credit": null,
+      "balance": 5014.07,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "Transfer from SAV 00299053 Mobile# 569144994 — LOCAL",
+        "debit": 52.8,
+        "credit": null,
+        "balance": 5014.07
+      }
+    },
+    {
+      "id": "pos-6z3-40",
+      "date": "2026-03-26",
+      "description": "Transfer from SAV 00299053 Mobile# 567642437 — CBD",
+      "debit": 8.57,
+      "credit": null,
+      "balance": 5005.5,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-26",
+      "original": {
+        "date": "2026-03-26",
+        "description": "Transfer from SAV 00299053 Mobile# 567642437 — CBD",
+        "debit": 8.57,
+        "credit": null,
+        "balance": 5005.5
+      }
+    },
+    {
+      "id": "p2p-6z3-41",
+      "date": "2026-03-27",
+      "description": "VISA-HARRIS FARM AU#1234(TXN593891) — OSKO / PAYID",
+      "debit": 43.48,
+      "credit": null,
+      "balance": 4962.02,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "VISA-HARRIS FARM AU#1234(TXN593891) — OSKO / PAYID",
+        "debit": 43.48,
+        "credit": null,
+        "balance": 4962.02
+      }
+    },
+    {
+      "id": "pos-6z3-42",
+      "date": "2026-03-28",
+      "description": "Debit Adjustment#994137-Int Tran Fee - BP — LOCAL",
+      "debit": 14.59,
+      "credit": null,
+      "balance": 4947.43,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "Debit Adjustment#994137-Int Tran Fee - BP — LOCAL",
+        "debit": 14.59,
+        "credit": null,
+        "balance": 4947.43
+      }
+    },
+    {
+      "id": "pos-6z3-43",
+      "date": "2026-03-28",
+      "description": "VISA-JB HI FI AU#1234(TXN163444) Apple Pay — LOCAL",
+      "debit": 50.48,
+      "credit": null,
+      "balance": 4896.95,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Alcohol"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "VISA-JB HI FI AU#1234(TXN163444) Apple Pay — LOCAL",
+        "debit": 50.48,
+        "credit": null,
+        "balance": 4896.95
+      }
+    },
+    {
+      "id": "inc-6z3-44",
+      "date": "2026-03-29",
+      "description": "ING PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 8746.95,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "ING PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 8746.95
+      }
+    },
+    {
+      "id": "sav-6z3-45",
+      "date": "2026-03-29",
+      "description": "Debit Adjustment#961586-Int Tran Fee - VODAFONE — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 8496.95,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "Debit Adjustment#961586-Int Tran Fee - VODAFONE — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 8496.95
+      }
+    },
+    {
+      "id": "pos-6z3-46",
+      "date": "2026-03-29",
+      "description": "Ext Tfr - NET#1070429550 to 47510347 EMILY WATSON ING - ING Direct — SUBURB",
+      "debit": 77.65,
+      "credit": null,
+      "balance": 8419.3,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "Ext Tfr - NET#1070429550 to 47510347 EMILY WATSON ING - ING Direct — SUBURB",
+        "debit": 77.65,
+        "credit": null,
+        "balance": 8419.3
+      }
+    },
+    {
+      "id": "pos-6z3-47",
+      "date": "2026-03-30",
+      "description": "Transfer from SAV 00299053 Mobile# 568820334",
+      "debit": 52.08,
+      "credit": null,
+      "balance": 8367.22,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-30",
+      "original": {
+        "date": "2026-03-30",
+        "description": "Transfer from SAV 00299053 Mobile# 568820334",
+        "debit": 52.08,
+        "credit": null,
+        "balance": 8367.22
+      }
+    },
+    {
+      "id": "pos-6z3-48",
+      "date": "2026-03-30",
+      "description": "Transfer from SAV 00299053 Mobile# 564932110 — RETAIL",
+      "debit": 49.39,
+      "credit": null,
+      "balance": 8317.83,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-30",
+      "original": {
+        "date": "2026-03-30",
+        "description": "Transfer from SAV 00299053 Mobile# 564932110 — RETAIL",
+        "debit": 49.39,
+        "credit": null,
+        "balance": 8317.83
+      }
+    },
+    {
+      "id": "mtg-6z3-49",
+      "date": "2026-03-31",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN976388) — HOME LENDER · REF LN-ing-9039",
+      "debit": 1680,
+      "credit": null,
+      "balance": 6637.83,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN976388) — HOME LENDER · REF LN-ing-9039",
+        "debit": 1680,
+        "credit": null,
+        "balance": 6637.83
+      }
+    },
+    {
+      "id": "dd-6z3-50",
+      "date": "2026-03-31",
+      "description": "Ext Tfr - NET#1045001290 to 47008899 LISA BROWN ING - ING Direct — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 6333.52,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "Ext Tfr - NET#1045001290 to 47008899 LISA BROWN ING - ING Direct — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 6333.52
+      }
+    },
+    {
+      "id": "pos-6z3-51",
+      "date": "2026-03-31",
+      "description": "Debit Adjustment#996928-Int Tran Fee - HARRIS FARM — MALL",
+      "debit": 31.55,
+      "credit": null,
+      "balance": 6301.97,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "Debit Adjustment#996928-Int Tran Fee - HARRIS FARM — MALL",
+        "debit": 31.55,
+        "credit": null,
+        "balance": 6301.97
+      }
+    },
+    {
+      "id": "pos-6z3-52",
+      "date": "2026-03-31",
+      "description": "EFT Declined #51 - JB HI FI — METRO",
+      "debit": 33.6,
+      "credit": null,
+      "balance": 6268.37,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "EFT Declined #51 - JB HI FI — METRO",
+        "debit": 33.6,
+        "credit": null,
+        "balance": 6268.37
+      }
+    }
+  ],
+  "sampleDescriptions": [
+    "ING PAYROLL CREDIT",
+    "VISA-UNITED AU#1234(TXN517650)",
+    "Debit Adjustment#926307-Int Tran Fee - JB HI FI",
+    "Ext Tfr - NET#1057572388 to 47464893 EMILY WATSON ING - ING Direct",
+    "VISA-CALTEX AU#1234(TXN987262) Apple Pay"
+  ]
+}

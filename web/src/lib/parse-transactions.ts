@@ -1,11 +1,17 @@
 import { categorizeDescription } from "./categorize";
+import { computeCompletenessScore } from "./completeness";
+import { attachOriginals } from "./edit-utils";
 import { parseAmount, round2 } from "./money";
 import type {
   CompletenessFinding,
   ExtractionResult,
+  HybridParseMeta,
   StatementSummary,
   Transaction,
 } from "./types";
+
+const MONTH =
+  "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec";
 
 const DATE_PATTERNS: RegExp[] = [
   // 12/03/2026 or 12-03-2026
@@ -13,13 +19,22 @@ const DATE_PATTERNS: RegExp[] = [
   // 2026-03-12
   /\b(\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2})\b/,
   // 12 Mar 2026 / 12 March 2026
-  /\b(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{2,4})\b/i,
+  new RegExp(
+    String.raw`\b(\d{1,2}\s+(?:${MONTH})[a-z]*\.?\s+\d{2,4})\b`,
+    "i",
+  ),
+  // 18 Nov (St George / bank listing — year from statement period)
+  new RegExp(String.raw`\b(\d{1,2}\s+(?:${MONTH})[a-z]*)\b`, "i"),
   // Mar 12, 2026
-  /\b((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2},?\s+\d{2,4})\b/i,
+  new RegExp(
+    String.raw`\b((?:${MONTH})[a-z]*\.?\s+\d{1,2},?\s+\d{2,4})\b`,
+    "i",
+  ),
 ];
 
+// Allow leading minus before currency: -$99.30 · $10,000.00 · ($12.00)
 const AMOUNT_TOKEN =
-  /[($£€]?\s*-?\s*\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?\s*\)?|\(\s*\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})\s*\)|-?\d+(?:[.,]\d{2})/;
+  /-?\s*[$£€]?\s*-?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?|[$£€]\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?|\(\s*[$£€]?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})\s*\)|-?\d+(?:\.\d{2})/;
 
 const HEADER_HINT =
   /\b(date|description|particulars|details|debit|credit|withdrawal|deposit|balance|amount|narrative)\b/i;
@@ -27,11 +42,55 @@ const HEADER_HINT =
 const NOISE =
   /^(page\s+\d+|continued|opening\s+balance|closing\s+balance|statement\s+period|account\s+number|bsb|total|subtotal|please\s+note|important|www\.|http)/i;
 
-function normalizeDate(raw: string): string {
+/** Infer year for "18 Nov" style dates from statement text period. */
+function inferYearFromContext(text: string): number {
+  const m = text.match(
+    /\b(20\d{2})\s*to\s*(20\d{2})\b|\b(20\d{2})-(\d{2})-(\d{2})\s*to\s*(20\d{2})|\bto\s*(\d{1,2})-([A-Za-z]{3})-(\d{2,4})\b|\((\d{1,2})-([A-Za-z]{3})-(\d{4})\s*to\s*(\d{1,2})-([A-Za-z]{3})-(\d{4})\)/i,
+  );
+  if (m) {
+    for (const g of m.slice(1)) {
+      if (g && /^20\d{2}$/.test(g)) return Number(g);
+      if (g && /^\d{4}$/.test(g)) return Number(g);
+    }
+  }
+  const years = [...text.matchAll(/\b(20\d{2})\b/g)].map((x) => Number(x[1]));
+  if (years.length) return years[years.length - 1];
+  return new Date().getUTCFullYear();
+}
+
+export function normalizeDate(raw: string, yearHint?: number): string {
   const s = raw.trim().replace(/\s+/g, " ");
+  // 18 Nov / 18 November
+  const monOnly = s.match(
+    new RegExp(
+      `^(\\d{1,2})\\s+(${MONTH})[a-z]*$`,
+      "i",
+    ),
+  );
+  if (monOnly) {
+    const day = monOnly[1].padStart(2, "0");
+    const monMap: Record<string, string> = {
+      jan: "01",
+      feb: "02",
+      mar: "03",
+      apr: "04",
+      may: "05",
+      jun: "06",
+      jul: "07",
+      aug: "08",
+      sep: "09",
+      oct: "10",
+      nov: "11",
+      dec: "12",
+    };
+    const mon = monMap[monOnly[2].slice(0, 3).toLowerCase()] ?? "01";
+    const y = yearHint ?? new Date().getUTCFullYear();
+    return `${y}-${mon}-${day}`;
+  }
+
   // Try Date parse for month-name forms
   const tryDate = new Date(s);
-  if (!Number.isNaN(tryDate.getTime()) && /[a-zA-Z]/.test(s)) {
+  if (!Number.isNaN(tryDate.getTime()) && /[a-zA-Z]/.test(s) && /\d{4}/.test(s)) {
     return tryDate.toISOString().slice(0, 10);
   }
 
@@ -67,15 +126,7 @@ function normalizeDate(raw: string): string {
 }
 
 function extractDate(line: string): { date: string; rest: string } | null {
-  for (const re of DATE_PATTERNS) {
-    const m = line.match(re);
-    if (m && m.index != null) {
-      const date = normalizeDate(m[1]);
-      const rest = (line.slice(0, m.index) + line.slice(m.index + m[0].length)).trim();
-      return { date, rest };
-    }
-  }
-  return null;
+  return extractDateWithYear(line, new Date().getUTCFullYear());
 }
 
 function extractAmounts(rest: string): {
@@ -155,8 +206,21 @@ function uid(prefix: string, i: number): string {
   return `${prefix}-${i}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
-/** Parse plain statement text into structured transactions. */
+export interface ParseHybridResult {
+  transactions: Transaction[];
+  meta: HybridParseMeta;
+}
+
+/**
+ * Hybrid extraction: primary line parser + continuation recovery +
+ * secondary pass for amount-only dated lines that the first pass may miss.
+ */
 export function parseTransactionsFromText(text: string): Transaction[] {
+  return parseTransactionsHybrid(text).transactions;
+}
+
+export function parseTransactionsHybrid(text: string): ParseHybridResult {
+  const yearHint = inferYearFromContext(text);
   const lines = text
     .split(/\r?\n/)
     .map((l) => l.replace(/\s+/g, " ").trim())
@@ -164,26 +228,68 @@ export function parseTransactionsFromText(text: string): Transaction[] {
 
   const txns: Transaction[] = [];
   let pending: Transaction | null = null;
+  let recoveredContinuationLines = 0;
+  const enginesTried = [
+    "line-parser",
+    "continuation-recovery",
+    "column-pass",
+    "st-george-multiline",
+  ];
 
   for (const line of lines) {
     if (!isLikelyTxnLine(line)) {
-      // Continuation line for previous description
+      // Amount-only continuation line: -$99.30   $64,474.33
+      if (pending) {
+        const amtLine = line.match(
+          new RegExp(`^(${AMOUNT_TOKEN})\\s+(${AMOUNT_TOKEN})$`, "i"),
+        );
+        if (amtLine) {
+          const a0 = parseAmount(amtLine[1]);
+          const a1 = parseAmount(amtLine[2]);
+          if (a0 != null && a1 != null) {
+            if (a0 < 0 || /debit|purchase|withdrawal|payment|eftpos|osko withdrawal/i.test(pending.description)) {
+              pending.debit = Math.abs(a0);
+              pending.credit = null;
+            } else if (a0 > 0 && /deposit|salary|credit|sct|transfer|leav/i.test(pending.description)) {
+              pending.credit = Math.abs(a0);
+              pending.debit = null;
+            } else if (a0 < 0) {
+              pending.debit = Math.abs(a0);
+            } else {
+              // signed amount on St George: negative prefix = debit
+              const raw = amtLine[1];
+              if (/^\s*-/.test(raw) || raw.includes("-$")) {
+                pending.debit = Math.abs(a0);
+                pending.credit = null;
+              } else {
+                pending.credit = Math.abs(a0);
+                pending.debit = null;
+              }
+            }
+            pending.balance = Math.abs(a1);
+            continue;
+          }
+        }
+      }
       if (pending && line.length > 2 && !HEADER_HINT.test(line) && !NOISE.test(line)) {
         if (!AMOUNT_TOKEN.test(line) || line.length > 20) {
           pending.description = `${pending.description} ${line}`.trim();
+          recoveredContinuationLines += 1;
         }
       }
       continue;
     }
 
-    const dated = extractDate(line);
+    const dated = extractDateWithYear(line, yearHint);
     if (!dated) continue;
 
     const { description, amounts } = extractAmounts(dated.rest);
+    // St George often has description on date line without amounts yet
     if (!description && amounts.length === 0) continue;
 
     const { debit, credit, balance } = classifyDebitCredit(amounts, description);
-    if (debit == null && credit == null && balance == null) continue;
+    // Allow pending without amounts (filled by next amount line)
+    if (debit == null && credit == null && balance == null && !description) continue;
 
     const { category, confidence } = categorizeDescription(
       description || "Unknown",
@@ -210,12 +316,217 @@ export function parseTransactionsFromText(text: string): Transaction[] {
   if (pending) txns.push(pending);
 
   // Drop obvious header false-positives
-  return txns.filter((t) => {
+  let filtered = txns.filter((t) => {
     if (HEADER_HINT.test(t.description) && t.description.split(" ").length <= 6) {
       return false;
     }
+    // drop rows still missing all money after multi-line fill
+    if (t.debit == null && t.credit == null && t.balance == null) return false;
     return true;
   });
+
+  // Secondary pass: tab/multi-space column split for lines the primary may have mis-split
+  const secondary = secondaryColumnPass(lines, filtered, yearHint);
+  if (secondary.length > filtered.length) {
+    filtered = secondary;
+  }
+
+  // St George multi-line specialist when still sparse
+  if (filtered.length < 5) {
+    const stg = parseStGeorgeMultiline(lines, yearHint);
+    if (stg.length > filtered.length) {
+      filtered = stg;
+    }
+  }
+
+  const withOriginals = attachOriginals(filtered);
+
+  return {
+    transactions: withOriginals,
+    meta: {
+      lineParserCount: filtered.length,
+      recoveredContinuationLines,
+      aiValidated: false,
+      enginesTried,
+    },
+  };
+}
+
+function extractDateWithYear(
+  line: string,
+  yearHint: number,
+): { date: string; rest: string } | null {
+  for (const re of DATE_PATTERNS) {
+    const m = line.match(re);
+    if (m && m.index != null) {
+      const date = normalizeDate(m[1], yearHint);
+      // require ISO-like result
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
+      const rest = (
+        line.slice(0, m.index) + line.slice(m.index + m[0].length)
+      ).trim();
+      return { date, rest };
+    }
+  }
+  return null;
+}
+
+/**
+ * St George "Transaction Listing" multi-line rows:
+ *   18 Nov   Visa Purchase 14Nov
+ *   Oz Lotteries Melbourne
+ *   -$99.30   $64,474.33
+ */
+function parseStGeorgeMultiline(
+  lines: string[],
+  yearHint: number,
+): Transaction[] {
+  const monRe = new RegExp(
+    `^(\\d{1,2}\\s+(?:${MONTH})[a-z]*)\\s+(.+)$`,
+    "i",
+  );
+  const amtRe =
+    /^(-?\s*\$?\s*-?\s*[\d,]+\.\d{2})\s+(\$?\s*[\d,]+\.\d{2})\s*$/;
+
+  const out: Transaction[] = [];
+  let i = 0;
+  while (i < lines.length) {
+    const m = lines[i].match(monRe);
+    if (!m) {
+      i += 1;
+      continue;
+    }
+    const date = normalizeDate(m[1], yearHint);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      i += 1;
+      continue;
+    }
+    let description = m[2].trim();
+    // strip trailing amounts if present on same line
+    let j = i + 1;
+    let debit: number | null = null;
+    let credit: number | null = null;
+    let balance: number | null = null;
+
+    // gather description lines until amount line
+    while (j < lines.length && !amtRe.test(lines[j]) && !monRe.test(lines[j])) {
+      if (
+        lines[j].length > 1 &&
+        !HEADER_HINT.test(lines[j]) &&
+        !NOISE.test(lines[j])
+      ) {
+        description = `${description} ${lines[j]}`.trim();
+      }
+      j += 1;
+    }
+
+    if (j < lines.length && amtRe.test(lines[j])) {
+      const am = lines[j].match(amtRe)!;
+      const a0 = parseAmount(am[1]);
+      const a1 = parseAmount(am[2]);
+      if (a0 != null && a1 != null) {
+        const signedDebit =
+          /^\s*-/.test(am[1]) || am[1].includes("-$") || a0 < 0;
+        if (signedDebit) {
+          debit = Math.abs(a0);
+        } else if (
+          /deposit|salary|credit|sct|transfer|leav|refund|interest/i.test(
+            description,
+          )
+        ) {
+          credit = Math.abs(a0);
+        } else if (
+          /purchase|debit|withdrawal|payment|eftpos|fee|osko withdrawal|visa/i.test(
+            description,
+          )
+        ) {
+          debit = Math.abs(a0);
+        } else if (a0 < 0) {
+          debit = Math.abs(a0);
+        } else {
+          credit = Math.abs(a0);
+        }
+        balance = Math.abs(a1);
+      }
+      j += 1;
+    }
+
+    if (debit != null || credit != null || balance != null) {
+      const { category, confidence } = categorizeDescription(
+        description,
+        credit,
+        debit,
+      );
+      out.push({
+        id: uid("stg", out.length),
+        date,
+        description,
+        debit,
+        credit,
+        balance,
+        category,
+        categorySource: "heuristic",
+        categoryConfidence: confidence,
+        flags: ["st-george"],
+      });
+    }
+    i = Math.max(j, i + 1);
+  }
+  return out;
+}
+
+/** Recover rows using multi-space / tab column heuristics when primary under-extracts. */
+function secondaryColumnPass(
+  lines: string[],
+  existing: Transaction[],
+  yearHint?: number,
+): Transaction[] {
+  if (existing.length >= 3) return existing;
+
+  const found: Transaction[] = [...existing];
+  const seen = new Set(
+    existing.map((t) => `${t.date}|${t.description.slice(0, 24)}|${t.debit}|${t.credit}`),
+  );
+
+  for (const line of lines) {
+    const dated = extractDateWithYear(line, yearHint ?? new Date().getUTCFullYear());
+    if (!dated) continue;
+    const parts = dated.rest.split(/\s{2,}|\t+/).map((p) => p.trim()).filter(Boolean);
+    if (parts.length < 2) continue;
+
+    const amountParts: number[] = [];
+    const textParts: string[] = [];
+    for (const p of parts) {
+      const n = parseAmount(p);
+      if (n != null && /[\d]/.test(p) && Math.abs(n) >= 0.01 && p.length < 16) {
+        amountParts.push(Math.abs(n));
+      } else {
+        textParts.push(p);
+      }
+    }
+    if (amountParts.length === 0) continue;
+    const description = textParts.join(" ").trim() || "Transaction";
+    const { debit, credit, balance } = classifyDebitCredit(amountParts, description);
+    const key = `${dated.date}|${description.slice(0, 24)}|${debit}|${credit}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    const { category, confidence } = categorizeDescription(description, credit, debit);
+    found.push({
+      id: uid("txn-sec", found.length),
+      date: dated.date,
+      description,
+      debit,
+      credit,
+      balance,
+      category,
+      categorySource: "heuristic",
+      categoryConfidence: confidence,
+      flags: ["secondary-pass"],
+    });
+  }
+
+  return found;
 }
 
 export function buildSummary(transactions: Transaction[]): StatementSummary {
@@ -341,14 +652,22 @@ export function buildExtractionResult(params: {
   pageCount: number;
   rawText: string;
   transactions: Transaction[];
+  hybrid?: HybridParseMeta;
+  aiValidated?: boolean;
+  aiScoreHint?: number | null;
+  findings?: CompletenessFinding[];
+  parser?: ExtractionResult["parser"];
 }): ExtractionResult {
   const limitedExtraction =
     params.rawText.trim().length < 80 || params.transactions.length === 0;
 
-  const summary = buildSummary(params.transactions);
-  const findings = analyzeCompleteness(params.transactions);
+  const transactions = attachOriginals(params.transactions);
+  const summary = buildSummary(transactions);
+  const findings = params.findings
+    ? [...params.findings]
+    : analyzeCompleteness(transactions);
 
-  if (limitedExtraction) {
+  if (limitedExtraction && !findings.some((f) => f.id === "limited")) {
     findings.unshift({
       id: "limited",
       severity: "warning",
@@ -358,15 +677,28 @@ export function buildExtractionResult(params: {
     });
   }
 
+  const completenessScore = computeCompletenessScore({
+    transactions,
+    rawTextLength: params.rawText.length,
+    pageCount: params.pageCount,
+    findings,
+    limitedExtraction,
+    aiValidated: params.aiValidated ?? params.hybrid?.aiValidated ?? false,
+    aiScoreHint: params.aiScoreHint,
+  });
+
   return {
     fileName: params.fileName,
     pageCount: params.pageCount,
     rawText: params.rawText,
     textLength: params.rawText.length,
     limitedExtraction,
-    transactions: params.transactions,
+    transactions,
     summary,
     findings,
+    completenessScore,
     extractedAt: new Date().toISOString(),
+    hybrid: params.hybrid,
+    parser: params.parser,
   };
 }

@@ -1,0 +1,2153 @@
+{
+  "bank": "bankwest",
+  "seed": 9052,
+  "config": {
+    "periodStart": "2026-03-01",
+    "periodDays": 31,
+    "openingBalance": 3240.55,
+    "savingsOpeningBalance": 12500,
+    "salaryDescription": "BANKWEST PAYROLL CREDIT",
+    "salaryAmount": 3850,
+    "salaryFrequency": "fortnightly",
+    "salaryAccount": "PAYROLL",
+    "income": {
+      "amount": 3850,
+      "frequency": "fortnightly"
+    },
+    "rentalDescription": "RENTAL INCOME",
+    "rentalAmount": 0,
+    "hasRentalIncome": false,
+    "savingsDescription": "TRANSFER TO BONUS SAVER",
+    "savingsAmount": 250,
+    "savingsFrequency": "fortnightly",
+    "savingsAccount": "BONUS",
+    "savings": {
+      "amount": 250,
+      "frequency": "fortnightly"
+    },
+    "mortgageDescription": "HOME LOAN REPAYMENT",
+    "mortgageLender": "HOME LENDER",
+    "mortgageAmount": 1680,
+    "mortgageFrequency": "monthly",
+    "loanReference": "LN-bankwest-9052",
+    "mortgage": {
+      "amount": 1680,
+      "frequency": "monthly"
+    },
+    "cardLast4": "8052",
+    "cardSpendPct": 26,
+    "billsSubsPct": 20,
+    "billSpendMultiplier": 1,
+    "cardSpendIncomeShare": 0.26,
+    "billsIncomeShare": 0.2,
+    "hasDirectDebits": true,
+    "enableDirectDebits": true,
+    "hasSubscriptions": true,
+    "selectedBillCategories": [
+      "Telecom",
+      "Utilities",
+      "Health",
+      "Insurance",
+      "Entertainment",
+      "Financial",
+      "TaxSuper",
+      "Other"
+    ],
+    "seed": 9052,
+    "account": {
+      "accountName": "Everyday Transaction Account",
+      "productName": "Everyday Transaction Account",
+      "holderName": "Regen Customer BANKWEST",
+      "accountHolder": "Regen Customer BANKWEST",
+      "customerID": "CUS-bankwest-9052",
+      "customerNumber": "CUS-1002941",
+      "bsb": "062-000",
+      "bsbCode": "062-000",
+      "accountNumber": "10009052",
+      "interestRate": 0.05,
+      "interestRatePct": 0.05,
+      "brandLabel": "BANKWEST Demo Bank",
+      "branch": "Main Branch",
+      "timezone": "Australia/Sydney",
+      "bonusAccount": "9876 5432",
+      "bonusBsb": "062-001",
+      "everydayAccount": "1234 5678",
+      "everydayBsb": "062-000"
+    },
+    "address": {
+      "addressLine1": "12 Sample Street",
+      "addressLine2": "",
+      "addressStreet": "12 Sample Street",
+      "addressCity": "Sydney NSW 2000"
+    },
+    "entity": {
+      "entityName": "Statement Demo Bank Pty Ltd",
+      "entityAddress": "100 Demo Tower",
+      "entityCity": "Sydney",
+      "entityState": "NSW",
+      "entityCountry": "Australia"
+    },
+    "directDebits": [
+      {
+        "merchant": "STREAMING SUBSCRIPTION",
+        "baseAmount": 16.99,
+        "intervalDays": 30,
+        "offsetDays": 3,
+        "category": "Entertainment",
+        "isSubscription": true
+      },
+      {
+        "merchant": "MOBILE PLAN",
+        "baseAmount": 49,
+        "intervalDays": 30,
+        "offsetDays": 7,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "HEALTH FUND",
+        "baseAmount": 128.4,
+        "intervalDays": 14,
+        "offsetDays": 2,
+        "category": "Health"
+      },
+      {
+        "merchant": "INSURANCE PREMIUM",
+        "baseAmount": 89.5,
+        "intervalDays": 30,
+        "offsetDays": 12,
+        "category": "Insurance"
+      },
+      {
+        "merchant": "INTERNET NBN",
+        "baseAmount": 79,
+        "intervalDays": 30,
+        "offsetDays": 18,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "ELECTRICITY",
+        "baseAmount": 145,
+        "intervalDays": 30,
+        "offsetDays": 9,
+        "category": "Utilities"
+      },
+      {
+        "merchant": "COUNCIL RATES",
+        "baseAmount": 210,
+        "intervalDays": 90,
+        "offsetDays": 5,
+        "category": "Utilities"
+      }
+    ]
+  },
+  "summary": {
+    "openingBalance": 3240.55,
+    "closingBalance": 6256.51,
+    "totalCredits": 11550,
+    "totalDebits": 8534.04,
+    "transactionCount": 56,
+    "expectedIncome": 11550
+  },
+  "periodEnd": "2026-03-31",
+  "quality": {
+    "score": 100,
+    "grade": "A",
+    "ok": true
+  },
+  "qualityAfterRewrite": {
+    "score": 86,
+    "grade": "B",
+    "ok": false
+  },
+  "rows": [
+    {
+      "id": "open-6zg-0",
+      "description": "OPENING BALANCE",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 0,
+      "balance": 3240.55,
+      "type": "opening",
+      "category": "BalanceMarker"
+    },
+    {
+      "id": "inc-6zg-1",
+      "description": "BANKWEST PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 3850,
+      "balance": 7090.55,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6zg-2",
+      "description": "MRS RHONDA IDA DO 11:31AM 28June Love Ra xx",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -250,
+      "balance": 6840.55,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6zg-3",
+      "description": "50",
+      "secondaryDescription": "HOME LENDER · REF LN-bankwest-9052",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -1680,
+      "balance": 5160.55,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6zg-4",
+      "description": "MRS RHONDA IDA DO 20:22AM 16February Love Ra xx",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -304.31,
+      "balance": 4856.24,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6zg-5",
+      "description": "ALDI Doreen AUS",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -36.13,
+      "balance": 4820.11,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zg-6",
+      "description": "MRS RHONDA IDA DO 20:38AM 28October Love Ra xx",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -127.36,
+      "balance": 4692.75,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-6zg-7",
+      "description": "MRS RHONDA IDA DO 20:19AM 12March Love Ra xx",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -40.27,
+      "balance": 4652.48,
+      "type": "direct_debit",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6zg-8",
+      "description": "BP MELBOURNE AUS",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -7.95,
+      "balance": 4644.53,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zg-9",
+      "description": "MRS RHONDA IDA DO 08:26AM 6November Love Ra xx",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -42.38,
+      "balance": 4602.15,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "p2p-6zg-10",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI BRISBANE 000AU",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -114.76,
+      "balance": 4487.39,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6zg-11",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT AMPOL ADELAIDE 000AU",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -47.16,
+      "balance": 4440.23,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "pos-6zg-12",
+      "description": "MRS RHONDA IDA DO 08:49AM 15April Love Ra xx",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -21.26,
+      "balance": 4418.97,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6zg-13",
+      "description": "MRS RHONDA IDA DO 19:10AM 21December Love Ra xx",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -497.7,
+      "balance": 3921.27,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6zg-14",
+      "description": "CHEMIST WAREHOUSE Mernda AUS",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -35.55,
+      "balance": 3885.72,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zg-15",
+      "description": "BP DOREEN AUS",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -31.33,
+      "balance": 3854.39,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6zg-16",
+      "description": "MYER Melbourne AUS",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-07",
+      "effectiveDate": "2026-03-07",
+      "amount": -55.01,
+      "balance": 3799.38,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6zg-17",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT HUNGRY JACKS PERTH 000AU",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-07",
+      "effectiveDate": "2026-03-07",
+      "amount": -14.42,
+      "balance": 3784.96,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "dd-6zg-18",
+      "description": "20",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -116.13,
+      "balance": 3668.83,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6zg-19",
+      "description": "BP DOREEN AUS",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -30.3,
+      "balance": 3638.53,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zg-20",
+      "description": "IGA Doreen AUS",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-09",
+      "effectiveDate": "2026-03-09",
+      "amount": -180.1,
+      "balance": 3458.43,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-6zg-21",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT NETFLIX CANBERRA 000AU",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -343.65,
+      "balance": 3114.78,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6zg-22",
+      "description": "KFC Doreen AUS",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -73.02,
+      "balance": 3041.76,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zg-23",
+      "description": "MRS RHONDA IDA DO 10:50AM 20August Love Ra xx",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -51.52,
+      "balance": 2990.24,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6zg-24",
+      "description": "100",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -212.11,
+      "balance": 2778.13,
+      "type": "direct_debit",
+      "category": "Insurance"
+    },
+    {
+      "id": "pos-6zg-25",
+      "description": "COLES ELTHAM AUS",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -19.51,
+      "balance": 2758.62,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6zg-26",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT VODAFONE BRISBANE 000AU",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -111.43,
+      "balance": 2647.19,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zg-27",
+      "description": "10",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -122.56,
+      "balance": 2524.63,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "inc-6zg-28",
+      "description": "BANKWEST PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 3850,
+      "balance": 6374.63,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6zg-29",
+      "description": "DISNEY PLUS Melbourne AUS",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -250,
+      "balance": 6124.63,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-6zg-30",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI GOLD COAST 000AU",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -15.72,
+      "balance": 6108.91,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "p2p-6zg-31",
+      "description": "MRS RHONDA IDA DO 08:10AM 5September Love Ra xx",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -89.95,
+      "balance": 6018.96,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6zg-32",
+      "description": "MRS RHONDA IDA DO 15:18AM 25April Love Ra xx",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -32.82,
+      "balance": 5986.14,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6zg-33",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT AMAZON MARKETPLACE ADELAIDE 000AU",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -16.34,
+      "balance": 5969.8,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "dd-6zg-34",
+      "description": "50",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -304.31,
+      "balance": 5665.49,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6zg-35",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT BIG W ADELAIDE 000AU",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -22.31,
+      "balance": 5643.18,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6zg-36",
+      "description": "OFFICEWORKS ELTHAM AUS",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -66.66,
+      "balance": 5576.52,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-6zg-37",
+      "description": "JB HI FI Preston AUS",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -187.23,
+      "balance": 5389.29,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6zg-38",
+      "description": "20",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -10.89,
+      "balance": 5378.4,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zg-39",
+      "description": "10",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -16.41,
+      "balance": 5361.99,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6zg-40",
+      "description": "MRS RHONDA IDA DO 11:45AM 3February Love Ra xx",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-22",
+      "effectiveDate": "2026-03-22",
+      "amount": -21.73,
+      "balance": 5340.26,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zg-41",
+      "description": "MRS RHONDA IDA DO 16:56AM 12March Love Ra xx",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-22",
+      "effectiveDate": "2026-03-22",
+      "amount": -13.94,
+      "balance": 5326.32,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zg-42",
+      "description": "20",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -18.32,
+      "balance": 5308,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zg-43",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI CANBERRA 000AU",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -70.99,
+      "balance": 5237.01,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "p2p-6zg-44",
+      "description": "50",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -86.89,
+      "balance": 5150.12,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6zg-45",
+      "description": "VODAFONE Preston AUS",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -65.27,
+      "balance": 5084.85,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6zg-46",
+      "description": "VODAFONE DOREEN AUS",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -92.93,
+      "balance": 4991.92,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6zg-47",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT KFC GOLD COAST 000AU",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -15.3,
+      "balance": 4976.62,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "inc-6zg-48",
+      "description": "BANKWEST PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": 3850,
+      "balance": 8826.62,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6zg-49",
+      "description": "KFC Preston AUS",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -250,
+      "balance": 8576.62,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-6zg-50",
+      "description": "AGL Mernda AUS",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -65.72,
+      "balance": 8510.9,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zg-51",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT MCDONALDS MELBOURNE 000AU",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-30",
+      "effectiveDate": "2026-03-30",
+      "amount": -60.6,
+      "balance": 8450.3,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zg-52",
+      "description": "MRS RHONDA IDA DO 19:30AM 9November Love Ra xx",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-30",
+      "effectiveDate": "2026-03-30",
+      "amount": -113.53,
+      "balance": 8336.77,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "mtg-6zg-53",
+      "description": "WOOLWORTHS DOREEN AUS",
+      "secondaryDescription": "HOME LENDER · REF LN-bankwest-9052",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -1680,
+      "balance": 6656.77,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6zg-54",
+      "description": "APPLE.COM/BILL Melbourne AUS",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -304.31,
+      "balance": 6352.46,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6zg-55",
+      "description": "APPLE.COM/BILL Mernda AUS",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -85.21,
+      "balance": 6267.25,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zg-56",
+      "description": "AGL MELBOURNE AUS",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -10.74,
+      "balance": 6256.51,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "close-6zg-57",
+      "description": "CLOSING BALANCE",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": 0,
+      "balance": 6256.51,
+      "type": "closing",
+      "category": "BalanceMarker"
+    }
+  ],
+  "appTransactions": [
+    {
+      "id": "inc-6zg-1",
+      "date": "2026-03-01",
+      "description": "BANKWEST PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 7090.55,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "BANKWEST PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 7090.55
+      }
+    },
+    {
+      "id": "sav-6zg-2",
+      "date": "2026-03-01",
+      "description": "MRS RHONDA IDA DO 11:31AM 28June Love Ra xx — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6840.55,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "MRS RHONDA IDA DO 11:31AM 28June Love Ra xx — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6840.55
+      }
+    },
+    {
+      "id": "mtg-6zg-3",
+      "date": "2026-03-01",
+      "description": "50 — HOME LENDER · REF LN-bankwest-9052",
+      "debit": 1680,
+      "credit": null,
+      "balance": 5160.55,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "50 — HOME LENDER · REF LN-bankwest-9052",
+        "debit": 1680,
+        "credit": null,
+        "balance": 5160.55
+      }
+    },
+    {
+      "id": "dd-6zg-4",
+      "date": "2026-03-03",
+      "description": "MRS RHONDA IDA DO 20:22AM 16February Love Ra xx — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 4856.24,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "MRS RHONDA IDA DO 20:22AM 16February Love Ra xx — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 4856.24
+      }
+    },
+    {
+      "id": "pos-6zg-5",
+      "date": "2026-03-03",
+      "description": "ALDI Doreen AUS — CITY",
+      "debit": 36.13,
+      "credit": null,
+      "balance": 4820.11,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "ALDI Doreen AUS — CITY",
+        "debit": 36.13,
+        "credit": null,
+        "balance": 4820.11
+      }
+    },
+    {
+      "id": "pos-6zg-6",
+      "date": "2026-03-03",
+      "description": "MRS RHONDA IDA DO 20:38AM 28October Love Ra xx — CITY",
+      "debit": 127.36,
+      "credit": null,
+      "balance": 4692.75,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "MRS RHONDA IDA DO 20:38AM 28October Love Ra xx — CITY",
+        "debit": 127.36,
+        "credit": null,
+        "balance": 4692.75
+      }
+    },
+    {
+      "id": "dd-6zg-7",
+      "date": "2026-03-04",
+      "description": "MRS RHONDA IDA DO 20:19AM 12March Love Ra xx — SUBSCRIPTION",
+      "debit": 40.27,
+      "credit": null,
+      "balance": 4652.48,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "MRS RHONDA IDA DO 20:19AM 12March Love Ra xx — SUBSCRIPTION",
+        "debit": 40.27,
+        "credit": null,
+        "balance": 4652.48
+      }
+    },
+    {
+      "id": "pos-6zg-8",
+      "date": "2026-03-04",
+      "description": "BP MELBOURNE AUS — CBD",
+      "debit": 7.95,
+      "credit": null,
+      "balance": 4644.53,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "BP MELBOURNE AUS — CBD",
+        "debit": 7.95,
+        "credit": null,
+        "balance": 4644.53
+      }
+    },
+    {
+      "id": "pos-6zg-9",
+      "date": "2026-03-04",
+      "description": "MRS RHONDA IDA DO 08:26AM 6November Love Ra xx — RETAIL",
+      "debit": 42.38,
+      "credit": null,
+      "balance": 4602.15,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "MRS RHONDA IDA DO 08:26AM 6November Love Ra xx — RETAIL",
+        "debit": 42.38,
+        "credit": null,
+        "balance": 4602.15
+      }
+    },
+    {
+      "id": "p2p-6zg-10",
+      "date": "2026-03-05",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI BRISBANE 000AU — OSKO / PAYID",
+      "debit": 114.76,
+      "credit": null,
+      "balance": 4487.39,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI BRISBANE 000AU — OSKO / PAYID",
+        "debit": 114.76,
+        "credit": null,
+        "balance": 4487.39
+      }
+    },
+    {
+      "id": "pos-6zg-11",
+      "date": "2026-03-05",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT AMPOL ADELAIDE 000AU — RETAIL",
+      "debit": 47.16,
+      "credit": null,
+      "balance": 4440.23,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT AMPOL ADELAIDE 000AU — RETAIL",
+        "debit": 47.16,
+        "credit": null,
+        "balance": 4440.23
+      }
+    },
+    {
+      "id": "pos-6zg-12",
+      "date": "2026-03-05",
+      "description": "MRS RHONDA IDA DO 08:49AM 15April Love Ra xx — METRO",
+      "debit": 21.26,
+      "credit": null,
+      "balance": 4418.97,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "MRS RHONDA IDA DO 08:49AM 15April Love Ra xx — METRO",
+        "debit": 21.26,
+        "credit": null,
+        "balance": 4418.97
+      }
+    },
+    {
+      "id": "dd-6zg-13",
+      "date": "2026-03-06",
+      "description": "MRS RHONDA IDA DO 19:10AM 21December Love Ra xx — DIRECT DEBIT",
+      "debit": 497.7,
+      "credit": null,
+      "balance": 3921.27,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "MRS RHONDA IDA DO 19:10AM 21December Love Ra xx — DIRECT DEBIT",
+        "debit": 497.7,
+        "credit": null,
+        "balance": 3921.27
+      }
+    },
+    {
+      "id": "pos-6zg-14",
+      "date": "2026-03-06",
+      "description": "CHEMIST WAREHOUSE Mernda AUS — SUBURB",
+      "debit": 35.55,
+      "credit": null,
+      "balance": 3885.72,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "CHEMIST WAREHOUSE Mernda AUS — SUBURB",
+        "debit": 35.55,
+        "credit": null,
+        "balance": 3885.72
+      }
+    },
+    {
+      "id": "pos-6zg-15",
+      "date": "2026-03-06",
+      "description": "BP DOREEN AUS",
+      "debit": 31.33,
+      "credit": null,
+      "balance": 3854.39,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "BP DOREEN AUS",
+        "debit": 31.33,
+        "credit": null,
+        "balance": 3854.39
+      }
+    },
+    {
+      "id": "pos-6zg-16",
+      "date": "2026-03-07",
+      "description": "MYER Melbourne AUS — WEB",
+      "debit": 55.01,
+      "credit": null,
+      "balance": 3799.38,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-07",
+      "original": {
+        "date": "2026-03-07",
+        "description": "MYER Melbourne AUS — WEB",
+        "debit": 55.01,
+        "credit": null,
+        "balance": 3799.38
+      }
+    },
+    {
+      "id": "pos-6zg-17",
+      "date": "2026-03-07",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT HUNGRY JACKS PERTH 000AU — CBD",
+      "debit": 14.42,
+      "credit": null,
+      "balance": 3784.96,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-07",
+      "original": {
+        "date": "2026-03-07",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT HUNGRY JACKS PERTH 000AU — CBD",
+        "debit": 14.42,
+        "credit": null,
+        "balance": 3784.96
+      }
+    },
+    {
+      "id": "dd-6zg-18",
+      "date": "2026-03-08",
+      "description": "20 — SUBSCRIPTION",
+      "debit": 116.13,
+      "credit": null,
+      "balance": 3668.83,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "20 — SUBSCRIPTION",
+        "debit": 116.13,
+        "credit": null,
+        "balance": 3668.83
+      }
+    },
+    {
+      "id": "pos-6zg-19",
+      "date": "2026-03-08",
+      "description": "BP DOREEN AUS — MALL",
+      "debit": 30.3,
+      "credit": null,
+      "balance": 3638.53,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "BP DOREEN AUS — MALL",
+        "debit": 30.3,
+        "credit": null,
+        "balance": 3638.53
+      }
+    },
+    {
+      "id": "pos-6zg-20",
+      "date": "2026-03-09",
+      "description": "IGA Doreen AUS — MALL",
+      "debit": 180.1,
+      "credit": null,
+      "balance": 3458.43,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-09",
+      "original": {
+        "date": "2026-03-09",
+        "description": "IGA Doreen AUS — MALL",
+        "debit": 180.1,
+        "credit": null,
+        "balance": 3458.43
+      }
+    },
+    {
+      "id": "dd-6zg-21",
+      "date": "2026-03-10",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT NETFLIX CANBERRA 000AU — DIRECT DEBIT",
+      "debit": 343.65,
+      "credit": null,
+      "balance": 3114.78,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT NETFLIX CANBERRA 000AU — DIRECT DEBIT",
+        "debit": 343.65,
+        "credit": null,
+        "balance": 3114.78
+      }
+    },
+    {
+      "id": "pos-6zg-22",
+      "date": "2026-03-10",
+      "description": "KFC Doreen AUS — CITY",
+      "debit": 73.02,
+      "credit": null,
+      "balance": 3041.76,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "KFC Doreen AUS — CITY",
+        "debit": 73.02,
+        "credit": null,
+        "balance": 3041.76
+      }
+    },
+    {
+      "id": "pos-6zg-23",
+      "date": "2026-03-10",
+      "description": "MRS RHONDA IDA DO 10:50AM 20August Love Ra xx — METRO",
+      "debit": 51.52,
+      "credit": null,
+      "balance": 2990.24,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "MRS RHONDA IDA DO 10:50AM 20August Love Ra xx — METRO",
+        "debit": 51.52,
+        "credit": null,
+        "balance": 2990.24
+      }
+    },
+    {
+      "id": "dd-6zg-24",
+      "date": "2026-03-13",
+      "description": "100 — DIRECT DEBIT",
+      "debit": 212.11,
+      "credit": null,
+      "balance": 2778.13,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Insurance"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "100 — DIRECT DEBIT",
+        "debit": 212.11,
+        "credit": null,
+        "balance": 2778.13
+      }
+    },
+    {
+      "id": "pos-6zg-25",
+      "date": "2026-03-13",
+      "description": "COLES ELTHAM AUS — WEB",
+      "debit": 19.51,
+      "credit": null,
+      "balance": 2758.62,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "COLES ELTHAM AUS — WEB",
+        "debit": 19.51,
+        "credit": null,
+        "balance": 2758.62
+      }
+    },
+    {
+      "id": "pos-6zg-26",
+      "date": "2026-03-14",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT VODAFONE BRISBANE 000AU — CITY",
+      "debit": 111.43,
+      "credit": null,
+      "balance": 2647.19,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT VODAFONE BRISBANE 000AU — CITY",
+        "debit": 111.43,
+        "credit": null,
+        "balance": 2647.19
+      }
+    },
+    {
+      "id": "pos-6zg-27",
+      "date": "2026-03-14",
+      "description": "10 — WEB",
+      "debit": 122.56,
+      "credit": null,
+      "balance": 2524.63,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "10 — WEB",
+        "debit": 122.56,
+        "credit": null,
+        "balance": 2524.63
+      }
+    },
+    {
+      "id": "inc-6zg-28",
+      "date": "2026-03-15",
+      "description": "BANKWEST PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 6374.63,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "BANKWEST PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 6374.63
+      }
+    },
+    {
+      "id": "sav-6zg-29",
+      "date": "2026-03-15",
+      "description": "DISNEY PLUS Melbourne AUS — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6124.63,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "DISNEY PLUS Melbourne AUS — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6124.63
+      }
+    },
+    {
+      "id": "pos-6zg-30",
+      "date": "2026-03-15",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI GOLD COAST 000AU — SUBURB",
+      "debit": 15.72,
+      "credit": null,
+      "balance": 6108.91,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI GOLD COAST 000AU — SUBURB",
+        "debit": 15.72,
+        "credit": null,
+        "balance": 6108.91
+      }
+    },
+    {
+      "id": "p2p-6zg-31",
+      "date": "2026-03-16",
+      "description": "MRS RHONDA IDA DO 08:10AM 5September Love Ra xx — OSKO / PAYID",
+      "debit": 89.95,
+      "credit": null,
+      "balance": 6018.96,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "MRS RHONDA IDA DO 08:10AM 5September Love Ra xx — OSKO / PAYID",
+        "debit": 89.95,
+        "credit": null,
+        "balance": 6018.96
+      }
+    },
+    {
+      "id": "pos-6zg-32",
+      "date": "2026-03-16",
+      "description": "MRS RHONDA IDA DO 15:18AM 25April Love Ra xx — METRO",
+      "debit": 32.82,
+      "credit": null,
+      "balance": 5986.14,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "MRS RHONDA IDA DO 15:18AM 25April Love Ra xx — METRO",
+        "debit": 32.82,
+        "credit": null,
+        "balance": 5986.14
+      }
+    },
+    {
+      "id": "pos-6zg-33",
+      "date": "2026-03-16",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT AMAZON MARKETPLACE ADELAIDE 000AU — MALL",
+      "debit": 16.34,
+      "credit": null,
+      "balance": 5969.8,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT AMAZON MARKETPLACE ADELAIDE 000AU — MALL",
+        "debit": 16.34,
+        "credit": null,
+        "balance": 5969.8
+      }
+    },
+    {
+      "id": "dd-6zg-34",
+      "date": "2026-03-17",
+      "description": "50 — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 5665.49,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "50 — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 5665.49
+      }
+    },
+    {
+      "id": "pos-6zg-35",
+      "date": "2026-03-17",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT BIG W ADELAIDE 000AU — WEB",
+      "debit": 22.31,
+      "credit": null,
+      "balance": 5643.18,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT BIG W ADELAIDE 000AU — WEB",
+        "debit": 22.31,
+        "credit": null,
+        "balance": 5643.18
+      }
+    },
+    {
+      "id": "pos-6zg-36",
+      "date": "2026-03-18",
+      "description": "OFFICEWORKS ELTHAM AUS — CITY",
+      "debit": 66.66,
+      "credit": null,
+      "balance": 5576.52,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "OFFICEWORKS ELTHAM AUS — CITY",
+        "debit": 66.66,
+        "credit": null,
+        "balance": 5576.52
+      }
+    },
+    {
+      "id": "dd-6zg-37",
+      "date": "2026-03-19",
+      "description": "JB HI FI Preston AUS — SUBSCRIPTION",
+      "debit": 187.23,
+      "credit": null,
+      "balance": 5389.29,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "JB HI FI Preston AUS — SUBSCRIPTION",
+        "debit": 187.23,
+        "credit": null,
+        "balance": 5389.29
+      }
+    },
+    {
+      "id": "pos-6zg-38",
+      "date": "2026-03-21",
+      "description": "20 — CBD",
+      "debit": 10.89,
+      "credit": null,
+      "balance": 5378.4,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "20 — CBD",
+        "debit": 10.89,
+        "credit": null,
+        "balance": 5378.4
+      }
+    },
+    {
+      "id": "pos-6zg-39",
+      "date": "2026-03-21",
+      "description": "10",
+      "debit": 16.41,
+      "credit": null,
+      "balance": 5361.99,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "10",
+        "debit": 16.41,
+        "credit": null,
+        "balance": 5361.99
+      }
+    },
+    {
+      "id": "pos-6zg-40",
+      "date": "2026-03-22",
+      "description": "MRS RHONDA IDA DO 11:45AM 3February Love Ra xx — MALL",
+      "debit": 21.73,
+      "credit": null,
+      "balance": 5340.26,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-22",
+      "original": {
+        "date": "2026-03-22",
+        "description": "MRS RHONDA IDA DO 11:45AM 3February Love Ra xx — MALL",
+        "debit": 21.73,
+        "credit": null,
+        "balance": 5340.26
+      }
+    },
+    {
+      "id": "pos-6zg-41",
+      "date": "2026-03-22",
+      "description": "MRS RHONDA IDA DO 16:56AM 12March Love Ra xx — MALL",
+      "debit": 13.94,
+      "credit": null,
+      "balance": 5326.32,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-22",
+      "original": {
+        "date": "2026-03-22",
+        "description": "MRS RHONDA IDA DO 16:56AM 12March Love Ra xx — MALL",
+        "debit": 13.94,
+        "credit": null,
+        "balance": 5326.32
+      }
+    },
+    {
+      "id": "pos-6zg-42",
+      "date": "2026-03-24",
+      "description": "20 — MALL",
+      "debit": 18.32,
+      "credit": null,
+      "balance": 5308,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "20 — MALL",
+        "debit": 18.32,
+        "credit": null,
+        "balance": 5308
+      }
+    },
+    {
+      "id": "pos-6zg-43",
+      "date": "2026-03-24",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI CANBERRA 000AU — HWY",
+      "debit": 70.99,
+      "credit": null,
+      "balance": 5237.01,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT ALDI CANBERRA 000AU — HWY",
+        "debit": 70.99,
+        "credit": null,
+        "balance": 5237.01
+      }
+    },
+    {
+      "id": "p2p-6zg-44",
+      "date": "2026-03-27",
+      "description": "50 — OSKO / PAYID",
+      "debit": 86.89,
+      "credit": null,
+      "balance": 5150.12,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "50 — OSKO / PAYID",
+        "debit": 86.89,
+        "credit": null,
+        "balance": 5150.12
+      }
+    },
+    {
+      "id": "pos-6zg-45",
+      "date": "2026-03-27",
+      "description": "VODAFONE Preston AUS — HWY",
+      "debit": 65.27,
+      "credit": null,
+      "balance": 5084.85,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "VODAFONE Preston AUS — HWY",
+        "debit": 65.27,
+        "credit": null,
+        "balance": 5084.85
+      }
+    },
+    {
+      "id": "pos-6zg-46",
+      "date": "2026-03-28",
+      "description": "VODAFONE DOREEN AUS — HWY",
+      "debit": 92.93,
+      "credit": null,
+      "balance": 4991.92,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "VODAFONE DOREEN AUS — HWY",
+        "debit": 92.93,
+        "credit": null,
+        "balance": 4991.92
+      }
+    },
+    {
+      "id": "pos-6zg-47",
+      "date": "2026-03-28",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT KFC GOLD COAST 000AU — CBD",
+      "debit": 15.3,
+      "credit": null,
+      "balance": 4976.62,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT KFC GOLD COAST 000AU — CBD",
+        "debit": 15.3,
+        "credit": null,
+        "balance": 4976.62
+      }
+    },
+    {
+      "id": "inc-6zg-48",
+      "date": "2026-03-29",
+      "description": "BANKWEST PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 8826.62,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "BANKWEST PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 8826.62
+      }
+    },
+    {
+      "id": "sav-6zg-49",
+      "date": "2026-03-29",
+      "description": "KFC Preston AUS — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 8576.62,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "KFC Preston AUS — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 8576.62
+      }
+    },
+    {
+      "id": "pos-6zg-50",
+      "date": "2026-03-29",
+      "description": "AGL Mernda AUS — SUBURB",
+      "debit": 65.72,
+      "credit": null,
+      "balance": 8510.9,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "AGL Mernda AUS — SUBURB",
+        "debit": 65.72,
+        "credit": null,
+        "balance": 8510.9
+      }
+    },
+    {
+      "id": "pos-6zg-51",
+      "date": "2026-03-30",
+      "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT MCDONALDS MELBOURNE 000AU — CITY",
+      "debit": 60.6,
+      "credit": null,
+      "balance": 8450.3,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-30",
+      "original": {
+        "date": "2026-03-30",
+        "description": "AUTHORISATION ONLY - EFTPOS PURCHASE AT MCDONALDS MELBOURNE 000AU — CITY",
+        "debit": 60.6,
+        "credit": null,
+        "balance": 8450.3
+      }
+    },
+    {
+      "id": "pos-6zg-52",
+      "date": "2026-03-30",
+      "description": "MRS RHONDA IDA DO 19:30AM 9November Love Ra xx — RETAIL",
+      "debit": 113.53,
+      "credit": null,
+      "balance": 8336.77,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-30",
+      "original": {
+        "date": "2026-03-30",
+        "description": "MRS RHONDA IDA DO 19:30AM 9November Love Ra xx — RETAIL",
+        "debit": 113.53,
+        "credit": null,
+        "balance": 8336.77
+      }
+    },
+    {
+      "id": "mtg-6zg-53",
+      "date": "2026-03-31",
+      "description": "WOOLWORTHS DOREEN AUS — HOME LENDER · REF LN-bankwest-9052",
+      "debit": 1680,
+      "credit": null,
+      "balance": 6656.77,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "WOOLWORTHS DOREEN AUS — HOME LENDER · REF LN-bankwest-9052",
+        "debit": 1680,
+        "credit": null,
+        "balance": 6656.77
+      }
+    },
+    {
+      "id": "dd-6zg-54",
+      "date": "2026-03-31",
+      "description": "APPLE.COM/BILL Melbourne AUS — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 6352.46,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "APPLE.COM/BILL Melbourne AUS — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 6352.46
+      }
+    },
+    {
+      "id": "pos-6zg-55",
+      "date": "2026-03-31",
+      "description": "APPLE.COM/BILL Mernda AUS — CITY",
+      "debit": 85.21,
+      "credit": null,
+      "balance": 6267.25,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "APPLE.COM/BILL Mernda AUS — CITY",
+        "debit": 85.21,
+        "credit": null,
+        "balance": 6267.25
+      }
+    },
+    {
+      "id": "pos-6zg-56",
+      "date": "2026-03-31",
+      "description": "AGL MELBOURNE AUS — CBD",
+      "debit": 10.74,
+      "credit": null,
+      "balance": 6256.51,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "AGL MELBOURNE AUS — CBD",
+        "debit": 10.74,
+        "credit": null,
+        "balance": 6256.51
+      }
+    }
+  ],
+  "sampleDescriptions": [
+    "BANKWEST PAYROLL CREDIT",
+    "MRS RHONDA IDA DO 11:31AM 28June Love Ra xx",
+    "50",
+    "MRS RHONDA IDA DO 20:22AM 16February Love Ra xx",
+    "ALDI Doreen AUS"
+  ]
+}

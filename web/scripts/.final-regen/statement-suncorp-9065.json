@@ -1,0 +1,2012 @@
+{
+  "bank": "suncorp",
+  "seed": 9065,
+  "config": {
+    "periodStart": "2026-03-01",
+    "periodDays": 31,
+    "openingBalance": 3240.55,
+    "savingsOpeningBalance": 12500,
+    "salaryDescription": "SUNCORP PAYROLL CREDIT",
+    "salaryAmount": 3850,
+    "salaryFrequency": "fortnightly",
+    "salaryAccount": "PAYROLL",
+    "income": {
+      "amount": 3850,
+      "frequency": "fortnightly"
+    },
+    "rentalDescription": "RENTAL INCOME",
+    "rentalAmount": 0,
+    "hasRentalIncome": false,
+    "savingsDescription": "TRANSFER TO BONUS SAVER",
+    "savingsAmount": 250,
+    "savingsFrequency": "fortnightly",
+    "savingsAccount": "BONUS",
+    "savings": {
+      "amount": 250,
+      "frequency": "fortnightly"
+    },
+    "mortgageDescription": "HOME LOAN REPAYMENT",
+    "mortgageLender": "HOME LENDER",
+    "mortgageAmount": 1680,
+    "mortgageFrequency": "monthly",
+    "loanReference": "LN-suncorp-9065",
+    "mortgage": {
+      "amount": 1680,
+      "frequency": "monthly"
+    },
+    "cardLast4": "8065",
+    "cardSpendPct": 26,
+    "billsSubsPct": 20,
+    "billSpendMultiplier": 1,
+    "cardSpendIncomeShare": 0.26,
+    "billsIncomeShare": 0.2,
+    "hasDirectDebits": true,
+    "enableDirectDebits": true,
+    "hasSubscriptions": true,
+    "selectedBillCategories": [
+      "Telecom",
+      "Utilities",
+      "Health",
+      "Insurance",
+      "Entertainment",
+      "Financial",
+      "TaxSuper",
+      "Other"
+    ],
+    "seed": 9065,
+    "account": {
+      "accountName": "Everyday Transaction Account",
+      "productName": "Everyday Transaction Account",
+      "holderName": "Regen Customer SUNCORP",
+      "accountHolder": "Regen Customer SUNCORP",
+      "customerID": "CUS-suncorp-9065",
+      "customerNumber": "CUS-1002941",
+      "bsb": "062-000",
+      "bsbCode": "062-000",
+      "accountNumber": "10009065",
+      "interestRate": 0.05,
+      "interestRatePct": 0.05,
+      "brandLabel": "SUNCORP Demo Bank",
+      "branch": "Main Branch",
+      "timezone": "Australia/Sydney",
+      "bonusAccount": "9876 5432",
+      "bonusBsb": "062-001",
+      "everydayAccount": "1234 5678",
+      "everydayBsb": "062-000"
+    },
+    "address": {
+      "addressLine1": "12 Sample Street",
+      "addressLine2": "",
+      "addressStreet": "12 Sample Street",
+      "addressCity": "Sydney NSW 2000"
+    },
+    "entity": {
+      "entityName": "Statement Demo Bank Pty Ltd",
+      "entityAddress": "100 Demo Tower",
+      "entityCity": "Sydney",
+      "entityState": "NSW",
+      "entityCountry": "Australia"
+    },
+    "directDebits": [
+      {
+        "merchant": "STREAMING SUBSCRIPTION",
+        "baseAmount": 16.99,
+        "intervalDays": 30,
+        "offsetDays": 3,
+        "category": "Entertainment",
+        "isSubscription": true
+      },
+      {
+        "merchant": "MOBILE PLAN",
+        "baseAmount": 49,
+        "intervalDays": 30,
+        "offsetDays": 7,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "HEALTH FUND",
+        "baseAmount": 128.4,
+        "intervalDays": 14,
+        "offsetDays": 2,
+        "category": "Health"
+      },
+      {
+        "merchant": "INSURANCE PREMIUM",
+        "baseAmount": 89.5,
+        "intervalDays": 30,
+        "offsetDays": 12,
+        "category": "Insurance"
+      },
+      {
+        "merchant": "INTERNET NBN",
+        "baseAmount": 79,
+        "intervalDays": 30,
+        "offsetDays": 18,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "ELECTRICITY",
+        "baseAmount": 145,
+        "intervalDays": 30,
+        "offsetDays": 9,
+        "category": "Utilities"
+      },
+      {
+        "merchant": "COUNCIL RATES",
+        "baseAmount": 210,
+        "intervalDays": 90,
+        "offsetDays": 5,
+        "category": "Utilities"
+      }
+    ]
+  },
+  "summary": {
+    "openingBalance": 3240.55,
+    "closingBalance": 5951.4,
+    "totalCredits": 11550,
+    "totalDebits": 8839.15,
+    "transactionCount": 52,
+    "expectedIncome": 11550
+  },
+  "periodEnd": "2026-03-31",
+  "quality": {
+    "score": 100,
+    "grade": "A",
+    "ok": true
+  },
+  "qualityAfterRewrite": {
+    "score": 86,
+    "grade": "B",
+    "ok": false
+  },
+  "rows": [
+    {
+      "id": "open-6zt-0",
+      "description": "OPENING BALANCE",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 0,
+      "balance": 3240.55,
+      "type": "opening",
+      "category": "BalanceMarker"
+    },
+    {
+      "id": "inc-6zt-1",
+      "description": "SUNCORP PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 3850,
+      "balance": 7090.55,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6zt-2",
+      "description": "VISA PURCHASE DAVID JONES BRISBANE 05/06 AU AUD",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -250,
+      "balance": 6840.55,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6zt-3",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT462713",
+      "secondaryDescription": "HOME LENDER · REF LN-suncorp-9065",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -1680,
+      "balance": 5160.55,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "pos-6zt-4",
+      "description": "VISA PURCHASE BUNNINGS BRISBANE 04/04 AU AUD",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-02",
+      "effectiveDate": "2026-03-02",
+      "amount": -120.59,
+      "balance": 5039.96,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-6zt-5",
+      "description": "DIRECT CREDIT DIRECT CREDIT927002TXN443160 336319*HL",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -304.31,
+      "balance": 4735.65,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "dd-6zt-6",
+      "description": "DIRECT CREDIT DIRECT CREDIT909044TXN835909 854350*HL",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -40.27,
+      "balance": 4695.38,
+      "type": "direct_debit",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6zt-7",
+      "description": "VISA PURCHASE VODAFONE 473808 NV 72.000 USD",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -39.35,
+      "balance": 4656.03,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6zt-8",
+      "description": "VISA PURCHASE NETFLIX TOWNSVILLE 06/11 AU AUD",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -14.95,
+      "balance": 4641.08,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "p2p-6zt-9",
+      "description": "VISA PURCHASE REBEL SPORT MELBOURNE 23/10 AU AUD",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -108.2,
+      "balance": 4532.88,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6zt-10",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 4648372",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -80.7,
+      "balance": 4452.18,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zt-11",
+      "description": "VISA PURCHASE ALDI 442819 NV 70.000 USD",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -49.65,
+      "balance": 4402.53,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6zt-12",
+      "description": "VISA PURCHASE APPLE.COM/BILL 145944 NV 59.000 USD",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -497.7,
+      "balance": 3904.83,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6zt-13",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT584720",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -239.25,
+      "balance": 3665.58,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6zt-14",
+      "description": "DIRECT CREDIT DIRECT CREDIT229295TXN480897 639122*HL",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -14.55,
+      "balance": 3651.03,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6zt-15",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT853170",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-07",
+      "effectiveDate": "2026-03-07",
+      "amount": -241.95,
+      "balance": 3409.08,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-6zt-16",
+      "description": "VISA PURCHASE DISNEY PLUS 322474 NV 12.000 USD",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -116.13,
+      "balance": 3292.95,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6zt-17",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 5720744",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -23.38,
+      "balance": 3269.57,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zt-18",
+      "description": "DIRECT CREDIT DIRECT CREDIT312189TXN727646 188622*HL",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-09",
+      "effectiveDate": "2026-03-09",
+      "amount": -184.82,
+      "balance": 3084.75,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "dd-6zt-19",
+      "description": "DIRECT CREDIT DIRECT CREDIT871560TXN453508 777325*HL",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -343.65,
+      "balance": 2741.1,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6zt-20",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 3006438",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -195.43,
+      "balance": 2545.67,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6zt-21",
+      "description": "EFTPOS WDL IGA ROCKHAMPTON AU",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -37.31,
+      "balance": 2508.36,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zt-22",
+      "description": "VISA PURCHASE APPLE.COM/BILL HOBART 26/05 AU AUD",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-12",
+      "effectiveDate": "2026-03-12",
+      "amount": -109.95,
+      "balance": 2398.41,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-6zt-23",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 2964995",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -212.11,
+      "balance": 2186.3,
+      "type": "direct_debit",
+      "category": "Insurance"
+    },
+    {
+      "id": "pos-6zt-24",
+      "description": "VISA PURCHASE WOOLWORTHS 328002 NV 43.000 USD",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -25.88,
+      "balance": 2160.42,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zt-25",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 4236364",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -22.54,
+      "balance": 2137.88,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zt-26",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT317440",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -21.21,
+      "balance": 2116.67,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "inc-6zt-27",
+      "description": "SUNCORP PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 3850,
+      "balance": 5966.67,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6zt-28",
+      "description": "VISA PURCHASE AMAZON MARKETPLACE 794693 NV 94.000 USD",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -250,
+      "balance": 5716.67,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-6zt-29",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT546915",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -38,
+      "balance": 5678.67,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "p2p-6zt-30",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT666810",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -56.27,
+      "balance": 5622.4,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6zt-31",
+      "description": "VISA PURCHASE KFC 660071 NV 51.000 USD",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -33.88,
+      "balance": 5588.52,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zt-32",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT176252",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -5.91,
+      "balance": 5582.61,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6zt-33",
+      "description": "EFTPOS WDL BIG W GOLD COAST AU",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -304.31,
+      "balance": 5278.3,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6zt-34",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 7374415",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -26.33,
+      "balance": 5251.97,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "dd-6zt-35",
+      "description": "DIRECT CREDIT DIRECT CREDIT734569TXN704633 875237*HL",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -187.23,
+      "balance": 5064.74,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6zt-36",
+      "description": "VISA PURCHASE JB HI FI DARWIN 04/06 AU AUD",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -104.9,
+      "balance": 4959.84,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "pos-6zt-37",
+      "description": "DIRECT CREDIT DIRECT CREDIT765728TXN478145 779332*HL",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -196.94,
+      "balance": 4762.9,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6zt-38",
+      "description": "VISA PURCHASE JB HI FI 380103 NV 18.000 USD",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -77.28,
+      "balance": 4685.62,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "pos-6zt-39",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT483968",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -13.31,
+      "balance": 4672.31,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zt-40",
+      "description": "VISA PURCHASE APPLE.COM/BILL 127747 NV 64.000 USD",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -49.92,
+      "balance": 4622.39,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6zt-41",
+      "description": "VISA PURCHASE TELSTRA 512548 NV 62.000 USD",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -17.59,
+      "balance": 4604.8,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6zt-42",
+      "description": "VISA PURCHASE REBEL SPORT 332821 NV 57.000 USD",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-25",
+      "effectiveDate": "2026-03-25",
+      "amount": -27.16,
+      "balance": 4577.64,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6zt-43",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT345140",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-25",
+      "effectiveDate": "2026-03-25",
+      "amount": -55.91,
+      "balance": 4521.73,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "p2p-6zt-44",
+      "description": "VISA PURCHASE WESTFIELD 985628 NV 70.000 USD",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -53.39,
+      "balance": 4468.34,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6zt-45",
+      "description": "VISA PURCHASE MYER 284788 NV 10.000 USD",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -47.82,
+      "balance": 4420.52,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6zt-46",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT127550",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -15.32,
+      "balance": 4405.2,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "inc-6zt-47",
+      "description": "SUNCORP PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": 3850,
+      "balance": 8255.2,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6zt-48",
+      "description": "DIRECT CREDIT DIRECT CREDIT783550TXN970439 272450*HL",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -250,
+      "balance": 8005.2,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "pos-6zt-49",
+      "description": "EFTPOS WDL WESTFIELD SUNSHINE COAST AU",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -14.94,
+      "balance": 7990.26,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "mtg-6zt-50",
+      "description": "VISA PURCHASE APPLE.COM/BILL 838586 NV 56.000 USD",
+      "secondaryDescription": "HOME LENDER · REF LN-suncorp-9065",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -1680,
+      "balance": 6310.26,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6zt-51",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT689614",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -304.31,
+      "balance": 6005.95,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6zt-52",
+      "description": "DIRECT CREDIT DIRECT CREDIT168873TXN814658 351190*HL",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -54.55,
+      "balance": 5951.4,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "close-6zt-53",
+      "description": "CLOSING BALANCE",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": 0,
+      "balance": 5951.4,
+      "type": "closing",
+      "category": "BalanceMarker"
+    }
+  ],
+  "appTransactions": [
+    {
+      "id": "inc-6zt-1",
+      "date": "2026-03-01",
+      "description": "SUNCORP PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 7090.55,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "SUNCORP PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 7090.55
+      }
+    },
+    {
+      "id": "sav-6zt-2",
+      "date": "2026-03-01",
+      "description": "VISA PURCHASE DAVID JONES BRISBANE 05/06 AU AUD — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6840.55,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "VISA PURCHASE DAVID JONES BRISBANE 05/06 AU AUD — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6840.55
+      }
+    },
+    {
+      "id": "mtg-6zt-3",
+      "date": "2026-03-01",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT462713 — HOME LENDER · REF LN-suncorp-9065",
+      "debit": 1680,
+      "credit": null,
+      "balance": 5160.55,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT462713 — HOME LENDER · REF LN-suncorp-9065",
+        "debit": 1680,
+        "credit": null,
+        "balance": 5160.55
+      }
+    },
+    {
+      "id": "pos-6zt-4",
+      "date": "2026-03-02",
+      "description": "VISA PURCHASE BUNNINGS BRISBANE 04/04 AU AUD — CITY",
+      "debit": 120.59,
+      "credit": null,
+      "balance": 5039.96,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-02",
+      "original": {
+        "date": "2026-03-02",
+        "description": "VISA PURCHASE BUNNINGS BRISBANE 04/04 AU AUD — CITY",
+        "debit": 120.59,
+        "credit": null,
+        "balance": 5039.96
+      }
+    },
+    {
+      "id": "dd-6zt-5",
+      "date": "2026-03-03",
+      "description": "DIRECT CREDIT DIRECT CREDIT927002TXN443160 336319*HL — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 4735.65,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "DIRECT CREDIT DIRECT CREDIT927002TXN443160 336319*HL — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 4735.65
+      }
+    },
+    {
+      "id": "dd-6zt-6",
+      "date": "2026-03-04",
+      "description": "DIRECT CREDIT DIRECT CREDIT909044TXN835909 854350*HL — SUBSCRIPTION",
+      "debit": 40.27,
+      "credit": null,
+      "balance": 4695.38,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "DIRECT CREDIT DIRECT CREDIT909044TXN835909 854350*HL — SUBSCRIPTION",
+        "debit": 40.27,
+        "credit": null,
+        "balance": 4695.38
+      }
+    },
+    {
+      "id": "pos-6zt-7",
+      "date": "2026-03-04",
+      "description": "VISA PURCHASE VODAFONE 473808 NV 72.000 USD — HWY",
+      "debit": 39.35,
+      "credit": null,
+      "balance": 4656.03,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "VISA PURCHASE VODAFONE 473808 NV 72.000 USD — HWY",
+        "debit": 39.35,
+        "credit": null,
+        "balance": 4656.03
+      }
+    },
+    {
+      "id": "pos-6zt-8",
+      "date": "2026-03-04",
+      "description": "VISA PURCHASE NETFLIX TOWNSVILLE 06/11 AU AUD",
+      "debit": 14.95,
+      "credit": null,
+      "balance": 4641.08,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "VISA PURCHASE NETFLIX TOWNSVILLE 06/11 AU AUD",
+        "debit": 14.95,
+        "credit": null,
+        "balance": 4641.08
+      }
+    },
+    {
+      "id": "p2p-6zt-9",
+      "date": "2026-03-05",
+      "description": "VISA PURCHASE REBEL SPORT MELBOURNE 23/10 AU AUD — OSKO / PAYID",
+      "debit": 108.2,
+      "credit": null,
+      "balance": 4532.88,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "VISA PURCHASE REBEL SPORT MELBOURNE 23/10 AU AUD — OSKO / PAYID",
+        "debit": 108.2,
+        "credit": null,
+        "balance": 4532.88
+      }
+    },
+    {
+      "id": "pos-6zt-10",
+      "date": "2026-03-05",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 4648372 — CITY",
+      "debit": 80.7,
+      "credit": null,
+      "balance": 4452.18,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 4648372 — CITY",
+        "debit": 80.7,
+        "credit": null,
+        "balance": 4452.18
+      }
+    },
+    {
+      "id": "pos-6zt-11",
+      "date": "2026-03-05",
+      "description": "VISA PURCHASE ALDI 442819 NV 70.000 USD — METRO",
+      "debit": 49.65,
+      "credit": null,
+      "balance": 4402.53,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "VISA PURCHASE ALDI 442819 NV 70.000 USD — METRO",
+        "debit": 49.65,
+        "credit": null,
+        "balance": 4402.53
+      }
+    },
+    {
+      "id": "dd-6zt-12",
+      "date": "2026-03-06",
+      "description": "VISA PURCHASE APPLE.COM/BILL 145944 NV 59.000 USD — DIRECT DEBIT",
+      "debit": 497.7,
+      "credit": null,
+      "balance": 3904.83,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "VISA PURCHASE APPLE.COM/BILL 145944 NV 59.000 USD — DIRECT DEBIT",
+        "debit": 497.7,
+        "credit": null,
+        "balance": 3904.83
+      }
+    },
+    {
+      "id": "pos-6zt-13",
+      "date": "2026-03-06",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT584720 — MALL",
+      "debit": 239.25,
+      "credit": null,
+      "balance": 3665.58,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT584720 — MALL",
+        "debit": 239.25,
+        "credit": null,
+        "balance": 3665.58
+      }
+    },
+    {
+      "id": "pos-6zt-14",
+      "date": "2026-03-06",
+      "description": "DIRECT CREDIT DIRECT CREDIT229295TXN480897 639122*HL",
+      "debit": 14.55,
+      "credit": null,
+      "balance": 3651.03,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "DIRECT CREDIT DIRECT CREDIT229295TXN480897 639122*HL",
+        "debit": 14.55,
+        "credit": null,
+        "balance": 3651.03
+      }
+    },
+    {
+      "id": "pos-6zt-15",
+      "date": "2026-03-07",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT853170 — MALL",
+      "debit": 241.95,
+      "credit": null,
+      "balance": 3409.08,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-07",
+      "original": {
+        "date": "2026-03-07",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT853170 — MALL",
+        "debit": 241.95,
+        "credit": null,
+        "balance": 3409.08
+      }
+    },
+    {
+      "id": "dd-6zt-16",
+      "date": "2026-03-08",
+      "description": "VISA PURCHASE DISNEY PLUS 322474 NV 12.000 USD — SUBSCRIPTION",
+      "debit": 116.13,
+      "credit": null,
+      "balance": 3292.95,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "VISA PURCHASE DISNEY PLUS 322474 NV 12.000 USD — SUBSCRIPTION",
+        "debit": 116.13,
+        "credit": null,
+        "balance": 3292.95
+      }
+    },
+    {
+      "id": "pos-6zt-17",
+      "date": "2026-03-08",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 5720744 — CBD",
+      "debit": 23.38,
+      "credit": null,
+      "balance": 3269.57,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 5720744 — CBD",
+        "debit": 23.38,
+        "credit": null,
+        "balance": 3269.57
+      }
+    },
+    {
+      "id": "pos-6zt-18",
+      "date": "2026-03-09",
+      "description": "DIRECT CREDIT DIRECT CREDIT312189TXN727646 188622*HL — WEB",
+      "debit": 184.82,
+      "credit": null,
+      "balance": 3084.75,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-09",
+      "original": {
+        "date": "2026-03-09",
+        "description": "DIRECT CREDIT DIRECT CREDIT312189TXN727646 188622*HL — WEB",
+        "debit": 184.82,
+        "credit": null,
+        "balance": 3084.75
+      }
+    },
+    {
+      "id": "dd-6zt-19",
+      "date": "2026-03-10",
+      "description": "DIRECT CREDIT DIRECT CREDIT871560TXN453508 777325*HL — DIRECT DEBIT",
+      "debit": 343.65,
+      "credit": null,
+      "balance": 2741.1,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "DIRECT CREDIT DIRECT CREDIT871560TXN453508 777325*HL — DIRECT DEBIT",
+        "debit": 343.65,
+        "credit": null,
+        "balance": 2741.1
+      }
+    },
+    {
+      "id": "pos-6zt-20",
+      "date": "2026-03-10",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 3006438 — WEB",
+      "debit": 195.43,
+      "credit": null,
+      "balance": 2545.67,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 3006438 — WEB",
+        "debit": 195.43,
+        "credit": null,
+        "balance": 2545.67
+      }
+    },
+    {
+      "id": "pos-6zt-21",
+      "date": "2026-03-10",
+      "description": "EFTPOS WDL IGA ROCKHAMPTON AU — SUBURB",
+      "debit": 37.31,
+      "credit": null,
+      "balance": 2508.36,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "EFTPOS WDL IGA ROCKHAMPTON AU — SUBURB",
+        "debit": 37.31,
+        "credit": null,
+        "balance": 2508.36
+      }
+    },
+    {
+      "id": "pos-6zt-22",
+      "date": "2026-03-12",
+      "description": "VISA PURCHASE APPLE.COM/BILL HOBART 26/05 AU AUD — MALL",
+      "debit": 109.95,
+      "credit": null,
+      "balance": 2398.41,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-12",
+      "original": {
+        "date": "2026-03-12",
+        "description": "VISA PURCHASE APPLE.COM/BILL HOBART 26/05 AU AUD — MALL",
+        "debit": 109.95,
+        "credit": null,
+        "balance": 2398.41
+      }
+    },
+    {
+      "id": "dd-6zt-23",
+      "date": "2026-03-13",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 2964995 — DIRECT DEBIT",
+      "debit": 212.11,
+      "credit": null,
+      "balance": 2186.3,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Insurance"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 2964995 — DIRECT DEBIT",
+        "debit": 212.11,
+        "credit": null,
+        "balance": 2186.3
+      }
+    },
+    {
+      "id": "pos-6zt-24",
+      "date": "2026-03-13",
+      "description": "VISA PURCHASE WOOLWORTHS 328002 NV 43.000 USD — MALL",
+      "debit": 25.88,
+      "credit": null,
+      "balance": 2160.42,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "VISA PURCHASE WOOLWORTHS 328002 NV 43.000 USD — MALL",
+        "debit": 25.88,
+        "credit": null,
+        "balance": 2160.42
+      }
+    },
+    {
+      "id": "pos-6zt-25",
+      "date": "2026-03-14",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 4236364 — MALL",
+      "debit": 22.54,
+      "credit": null,
+      "balance": 2137.88,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 4236364 — MALL",
+        "debit": 22.54,
+        "credit": null,
+        "balance": 2137.88
+      }
+    },
+    {
+      "id": "pos-6zt-26",
+      "date": "2026-03-14",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT317440 — SUBURB",
+      "debit": 21.21,
+      "credit": null,
+      "balance": 2116.67,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT317440 — SUBURB",
+        "debit": 21.21,
+        "credit": null,
+        "balance": 2116.67
+      }
+    },
+    {
+      "id": "inc-6zt-27",
+      "date": "2026-03-15",
+      "description": "SUNCORP PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 5966.67,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "SUNCORP PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 5966.67
+      }
+    },
+    {
+      "id": "sav-6zt-28",
+      "date": "2026-03-15",
+      "description": "VISA PURCHASE AMAZON MARKETPLACE 794693 NV 94.000 USD — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 5716.67,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "VISA PURCHASE AMAZON MARKETPLACE 794693 NV 94.000 USD — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 5716.67
+      }
+    },
+    {
+      "id": "pos-6zt-29",
+      "date": "2026-03-15",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT546915 — METRO",
+      "debit": 38,
+      "credit": null,
+      "balance": 5678.67,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT546915 — METRO",
+        "debit": 38,
+        "credit": null,
+        "balance": 5678.67
+      }
+    },
+    {
+      "id": "p2p-6zt-30",
+      "date": "2026-03-16",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT666810 — OSKO / PAYID",
+      "debit": 56.27,
+      "credit": null,
+      "balance": 5622.4,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT666810 — OSKO / PAYID",
+        "debit": 56.27,
+        "credit": null,
+        "balance": 5622.4
+      }
+    },
+    {
+      "id": "pos-6zt-31",
+      "date": "2026-03-16",
+      "description": "VISA PURCHASE KFC 660071 NV 51.000 USD — SUBURB",
+      "debit": 33.88,
+      "credit": null,
+      "balance": 5588.52,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "VISA PURCHASE KFC 660071 NV 51.000 USD — SUBURB",
+        "debit": 33.88,
+        "credit": null,
+        "balance": 5588.52
+      }
+    },
+    {
+      "id": "pos-6zt-32",
+      "date": "2026-03-16",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT176252",
+      "debit": 5.91,
+      "credit": null,
+      "balance": 5582.61,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT176252",
+        "debit": 5.91,
+        "credit": null,
+        "balance": 5582.61
+      }
+    },
+    {
+      "id": "dd-6zt-33",
+      "date": "2026-03-17",
+      "description": "EFTPOS WDL BIG W GOLD COAST AU — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 5278.3,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "EFTPOS WDL BIG W GOLD COAST AU — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 5278.3
+      }
+    },
+    {
+      "id": "pos-6zt-34",
+      "date": "2026-03-18",
+      "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 7374415 — CBD",
+      "debit": 26.33,
+      "credit": null,
+      "balance": 5251.97,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "DIRECT CREDIT QLD DEPARTMENT O SALARY 7374415 — CBD",
+        "debit": 26.33,
+        "credit": null,
+        "balance": 5251.97
+      }
+    },
+    {
+      "id": "dd-6zt-35",
+      "date": "2026-03-19",
+      "description": "DIRECT CREDIT DIRECT CREDIT734569TXN704633 875237*HL — SUBSCRIPTION",
+      "debit": 187.23,
+      "credit": null,
+      "balance": 5064.74,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "DIRECT CREDIT DIRECT CREDIT734569TXN704633 875237*HL — SUBSCRIPTION",
+        "debit": 187.23,
+        "credit": null,
+        "balance": 5064.74
+      }
+    },
+    {
+      "id": "pos-6zt-36",
+      "date": "2026-03-19",
+      "description": "VISA PURCHASE JB HI FI DARWIN 04/06 AU AUD — MALL",
+      "debit": 104.9,
+      "credit": null,
+      "balance": 4959.84,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "VISA PURCHASE JB HI FI DARWIN 04/06 AU AUD — MALL",
+        "debit": 104.9,
+        "credit": null,
+        "balance": 4959.84
+      }
+    },
+    {
+      "id": "pos-6zt-37",
+      "date": "2026-03-20",
+      "description": "DIRECT CREDIT DIRECT CREDIT765728TXN478145 779332*HL — WEB",
+      "debit": 196.94,
+      "credit": null,
+      "balance": 4762.9,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "DIRECT CREDIT DIRECT CREDIT765728TXN478145 779332*HL — WEB",
+        "debit": 196.94,
+        "credit": null,
+        "balance": 4762.9
+      }
+    },
+    {
+      "id": "pos-6zt-38",
+      "date": "2026-03-20",
+      "description": "VISA PURCHASE JB HI FI 380103 NV 18.000 USD — RETAIL",
+      "debit": 77.28,
+      "credit": null,
+      "balance": 4685.62,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "VISA PURCHASE JB HI FI 380103 NV 18.000 USD — RETAIL",
+        "debit": 77.28,
+        "credit": null,
+        "balance": 4685.62
+      }
+    },
+    {
+      "id": "pos-6zt-39",
+      "date": "2026-03-23",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT483968 — CBD",
+      "debit": 13.31,
+      "credit": null,
+      "balance": 4672.31,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT483968 — CBD",
+        "debit": 13.31,
+        "credit": null,
+        "balance": 4672.31
+      }
+    },
+    {
+      "id": "pos-6zt-40",
+      "date": "2026-03-24",
+      "description": "VISA PURCHASE APPLE.COM/BILL 127747 NV 64.000 USD — METRO",
+      "debit": 49.92,
+      "credit": null,
+      "balance": 4622.39,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "VISA PURCHASE APPLE.COM/BILL 127747 NV 64.000 USD — METRO",
+        "debit": 49.92,
+        "credit": null,
+        "balance": 4622.39
+      }
+    },
+    {
+      "id": "pos-6zt-41",
+      "date": "2026-03-24",
+      "description": "VISA PURCHASE TELSTRA 512548 NV 62.000 USD — CBD",
+      "debit": 17.59,
+      "credit": null,
+      "balance": 4604.8,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "VISA PURCHASE TELSTRA 512548 NV 62.000 USD — CBD",
+        "debit": 17.59,
+        "credit": null,
+        "balance": 4604.8
+      }
+    },
+    {
+      "id": "pos-6zt-42",
+      "date": "2026-03-25",
+      "description": "VISA PURCHASE REBEL SPORT 332821 NV 57.000 USD — CITY",
+      "debit": 27.16,
+      "credit": null,
+      "balance": 4577.64,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-25",
+      "original": {
+        "date": "2026-03-25",
+        "description": "VISA PURCHASE REBEL SPORT 332821 NV 57.000 USD — CITY",
+        "debit": 27.16,
+        "credit": null,
+        "balance": 4577.64
+      }
+    },
+    {
+      "id": "pos-6zt-43",
+      "date": "2026-03-25",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT345140 — SUBURB",
+      "debit": 55.91,
+      "credit": null,
+      "balance": 4521.73,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-25",
+      "original": {
+        "date": "2026-03-25",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT345140 — SUBURB",
+        "debit": 55.91,
+        "credit": null,
+        "balance": 4521.73
+      }
+    },
+    {
+      "id": "p2p-6zt-44",
+      "date": "2026-03-27",
+      "description": "VISA PURCHASE WESTFIELD 985628 NV 70.000 USD — OSKO / PAYID",
+      "debit": 53.39,
+      "credit": null,
+      "balance": 4468.34,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "VISA PURCHASE WESTFIELD 985628 NV 70.000 USD — OSKO / PAYID",
+        "debit": 53.39,
+        "credit": null,
+        "balance": 4468.34
+      }
+    },
+    {
+      "id": "pos-6zt-45",
+      "date": "2026-03-27",
+      "description": "VISA PURCHASE MYER 284788 NV 10.000 USD — METRO",
+      "debit": 47.82,
+      "credit": null,
+      "balance": 4420.52,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "VISA PURCHASE MYER 284788 NV 10.000 USD — METRO",
+        "debit": 47.82,
+        "credit": null,
+        "balance": 4420.52
+      }
+    },
+    {
+      "id": "pos-6zt-46",
+      "date": "2026-03-28",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT127550 — CBD",
+      "debit": 15.32,
+      "credit": null,
+      "balance": 4405.2,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT127550 — CBD",
+        "debit": 15.32,
+        "credit": null,
+        "balance": 4405.2
+      }
+    },
+    {
+      "id": "inc-6zt-47",
+      "date": "2026-03-29",
+      "description": "SUNCORP PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 8255.2,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "SUNCORP PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 8255.2
+      }
+    },
+    {
+      "id": "sav-6zt-48",
+      "date": "2026-03-29",
+      "description": "DIRECT CREDIT DIRECT CREDIT783550TXN970439 272450*HL — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 8005.2,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "DIRECT CREDIT DIRECT CREDIT783550TXN970439 272450*HL — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 8005.2
+      }
+    },
+    {
+      "id": "pos-6zt-49",
+      "date": "2026-03-29",
+      "description": "EFTPOS WDL WESTFIELD SUNSHINE COAST AU — CBD",
+      "debit": 14.94,
+      "credit": null,
+      "balance": 7990.26,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "EFTPOS WDL WESTFIELD SUNSHINE COAST AU — CBD",
+        "debit": 14.94,
+        "credit": null,
+        "balance": 7990.26
+      }
+    },
+    {
+      "id": "mtg-6zt-50",
+      "date": "2026-03-31",
+      "description": "VISA PURCHASE APPLE.COM/BILL 838586 NV 56.000 USD — HOME LENDER · REF LN-suncorp-9065",
+      "debit": 1680,
+      "credit": null,
+      "balance": 6310.26,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "VISA PURCHASE APPLE.COM/BILL 838586 NV 56.000 USD — HOME LENDER · REF LN-suncorp-9065",
+        "debit": 1680,
+        "credit": null,
+        "balance": 6310.26
+      }
+    },
+    {
+      "id": "dd-6zt-51",
+      "date": "2026-03-31",
+      "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT689614 — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 6005.95,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT689614 — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 6005.95
+      }
+    },
+    {
+      "id": "pos-6zt-52",
+      "date": "2026-03-31",
+      "description": "DIRECT CREDIT DIRECT CREDIT168873TXN814658 351190*HL — HWY",
+      "debit": 54.55,
+      "credit": null,
+      "balance": 5951.4,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "DIRECT CREDIT DIRECT CREDIT168873TXN814658 351190*HL — HWY",
+        "debit": 54.55,
+        "credit": null,
+        "balance": 5951.4
+      }
+    }
+  ],
+  "sampleDescriptions": [
+    "SUNCORP PAYROLL CREDIT",
+    "VISA PURCHASE DAVID JONES BRISBANE 05/06 AU AUD",
+    "DIRECT DEBIT Suncorp Metway DIRECT DEBIT462713",
+    "VISA PURCHASE BUNNINGS BRISBANE 04/04 AU AUD",
+    "DIRECT CREDIT DIRECT CREDIT927002TXN443160 336319*HL"
+  ]
+}

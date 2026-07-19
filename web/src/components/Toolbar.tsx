@@ -1,4 +1,12 @@
-import { Download, FileJson, FileSpreadsheet, RotateCcw, Search } from "lucide-react";
+import {
+  Download,
+  FileJson,
+  FileSpreadsheet,
+  Redo2,
+  RotateCcw,
+  Search,
+  Undo2,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -18,6 +26,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { CATEGORIES, type TransactionCategory } from "@/lib/types";
 
 interface ToolbarProps {
@@ -32,6 +45,10 @@ interface ToolbarProps {
   onReset: () => void;
   resultCount: number;
   totalCount: number;
+  canUndo?: boolean;
+  canRedo?: boolean;
+  onUndo?: () => void;
+  onRedo?: () => void;
 }
 
 export function Toolbar({
@@ -46,6 +63,10 @@ export function Toolbar({
   onReset,
   resultCount,
   totalCount,
+  canUndo,
+  canRedo,
+  onUndo,
+  onRedo,
 }: ToolbarProps) {
   return (
     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
@@ -79,6 +100,40 @@ export function Toolbar({
         <p className="text-xs text-muted-foreground mr-1 tabular-nums">
           {resultCount} / {totalCount}
         </p>
+        <div className="flex items-center rounded-full border border-border/70 bg-card/70 p-0.5">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                type="button"
+                size="icon"
+                variant="ghost"
+                className="h-8 w-8 rounded-full"
+                disabled={!canUndo}
+                onClick={onUndo}
+                aria-label="Undo"
+              >
+                <Undo2 className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Undo (⌘Z)</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                type="button"
+                size="icon"
+                variant="ghost"
+                className="h-8 w-8 rounded-full"
+                disabled={!canRedo}
+                onClick={onRedo}
+                aria-label="Redo"
+              >
+                <Redo2 className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Redo (⌘⇧Z)</TooltipContent>
+          </Tooltip>
+        </div>
         <div className="flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-3 py-1.5">
           <Switch
             id="include-notes"

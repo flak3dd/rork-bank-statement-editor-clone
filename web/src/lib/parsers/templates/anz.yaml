@@ -1,0 +1,20 @@
+id: anz
+name: ANZ
+match:
+  - ANZ Bank
+  - Australia and New Zealand Banking
+  - ANZ Internet Banking
+  - anz.com
+dateOrder: dmy
+columnOrder:
+  - date
+  - description
+  - amount
+  - balance
+noise:
+  - anz
+  - bsb
+  - transaction details
+  - processed date
+currency: AUD
+notes: ANZ often uses single Amount column (signed or CR/DR markers).

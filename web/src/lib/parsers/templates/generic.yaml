@@ -1,0 +1,19 @@
+id: generic
+name: Generic bank statement
+match: []
+dateOrder: dmy
+columnOrder:
+  - date
+  - description
+  - debit
+  - credit
+  - balance
+noise:
+  - page
+  - continued
+  - statement period
+  - account number
+  - please note
+  - important information
+currency: USD
+notes: Default layout — day-first dates, debit/credit/balance columns.

@@ -1,0 +1,173 @@
+{
+  "input": "/Users/adminuser/rork-bank-statement-editor-clone/tools/pymupdf_pipeline/fixtures/sample-statement.pdf",
+  "output": "/Users/adminuser/rork-bank-statement-editor-clone/web/scripts/.final-regen/sample-anz-replaced.pdf",
+  "bank": "anz",
+  "seed": 42,
+  "replace": [
+    "descriptions"
+  ],
+  "spans_total": 38,
+  "spans_by_kind": {
+    "description": 8,
+    "amount": 16,
+    "date": 8,
+    "skip": 6
+  },
+  "planned": 8,
+  "dry_run": false,
+  "replacements": [
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "EFTPOS WOOLWORTHS STREAKY BAY AU",
+      "replacement": "TRANSFER FROM BP",
+      "bbox": [
+        120.0,
+        91.4000015258789,
+        285.36798095703125,
+        102.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "VISA DEBIT PURCHASE CARD 6294 COLES",
+      "replacement": "PENDING - POS AUTHORISATION OPTUS STREAKY BAY AU Card Us\u2026",
+      "bbox": [
+        120.0,
+        107.4000015258789,
+        284.93597412109375,
+        118.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "ANZ MOBILE BANKING PAYMENT 882134 TO SARAH JOHNSON",
+      "replacement": "PENDING - EFTPOS UBER EATS",
+      "bbox": [
+        120.0,
+        123.4000015258789,
+        360.95196533203125,
+        134.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "PENDING - EFTPOS BP",
+      "replacement": "TRANSFER FROM MYER",
+      "bbox": [
+        120.0,
+        139.39999389648438,
+        208.4639892578125,
+        150.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "SALARY ACME CORP DIRECT CREDIT",
+      "replacement": "PENDING - MTS OFFICEWORKS Inv 7912 JOHNSON",
+      "bbox": [
+        120.0,
+        155.39999389648438,
+        266.239990234375,
+        166.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "EFTPOS MCDONALDS AU",
+      "replacement": "PENDING - POS AUTHORISATION MC\u2026",
+      "bbox": [
+        120.0,
+        171.39999389648438,
+        218.67999267578125,
+        182.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "NETFLIX.COM SYDNEY",
+      "replacement": "EFTPOS COLES AU",
+      "bbox": [
+        120.0,
+        187.39999389648438,
+        208.90399169921875,
+        198.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    },
+    {
+      "page": 0,
+      "kind": "description",
+      "original": "TRANSFER FROM ORIGIN ENERGY",
+      "replacement": "EFTPOS APPLE.COM/BILL AU",
+      "bbox": [
+        120.0,
+        203.39999389648438,
+        255.5679931640625,
+        214.39199829101562
+      ],
+      "size": 8.0,
+      "color": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "font": "Helvetica"
+    }
+  ],
+  "applied": 8
+}

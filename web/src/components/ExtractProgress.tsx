@@ -19,7 +19,7 @@ export function ExtractProgress({ fileName, steps, progress, error }: ExtractPro
           {fileName}
         </h2>
         <p className="text-sm text-muted-foreground">
-          Reading the PDF, structuring rows, then running an AI review.
+          Hybrid parse, AI validation, then multi-dimension completeness scoring.
         </p>
       </div>
 

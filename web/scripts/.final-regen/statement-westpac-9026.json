@@ -1,0 +1,2010 @@
+{
+  "bank": "westpac",
+  "seed": 9026,
+  "config": {
+    "periodStart": "2026-03-01",
+    "periodDays": 31,
+    "openingBalance": 3240.55,
+    "savingsOpeningBalance": 12500,
+    "salaryDescription": "WESTPAC PAYROLL CREDIT",
+    "salaryAmount": 3850,
+    "salaryFrequency": "fortnightly",
+    "salaryAccount": "PAYROLL",
+    "income": {
+      "amount": 3850,
+      "frequency": "fortnightly"
+    },
+    "rentalDescription": "RENTAL INCOME",
+    "rentalAmount": 0,
+    "hasRentalIncome": false,
+    "savingsDescription": "TRANSFER TO BONUS SAVER",
+    "savingsAmount": 250,
+    "savingsFrequency": "fortnightly",
+    "savingsAccount": "BONUS",
+    "savings": {
+      "amount": 250,
+      "frequency": "fortnightly"
+    },
+    "mortgageDescription": "HOME LOAN REPAYMENT",
+    "mortgageLender": "HOME LENDER",
+    "mortgageAmount": 1680,
+    "mortgageFrequency": "monthly",
+    "loanReference": "LN-westpac-9026",
+    "mortgage": {
+      "amount": 1680,
+      "frequency": "monthly"
+    },
+    "cardLast4": "8026",
+    "cardSpendPct": 26,
+    "billsSubsPct": 20,
+    "billSpendMultiplier": 1,
+    "cardSpendIncomeShare": 0.26,
+    "billsIncomeShare": 0.2,
+    "hasDirectDebits": true,
+    "enableDirectDebits": true,
+    "hasSubscriptions": true,
+    "selectedBillCategories": [
+      "Telecom",
+      "Utilities",
+      "Health",
+      "Insurance",
+      "Entertainment",
+      "Financial",
+      "TaxSuper",
+      "Other"
+    ],
+    "seed": 9026,
+    "account": {
+      "accountName": "Everyday Transaction Account",
+      "productName": "Everyday Transaction Account",
+      "holderName": "Regen Customer WESTPAC",
+      "accountHolder": "Regen Customer WESTPAC",
+      "customerID": "CUS-westpac-9026",
+      "customerNumber": "CUS-1002941",
+      "bsb": "062-000",
+      "bsbCode": "062-000",
+      "accountNumber": "10009026",
+      "interestRate": 0.05,
+      "interestRatePct": 0.05,
+      "brandLabel": "WESTPAC Demo Bank",
+      "branch": "Main Branch",
+      "timezone": "Australia/Sydney",
+      "bonusAccount": "9876 5432",
+      "bonusBsb": "062-001",
+      "everydayAccount": "1234 5678",
+      "everydayBsb": "062-000"
+    },
+    "address": {
+      "addressLine1": "12 Sample Street",
+      "addressLine2": "",
+      "addressStreet": "12 Sample Street",
+      "addressCity": "Sydney NSW 2000"
+    },
+    "entity": {
+      "entityName": "Statement Demo Bank Pty Ltd",
+      "entityAddress": "100 Demo Tower",
+      "entityCity": "Sydney",
+      "entityState": "NSW",
+      "entityCountry": "Australia"
+    },
+    "directDebits": [
+      {
+        "merchant": "STREAMING SUBSCRIPTION",
+        "baseAmount": 16.99,
+        "intervalDays": 30,
+        "offsetDays": 3,
+        "category": "Entertainment",
+        "isSubscription": true
+      },
+      {
+        "merchant": "MOBILE PLAN",
+        "baseAmount": 49,
+        "intervalDays": 30,
+        "offsetDays": 7,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "HEALTH FUND",
+        "baseAmount": 128.4,
+        "intervalDays": 14,
+        "offsetDays": 2,
+        "category": "Health"
+      },
+      {
+        "merchant": "INSURANCE PREMIUM",
+        "baseAmount": 89.5,
+        "intervalDays": 30,
+        "offsetDays": 12,
+        "category": "Insurance"
+      },
+      {
+        "merchant": "INTERNET NBN",
+        "baseAmount": 79,
+        "intervalDays": 30,
+        "offsetDays": 18,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "ELECTRICITY",
+        "baseAmount": 145,
+        "intervalDays": 30,
+        "offsetDays": 9,
+        "category": "Utilities"
+      },
+      {
+        "merchant": "COUNCIL RATES",
+        "baseAmount": 210,
+        "intervalDays": 90,
+        "offsetDays": 5,
+        "category": "Utilities"
+      }
+    ]
+  },
+  "summary": {
+    "openingBalance": 3240.55,
+    "closingBalance": 6641.55,
+    "totalCredits": 11550,
+    "totalDebits": 8149,
+    "transactionCount": 52,
+    "expectedIncome": 11550
+  },
+  "periodEnd": "2026-03-31",
+  "quality": {
+    "score": 100,
+    "grade": "A",
+    "ok": true
+  },
+  "qualityAfterRewrite": {
+    "score": 86,
+    "grade": "B",
+    "ok": false
+  },
+  "rows": [
+    {
+      "id": "open-6yq-0",
+      "description": "OPENING BALANCE",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 0,
+      "balance": 3240.55,
+      "type": "opening",
+      "category": "BalanceMarker"
+    },
+    {
+      "id": "inc-6yq-1",
+      "description": "WESTPAC PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 3850,
+      "balance": 7090.55,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6yq-2",
+      "description": "DEBIT CARD PURCHASE TARGET CAPE TOWN AUS",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -250,
+      "balance": 6840.55,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6yq-3",
+      "description": "DEBIT CARD PURCHASE TARGET HARTBEESPOOR SINGAPORE AUD 4481.00 incl. Foreign Transaction Fee AUD $1.00",
+      "secondaryDescription": "HOME LENDER · REF LN-westpac-9026",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -1680,
+      "balance": 5160.55,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "pos-6yq-4",
+      "description": "INTEREST",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -45.5,
+      "balance": 5115.05,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yq-5",
+      "description": "INTEREST",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-02",
+      "effectiveDate": "2026-03-02",
+      "amount": -62.67,
+      "balance": 5052.38,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yq-6",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 739891",
+      "date": "2026-03-02",
+      "effectiveDate": "2026-03-02",
+      "amount": -70.86,
+      "balance": 4981.52,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-6yq-7",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 701230",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -304.31,
+      "balance": 4677.21,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6yq-8",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 775390",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -2.76,
+      "balance": 4674.45,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6yq-9",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 742470",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -69.53,
+      "balance": 4604.92,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-6yq-10",
+      "description": "INTEREST",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -40.27,
+      "balance": 4564.65,
+      "type": "direct_debit",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6yq-11",
+      "description": "INTEREST",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -25.66,
+      "balance": 4538.99,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "p2p-6yq-12",
+      "description": "DEBIT CARD PURCHASE MYER CAPE TOWN AUS",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -63.06,
+      "balance": 4475.93,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6yq-13",
+      "description": "DEBIT CARD PURCHASE BUNNINGS CAPE TOWN CANADA AUD 2048.00 incl. Foreign Transaction Fee AUD $2.00",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -15.56,
+      "balance": 4460.37,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6yq-14",
+      "description": "DEBIT CARD PURCHASE APPLE.COM/BILL CAPE TOWN AUS",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -65.41,
+      "balance": 4394.96,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "dd-6yq-15",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 701202",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -497.7,
+      "balance": 3897.26,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6yq-16",
+      "description": "DEBIT CARD PURCHASE ALDI HARTBEESPOOR AUS",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -22,
+      "balance": 3875.26,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6yq-17",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 753108",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -19.84,
+      "balance": 3855.42,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6yq-18",
+      "description": "INTEREST",
+      "date": "2026-03-07",
+      "effectiveDate": "2026-03-07",
+      "amount": -16.92,
+      "balance": 3838.5,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6yq-19",
+      "description": "DEBIT CARD PURCHASE KFC CAPE TOWN AUS",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -116.13,
+      "balance": 3722.37,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6yq-20",
+      "description": "DEBIT CARD PURCHASE MCDONALDS HARTBEESPOOR AUS",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-09",
+      "effectiveDate": "2026-03-09",
+      "amount": -16.73,
+      "balance": 3705.64,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "dd-6yq-21",
+      "description": "DEBIT CARD PURCHASE COLES JOHANNESBURG UNITED KINGDOM AUD 1695.00 incl. Foreign Transaction Fee AUD $3.00",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -343.65,
+      "balance": 3361.99,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6yq-22",
+      "description": "DEBIT CARD PURCHASE SHELL HARTBEESPOOR AUS",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -41.77,
+      "balance": 3320.22,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yq-23",
+      "description": "INTEREST",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -94.39,
+      "balance": 3225.83,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yq-24",
+      "description": "INTEREST",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-12",
+      "effectiveDate": "2026-03-12",
+      "amount": -77.24,
+      "balance": 3148.59,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6yq-25",
+      "description": "DEBIT CARD PURCHASE AGL HARTBEESPOOR AUS",
+      "date": "2026-03-12",
+      "effectiveDate": "2026-03-12",
+      "amount": -50.74,
+      "balance": 3097.85,
+      "type": "debit",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-6yq-26",
+      "description": "DEBIT CARD PURCHASE DISNEY PLUS CAPE TOWN AUS",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -212.11,
+      "balance": 2885.74,
+      "type": "direct_debit",
+      "category": "Insurance"
+    },
+    {
+      "id": "pos-6yq-27",
+      "description": "DEBIT CARD PURCHASE DISNEY PLUS CAPE TOWN AUS",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -129.96,
+      "balance": 2755.78,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6yq-28",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 763380",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -51.64,
+      "balance": 2704.14,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6yq-29",
+      "description": "DEBIT CARD PURCHASE ALDI HARTBEESPOOR AUS",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -65.54,
+      "balance": 2638.6,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "inc-6yq-30",
+      "description": "WESTPAC PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 3850,
+      "balance": 6488.6,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6yq-31",
+      "description": "DEBIT CARD PURCHASE BIG W SOMERSET WES AUSTRALIA AUD 567.00 incl. Foreign Transaction Fee AUD $2.00",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -250,
+      "balance": 6238.6,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "p2p-6yq-32",
+      "description": "DEBIT CARD PURCHASE 7-ELEVEN CAPE TOWN AUS",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -82.19,
+      "balance": 6156.41,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6yq-33",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 748063",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -62.02,
+      "balance": 6094.39,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6yq-34",
+      "description": "DEBIT CARD PURCHASE CALTEX SOMERSET WES AUSTRALIA AUD 3622.00 incl. Foreign Transaction Fee AUD $6.00",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -175.48,
+      "balance": 5918.91,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "dd-6yq-35",
+      "description": "DEBIT CARD PURCHASE TERRY WHITE CHEMIST CAPE TOWN AUSTRALIA AUD 2074.00 incl. Foreign Transaction Fee AUD $8.00",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -304.31,
+      "balance": 5614.6,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6yq-36",
+      "description": "DEBIT CARD PURCHASE NETFLIX CAPE TOWN UNITED STATES AUD 341.00 incl. Foreign Transaction Fee AUD $5.00",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -42.45,
+      "balance": 5572.15,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "pos-6yq-37",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 762512",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -24.81,
+      "balance": 5547.34,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "dd-6yq-38",
+      "description": "INTEREST",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -187.23,
+      "balance": 5360.11,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6yq-39",
+      "description": "INTEREST",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -35.17,
+      "balance": 5324.94,
+      "type": "card",
+      "category": "Alcohol"
+    },
+    {
+      "id": "pos-6yq-40",
+      "description": "INTEREST",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -15.66,
+      "balance": 5309.28,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yq-41",
+      "description": "INTEREST",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-22",
+      "effectiveDate": "2026-03-22",
+      "amount": -18.16,
+      "balance": 5291.12,
+      "type": "card",
+      "category": "Alcohol"
+    },
+    {
+      "id": "pos-6yq-42",
+      "description": "INTEREST",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-24",
+      "effectiveDate": "2026-03-24",
+      "amount": -143.36,
+      "balance": 5147.76,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6yq-43",
+      "description": "INTEREST",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-25",
+      "effectiveDate": "2026-03-25",
+      "amount": -17.14,
+      "balance": 5130.62,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6yq-44",
+      "description": "DEBIT CARD PURCHASE KFC CAPE TOWN AUS",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-26",
+      "effectiveDate": "2026-03-26",
+      "amount": -13.52,
+      "balance": 5117.1,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "p2p-6yq-45",
+      "description": "DEBIT CARD PURCHASE KMART SOMERSET WES SINGAPORE AUD 3637.00 incl. Foreign Transaction Fee AUD $4.00",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -37.95,
+      "balance": 5079.15,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6yq-46",
+      "description": "DEBIT CARD PURCHASE BIG W SOMERSET WES NEW ZEALAND AUD 2755.00 incl. Foreign Transaction Fee AUD $3.00",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -8.59,
+      "balance": 5070.56,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6yq-47",
+      "description": "DEBIT CARD PURCHASE TARGET CAPE TOWN NEW ZEALAND AUD 1047.00 incl. Foreign Transaction Fee AUD $10.00",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -28.82,
+      "balance": 5041.74,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "inc-6yq-48",
+      "description": "WESTPAC PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": 3850,
+      "balance": 8891.74,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6yq-49",
+      "description": "DEBIT CARD PURCHASE WOOLWORTHS SOMERSET WES UNITED KINGDOM AUD 302.00 incl. Foreign Transaction Fee AUD $5.00",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -250,
+      "balance": 8641.74,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6yq-50",
+      "description": "DEBIT CARD PURCHASE CALTEX CAPE TOWN AUS",
+      "secondaryDescription": "HOME LENDER · REF LN-westpac-9026",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -1680,
+      "balance": 6961.74,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6yq-51",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 745682",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -304.31,
+      "balance": 6657.43,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6yq-52",
+      "description": "INTEREST",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -15.88,
+      "balance": 6641.55,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "close-6yq-53",
+      "description": "CLOSING BALANCE",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": 0,
+      "balance": 6641.55,
+      "type": "closing",
+      "category": "BalanceMarker"
+    }
+  ],
+  "appTransactions": [
+    {
+      "id": "inc-6yq-1",
+      "date": "2026-03-01",
+      "description": "WESTPAC PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 7090.55,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "WESTPAC PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 7090.55
+      }
+    },
+    {
+      "id": "sav-6yq-2",
+      "date": "2026-03-01",
+      "description": "DEBIT CARD PURCHASE TARGET CAPE TOWN AUS — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6840.55,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "DEBIT CARD PURCHASE TARGET CAPE TOWN AUS — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6840.55
+      }
+    },
+    {
+      "id": "mtg-6yq-3",
+      "date": "2026-03-01",
+      "description": "DEBIT CARD PURCHASE TARGET HARTBEESPOOR SINGAPORE AUD 4481.00 incl. Foreign Transaction Fee AUD $1.00 — HOME LENDER · REF LN-westpac-9026",
+      "debit": 1680,
+      "credit": null,
+      "balance": 5160.55,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "DEBIT CARD PURCHASE TARGET HARTBEESPOOR SINGAPORE AUD 4481.00 incl. Foreign Transaction Fee AUD $1.00 — HOME LENDER · REF LN-westpac-9026",
+        "debit": 1680,
+        "credit": null,
+        "balance": 5160.55
+      }
+    },
+    {
+      "id": "pos-6yq-4",
+      "date": "2026-03-01",
+      "description": "INTEREST — CITY",
+      "debit": 45.5,
+      "credit": null,
+      "balance": 5115.05,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "INTEREST — CITY",
+        "debit": 45.5,
+        "credit": null,
+        "balance": 5115.05
+      }
+    },
+    {
+      "id": "pos-6yq-5",
+      "date": "2026-03-02",
+      "description": "INTEREST — CITY",
+      "debit": 62.67,
+      "credit": null,
+      "balance": 5052.38,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-02",
+      "original": {
+        "date": "2026-03-02",
+        "description": "INTEREST — CITY",
+        "debit": 62.67,
+        "credit": null,
+        "balance": 5052.38
+      }
+    },
+    {
+      "id": "pos-6yq-6",
+      "date": "2026-03-02",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 739891",
+      "debit": 70.86,
+      "credit": null,
+      "balance": 4981.52,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-02",
+      "original": {
+        "date": "2026-03-02",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 739891",
+        "debit": 70.86,
+        "credit": null,
+        "balance": 4981.52
+      }
+    },
+    {
+      "id": "dd-6yq-7",
+      "date": "2026-03-03",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 701230 — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 4677.21,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 701230 — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 4677.21
+      }
+    },
+    {
+      "id": "pos-6yq-8",
+      "date": "2026-03-03",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 775390",
+      "debit": 2.76,
+      "credit": null,
+      "balance": 4674.45,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 775390",
+        "debit": 2.76,
+        "credit": null,
+        "balance": 4674.45
+      }
+    },
+    {
+      "id": "pos-6yq-9",
+      "date": "2026-03-03",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 742470 — CITY",
+      "debit": 69.53,
+      "credit": null,
+      "balance": 4604.92,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 742470 — CITY",
+        "debit": 69.53,
+        "credit": null,
+        "balance": 4604.92
+      }
+    },
+    {
+      "id": "dd-6yq-10",
+      "date": "2026-03-04",
+      "description": "INTEREST — SUBSCRIPTION",
+      "debit": 40.27,
+      "credit": null,
+      "balance": 4564.65,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "INTEREST — SUBSCRIPTION",
+        "debit": 40.27,
+        "credit": null,
+        "balance": 4564.65
+      }
+    },
+    {
+      "id": "pos-6yq-11",
+      "date": "2026-03-04",
+      "description": "INTEREST — SUBURB",
+      "debit": 25.66,
+      "credit": null,
+      "balance": 4538.99,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "INTEREST — SUBURB",
+        "debit": 25.66,
+        "credit": null,
+        "balance": 4538.99
+      }
+    },
+    {
+      "id": "p2p-6yq-12",
+      "date": "2026-03-05",
+      "description": "DEBIT CARD PURCHASE MYER CAPE TOWN AUS — OSKO / PAYID",
+      "debit": 63.06,
+      "credit": null,
+      "balance": 4475.93,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "DEBIT CARD PURCHASE MYER CAPE TOWN AUS — OSKO / PAYID",
+        "debit": 63.06,
+        "credit": null,
+        "balance": 4475.93
+      }
+    },
+    {
+      "id": "pos-6yq-13",
+      "date": "2026-03-05",
+      "description": "DEBIT CARD PURCHASE BUNNINGS CAPE TOWN CANADA AUD 2048.00 incl. Foreign Transaction Fee AUD $2.00 — METRO",
+      "debit": 15.56,
+      "credit": null,
+      "balance": 4460.37,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "DEBIT CARD PURCHASE BUNNINGS CAPE TOWN CANADA AUD 2048.00 incl. Foreign Transaction Fee AUD $2.00 — METRO",
+        "debit": 15.56,
+        "credit": null,
+        "balance": 4460.37
+      }
+    },
+    {
+      "id": "pos-6yq-14",
+      "date": "2026-03-05",
+      "description": "DEBIT CARD PURCHASE APPLE.COM/BILL CAPE TOWN AUS — WEB",
+      "debit": 65.41,
+      "credit": null,
+      "balance": 4394.96,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "DEBIT CARD PURCHASE APPLE.COM/BILL CAPE TOWN AUS — WEB",
+        "debit": 65.41,
+        "credit": null,
+        "balance": 4394.96
+      }
+    },
+    {
+      "id": "dd-6yq-15",
+      "date": "2026-03-06",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 701202 — DIRECT DEBIT",
+      "debit": 497.7,
+      "credit": null,
+      "balance": 3897.26,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 701202 — DIRECT DEBIT",
+        "debit": 497.7,
+        "credit": null,
+        "balance": 3897.26
+      }
+    },
+    {
+      "id": "pos-6yq-16",
+      "date": "2026-03-06",
+      "description": "DEBIT CARD PURCHASE ALDI HARTBEESPOOR AUS — CBD",
+      "debit": 22,
+      "credit": null,
+      "balance": 3875.26,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "DEBIT CARD PURCHASE ALDI HARTBEESPOOR AUS — CBD",
+        "debit": 22,
+        "credit": null,
+        "balance": 3875.26
+      }
+    },
+    {
+      "id": "pos-6yq-17",
+      "date": "2026-03-06",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 753108 — CBD",
+      "debit": 19.84,
+      "credit": null,
+      "balance": 3855.42,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 753108 — CBD",
+        "debit": 19.84,
+        "credit": null,
+        "balance": 3855.42
+      }
+    },
+    {
+      "id": "pos-6yq-18",
+      "date": "2026-03-07",
+      "description": "INTEREST",
+      "debit": 16.92,
+      "credit": null,
+      "balance": 3838.5,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-07",
+      "original": {
+        "date": "2026-03-07",
+        "description": "INTEREST",
+        "debit": 16.92,
+        "credit": null,
+        "balance": 3838.5
+      }
+    },
+    {
+      "id": "dd-6yq-19",
+      "date": "2026-03-08",
+      "description": "DEBIT CARD PURCHASE KFC CAPE TOWN AUS — SUBSCRIPTION",
+      "debit": 116.13,
+      "credit": null,
+      "balance": 3722.37,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "DEBIT CARD PURCHASE KFC CAPE TOWN AUS — SUBSCRIPTION",
+        "debit": 116.13,
+        "credit": null,
+        "balance": 3722.37
+      }
+    },
+    {
+      "id": "pos-6yq-20",
+      "date": "2026-03-09",
+      "description": "DEBIT CARD PURCHASE MCDONALDS HARTBEESPOOR AUS — LOCAL",
+      "debit": 16.73,
+      "credit": null,
+      "balance": 3705.64,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-09",
+      "original": {
+        "date": "2026-03-09",
+        "description": "DEBIT CARD PURCHASE MCDONALDS HARTBEESPOOR AUS — LOCAL",
+        "debit": 16.73,
+        "credit": null,
+        "balance": 3705.64
+      }
+    },
+    {
+      "id": "dd-6yq-21",
+      "date": "2026-03-10",
+      "description": "DEBIT CARD PURCHASE COLES JOHANNESBURG UNITED KINGDOM AUD 1695.00 incl. Foreign Transaction Fee AUD $3.00 — DIRECT DEBIT",
+      "debit": 343.65,
+      "credit": null,
+      "balance": 3361.99,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "DEBIT CARD PURCHASE COLES JOHANNESBURG UNITED KINGDOM AUD 1695.00 incl. Foreign Transaction Fee AUD $3.00 — DIRECT DEBIT",
+        "debit": 343.65,
+        "credit": null,
+        "balance": 3361.99
+      }
+    },
+    {
+      "id": "pos-6yq-22",
+      "date": "2026-03-10",
+      "description": "DEBIT CARD PURCHASE SHELL HARTBEESPOOR AUS — SUBURB",
+      "debit": 41.77,
+      "credit": null,
+      "balance": 3320.22,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "DEBIT CARD PURCHASE SHELL HARTBEESPOOR AUS — SUBURB",
+        "debit": 41.77,
+        "credit": null,
+        "balance": 3320.22
+      }
+    },
+    {
+      "id": "pos-6yq-23",
+      "date": "2026-03-10",
+      "description": "INTEREST — CITY",
+      "debit": 94.39,
+      "credit": null,
+      "balance": 3225.83,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "INTEREST — CITY",
+        "debit": 94.39,
+        "credit": null,
+        "balance": 3225.83
+      }
+    },
+    {
+      "id": "pos-6yq-24",
+      "date": "2026-03-12",
+      "description": "INTEREST — HWY",
+      "debit": 77.24,
+      "credit": null,
+      "balance": 3148.59,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-12",
+      "original": {
+        "date": "2026-03-12",
+        "description": "INTEREST — HWY",
+        "debit": 77.24,
+        "credit": null,
+        "balance": 3148.59
+      }
+    },
+    {
+      "id": "pos-6yq-25",
+      "date": "2026-03-12",
+      "description": "DEBIT CARD PURCHASE AGL HARTBEESPOOR AUS",
+      "debit": 50.74,
+      "credit": null,
+      "balance": 3097.85,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-12",
+      "original": {
+        "date": "2026-03-12",
+        "description": "DEBIT CARD PURCHASE AGL HARTBEESPOOR AUS",
+        "debit": 50.74,
+        "credit": null,
+        "balance": 3097.85
+      }
+    },
+    {
+      "id": "dd-6yq-26",
+      "date": "2026-03-13",
+      "description": "DEBIT CARD PURCHASE DISNEY PLUS CAPE TOWN AUS — DIRECT DEBIT",
+      "debit": 212.11,
+      "credit": null,
+      "balance": 2885.74,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Insurance"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "DEBIT CARD PURCHASE DISNEY PLUS CAPE TOWN AUS — DIRECT DEBIT",
+        "debit": 212.11,
+        "credit": null,
+        "balance": 2885.74
+      }
+    },
+    {
+      "id": "pos-6yq-27",
+      "date": "2026-03-13",
+      "description": "DEBIT CARD PURCHASE DISNEY PLUS CAPE TOWN AUS — WEB",
+      "debit": 129.96,
+      "credit": null,
+      "balance": 2755.78,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "DEBIT CARD PURCHASE DISNEY PLUS CAPE TOWN AUS — WEB",
+        "debit": 129.96,
+        "credit": null,
+        "balance": 2755.78
+      }
+    },
+    {
+      "id": "pos-6yq-28",
+      "date": "2026-03-13",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 763380 — HWY",
+      "debit": 51.64,
+      "credit": null,
+      "balance": 2704.14,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 763380 — HWY",
+        "debit": 51.64,
+        "credit": null,
+        "balance": 2704.14
+      }
+    },
+    {
+      "id": "pos-6yq-29",
+      "date": "2026-03-14",
+      "description": "DEBIT CARD PURCHASE ALDI HARTBEESPOOR AUS — SUBURB",
+      "debit": 65.54,
+      "credit": null,
+      "balance": 2638.6,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "DEBIT CARD PURCHASE ALDI HARTBEESPOOR AUS — SUBURB",
+        "debit": 65.54,
+        "credit": null,
+        "balance": 2638.6
+      }
+    },
+    {
+      "id": "inc-6yq-30",
+      "date": "2026-03-15",
+      "description": "WESTPAC PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 6488.6,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "WESTPAC PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 6488.6
+      }
+    },
+    {
+      "id": "sav-6yq-31",
+      "date": "2026-03-15",
+      "description": "DEBIT CARD PURCHASE BIG W SOMERSET WES AUSTRALIA AUD 567.00 incl. Foreign Transaction Fee AUD $2.00 — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6238.6,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "DEBIT CARD PURCHASE BIG W SOMERSET WES AUSTRALIA AUD 567.00 incl. Foreign Transaction Fee AUD $2.00 — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6238.6
+      }
+    },
+    {
+      "id": "p2p-6yq-32",
+      "date": "2026-03-16",
+      "description": "DEBIT CARD PURCHASE 7-ELEVEN CAPE TOWN AUS — OSKO / PAYID",
+      "debit": 82.19,
+      "credit": null,
+      "balance": 6156.41,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "DEBIT CARD PURCHASE 7-ELEVEN CAPE TOWN AUS — OSKO / PAYID",
+        "debit": 82.19,
+        "credit": null,
+        "balance": 6156.41
+      }
+    },
+    {
+      "id": "pos-6yq-33",
+      "date": "2026-03-16",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 748063 — HWY",
+      "debit": 62.02,
+      "credit": null,
+      "balance": 6094.39,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 748063 — HWY",
+        "debit": 62.02,
+        "credit": null,
+        "balance": 6094.39
+      }
+    },
+    {
+      "id": "pos-6yq-34",
+      "date": "2026-03-16",
+      "description": "DEBIT CARD PURCHASE CALTEX SOMERSET WES AUSTRALIA AUD 3622.00 incl. Foreign Transaction Fee AUD $6.00 — WEB",
+      "debit": 175.48,
+      "credit": null,
+      "balance": 5918.91,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "DEBIT CARD PURCHASE CALTEX SOMERSET WES AUSTRALIA AUD 3622.00 incl. Foreign Transaction Fee AUD $6.00 — WEB",
+        "debit": 175.48,
+        "credit": null,
+        "balance": 5918.91
+      }
+    },
+    {
+      "id": "dd-6yq-35",
+      "date": "2026-03-17",
+      "description": "DEBIT CARD PURCHASE TERRY WHITE CHEMIST CAPE TOWN AUSTRALIA AUD 2074.00 incl. Foreign Transaction Fee AUD $8.00 — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 5614.6,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "DEBIT CARD PURCHASE TERRY WHITE CHEMIST CAPE TOWN AUSTRALIA AUD 2074.00 incl. Foreign Transaction Fee AUD $8.00 — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 5614.6
+      }
+    },
+    {
+      "id": "pos-6yq-36",
+      "date": "2026-03-18",
+      "description": "DEBIT CARD PURCHASE NETFLIX CAPE TOWN UNITED STATES AUD 341.00 incl. Foreign Transaction Fee AUD $5.00 — HWY",
+      "debit": 42.45,
+      "credit": null,
+      "balance": 5572.15,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "DEBIT CARD PURCHASE NETFLIX CAPE TOWN UNITED STATES AUD 341.00 incl. Foreign Transaction Fee AUD $5.00 — HWY",
+        "debit": 42.45,
+        "credit": null,
+        "balance": 5572.15
+      }
+    },
+    {
+      "id": "pos-6yq-37",
+      "date": "2026-03-18",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 762512 — CBD",
+      "debit": 24.81,
+      "credit": null,
+      "balance": 5547.34,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 762512 — CBD",
+        "debit": 24.81,
+        "credit": null,
+        "balance": 5547.34
+      }
+    },
+    {
+      "id": "dd-6yq-38",
+      "date": "2026-03-19",
+      "description": "INTEREST — SUBSCRIPTION",
+      "debit": 187.23,
+      "credit": null,
+      "balance": 5360.11,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "INTEREST — SUBSCRIPTION",
+        "debit": 187.23,
+        "credit": null,
+        "balance": 5360.11
+      }
+    },
+    {
+      "id": "pos-6yq-39",
+      "date": "2026-03-20",
+      "description": "INTEREST — LOCAL",
+      "debit": 35.17,
+      "credit": null,
+      "balance": 5324.94,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Alcohol"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "INTEREST — LOCAL",
+        "debit": 35.17,
+        "credit": null,
+        "balance": 5324.94
+      }
+    },
+    {
+      "id": "pos-6yq-40",
+      "date": "2026-03-21",
+      "description": "INTEREST — SUBURB",
+      "debit": 15.66,
+      "credit": null,
+      "balance": 5309.28,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "INTEREST — SUBURB",
+        "debit": 15.66,
+        "credit": null,
+        "balance": 5309.28
+      }
+    },
+    {
+      "id": "pos-6yq-41",
+      "date": "2026-03-22",
+      "description": "INTEREST — LOCAL",
+      "debit": 18.16,
+      "credit": null,
+      "balance": 5291.12,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Alcohol"
+      ],
+      "notes": "effective 2026-03-22",
+      "original": {
+        "date": "2026-03-22",
+        "description": "INTEREST — LOCAL",
+        "debit": 18.16,
+        "credit": null,
+        "balance": 5291.12
+      }
+    },
+    {
+      "id": "pos-6yq-42",
+      "date": "2026-03-24",
+      "description": "INTEREST — WEB",
+      "debit": 143.36,
+      "credit": null,
+      "balance": 5147.76,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-24",
+      "original": {
+        "date": "2026-03-24",
+        "description": "INTEREST — WEB",
+        "debit": 143.36,
+        "credit": null,
+        "balance": 5147.76
+      }
+    },
+    {
+      "id": "pos-6yq-43",
+      "date": "2026-03-25",
+      "description": "INTEREST — SUBURB",
+      "debit": 17.14,
+      "credit": null,
+      "balance": 5130.62,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-25",
+      "original": {
+        "date": "2026-03-25",
+        "description": "INTEREST — SUBURB",
+        "debit": 17.14,
+        "credit": null,
+        "balance": 5130.62
+      }
+    },
+    {
+      "id": "pos-6yq-44",
+      "date": "2026-03-26",
+      "description": "DEBIT CARD PURCHASE KFC CAPE TOWN AUS — MALL",
+      "debit": 13.52,
+      "credit": null,
+      "balance": 5117.1,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-26",
+      "original": {
+        "date": "2026-03-26",
+        "description": "DEBIT CARD PURCHASE KFC CAPE TOWN AUS — MALL",
+        "debit": 13.52,
+        "credit": null,
+        "balance": 5117.1
+      }
+    },
+    {
+      "id": "p2p-6yq-45",
+      "date": "2026-03-27",
+      "description": "DEBIT CARD PURCHASE KMART SOMERSET WES SINGAPORE AUD 3637.00 incl. Foreign Transaction Fee AUD $4.00 — OSKO / PAYID",
+      "debit": 37.95,
+      "credit": null,
+      "balance": 5079.15,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "DEBIT CARD PURCHASE KMART SOMERSET WES SINGAPORE AUD 3637.00 incl. Foreign Transaction Fee AUD $4.00 — OSKO / PAYID",
+        "debit": 37.95,
+        "credit": null,
+        "balance": 5079.15
+      }
+    },
+    {
+      "id": "pos-6yq-46",
+      "date": "2026-03-27",
+      "description": "DEBIT CARD PURCHASE BIG W SOMERSET WES NEW ZEALAND AUD 2755.00 incl. Foreign Transaction Fee AUD $3.00",
+      "debit": 8.59,
+      "credit": null,
+      "balance": 5070.56,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "DEBIT CARD PURCHASE BIG W SOMERSET WES NEW ZEALAND AUD 2755.00 incl. Foreign Transaction Fee AUD $3.00",
+        "debit": 8.59,
+        "credit": null,
+        "balance": 5070.56
+      }
+    },
+    {
+      "id": "pos-6yq-47",
+      "date": "2026-03-28",
+      "description": "DEBIT CARD PURCHASE TARGET CAPE TOWN NEW ZEALAND AUD 1047.00 incl. Foreign Transaction Fee AUD $10.00 — SUBURB",
+      "debit": 28.82,
+      "credit": null,
+      "balance": 5041.74,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "DEBIT CARD PURCHASE TARGET CAPE TOWN NEW ZEALAND AUD 1047.00 incl. Foreign Transaction Fee AUD $10.00 — SUBURB",
+        "debit": 28.82,
+        "credit": null,
+        "balance": 5041.74
+      }
+    },
+    {
+      "id": "inc-6yq-48",
+      "date": "2026-03-29",
+      "description": "WESTPAC PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 8891.74,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "WESTPAC PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 8891.74
+      }
+    },
+    {
+      "id": "sav-6yq-49",
+      "date": "2026-03-29",
+      "description": "DEBIT CARD PURCHASE WOOLWORTHS SOMERSET WES UNITED KINGDOM AUD 302.00 incl. Foreign Transaction Fee AUD $5.00 — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 8641.74,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "DEBIT CARD PURCHASE WOOLWORTHS SOMERSET WES UNITED KINGDOM AUD 302.00 incl. Foreign Transaction Fee AUD $5.00 — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 8641.74
+      }
+    },
+    {
+      "id": "mtg-6yq-50",
+      "date": "2026-03-31",
+      "description": "DEBIT CARD PURCHASE CALTEX CAPE TOWN AUS — HOME LENDER · REF LN-westpac-9026",
+      "debit": 1680,
+      "credit": null,
+      "balance": 6961.74,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "DEBIT CARD PURCHASE CALTEX CAPE TOWN AUS — HOME LENDER · REF LN-westpac-9026",
+        "debit": 1680,
+        "credit": null,
+        "balance": 6961.74
+      }
+    },
+    {
+      "id": "dd-6yq-51",
+      "date": "2026-03-31",
+      "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 745682 — DIRECT DEBIT",
+      "debit": 304.31,
+      "credit": null,
+      "balance": 6657.43,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "DEPOSIT WESTPAC BANKCORPDIRECT DR 745682 — DIRECT DEBIT",
+        "debit": 304.31,
+        "credit": null,
+        "balance": 6657.43
+      }
+    },
+    {
+      "id": "pos-6yq-52",
+      "date": "2026-03-31",
+      "description": "INTEREST — CBD",
+      "debit": 15.88,
+      "credit": null,
+      "balance": 6641.55,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "INTEREST — CBD",
+        "debit": 15.88,
+        "credit": null,
+        "balance": 6641.55
+      }
+    }
+  ],
+  "sampleDescriptions": [
+    "WESTPAC PAYROLL CREDIT",
+    "DEBIT CARD PURCHASE TARGET CAPE TOWN AUS",
+    "DEBIT CARD PURCHASE TARGET HARTBEESPOOR SINGAPORE AUD 4481.00 incl. Foreign Transaction Fee AUD $1.00",
+    "INTEREST",
+    "INTEREST"
+  ]
+}

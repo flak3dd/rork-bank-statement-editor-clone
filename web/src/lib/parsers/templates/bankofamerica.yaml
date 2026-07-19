@@ -1,0 +1,19 @@
+id: bankofamerica
+name: Bank of America
+match:
+  - Bank of America
+  - BankofAmerica
+  - bankofamerica.com
+  - BofA
+dateOrder: mdy
+columnOrder:
+  - date
+  - description
+  - amount
+  - running balance
+noise:
+  - bank of america
+  - account number
+  - beginning balance
+  - ending balance
+currency: USD

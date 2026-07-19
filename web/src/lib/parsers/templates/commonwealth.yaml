@@ -1,0 +1,27 @@
+id: commonwealth
+name: Commonwealth Bank (CommBank)
+match:
+  - Commonwealth Bank
+  - CommBank
+  - CBA
+  - NetBank
+dateOrder: dmy
+columnOrder:
+  - date
+  - description
+  - debit
+  - credit
+  - balance
+noise:
+  - commonwealth bank of australia
+  - bsb
+  - netbank
+  - effective date
+  - transaction date
+  - opening balance
+  - closing balance
+currency: AUD
+descriptionCleanup:
+  - pattern: "\\s+Value Date:.*"
+    replace: ""
+notes: Australian day-first dates; often Date / Transaction / Debit / Credit / Balance.

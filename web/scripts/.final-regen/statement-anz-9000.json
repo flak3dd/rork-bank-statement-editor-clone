@@ -1,0 +1,1943 @@
+{
+  "bank": "anz",
+  "seed": 9000,
+  "config": {
+    "periodStart": "2026-03-01",
+    "periodDays": 31,
+    "openingBalance": 3240.55,
+    "savingsOpeningBalance": 12500,
+    "salaryDescription": "ANZ PAYROLL CREDIT",
+    "salaryAmount": 3850,
+    "salaryFrequency": "fortnightly",
+    "salaryAccount": "PAYROLL",
+    "income": {
+      "amount": 3850,
+      "frequency": "fortnightly"
+    },
+    "rentalDescription": "RENTAL INCOME",
+    "rentalAmount": 650,
+    "hasRentalIncome": true,
+    "savingsDescription": "TRANSFER TO BONUS SAVER",
+    "savingsAmount": 250,
+    "savingsFrequency": "fortnightly",
+    "savingsAccount": "BONUS",
+    "savings": {
+      "amount": 250,
+      "frequency": "fortnightly"
+    },
+    "mortgageDescription": "HOME LOAN REPAYMENT",
+    "mortgageLender": "HOME LENDER",
+    "mortgageAmount": 1680,
+    "mortgageFrequency": "monthly",
+    "loanReference": "LN-anz-9000",
+    "mortgage": {
+      "amount": 1680,
+      "frequency": "monthly"
+    },
+    "cardLast4": "8000",
+    "cardSpendPct": 26,
+    "billsSubsPct": 20,
+    "billSpendMultiplier": 1,
+    "cardSpendIncomeShare": 0.26,
+    "billsIncomeShare": 0.2,
+    "hasDirectDebits": true,
+    "enableDirectDebits": true,
+    "hasSubscriptions": true,
+    "selectedBillCategories": [
+      "Telecom",
+      "Utilities",
+      "Health",
+      "Insurance",
+      "Entertainment",
+      "Financial",
+      "TaxSuper",
+      "Other"
+    ],
+    "seed": 9000,
+    "account": {
+      "accountName": "Everyday Transaction Account",
+      "productName": "Everyday Transaction Account",
+      "holderName": "Regen Customer ANZ",
+      "accountHolder": "Regen Customer ANZ",
+      "customerID": "CUS-anz-9000",
+      "customerNumber": "CUS-1002941",
+      "bsb": "062-000",
+      "bsbCode": "062-000",
+      "accountNumber": "10009000",
+      "interestRate": 0.05,
+      "interestRatePct": 0.05,
+      "brandLabel": "ANZ Demo Bank",
+      "branch": "Main Branch",
+      "timezone": "Australia/Sydney",
+      "bonusAccount": "9876 5432",
+      "bonusBsb": "062-001",
+      "everydayAccount": "1234 5678",
+      "everydayBsb": "062-000"
+    },
+    "address": {
+      "addressLine1": "12 Sample Street",
+      "addressLine2": "",
+      "addressStreet": "12 Sample Street",
+      "addressCity": "Sydney NSW 2000"
+    },
+    "entity": {
+      "entityName": "Statement Demo Bank Pty Ltd",
+      "entityAddress": "100 Demo Tower",
+      "entityCity": "Sydney",
+      "entityState": "NSW",
+      "entityCountry": "Australia"
+    },
+    "directDebits": [
+      {
+        "merchant": "STREAMING SUBSCRIPTION",
+        "baseAmount": 16.99,
+        "intervalDays": 30,
+        "offsetDays": 3,
+        "category": "Entertainment",
+        "isSubscription": true
+      },
+      {
+        "merchant": "MOBILE PLAN",
+        "baseAmount": 49,
+        "intervalDays": 30,
+        "offsetDays": 7,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "HEALTH FUND",
+        "baseAmount": 128.4,
+        "intervalDays": 14,
+        "offsetDays": 2,
+        "category": "Health"
+      },
+      {
+        "merchant": "INSURANCE PREMIUM",
+        "baseAmount": 89.5,
+        "intervalDays": 30,
+        "offsetDays": 12,
+        "category": "Insurance"
+      },
+      {
+        "merchant": "INTERNET NBN",
+        "baseAmount": 79,
+        "intervalDays": 30,
+        "offsetDays": 18,
+        "category": "Telecom",
+        "isSubscription": true
+      },
+      {
+        "merchant": "ELECTRICITY",
+        "baseAmount": 145,
+        "intervalDays": 30,
+        "offsetDays": 9,
+        "category": "Utilities"
+      },
+      {
+        "merchant": "COUNCIL RATES",
+        "baseAmount": 210,
+        "intervalDays": 90,
+        "offsetDays": 5,
+        "category": "Utilities"
+      }
+    ]
+  },
+  "summary": {
+    "openingBalance": 3240.55,
+    "closingBalance": 7946.54,
+    "totalCredits": 12850,
+    "totalDebits": 8144.01,
+    "transactionCount": 50,
+    "expectedIncome": 12200
+  },
+  "periodEnd": "2026-03-31",
+  "quality": {
+    "score": 100,
+    "grade": "A",
+    "ok": true
+  },
+  "qualityAfterRewrite": {
+    "score": 86,
+    "grade": "B",
+    "ok": false
+  },
+  "rows": [
+    {
+      "id": "open-6y0-0",
+      "description": "OPENING BALANCE",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 0,
+      "balance": 3240.55,
+      "type": "opening",
+      "category": "BalanceMarker"
+    },
+    {
+      "id": "inc-6y0-1",
+      "description": "ANZ PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": 3850,
+      "balance": 7090.55,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6y0-2",
+      "description": "PAYMENT TO ROBERT WILSON 163585",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -250,
+      "balance": 6840.55,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6y0-3",
+      "description": "ANZ INTERNET BANKING BPAY MM ELECTRICAL {828285}",
+      "secondaryDescription": "HOME LENDER · REF LN-anz-9000",
+      "date": "2026-03-01",
+      "effectiveDate": "2026-03-01",
+      "amount": -1680,
+      "balance": 5160.55,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "pos-6y0-4",
+      "description": "TRANSFER FROM AMAZON MARKETPLACE",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-02",
+      "effectiveDate": "2026-03-02",
+      "amount": -45.3,
+      "balance": 5115.25,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "dd-6y0-5",
+      "description": "TRANSFER FROM IGA",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-03",
+      "effectiveDate": "2026-03-03",
+      "amount": -321.43,
+      "balance": 4793.82,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "dd-6y0-6",
+      "description": "PENDING - EFTPOS ORIGIN ENERGY",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -42.53,
+      "balance": 4751.29,
+      "type": "direct_debit",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6y0-7",
+      "description": "PENDING - EFTPOS CALTEX",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-04",
+      "effectiveDate": "2026-03-04",
+      "amount": -6.75,
+      "balance": 4744.54,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "p2p-6y0-8",
+      "description": "PAYMENT TO LISA BROWN 862213",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -83.53,
+      "balance": 4661.01,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6y0-9",
+      "description": "TRANSFER FROM CALTEX",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-05",
+      "effectiveDate": "2026-03-05",
+      "amount": -87.36,
+      "balance": 4573.65,
+      "type": "card",
+      "category": "Alcohol"
+    },
+    {
+      "id": "dd-6y0-10",
+      "description": "EFTPOS SHELL AU",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -525.71,
+      "balance": 4047.94,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6y0-11",
+      "description": "PENDING - PAYMENT FROM EMILY WATSON inv 7118 MDE",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-06",
+      "effectiveDate": "2026-03-06",
+      "amount": -64.88,
+      "balance": 3983.06,
+      "type": "card",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6y0-12",
+      "description": "VISA DEBIT DEPOSIT COLES 39810137",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-07",
+      "effectiveDate": "2026-03-07",
+      "amount": -28.81,
+      "balance": 3954.25,
+      "type": "card",
+      "category": "Retail"
+    },
+    {
+      "id": "dd-6y0-13",
+      "description": "EFTPOS AGL AU",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -122.66,
+      "balance": 3831.59,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6y0-14",
+      "description": "VISA DEBIT PURCHASE CARD VISA CREDIT CARD 4567 CALTEX",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-08",
+      "effectiveDate": "2026-03-08",
+      "amount": -116.94,
+      "balance": 3714.65,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "dd-6y0-15",
+      "description": "PAYMENT TO LISA BROWN 167167",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -362.99,
+      "balance": 3351.66,
+      "type": "direct_debit",
+      "category": "Utilities"
+    },
+    {
+      "id": "pos-6y0-16",
+      "description": "VISA DEBIT DEPOSIT TELSTRA 32691435",
+      "secondaryDescription": "MALL",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -10.48,
+      "balance": 3341.18,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6y0-17",
+      "description": "PENDING - MTS CHEMIST WAREHOUSE Inv 5968 BROWN",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-10",
+      "effectiveDate": "2026-03-10",
+      "amount": -61.19,
+      "balance": 3279.99,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6y0-18",
+      "description": "ANZ MOBILE BANKING PAYMENT 873512 TO ROBERT WILSON",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-11",
+      "effectiveDate": "2026-03-11",
+      "amount": -36.04,
+      "balance": 3243.95,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6y0-19",
+      "description": "PENDING - MTS AMAZON AU Inv 1802 CHEN",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-12",
+      "effectiveDate": "2026-03-12",
+      "amount": -188.47,
+      "balance": 3055.48,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6y0-20",
+      "description": "ANZ INTERNET BANKING BPAY AGL ENERGY {811598}",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-12",
+      "effectiveDate": "2026-03-12",
+      "amount": -36.47,
+      "balance": 3019.01,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6y0-21",
+      "description": "PENDING - PAYMENT FROM JAMES SMITH inv 7953 MDE",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -224.05,
+      "balance": 2794.96,
+      "type": "direct_debit",
+      "category": "Insurance"
+    },
+    {
+      "id": "pos-6y0-22",
+      "description": "PAYMENT TO DAVID NGUYEN 353429",
+      "secondaryDescription": "CITY",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -79.83,
+      "balance": 2715.13,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6y0-23",
+      "description": "ANZ MOBILE BANKING PAYMENT 524818 TO EMILY WATSON",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-13",
+      "effectiveDate": "2026-03-13",
+      "amount": -10.34,
+      "balance": 2704.79,
+      "type": "card",
+      "category": "Entertainment"
+    },
+    {
+      "id": "pos-6y0-24",
+      "description": "ANZ INTERNET BANKING BPAY DC STREAKY BAY {734140}",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -13.66,
+      "balance": 2691.13,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6y0-25",
+      "description": "EFTPOS KFC STREAKY BAY AU",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-14",
+      "effectiveDate": "2026-03-14",
+      "amount": -41.28,
+      "balance": 2649.85,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "inc-6y0-26",
+      "description": "ANZ PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 3850,
+      "balance": 6499.85,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "rent-6y0-27",
+      "description": "EFTPOS COLES STREAKY BAY AU",
+      "secondaryDescription": "DIRECT CREDIT",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": 650,
+      "balance": 7149.85,
+      "type": "rental",
+      "category": "Other"
+    },
+    {
+      "id": "sav-6y0-28",
+      "description": "TRANSFER FROM WESTFIELD",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-15",
+      "effectiveDate": "2026-03-15",
+      "amount": -250,
+      "balance": 6899.85,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "rent-6y0-29",
+      "description": "PENDING - MTS TARGET Inv 1082 BROWN",
+      "secondaryDescription": "DIRECT CREDIT",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": 650,
+      "balance": 7549.85,
+      "type": "rental",
+      "category": "Other"
+    },
+    {
+      "id": "p2p-6y0-30",
+      "description": "EFTPOS AMAZON AU STREAKY BAY AU",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -75.51,
+      "balance": 7474.34,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6y0-31",
+      "description": "VISA DEBIT PURCHASE CARD VISA DEBIT PURCHASE CARD 5076 SHELL",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-16",
+      "effectiveDate": "2026-03-16",
+      "amount": -46.08,
+      "balance": 7428.26,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "dd-6y0-32",
+      "description": "EFTPOS REBEL SPORT STREAKY BAY AU",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -321.43,
+      "balance": 7106.83,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "pos-6y0-33",
+      "description": "VISA DEBIT PURCHASE CARD VISA CREDIT CARD 4567 IGA",
+      "secondaryDescription": "RETAIL",
+      "date": "2026-03-17",
+      "effectiveDate": "2026-03-17",
+      "amount": -118.69,
+      "balance": 6988.14,
+      "type": "card",
+      "category": "HomeImprovement"
+    },
+    {
+      "id": "pos-6y0-34",
+      "description": "VISA DEBIT DEPOSIT MYER 34356078",
+      "date": "2026-03-18",
+      "effectiveDate": "2026-03-18",
+      "amount": -9.01,
+      "balance": 6979.13,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "dd-6y0-35",
+      "description": "PENDING - EFTPOS AMAZON AU",
+      "secondaryDescription": "SUBSCRIPTION",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -197.77,
+      "balance": 6781.36,
+      "type": "direct_debit",
+      "category": "Telecom"
+    },
+    {
+      "id": "pos-6y0-36",
+      "description": "ANZ MOBILE BANKING PAYMENT 467202 TO RACHEL TAYLOR",
+      "secondaryDescription": "LOCAL",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -16.32,
+      "balance": 6765.04,
+      "type": "card",
+      "category": "Alcohol"
+    },
+    {
+      "id": "pos-6y0-37",
+      "description": "PENDING - MTS WOOLWORTHS ONLINE Inv 7870 SMITH",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-19",
+      "effectiveDate": "2026-03-19",
+      "amount": -33.98,
+      "balance": 6731.06,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6y0-38",
+      "description": "EFTPOS MCDONALDS STREAKY BAY AU",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -27.59,
+      "balance": 6703.47,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6y0-39",
+      "description": "ANZ MOBILE BANKING PAYMENT 977060 TO SARAH JOHNSON",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-20",
+      "effectiveDate": "2026-03-20",
+      "amount": -51.9,
+      "balance": 6651.57,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "pos-6y0-40",
+      "description": "PENDING - POS AUTHORISATION UBER EATS AU AU Card Used VISA DEBIT PURCHASE CARD 5076",
+      "secondaryDescription": "CBD",
+      "date": "2026-03-21",
+      "effectiveDate": "2026-03-21",
+      "amount": -26.38,
+      "balance": 6625.19,
+      "type": "card",
+      "category": "Dining"
+    },
+    {
+      "id": "pos-6y0-41",
+      "description": "EFTPOS COLES EXPRESS AU",
+      "secondaryDescription": "SUBURB",
+      "date": "2026-03-22",
+      "effectiveDate": "2026-03-22",
+      "amount": -19.62,
+      "balance": 6605.57,
+      "type": "card",
+      "category": "Groceries"
+    },
+    {
+      "id": "pos-6y0-42",
+      "description": "VISA DEBIT DEPOSIT KFC 36547615",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -16.9,
+      "balance": 6588.67,
+      "type": "debit",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6y0-43",
+      "description": "EFTPOS SHELL AU",
+      "secondaryDescription": "WEB",
+      "date": "2026-03-23",
+      "effectiveDate": "2026-03-23",
+      "amount": -61.71,
+      "balance": 6526.96,
+      "type": "card",
+      "category": "OnlineShopping"
+    },
+    {
+      "id": "p2p-6y0-44",
+      "description": "PENDING - EFTPOS COUNCIL RATES",
+      "secondaryDescription": "OSKO / PAYID",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -48.59,
+      "balance": 6478.37,
+      "type": "peer",
+      "category": "Transfer"
+    },
+    {
+      "id": "pos-6y0-45",
+      "description": "ANZ MOBILE BANKING PAYMENT 114080 TO JAMES SMITH",
+      "secondaryDescription": "METRO",
+      "date": "2026-03-27",
+      "effectiveDate": "2026-03-27",
+      "amount": -51.6,
+      "balance": 6426.77,
+      "type": "card",
+      "category": "Transport"
+    },
+    {
+      "id": "pos-6y0-46",
+      "description": "ANZ INTERNET BANKING BPAY ORIGIN ENERGY {463177}",
+      "secondaryDescription": "HWY",
+      "date": "2026-03-28",
+      "effectiveDate": "2026-03-28",
+      "amount": -78.8,
+      "balance": 6347.97,
+      "type": "card",
+      "category": "Fuel"
+    },
+    {
+      "id": "inc-6y0-47",
+      "description": "ANZ PAYROLL CREDIT",
+      "secondaryDescription": "FROM PAYROLL",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": 3850,
+      "balance": 10197.97,
+      "type": "credit",
+      "category": "Wages"
+    },
+    {
+      "id": "sav-6y0-48",
+      "description": "PENDING - PAYMENT FROM EMILY WATSON inv 1710 MDE",
+      "secondaryDescription": "TO BONUS",
+      "date": "2026-03-29",
+      "effectiveDate": "2026-03-29",
+      "amount": -250,
+      "balance": 9947.97,
+      "type": "transfer",
+      "category": "Savings"
+    },
+    {
+      "id": "mtg-6y0-49",
+      "description": "PENDING - PAYMENT FROM LISA BROWN inv 7008 MDE",
+      "secondaryDescription": "HOME LENDER · REF LN-anz-9000",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -1680,
+      "balance": 8267.97,
+      "type": "debit",
+      "category": "Financial"
+    },
+    {
+      "id": "dd-6y0-50",
+      "description": "PENDING - EFTPOS THE ICONIC",
+      "secondaryDescription": "DIRECT DEBIT",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": -321.43,
+      "balance": 7946.54,
+      "type": "direct_debit",
+      "category": "Health"
+    },
+    {
+      "id": "close-6y0-51",
+      "description": "CLOSING BALANCE",
+      "date": "2026-03-31",
+      "effectiveDate": "2026-03-31",
+      "amount": 0,
+      "balance": 7946.54,
+      "type": "closing",
+      "category": "BalanceMarker"
+    }
+  ],
+  "appTransactions": [
+    {
+      "id": "inc-6y0-1",
+      "date": "2026-03-01",
+      "description": "ANZ PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 7090.55,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "ANZ PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 7090.55
+      }
+    },
+    {
+      "id": "sav-6y0-2",
+      "date": "2026-03-01",
+      "description": "PAYMENT TO ROBERT WILSON 163585 — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6840.55,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "PAYMENT TO ROBERT WILSON 163585 — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6840.55
+      }
+    },
+    {
+      "id": "mtg-6y0-3",
+      "date": "2026-03-01",
+      "description": "ANZ INTERNET BANKING BPAY MM ELECTRICAL {828285} — HOME LENDER · REF LN-anz-9000",
+      "debit": 1680,
+      "credit": null,
+      "balance": 5160.55,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-01",
+      "original": {
+        "date": "2026-03-01",
+        "description": "ANZ INTERNET BANKING BPAY MM ELECTRICAL {828285} — HOME LENDER · REF LN-anz-9000",
+        "debit": 1680,
+        "credit": null,
+        "balance": 5160.55
+      }
+    },
+    {
+      "id": "pos-6y0-4",
+      "date": "2026-03-02",
+      "description": "TRANSFER FROM AMAZON MARKETPLACE — HWY",
+      "debit": 45.3,
+      "credit": null,
+      "balance": 5115.25,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-02",
+      "original": {
+        "date": "2026-03-02",
+        "description": "TRANSFER FROM AMAZON MARKETPLACE — HWY",
+        "debit": 45.3,
+        "credit": null,
+        "balance": 5115.25
+      }
+    },
+    {
+      "id": "dd-6y0-5",
+      "date": "2026-03-03",
+      "description": "TRANSFER FROM IGA — DIRECT DEBIT",
+      "debit": 321.43,
+      "credit": null,
+      "balance": 4793.82,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-03",
+      "original": {
+        "date": "2026-03-03",
+        "description": "TRANSFER FROM IGA — DIRECT DEBIT",
+        "debit": 321.43,
+        "credit": null,
+        "balance": 4793.82
+      }
+    },
+    {
+      "id": "dd-6y0-6",
+      "date": "2026-03-04",
+      "description": "PENDING - EFTPOS ORIGIN ENERGY — SUBSCRIPTION",
+      "debit": 42.53,
+      "credit": null,
+      "balance": 4751.29,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "PENDING - EFTPOS ORIGIN ENERGY — SUBSCRIPTION",
+        "debit": 42.53,
+        "credit": null,
+        "balance": 4751.29
+      }
+    },
+    {
+      "id": "pos-6y0-7",
+      "date": "2026-03-04",
+      "description": "PENDING - EFTPOS CALTEX — CBD",
+      "debit": 6.75,
+      "credit": null,
+      "balance": 4744.54,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-04",
+      "original": {
+        "date": "2026-03-04",
+        "description": "PENDING - EFTPOS CALTEX — CBD",
+        "debit": 6.75,
+        "credit": null,
+        "balance": 4744.54
+      }
+    },
+    {
+      "id": "p2p-6y0-8",
+      "date": "2026-03-05",
+      "description": "PAYMENT TO LISA BROWN 862213 — OSKO / PAYID",
+      "debit": 83.53,
+      "credit": null,
+      "balance": 4661.01,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "PAYMENT TO LISA BROWN 862213 — OSKO / PAYID",
+        "debit": 83.53,
+        "credit": null,
+        "balance": 4661.01
+      }
+    },
+    {
+      "id": "pos-6y0-9",
+      "date": "2026-03-05",
+      "description": "TRANSFER FROM CALTEX — LOCAL",
+      "debit": 87.36,
+      "credit": null,
+      "balance": 4573.65,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Alcohol"
+      ],
+      "notes": "effective 2026-03-05",
+      "original": {
+        "date": "2026-03-05",
+        "description": "TRANSFER FROM CALTEX — LOCAL",
+        "debit": 87.36,
+        "credit": null,
+        "balance": 4573.65
+      }
+    },
+    {
+      "id": "dd-6y0-10",
+      "date": "2026-03-06",
+      "description": "EFTPOS SHELL AU — DIRECT DEBIT",
+      "debit": 525.71,
+      "credit": null,
+      "balance": 4047.94,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "EFTPOS SHELL AU — DIRECT DEBIT",
+        "debit": 525.71,
+        "credit": null,
+        "balance": 4047.94
+      }
+    },
+    {
+      "id": "pos-6y0-11",
+      "date": "2026-03-06",
+      "description": "PENDING - PAYMENT FROM EMILY WATSON inv 7118 MDE — LOCAL",
+      "debit": 64.88,
+      "credit": null,
+      "balance": 3983.06,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Health"
+      ],
+      "notes": "effective 2026-03-06",
+      "original": {
+        "date": "2026-03-06",
+        "description": "PENDING - PAYMENT FROM EMILY WATSON inv 7118 MDE — LOCAL",
+        "debit": 64.88,
+        "credit": null,
+        "balance": 3983.06
+      }
+    },
+    {
+      "id": "pos-6y0-12",
+      "date": "2026-03-07",
+      "description": "VISA DEBIT DEPOSIT COLES 39810137 — MALL",
+      "debit": 28.81,
+      "credit": null,
+      "balance": 3954.25,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Retail"
+      ],
+      "notes": "effective 2026-03-07",
+      "original": {
+        "date": "2026-03-07",
+        "description": "VISA DEBIT DEPOSIT COLES 39810137 — MALL",
+        "debit": 28.81,
+        "credit": null,
+        "balance": 3954.25
+      }
+    },
+    {
+      "id": "dd-6y0-13",
+      "date": "2026-03-08",
+      "description": "EFTPOS AGL AU — SUBSCRIPTION",
+      "debit": 122.66,
+      "credit": null,
+      "balance": 3831.59,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "EFTPOS AGL AU — SUBSCRIPTION",
+        "debit": 122.66,
+        "credit": null,
+        "balance": 3831.59
+      }
+    },
+    {
+      "id": "pos-6y0-14",
+      "date": "2026-03-08",
+      "description": "VISA DEBIT PURCHASE CARD VISA CREDIT CARD 4567 CALTEX — WEB",
+      "debit": 116.94,
+      "credit": null,
+      "balance": 3714.65,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-08",
+      "original": {
+        "date": "2026-03-08",
+        "description": "VISA DEBIT PURCHASE CARD VISA CREDIT CARD 4567 CALTEX — WEB",
+        "debit": 116.94,
+        "credit": null,
+        "balance": 3714.65
+      }
+    },
+    {
+      "id": "dd-6y0-15",
+      "date": "2026-03-10",
+      "description": "PAYMENT TO LISA BROWN 167167 — DIRECT DEBIT",
+      "debit": 362.99,
+      "credit": null,
+      "balance": 3351.66,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Utilities"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "PAYMENT TO LISA BROWN 167167 — DIRECT DEBIT",
+        "debit": 362.99,
+        "credit": null,
+        "balance": 3351.66
+      }
+    },
+    {
+      "id": "pos-6y0-16",
+      "date": "2026-03-10",
+      "description": "VISA DEBIT DEPOSIT TELSTRA 32691435 — MALL",
+      "debit": 10.48,
+      "credit": null,
+      "balance": 3341.18,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "VISA DEBIT DEPOSIT TELSTRA 32691435 — MALL",
+        "debit": 10.48,
+        "credit": null,
+        "balance": 3341.18
+      }
+    },
+    {
+      "id": "pos-6y0-17",
+      "date": "2026-03-10",
+      "description": "PENDING - MTS CHEMIST WAREHOUSE Inv 5968 BROWN — SUBURB",
+      "debit": 61.19,
+      "credit": null,
+      "balance": 3279.99,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-10",
+      "original": {
+        "date": "2026-03-10",
+        "description": "PENDING - MTS CHEMIST WAREHOUSE Inv 5968 BROWN — SUBURB",
+        "debit": 61.19,
+        "credit": null,
+        "balance": 3279.99
+      }
+    },
+    {
+      "id": "pos-6y0-18",
+      "date": "2026-03-11",
+      "description": "ANZ MOBILE BANKING PAYMENT 873512 TO ROBERT WILSON — METRO",
+      "debit": 36.04,
+      "credit": null,
+      "balance": 3243.95,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-11",
+      "original": {
+        "date": "2026-03-11",
+        "description": "ANZ MOBILE BANKING PAYMENT 873512 TO ROBERT WILSON — METRO",
+        "debit": 36.04,
+        "credit": null,
+        "balance": 3243.95
+      }
+    },
+    {
+      "id": "pos-6y0-19",
+      "date": "2026-03-12",
+      "description": "PENDING - MTS AMAZON AU Inv 1802 CHEN — WEB",
+      "debit": 188.47,
+      "credit": null,
+      "balance": 3055.48,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-12",
+      "original": {
+        "date": "2026-03-12",
+        "description": "PENDING - MTS AMAZON AU Inv 1802 CHEN — WEB",
+        "debit": 188.47,
+        "credit": null,
+        "balance": 3055.48
+      }
+    },
+    {
+      "id": "pos-6y0-20",
+      "date": "2026-03-12",
+      "description": "ANZ INTERNET BANKING BPAY AGL ENERGY {811598} — METRO",
+      "debit": 36.47,
+      "credit": null,
+      "balance": 3019.01,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-12",
+      "original": {
+        "date": "2026-03-12",
+        "description": "ANZ INTERNET BANKING BPAY AGL ENERGY {811598} — METRO",
+        "debit": 36.47,
+        "credit": null,
+        "balance": 3019.01
+      }
+    },
+    {
+      "id": "dd-6y0-21",
+      "date": "2026-03-13",
+      "description": "PENDING - PAYMENT FROM JAMES SMITH inv 7953 MDE — DIRECT DEBIT",
+      "debit": 224.05,
+      "credit": null,
+      "balance": 2794.96,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Insurance"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "PENDING - PAYMENT FROM JAMES SMITH inv 7953 MDE — DIRECT DEBIT",
+        "debit": 224.05,
+        "credit": null,
+        "balance": 2794.96
+      }
+    },
+    {
+      "id": "pos-6y0-22",
+      "date": "2026-03-13",
+      "description": "PAYMENT TO DAVID NGUYEN 353429 — CITY",
+      "debit": 79.83,
+      "credit": null,
+      "balance": 2715.13,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "PAYMENT TO DAVID NGUYEN 353429 — CITY",
+        "debit": 79.83,
+        "credit": null,
+        "balance": 2715.13
+      }
+    },
+    {
+      "id": "pos-6y0-23",
+      "date": "2026-03-13",
+      "description": "ANZ MOBILE BANKING PAYMENT 524818 TO EMILY WATSON — WEB",
+      "debit": 10.34,
+      "credit": null,
+      "balance": 2704.79,
+      "category": "Entertainment",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Entertainment"
+      ],
+      "notes": "effective 2026-03-13",
+      "original": {
+        "date": "2026-03-13",
+        "description": "ANZ MOBILE BANKING PAYMENT 524818 TO EMILY WATSON — WEB",
+        "debit": 10.34,
+        "credit": null,
+        "balance": 2704.79
+      }
+    },
+    {
+      "id": "pos-6y0-24",
+      "date": "2026-03-14",
+      "description": "ANZ INTERNET BANKING BPAY DC STREAKY BAY {734140} — METRO",
+      "debit": 13.66,
+      "credit": null,
+      "balance": 2691.13,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "ANZ INTERNET BANKING BPAY DC STREAKY BAY {734140} — METRO",
+        "debit": 13.66,
+        "credit": null,
+        "balance": 2691.13
+      }
+    },
+    {
+      "id": "pos-6y0-25",
+      "date": "2026-03-14",
+      "description": "EFTPOS KFC STREAKY BAY AU — RETAIL",
+      "debit": 41.28,
+      "credit": null,
+      "balance": 2649.85,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-14",
+      "original": {
+        "date": "2026-03-14",
+        "description": "EFTPOS KFC STREAKY BAY AU — RETAIL",
+        "debit": 41.28,
+        "credit": null,
+        "balance": 2649.85
+      }
+    },
+    {
+      "id": "inc-6y0-26",
+      "date": "2026-03-15",
+      "description": "ANZ PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 6499.85,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "ANZ PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 6499.85
+      }
+    },
+    {
+      "id": "rent-6y0-27",
+      "date": "2026-03-15",
+      "description": "EFTPOS COLES STREAKY BAY AU — DIRECT CREDIT",
+      "debit": null,
+      "credit": 650,
+      "balance": 7149.85,
+      "category": "Other",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "rental",
+        "Other"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "EFTPOS COLES STREAKY BAY AU — DIRECT CREDIT",
+        "debit": null,
+        "credit": 650,
+        "balance": 7149.85
+      }
+    },
+    {
+      "id": "sav-6y0-28",
+      "date": "2026-03-15",
+      "description": "TRANSFER FROM WESTFIELD — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 6899.85,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-15",
+      "original": {
+        "date": "2026-03-15",
+        "description": "TRANSFER FROM WESTFIELD — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 6899.85
+      }
+    },
+    {
+      "id": "rent-6y0-29",
+      "date": "2026-03-16",
+      "description": "PENDING - MTS TARGET Inv 1082 BROWN — DIRECT CREDIT",
+      "debit": null,
+      "credit": 650,
+      "balance": 7549.85,
+      "category": "Other",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "rental",
+        "Other"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "PENDING - MTS TARGET Inv 1082 BROWN — DIRECT CREDIT",
+        "debit": null,
+        "credit": 650,
+        "balance": 7549.85
+      }
+    },
+    {
+      "id": "p2p-6y0-30",
+      "date": "2026-03-16",
+      "description": "EFTPOS AMAZON AU STREAKY BAY AU — OSKO / PAYID",
+      "debit": 75.51,
+      "credit": null,
+      "balance": 7474.34,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "EFTPOS AMAZON AU STREAKY BAY AU — OSKO / PAYID",
+        "debit": 75.51,
+        "credit": null,
+        "balance": 7474.34
+      }
+    },
+    {
+      "id": "pos-6y0-31",
+      "date": "2026-03-16",
+      "description": "VISA DEBIT PURCHASE CARD VISA DEBIT PURCHASE CARD 5076 SHELL — SUBURB",
+      "debit": 46.08,
+      "credit": null,
+      "balance": 7428.26,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-16",
+      "original": {
+        "date": "2026-03-16",
+        "description": "VISA DEBIT PURCHASE CARD VISA DEBIT PURCHASE CARD 5076 SHELL — SUBURB",
+        "debit": 46.08,
+        "credit": null,
+        "balance": 7428.26
+      }
+    },
+    {
+      "id": "dd-6y0-32",
+      "date": "2026-03-17",
+      "description": "EFTPOS REBEL SPORT STREAKY BAY AU — DIRECT DEBIT",
+      "debit": 321.43,
+      "credit": null,
+      "balance": 7106.83,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "EFTPOS REBEL SPORT STREAKY BAY AU — DIRECT DEBIT",
+        "debit": 321.43,
+        "credit": null,
+        "balance": 7106.83
+      }
+    },
+    {
+      "id": "pos-6y0-33",
+      "date": "2026-03-17",
+      "description": "VISA DEBIT PURCHASE CARD VISA CREDIT CARD 4567 IGA — RETAIL",
+      "debit": 118.69,
+      "credit": null,
+      "balance": 6988.14,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "HomeImprovement"
+      ],
+      "notes": "effective 2026-03-17",
+      "original": {
+        "date": "2026-03-17",
+        "description": "VISA DEBIT PURCHASE CARD VISA CREDIT CARD 4567 IGA — RETAIL",
+        "debit": 118.69,
+        "credit": null,
+        "balance": 6988.14
+      }
+    },
+    {
+      "id": "pos-6y0-34",
+      "date": "2026-03-18",
+      "description": "VISA DEBIT DEPOSIT MYER 34356078",
+      "debit": 9.01,
+      "credit": null,
+      "balance": 6979.13,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-18",
+      "original": {
+        "date": "2026-03-18",
+        "description": "VISA DEBIT DEPOSIT MYER 34356078",
+        "debit": 9.01,
+        "credit": null,
+        "balance": 6979.13
+      }
+    },
+    {
+      "id": "dd-6y0-35",
+      "date": "2026-03-19",
+      "description": "PENDING - EFTPOS AMAZON AU — SUBSCRIPTION",
+      "debit": 197.77,
+      "credit": null,
+      "balance": 6781.36,
+      "category": "Utilities",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Telecom"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "PENDING - EFTPOS AMAZON AU — SUBSCRIPTION",
+        "debit": 197.77,
+        "credit": null,
+        "balance": 6781.36
+      }
+    },
+    {
+      "id": "pos-6y0-36",
+      "date": "2026-03-19",
+      "description": "ANZ MOBILE BANKING PAYMENT 467202 TO RACHEL TAYLOR — LOCAL",
+      "debit": 16.32,
+      "credit": null,
+      "balance": 6765.04,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Alcohol"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "ANZ MOBILE BANKING PAYMENT 467202 TO RACHEL TAYLOR — LOCAL",
+        "debit": 16.32,
+        "credit": null,
+        "balance": 6765.04
+      }
+    },
+    {
+      "id": "pos-6y0-37",
+      "date": "2026-03-19",
+      "description": "PENDING - MTS WOOLWORTHS ONLINE Inv 7870 SMITH — METRO",
+      "debit": 33.98,
+      "credit": null,
+      "balance": 6731.06,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-19",
+      "original": {
+        "date": "2026-03-19",
+        "description": "PENDING - MTS WOOLWORTHS ONLINE Inv 7870 SMITH — METRO",
+        "debit": 33.98,
+        "credit": null,
+        "balance": 6731.06
+      }
+    },
+    {
+      "id": "pos-6y0-38",
+      "date": "2026-03-20",
+      "description": "EFTPOS MCDONALDS STREAKY BAY AU — CBD",
+      "debit": 27.59,
+      "credit": null,
+      "balance": 6703.47,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "EFTPOS MCDONALDS STREAKY BAY AU — CBD",
+        "debit": 27.59,
+        "credit": null,
+        "balance": 6703.47
+      }
+    },
+    {
+      "id": "pos-6y0-39",
+      "date": "2026-03-20",
+      "description": "ANZ MOBILE BANKING PAYMENT 977060 TO SARAH JOHNSON — WEB",
+      "debit": 51.9,
+      "credit": null,
+      "balance": 6651.57,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-20",
+      "original": {
+        "date": "2026-03-20",
+        "description": "ANZ MOBILE BANKING PAYMENT 977060 TO SARAH JOHNSON — WEB",
+        "debit": 51.9,
+        "credit": null,
+        "balance": 6651.57
+      }
+    },
+    {
+      "id": "pos-6y0-40",
+      "date": "2026-03-21",
+      "description": "PENDING - POS AUTHORISATION UBER EATS AU AU Card Used VISA DEBIT PURCHASE CARD 5076 — CBD",
+      "debit": 26.38,
+      "credit": null,
+      "balance": 6625.19,
+      "category": "Dining",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Dining"
+      ],
+      "notes": "effective 2026-03-21",
+      "original": {
+        "date": "2026-03-21",
+        "description": "PENDING - POS AUTHORISATION UBER EATS AU AU Card Used VISA DEBIT PURCHASE CARD 5076 — CBD",
+        "debit": 26.38,
+        "credit": null,
+        "balance": 6625.19
+      }
+    },
+    {
+      "id": "pos-6y0-41",
+      "date": "2026-03-22",
+      "description": "EFTPOS COLES EXPRESS AU — SUBURB",
+      "debit": 19.62,
+      "credit": null,
+      "balance": 6605.57,
+      "category": "Groceries",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Groceries"
+      ],
+      "notes": "effective 2026-03-22",
+      "original": {
+        "date": "2026-03-22",
+        "description": "EFTPOS COLES EXPRESS AU — SUBURB",
+        "debit": 19.62,
+        "credit": null,
+        "balance": 6605.57
+      }
+    },
+    {
+      "id": "pos-6y0-42",
+      "date": "2026-03-23",
+      "description": "VISA DEBIT DEPOSIT KFC 36547615",
+      "debit": 16.9,
+      "credit": null,
+      "balance": 6588.67,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "VISA DEBIT DEPOSIT KFC 36547615",
+        "debit": 16.9,
+        "credit": null,
+        "balance": 6588.67
+      }
+    },
+    {
+      "id": "pos-6y0-43",
+      "date": "2026-03-23",
+      "description": "EFTPOS SHELL AU — WEB",
+      "debit": 61.71,
+      "credit": null,
+      "balance": 6526.96,
+      "category": "Shopping",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "OnlineShopping"
+      ],
+      "notes": "effective 2026-03-23",
+      "original": {
+        "date": "2026-03-23",
+        "description": "EFTPOS SHELL AU — WEB",
+        "debit": 61.71,
+        "credit": null,
+        "balance": 6526.96
+      }
+    },
+    {
+      "id": "p2p-6y0-44",
+      "date": "2026-03-27",
+      "description": "PENDING - EFTPOS COUNCIL RATES — OSKO / PAYID",
+      "debit": 48.59,
+      "credit": null,
+      "balance": 6478.37,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "peer",
+        "Transfer"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "PENDING - EFTPOS COUNCIL RATES — OSKO / PAYID",
+        "debit": 48.59,
+        "credit": null,
+        "balance": 6478.37
+      }
+    },
+    {
+      "id": "pos-6y0-45",
+      "date": "2026-03-27",
+      "description": "ANZ MOBILE BANKING PAYMENT 114080 TO JAMES SMITH — METRO",
+      "debit": 51.6,
+      "credit": null,
+      "balance": 6426.77,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Transport"
+      ],
+      "notes": "effective 2026-03-27",
+      "original": {
+        "date": "2026-03-27",
+        "description": "ANZ MOBILE BANKING PAYMENT 114080 TO JAMES SMITH — METRO",
+        "debit": 51.6,
+        "credit": null,
+        "balance": 6426.77
+      }
+    },
+    {
+      "id": "pos-6y0-46",
+      "date": "2026-03-28",
+      "description": "ANZ INTERNET BANKING BPAY ORIGIN ENERGY {463177} — HWY",
+      "debit": 78.8,
+      "credit": null,
+      "balance": 6347.97,
+      "category": "Transport",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "card",
+        "Fuel"
+      ],
+      "notes": "effective 2026-03-28",
+      "original": {
+        "date": "2026-03-28",
+        "description": "ANZ INTERNET BANKING BPAY ORIGIN ENERGY {463177} — HWY",
+        "debit": 78.8,
+        "credit": null,
+        "balance": 6347.97
+      }
+    },
+    {
+      "id": "inc-6y0-47",
+      "date": "2026-03-29",
+      "description": "ANZ PAYROLL CREDIT — FROM PAYROLL",
+      "debit": null,
+      "credit": 3850,
+      "balance": 10197.97,
+      "category": "Income",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "credit",
+        "Wages"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "ANZ PAYROLL CREDIT — FROM PAYROLL",
+        "debit": null,
+        "credit": 3850,
+        "balance": 10197.97
+      }
+    },
+    {
+      "id": "sav-6y0-48",
+      "date": "2026-03-29",
+      "description": "PENDING - PAYMENT FROM EMILY WATSON inv 1710 MDE — TO BONUS",
+      "debit": 250,
+      "credit": null,
+      "balance": 9947.97,
+      "category": "Transfer",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "transfer",
+        "Savings"
+      ],
+      "notes": "effective 2026-03-29",
+      "original": {
+        "date": "2026-03-29",
+        "description": "PENDING - PAYMENT FROM EMILY WATSON inv 1710 MDE — TO BONUS",
+        "debit": 250,
+        "credit": null,
+        "balance": 9947.97
+      }
+    },
+    {
+      "id": "mtg-6y0-49",
+      "date": "2026-03-31",
+      "description": "PENDING - PAYMENT FROM LISA BROWN inv 7008 MDE — HOME LENDER · REF LN-anz-9000",
+      "debit": 1680,
+      "credit": null,
+      "balance": 8267.97,
+      "category": "Fees",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "debit",
+        "Financial"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "PENDING - PAYMENT FROM LISA BROWN inv 7008 MDE — HOME LENDER · REF LN-anz-9000",
+        "debit": 1680,
+        "credit": null,
+        "balance": 8267.97
+      }
+    },
+    {
+      "id": "dd-6y0-50",
+      "date": "2026-03-31",
+      "description": "PENDING - EFTPOS THE ICONIC — DIRECT DEBIT",
+      "debit": 321.43,
+      "credit": null,
+      "balance": 7946.54,
+      "category": "Health",
+      "categorySource": "heuristic",
+      "categoryConfidence": 0.7,
+      "flags": [
+        "statement-gen",
+        "direct_debit",
+        "Health"
+      ],
+      "notes": "effective 2026-03-31",
+      "original": {
+        "date": "2026-03-31",
+        "description": "PENDING - EFTPOS THE ICONIC — DIRECT DEBIT",
+        "debit": 321.43,
+        "credit": null,
+        "balance": 7946.54
+      }
+    }
+  ],
+  "sampleDescriptions": [
+    "ANZ PAYROLL CREDIT",
+    "PAYMENT TO ROBERT WILSON 163585",
+    "ANZ INTERNET BANKING BPAY MM ELECTRICAL {828285}",
+    "TRANSFER FROM AMAZON MARKETPLACE",
+    "TRANSFER FROM IGA"
+  ]
+}

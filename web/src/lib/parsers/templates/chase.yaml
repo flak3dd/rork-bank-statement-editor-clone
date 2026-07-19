@@ -1,0 +1,21 @@
+id: chase
+name: Chase
+match:
+  - Chase
+  - JPMorgan Chase
+  - chase.com
+  - CHASE BANK
+dateOrder: mdy
+columnOrder:
+  - date
+  - description
+  - amount
+  - balance
+noise:
+  - jpmorgan chase
+  - account number
+  - beginning balance
+  - ending balance
+  - total fees
+currency: USD
+notes: US month-first dates; Amount often signed (negative = debit).

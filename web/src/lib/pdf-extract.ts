@@ -1,8 +1,6 @@
 import * as pdfjs from "pdfjs-dist";
-// Vite worker URL
-import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
-
-pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
+import { ensurePdfWorker } from "@/lib/pdf-worker";
+import { cloneUint8Array } from "@/lib/bytes";
 
 export interface PdfTextResult {
   text: string;
@@ -10,12 +8,17 @@ export interface PdfTextResult {
   pageTexts: string[];
 }
 
-/** Extract plain text from a PDF File in the browser via PDF.js. */
+/** Extract plain text from a PDF File or bytes in the browser via PDF.js. */
 export async function extractTextFromPdf(
-  file: File,
+  source: File | Uint8Array,
   onProgress?: (ratio: number) => void,
 ): Promise<PdfTextResult> {
-  const data = new Uint8Array(await file.arrayBuffer());
+  await ensurePdfWorker();
+  // Always use a private copy — PDF.js may transfer/detach the buffer.
+  const data =
+    source instanceof Uint8Array
+      ? cloneUint8Array(source)
+      : new Uint8Array(await source.arrayBuffer());
   const doc = await pdfjs.getDocument({ data }).promise;
   const pageCount = doc.numPages;
   const pageTexts: string[] = [];
