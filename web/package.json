@@ -16,7 +16,9 @@
     "font-cli": "node scripts/font-cli.mjs",
     "regen:final": "vitest run src/test/final-statement-regen.test.ts",
     "stress:workflow": "vitest run src/test/full-workflow-stress.test.ts",
-    "stress:all-tools": "vitest run src/test/all-tools-stress.test.ts"
+    "stress:all-tools": "vitest run src/test/all-tools-stress.test.ts",
+    "regen:final-pdf": "vitest run src/test/final-pdf-generation.test.ts",
+    "stress:triple": "vitest run src/test/triple-perfect-replica.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

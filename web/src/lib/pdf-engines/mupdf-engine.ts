@@ -16,6 +16,18 @@ async function loadMupdf(): Promise<typeof import("mupdf")> {
   return mod;
 }
 
+interface MuPdfAnnotation {
+  setRect(rect: [number, number, number, number]): void;
+  setContents(text: string): void;
+  setDefaultAppearance?(
+    font: string,
+    size: number,
+    color: [number, number, number],
+  ): void;
+  setColor?(color: [number, number, number]): void;
+  update(): void;
+}
+
 interface MuPdfPage {
   getBounds(): [number, number, number, number];
   toPixmap(
@@ -29,18 +41,33 @@ interface MuPdfPage {
     getHeight(): number;
     destroy(): void;
   };
-  toStructuredText(format: string): string;
-  toText(format: string): string;
-  addRedaction(rect: [number, number, number, number], opts?: unknown): void;
-  applyRedactions(): void;
-  destroy(): void;
+  toStructuredText(format?: string): string;
+  toText?(): string;
+  createAnnotation(type: string): MuPdfAnnotation;
+  applyRedactions(opts?: unknown): void;
+  update?(): void;
+  destroy?(): void;
 }
 
 interface MuPdfDoc {
   numPages: number;
   loadPage(index: number): MuPdfPage;
-  saveToBuffer(format: string): Uint8Array;
+  /** MuPDF WASM: saveToBuffer() or saveToBuffer("compress") — not MIME types. */
+  saveToBuffer(options?: string | Record<string, unknown>): unknown;
   destroy(): void;
+}
+
+/** Normalize mupdf Buffer / Uint8Array return values. */
+function bufferToUint8Array(buf: unknown): Uint8Array {
+  if (buf instanceof Uint8Array) return cloneUint8Array(buf);
+  if (buf && typeof (buf as { asUint8Array?: () => Uint8Array }).asUint8Array === "function") {
+    return cloneUint8Array((buf as { asUint8Array: () => Uint8Array }).asUint8Array());
+  }
+  if (ArrayBuffer.isView(buf)) {
+    const v = buf as ArrayBufferView;
+    return cloneUint8Array(new Uint8Array(v.buffer, v.byteOffset, v.byteLength));
+  }
+  throw new Error("mupdf saveToBuffer returned unsupported buffer type");
 }
 
 class MuPdfDocument implements PdfEngineDocument {
@@ -80,9 +107,10 @@ class MuPdfDocument implements PdfEngineDocument {
   async extractPageText(pageNumber: number): Promise<string> {
     const page = this.doc.loadPage(pageNumber - 1);
     try {
-      return page.toText("text");
+      if (typeof page.toText === "function") return page.toText();
+      return page.toStructuredText();
     } finally {
-      page.destroy();
+      page.destroy?.();
     }
   }
 
@@ -149,89 +177,131 @@ class MuPdfDocument implements PdfEngineDocument {
   ): Promise<Uint8Array> {
     /**
      * High-fidelity path (browser mupdf WASM stand-in for PyMuPDF):
-     * 1) White-out original glyphs via redaction
-     * 2) Re-insert replacement text at the same origin with approx font size
+     * 1) Create Redact annotations over original glyphs
+     * 2) applyRedactions() to white-out content
+     * 3) FreeText annotations with replacement strings
+     * 4) saveToBuffer("compress")
      *
-     * Note: embedded font reuse is limited in WASM; Helvetica/simple font is
-     * used when donor glyphs are unavailable. For native Pro fidelity run
+     * Note: embedded font reuse is limited in WASM; Helvetica is used when
+     * donor glyphs are unavailable. For native Pro fidelity run
      * tools/pymupdf_pipeline/replace_statement.py.
      */
-    const byPage = new Map<number, typeof replacements>();
-    for (const r of replacements) {
+    if (replacements.length === 0) {
+      return this.save();
+    }
+
+    // Unredacter: never white-out without non-empty insert text
+    const safe = replacements.filter((r) => String(r.replacement ?? "").trim());
+    if (safe.length === 0) {
+      throw new Error(
+        "mupdf applyReplacements: all replacements empty — NEVER REDACT blank",
+      );
+    }
+
+    const byPage = new Map<number, typeof safe>();
+    for (const r of safe) {
       const arr = byPage.get(r.page) ?? [];
       arr.push(r);
       byPage.set(r.page, arr);
     }
 
-    type AnnotPage = MuPdfPage & {
-      createAnnotation?: (type: string) => {
-        setRect?: (r: number[]) => void;
-        setContents?: (s: string) => void;
-        setDefaultAppearance?: (s: string) => void;
-        update?: () => void;
-      };
-    };
-
+    let applied = 0;
     for (const [pageNum, pageReplacements] of byPage) {
-      const page = this.doc.loadPage(pageNum - 1) as AnnotPage;
+      const page = this.doc.loadPage(pageNum - 1);
       try {
         const inserts: Array<{
-          x: number;
-          y: number;
+          rect: [number, number, number, number];
           text: string;
           size: number;
         }> = [];
 
+        // Phase 1: mark redactions for every field geometry (paired with FreeText)
         for (const r of pageReplacements) {
-          const rect: [number, number, number, number] = [
-            r.bbox.x,
-            r.bbox.y,
-            r.bbox.x + r.bbox.width,
-            r.bbox.y + r.bbox.height,
-          ];
-          page.addRedaction(rect, { fillColor: [1, 1, 1] });
+          const text = String(r.replacement).trim();
+          if (!text) continue;
+          const x0 = r.bbox.x;
+          const y0 = r.bbox.y;
+          const x1 = r.bbox.x + Math.max(r.bbox.width, 2);
+          const y1 = r.bbox.y + Math.max(r.bbox.height, 2);
+          const rect: [number, number, number, number] = [x0, y0, x1, y1];
+          try {
+            const redact = page.createAnnotation("Redact");
+            redact.setRect(rect);
+            redact.update();
+          } catch {
+            // FreeText still draws on top even if redaction API fails
+          }
           const size = Math.max(
             6,
             Math.min(18, r.bbox.height > 0 ? r.bbox.height * 0.85 : 9),
           );
           inserts.push({
-            x: r.bbox.x,
-            // baseline near bottom of bbox
-            y: r.bbox.y + r.bbox.height * 0.85,
-            text: r.replacement,
+            rect: [
+              x0,
+              y0,
+              Math.max(x1, x0 + Math.max(text.length * size * 0.5, 24)),
+              y1,
+            ],
+            text,
             size,
           });
         }
-        page.applyRedactions();
 
-        // Re-insert text after redaction (FreeText annotation fallback)
-        for (const ins of inserts) {
+        try {
+          page.applyRedactions();
+        } catch {
+          // Some builds need options object — retry bare
           try {
-            if (typeof page.createAnnotation === "function") {
-              const annot = page.createAnnotation("FreeText");
-              const h = ins.size * 1.35;
-              const w = Math.max(ins.text.length * ins.size * 0.5, 24);
-              annot.setRect?.([ins.x, ins.y - h, ins.x + w, ins.y + 2]);
-              annot.setContents?.(ins.text);
-              annot.setDefaultAppearance?.(
-                `/Helv ${ins.size.toFixed(1)} Tf 0 0 0 rg`,
-              );
-              annot.update?.();
-            }
+            page.applyRedactions({});
           } catch {
-            // Annotation API unavailable — leave redaction white-out only
+            /* white-out best-effort */
           }
         }
+
+        // Phase 2: re-insert replacement text as FreeText
+        for (const ins of inserts) {
+          try {
+            const annot = page.createAnnotation("FreeText");
+            annot.setRect(ins.rect);
+            annot.setContents(ins.text);
+            try {
+              annot.setDefaultAppearance?.("Helv", ins.size, [0, 0, 0]);
+            } catch {
+              /* appearance optional */
+            }
+            try {
+              annot.setColor?.([0, 0, 0]);
+            } catch {
+              /* optional */
+            }
+            annot.update();
+            applied += 1;
+          } catch {
+            // Skip this field if FreeText unavailable
+          }
+        }
+        page.update?.();
       } finally {
-        page.destroy();
+        page.destroy?.();
       }
     }
 
-    return this.doc.saveToBuffer("application/pdf");
+    if (applied === 0) {
+      throw new Error(
+        `mupdf applyReplacements: 0 of ${replacements.length} FreeText inserts succeeded`,
+      );
+    }
+
+    return this.save();
   }
 
   async save(): Promise<Uint8Array> {
-    return this.doc.saveToBuffer("application/pdf");
+    // Correct MuPDF WASM API: no MIME type (that throws "Unused pdf arguments").
+    try {
+      return bufferToUint8Array(this.doc.saveToBuffer("compress"));
+    } catch {
+      return bufferToUint8Array(this.doc.saveToBuffer());
+    }
   }
 
   destroy(): void {

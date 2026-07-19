@@ -1,5 +1,4 @@
-import * as pdfjs from "pdfjs-dist";
-import { ensurePdfWorker } from "@/lib/pdf-worker";
+import { openPdfDocument, pdfjs } from "@/lib/pdfjs-api";
 import { cloneUint8Array } from "@/lib/bytes";
 import { matchFontSpec } from "@/lib/pdf-render";
 
@@ -24,10 +23,9 @@ export async function getPageTextRunsFromBytes(
   maxPages = 3,
   scale = 1,
 ): Promise<ExtractedRun[]> {
-  await ensurePdfWorker();
   // Fresh buffer: never hand React-owned state to the PDF.js worker.
   const data = cloneUint8Array(bytes);
-  const doc = await pdfjs.getDocument({ data }).promise;
+  const doc = await openPdfDocument(data);
   const limit = Math.min(doc.numPages, maxPages);
   const out: ExtractedRun[] = [];
 

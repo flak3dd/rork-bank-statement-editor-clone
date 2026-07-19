@@ -5,11 +5,11 @@
   "achieved": true,
   "finalStreak": 5,
   "streakFingerprints": [
-    "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":true,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"PENDING - POS AUTHORISATION TELSTRA STREAKY BAY AU Card Used VISA DEBIT PURCHASE CARD 5076\"}",
-    "{\"parser\":\"pymupdf\",\"bank\":\"cba\",\"seed\":11110,\"periodDays\":28,\"salaryAmount\":3050,\"cardSpendPct\":20,\"billsSubsPct\":14,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":false,\"genClose\":66843.73,\"rewriteClose\":67999.11,\"editCount\":39,\"sampleDesc\":\"CBA SALARY 11110 — FROM PAYROLL\"}",
-    "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"runVisual\":true,\"genClose\":67584.53,\"rewriteClose\":67351.4,\"editCount\":22,\"sampleDesc\":\"INTEREST\"}",
-    "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":false,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"Transfer from SAV 00299053 Mobile# 560565467\"}",
-    "{\"parser\":\"local-ocr\",\"bank\":\"bankwest\",\"seed\":11440,\"periodDays\":49,\"salaryAmount\":3800,\"cardSpendPct\":35,\"billsSubsPct\":26,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":true,\"genClose\":69688.05,\"rewriteClose\":68381.29,\"editCount\":40,\"sampleDesc\":\"BANKWEST SALARY 11440 — FROM PAYROLL\"}"
+    "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":true,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"ANZ MOBILE BANKING PAYMENT 507738 TO MICHAEL CHEN\"}",
+    "{\"parser\":\"pymupdf\",\"bank\":\"cba\",\"seed\":11110,\"periodDays\":28,\"salaryAmount\":3050,\"cardSpendPct\":20,\"billsSubsPct\":14,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":false,\"genClose\":66843.73,\"rewriteClose\":67999.11,\"editCount\":58,\"sampleDesc\":\"CBA SALARY 11110 — FROM PAYROLL\"}",
+    "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"runVisual\":true,\"genClose\":67584.53,\"rewriteClose\":67351.4,\"editCount\":22,\"sampleDesc\":\"DEPOSIT WESTPAC BANKCORPDIRECT DR 792798\"}",
+    "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":false,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"Transfer from SAV 00299053 Mobile# 560148462\"}",
+    "{\"parser\":\"local-ocr\",\"bank\":\"bankwest\",\"seed\":11440,\"periodDays\":49,\"salaryAmount\":3800,\"cardSpendPct\":35,\"billsSubsPct\":26,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":true,\"genClose\":69688.05,\"rewriteClose\":68381.29,\"editCount\":59,\"sampleDesc\":\"BANKWEST SALARY 11440 — FROM PAYROLL\"}"
   ],
   "totalAttempts": 5,
   "passCount": 5,
@@ -31,8 +31,8 @@
         "parseCount": 22,
         "pageCount": 3,
         "rawTextLen": 3840,
-        "linkStats": "linked 53/90 · edits 22 · runs 348",
-        "sampleDesc": "PENDING - POS AUTHORISATION TELSTRA STREAKY BAY AU Card Used VISA DEBIT PURCHASE CARD 5076",
+        "linkStats": "linked 72/90 · edits 22 · runs 348",
+        "sampleDesc": "ANZ MOBILE BANKING PAYMENT 507738 TO MICHAEL CHEN",
         "editCount": 22,
         "workingCount": 22,
         "genClose": null,
@@ -42,16 +42,18 @@
         "balanceMismatches": 3,
         "mathStatus": "fail",
         "mathScore": 16,
-        "materialMode": "queued-edits",
+        "materialMode": "full-ledger",
         "materialEdits": 22,
         "materialNotes": [
-          "Candidate built from 22 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+          "Scanned 348 text runs (maxPages=40).",
+          "Linked 72/90 field geometries · 22 changed replacements for 22 row(s).",
+          "Final PDF: 22 replacement(s) applied · mode=full-ledger · queued=22 · ledger=22 · byField={\"date\":0,\"description\":22,\"debit\":0,\"credit\":0,\"balance\":0,\"other\":0}."
         ],
-        "visualStatus": "pass",
-        "visualScore": 100,
+        "visualStatus": "fail",
+        "visualScore": 68,
         "visualMode": "edited",
         "rendererOk": true,
-        "exportBytes": 22547
+        "exportBytes": 48836
       },
       "fingerprint": "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"run"
     },
@@ -71,8 +73,8 @@
         "rawTextLen": 3840,
         "qualityOk": true,
         "sampleDesc": "CBA SALARY 11110 — FROM PAYROLL",
-        "linkStats": "gen-link 53/90 edits=39",
-        "editCount": 39,
+        "linkStats": "gen-link 72/90 edits=58",
+        "editCount": 58,
         "workingCount": 22,
         "genClose": 66843.73,
         "rewriteClose": 67999.11,
@@ -81,12 +83,14 @@
         "balanceMismatches": 0,
         "mathStatus": "pass",
         "mathScore": 100,
-        "materialMode": "queued-edits",
-        "materialEdits": 39,
+        "materialMode": "full-ledger",
+        "materialEdits": 58,
         "materialNotes": [
-          "Candidate built from 39 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+          "Scanned 348 text runs (maxPages=40).",
+          "Linked 72/90 field geometries · 58 changed replacements for 22 row(s).",
+          "Final PDF: 58 replacement(s) applied · mode=full-ledger · queued=58 · ledger=58 · byField={\"date\":22,\"description\":22,\"debit\":0,\"credit\":0,\"balance\":14,\"other\":0}."
         ],
-        "exportBytes": 22547
+        "exportBytes": 87227
       },
       "fingerprint": "{\"parser\":\"pymupdf\",\"bank\":\"cba\",\"seed\":11110,\"periodDays\":28,\"salaryAmount\":3050,\"cardSpendPct\":20,\"billsSubsPct\":14,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runV"
     },
@@ -104,9 +108,9 @@
         "parseCount": 22,
         "pageCount": 3,
         "rawTextLen": 3840,
-        "linkStats": "linked 53/90 · edits 22 · runs 348",
+        "linkStats": "linked 72/90 · edits 22 · runs 348",
         "qualityOk": true,
-        "sampleDesc": "INTEREST",
+        "sampleDesc": "DEPOSIT WESTPAC BANKCORPDIRECT DR 792798",
         "editCount": 22,
         "workingCount": 22,
         "genClose": 67584.53,
@@ -116,16 +120,18 @@
         "balanceMismatches": 0,
         "mathStatus": "pass",
         "mathScore": 100,
-        "materialMode": "queued-edits",
-        "materialEdits": 22,
+        "materialMode": "full-ledger",
+        "materialEdits": 59,
         "materialNotes": [
-          "Candidate built from 22 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+          "Scanned 348 text runs (maxPages=40).",
+          "Linked 72/90 field geometries · 59 changed replacements for 22 row(s).",
+          "Final PDF: 59 replacement(s) applied · mode=full-ledger · queued=22 · ledger=59 · byField={\"date\":22,\"description\":22,\"debit\":0,\"credit\":1,\"balance\":14,\"other\":0}."
         ],
-        "visualStatus": "pass",
-        "visualScore": 100,
+        "visualStatus": "fail",
+        "visualScore": 62,
         "visualMode": "edited",
         "rendererOk": true,
-        "exportBytes": 22547
+        "exportBytes": 49638
       },
       "fingerprint": "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"r"
     },
@@ -145,8 +151,8 @@
         "parseCount": 22,
         "pageCount": 3,
         "rawTextLen": 3840,
-        "linkStats": "linked 53/90 · edits 22 · runs 348",
-        "sampleDesc": "Transfer from SAV 00299053 Mobile# 560565467",
+        "linkStats": "linked 72/90 · edits 22 · runs 348",
+        "sampleDesc": "Transfer from SAV 00299053 Mobile# 560148462",
         "editCount": 22,
         "workingCount": 22,
         "genClose": null,
@@ -156,12 +162,14 @@
         "balanceMismatches": 3,
         "mathStatus": "fail",
         "mathScore": 16,
-        "materialMode": "queued-edits",
+        "materialMode": "full-ledger",
         "materialEdits": 22,
         "materialNotes": [
-          "Candidate built from 22 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+          "Scanned 348 text runs (maxPages=40).",
+          "Linked 72/90 field geometries · 22 changed replacements for 22 row(s).",
+          "Final PDF: 22 replacement(s) applied · mode=full-ledger · queued=22 · ledger=22 · byField={\"date\":0,\"description\":22,\"debit\":0,\"credit\":0,\"balance\":0,\"other\":0}."
         ],
-        "exportBytes": 22547
+        "exportBytes": 49218
       },
       "fingerprint": "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":fa"
     },
@@ -181,8 +189,8 @@
         "rawTextLen": 4205,
         "qualityOk": true,
         "sampleDesc": "BANKWEST SALARY 11440 — FROM PAYROLL",
-        "linkStats": "gen-link 53/90 edits=40",
-        "editCount": 40,
+        "linkStats": "gen-link 72/90 edits=59",
+        "editCount": 59,
         "workingCount": 22,
         "genClose": 69688.05,
         "rewriteClose": 68381.29,
@@ -191,16 +199,18 @@
         "balanceMismatches": 0,
         "mathStatus": "pass",
         "mathScore": 100,
-        "materialMode": "queued-edits",
-        "materialEdits": 40,
+        "materialMode": "full-ledger",
+        "materialEdits": 59,
         "materialNotes": [
-          "Candidate built from 40 queued PdfEdit(s) (generator / bank-desc / click-edit)."
+          "Scanned 348 text runs (maxPages=40).",
+          "Linked 72/90 field geometries · 59 changed replacements for 22 row(s).",
+          "Final PDF: 59 replacement(s) applied · mode=full-ledger · queued=59 · ledger=59 · byField={\"date\":22,\"description\":22,\"debit\":0,\"credit\":1,\"balance\":14,\"other\":0}."
         ],
-        "visualStatus": "pass",
-        "visualScore": 100,
+        "visualStatus": "fail",
+        "visualScore": 66,
         "visualMode": "edited",
         "rendererOk": true,
-        "exportBytes": 22547
+        "exportBytes": 86586
       },
       "fingerprint": "{\"parser\":\"local-ocr\",\"bank\":\"bankwest\",\"seed\":11440,\"periodDays\":49,\"salaryAmount\":3800,\"cardSpendPct\":35,\"billsSubsPct\":26,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute"
     }

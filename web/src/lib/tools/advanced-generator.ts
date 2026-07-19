@@ -1,6 +1,10 @@
 import { categorizeDescription } from "@/lib/categorize";
 import { attachOriginals, snapshotOf } from "@/lib/edit-utils";
-import { round2 } from "@/lib/money";
+import {
+  formatDateLikeOriginal,
+  formatMoneyLikeOriginal,
+  round2,
+} from "@/lib/money";
 import { matchFontSpec } from "@/lib/pdf-render";
 import type { PdfEdit, PdfFontSpec, Transaction } from "@/lib/types";
 import {
@@ -215,23 +219,49 @@ export function buildFontReplicatedReplacements(params: {
   donorFont?: PdfFontSpec;
   /** When true, empty money fields clear the run with spaces. */
   clearEmpty?: boolean;
+  /**
+   * When true (default), money/dates are formatted like the original PDF
+   * glyphs (e.g. "-$99.30", "18 Nov") so the final PDF keeps visual style.
+   */
+  matchOriginalStyle?: boolean;
 }): PdfEdit[] {
   const donor =
     params.donorFont ?? matchFontSpec("Helvetica", "Helvetica");
+  const style = params.matchOriginalStyle !== false;
   const edits: PdfEdit[] = [];
 
   for (const m of params.runMatches ?? []) {
     const t = params.transactions.find((x) => x.id === m.transactionId);
     if (!t) continue;
     let replacement = "";
-    if (m.field === "date") replacement = t.date;
-    else if (m.field === "description") replacement = t.description;
-    else if (m.field === "debit")
-      replacement = t.debit != null ? t.debit.toFixed(2) : "";
-    else if (m.field === "credit")
-      replacement = t.credit != null ? t.credit.toFixed(2) : "";
-    else if (m.field === "balance")
-      replacement = t.balance != null ? t.balance.toFixed(2) : "";
+    if (m.field === "date") {
+      replacement = style
+        ? formatDateLikeOriginal(t.date, m.original)
+        : t.date;
+    } else if (m.field === "description") {
+      replacement = t.description;
+    } else if (m.field === "debit") {
+      replacement =
+        t.debit != null
+          ? style
+            ? formatMoneyLikeOriginal(t.debit, m.original)
+            : t.debit.toFixed(2)
+          : "";
+    } else if (m.field === "credit") {
+      replacement =
+        t.credit != null
+          ? style
+            ? formatMoneyLikeOriginal(t.credit, m.original)
+            : t.credit.toFixed(2)
+          : "";
+    } else if (m.field === "balance") {
+      replacement =
+        t.balance != null
+          ? style
+            ? formatMoneyLikeOriginal(t.balance, m.original)
+            : t.balance.toFixed(2)
+          : "";
+    }
 
     if (!replacement) {
       if (!params.clearEmpty) continue;

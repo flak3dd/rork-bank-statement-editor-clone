@@ -1,5 +1,4 @@
-import * as pdfjs from "pdfjs-dist";
-import "@/lib/pdf-worker";
+import { openPdfDocument, type PdfjsDocument } from "@/lib/pdfjs-api";
 import { attachOriginals } from "@/lib/edit-utils";
 import { parseTransactionsHybrid } from "@/lib/parse-transactions";
 import { extractTextFromPdf } from "@/lib/pdf-extract";
@@ -7,7 +6,7 @@ import { runOfflineHeuristicParse } from "./offline-heuristic";
 import type { DocumentParser, ParserInput, ParserResult } from "./types";
 
 async function renderPageToCanvas(
-  page: Awaited<ReturnType<Awaited<ReturnType<typeof pdfjs.getDocument>["promise"]>["getPage"]>>,
+  page: Awaited<ReturnType<PdfjsDocument["getPage"]>>,
   scale: number,
 ): Promise<HTMLCanvasElement> {
   const viewport = page.getViewport({ scale });
@@ -72,7 +71,7 @@ export const localOcrParser: DocumentParser = {
     try {
       input.onProgress?.(0.05, "Loading PDF for OCR…");
       const data = new Uint8Array(input.bytes);
-      const doc = await pdfjs.getDocument({ data }).promise;
+      const doc = await openPdfDocument(data);
       const pageCount = doc.numPages;
       const pageTexts: string[] = [];
       let ocrUsed = false;

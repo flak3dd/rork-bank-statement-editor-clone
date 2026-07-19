@@ -1,0 +1,36 @@
+{
+  "errors": [],
+  "stats": {
+    "run": 3,
+    "bank": "westpac",
+    "seed": 703351,
+    "parseCount": 22,
+    "pageCount": 3,
+    "generatedCount": 22,
+    "bankDescEdits": 22,
+    "balanceMismatches": 0,
+    "closingExpected": 7576.96,
+    "materialMode": "full-ledger",
+    "editCount": 55,
+    "byField": {
+      "date": 17,
+      "description": 22,
+      "debit": 0,
+      "credit": 2,
+      "balance": 14,
+      "other": 0
+    },
+    "rowsPaired": 22,
+    "exportBytes": 80775,
+    "mathScore": 100,
+    "mathStatus": "pass",
+    "visualScore": 68,
+    "visualStatus": "fail",
+    "rendererOk": true
+  },
+  "notes": [
+    "Scanned 348 text runs (maxPages=40).",
+    "Linked 72/90 field geometries · 55 changed replacements for 22 row(s).",
+    "Final PDF: 55 replacement(s) applied · mode=full-ledger · queued=22 · ledger=55 · byField={\"date\":17,\"description\":22,\"debit\":0,\"credit\":2,\"balance\":14,\"other\":0}."
+  ]
+}

@@ -208,7 +208,7 @@ function GeneratorTab({
       let edits: PdfEdit[] = [];
       if (pdfBytes && previous.length > 0) {
         const pdfCopy = cloneUint8Array(pdfBytes);
-        const runs = await getPageTextRunsFromBytes(pdfCopy, 8);
+        const runs = await getPageTextRunsFromBytes(pdfCopy, 40);
         // Link PDF runs to *current* table values (what is still drawn on the PDF)
         const { matches, stats } = linkRunMatches({
           transactions: previous,

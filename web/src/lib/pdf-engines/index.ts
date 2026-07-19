@@ -97,23 +97,58 @@ export async function applyReplacementsWithFallbacks(
   }>,
   preferredDoc?: PdfEngineDocument,
 ): Promise<Uint8Array> {
+  if (replacements.length === 0) {
+    return cloneUint8Array(data);
+  }
+
+  // Unredacter policy: NEVER REDACT without replacement text
+  const blanks = replacements.filter((r) => !String(r.replacement ?? "").trim());
+  if (blanks.length > 0) {
+    throw new Error(
+      `Refused ${blanks.length} blank PDF replacement(s) — NEVER REDACT without insert text.`,
+    );
+  }
+
   if (preferredDoc && preferredDoc.engine === "mupdf") {
     return preferredDoc.applyReplacements(replacements);
   }
 
+  let lastError: unknown;
   try {
     const available = await mupdfEngine.isAvailable();
     if (available) {
       const doc = await mupdfEngine.load(cloneUint8Array(data));
       try {
-        return await doc.applyReplacements(replacements);
+        const out = await doc.applyReplacements(replacements);
+        // Guard: never silently return identity when edits were requested
+        if (out.byteLength === data.byteLength) {
+          let identical = true;
+          for (let i = 0; i < out.byteLength; i++) {
+            if (out[i] !== data[i]) {
+              identical = false;
+              break;
+            }
+          }
+          if (identical) {
+            throw new Error(
+              "mupdf applyReplacements produced identical PDF (write path failed)",
+            );
+          }
+        }
+        return out;
       } finally {
         doc.destroy();
       }
+    } else {
+      lastError = new Error("mupdf engine not available");
     }
-  } catch {
-    // Fall through
+  } catch (err) {
+    lastError = err;
   }
 
-  return cloneUint8Array(data);
+  throw new Error(
+    `Could not apply ${replacements.length} PDF replacement(s): ${
+      lastError instanceof Error ? lastError.message : String(lastError)
+    }`,
+  );
 }

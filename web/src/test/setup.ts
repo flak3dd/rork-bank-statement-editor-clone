@@ -1,5 +1,27 @@
 /** Minimal DOM polyfills for Node vitest (pdfjs, canvas APIs). */
 
+// localStorage mock — avoids ExperimentalWarning when code touches storage
+if (typeof globalThis.localStorage === "undefined") {
+  const store = new Map<string, string>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (globalThis as any).localStorage = {
+    getItem: (k: string) => (store.has(k) ? store.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      store.set(k, String(v));
+    },
+    removeItem: (k: string) => {
+      store.delete(k);
+    },
+    clear: () => {
+      store.clear();
+    },
+    key: (i: number) => [...store.keys()][i] ?? null,
+    get length() {
+      return store.size;
+    },
+  };
+}
+
 // File polyfill for parsers that expect browser File
 if (typeof globalThis.File === "undefined") {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

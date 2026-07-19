@@ -185,7 +185,7 @@
     },
     {
       "id": "sav-70w-2",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  64673",
+      "description": "ACCOUNT SERVICING FEE",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-01",
       "effectiveDate": "2026-03-01",
@@ -196,7 +196,7 @@
     },
     {
       "id": "mtg-70w-3",
-      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 182342  FROM       884182662",
       "secondaryDescription": "HOME LENDER · REF LN-other-9104",
       "date": "2026-03-01",
       "effectiveDate": "2026-03-01",
@@ -207,7 +207,7 @@
     },
     {
       "id": "pos-70w-4",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
+      "description": "ACCOUNT SERVICING FEE",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-01",
       "effectiveDate": "2026-03-01",
@@ -218,7 +218,7 @@
     },
     {
       "id": "pos-70w-5",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 OFFICEWORKS",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 289245  FROM       355053073",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-02",
       "effectiveDate": "2026-03-02",
@@ -229,7 +229,7 @@
     },
     {
       "id": "pos-70w-6",
-      "description": "EFTPOS PILOT\\",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 721635  FROM       912537366",
       "secondaryDescription": "CITY",
       "date": "2026-03-02",
       "effectiveDate": "2026-03-02",
@@ -240,7 +240,7 @@
     },
     {
       "id": "dd-70w-7",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 MCDONALDS",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  87779",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-03",
       "effectiveDate": "2026-03-03",
@@ -251,7 +251,7 @@
     },
     {
       "id": "dd-70w-8",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  37870",
+      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-04",
       "effectiveDate": "2026-03-04",
@@ -273,7 +273,7 @@
     },
     {
       "id": "p2p-70w-10",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  13902",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-05",
       "effectiveDate": "2026-03-05",
@@ -284,7 +284,7 @@
     },
     {
       "id": "pos-70w-11",
-      "description": "TRANSFER FROM MCARE BENEFITS   650791865 MCARE",
+      "description": "EFTPOS MEDICARE BENEFIT",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-05",
       "effectiveDate": "2026-03-05",
@@ -295,7 +295,7 @@
     },
     {
       "id": "pos-70w-12",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 483092  FROM       608384824",
+      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
       "secondaryDescription": "METRO",
       "date": "2026-03-05",
       "effectiveDate": "2026-03-05",
@@ -306,7 +306,7 @@
     },
     {
       "id": "dd-70w-13",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 107253  FROM       881896033",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  72245",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-06",
       "effectiveDate": "2026-03-06",
@@ -317,7 +317,7 @@
     },
     {
       "id": "pos-70w-14",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 653013  FROM       217962952",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  83785",
       "secondaryDescription": "RETAIL",
       "date": "2026-03-06",
       "effectiveDate": "2026-03-06",
@@ -328,7 +328,7 @@
     },
     {
       "id": "dd-70w-15",
-      "description": "ANZ MOBILE BANKING PAYMENT 111390 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND D,,,LOAN REPAYMENT",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 733629  FROM       878746456",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-08",
       "effectiveDate": "2026-03-08",
@@ -339,7 +339,7 @@
     },
     {
       "id": "dd-70w-16",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 CALTEX",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-10",
       "effectiveDate": "2026-03-10",
@@ -350,7 +350,7 @@
     },
     {
       "id": "pos-70w-17",
-      "description": "TRANSFER FROM MCARE BENEFITS   350151229 MCARE",
+      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381",
       "secondaryDescription": "WEB",
       "date": "2026-03-12",
       "effectiveDate": "2026-03-12",
@@ -361,7 +361,7 @@
     },
     {
       "id": "pos-70w-18",
-      "description": "PAYMENT TO HUMM BNPL        HUMM",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 BIG W",
       "secondaryDescription": "CITY",
       "date": "2026-03-12",
       "effectiveDate": "2026-03-12",
@@ -372,7 +372,7 @@
     },
     {
       "id": "dd-70w-19",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 108312  FROM       200943429",
+      "description": "EFTPOS PILOT\\",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-13",
       "effectiveDate": "2026-03-13",
@@ -405,7 +405,7 @@
     },
     {
       "id": "sav-70w-22",
-      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381",
+      "description": "ANZ MOBILE BANKING PAYMENT 995041 TO SUNDERLAND A,MS KRISTY SUNDERLAND,SUNDERLAND D,,,INSURANCE PAYMENT",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -416,7 +416,7 @@
     },
     {
       "id": "pos-70w-23",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
+      "description": "ACCOUNT SERVICING FEE",
       "secondaryDescription": "WEB",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -427,7 +427,7 @@
     },
     {
       "id": "pos-70w-24",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 WOOLWORTHS",
+      "description": "TRANSFER FROM MCARE BENEFITS   910607972 MCARE",
       "secondaryDescription": "WEB",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -438,7 +438,7 @@
     },
     {
       "id": "p2p-70w-25",
-      "description": "ANZ MOBILE BANKING PAYMENT 637545 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND D,,,RENT PAYMENT",
+      "description": "PAYMENT TO HUMM BNPL        HUMM",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-16",
       "effectiveDate": "2026-03-16",
@@ -449,7 +449,7 @@
     },
     {
       "id": "dd-70w-26",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 486236  FROM       315573412",
+      "description": "TRANSFER FROM MCARE BENEFITS   403663381 MCARE",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-17",
       "effectiveDate": "2026-03-17",
@@ -460,7 +460,7 @@
     },
     {
       "id": "pos-70w-27",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
+      "description": "ACCOUNT SERVICING FEE",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-17",
       "effectiveDate": "2026-03-17",
@@ -471,7 +471,7 @@
     },
     {
       "id": "dd-70w-28",
-      "description": "PAYMENT TO HUMM BNPL        HUMM",
+      "description": "ANZ MOBILE BANKING PAYMENT 365841 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND A,,,UTILITY PAYMENT",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-19",
       "effectiveDate": "2026-03-19",
@@ -482,7 +482,7 @@
     },
     {
       "id": "pos-70w-29",
-      "description": "TRANSFER FROM MCARE BENEFITS   174377026 MCARE",
+      "description": "ANZ MOBILE BANKING PAYMENT 796215 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND B,,,INSURANCE PAYMENT",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-21",
       "effectiveDate": "2026-03-21",
@@ -493,7 +493,7 @@
     },
     {
       "id": "pos-70w-30",
-      "description": "TRANSFER FROM MCARE BENEFITS   505802930 MCARE",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 741019  FROM       552993331",
       "secondaryDescription": "METRO",
       "date": "2026-03-21",
       "effectiveDate": "2026-03-21",
@@ -515,7 +515,7 @@
     },
     {
       "id": "pos-70w-32",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 871455  FROM       625652398",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  68490",
       "secondaryDescription": "CBD",
       "date": "2026-03-23",
       "effectiveDate": "2026-03-23",
@@ -526,7 +526,7 @@
     },
     {
       "id": "pos-70w-33",
-      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381",
+      "description": "ANZ MOBILE BANKING PAYMENT 900250 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND C,,,RENT PAYMENT",
       "secondaryDescription": "CBD",
       "date": "2026-03-23",
       "effectiveDate": "2026-03-23",
@@ -537,7 +537,7 @@
     },
     {
       "id": "pos-70w-34",
-      "description": "TRANSFER FROM MCARE BENEFITS   406722297 MCARE",
+      "description": "EFTPOS MEDICARE BENEFIT",
       "secondaryDescription": "METRO",
       "date": "2026-03-25",
       "effectiveDate": "2026-03-25",
@@ -548,7 +548,7 @@
     },
     {
       "id": "pos-70w-35",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  44065",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  86898",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-25",
       "effectiveDate": "2026-03-25",
@@ -559,7 +559,7 @@
     },
     {
       "id": "pos-70w-36",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 TERRY WHITE CHEMIST",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 VODAFONE",
       "secondaryDescription": "CITY",
       "date": "2026-03-26",
       "effectiveDate": "2026-03-26",
@@ -570,7 +570,7 @@
     },
     {
       "id": "p2p-70w-37",
-      "description": "TRANSFER FROM MCARE BENEFITS   515147241 MCARE",
+      "description": "ANZ MOBILE BANKING PAYMENT 729676 TO SUNDERLAND B,MS KRISTY SUNDERLAND,SUNDERLAND A,,,LOAN REPAYMENT",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-27",
       "effectiveDate": "2026-03-27",
@@ -581,7 +581,7 @@
     },
     {
       "id": "pos-70w-38",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 VODAFONE",
+      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381",
       "secondaryDescription": "CITY",
       "date": "2026-03-28",
       "effectiveDate": "2026-03-28",
@@ -592,7 +592,7 @@
     },
     {
       "id": "pos-70w-39",
-      "description": "EFTPOS MEDICARE BENEFIT",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 OPTUS",
       "date": "2026-03-28",
       "effectiveDate": "2026-03-28",
       "amount": -7.63,
@@ -613,7 +613,7 @@
     },
     {
       "id": "sav-70w-41",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  65494",
+      "description": "ACCOUNT SERVICING FEE",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-29",
       "effectiveDate": "2026-03-29",
@@ -635,7 +635,7 @@
     },
     {
       "id": "pos-70w-43",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  53654",
+      "description": "ACCOUNT SERVICING FEE",
       "secondaryDescription": "HWY",
       "date": "2026-03-30",
       "effectiveDate": "2026-03-30",
@@ -646,7 +646,7 @@
     },
     {
       "id": "pos-70w-44",
-      "description": "EFTPOS PILOT\\",
+      "description": "TRANSFER FROM MCARE BENEFITS   481039462 MCARE",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-30",
       "effectiveDate": "2026-03-30",
@@ -657,7 +657,7 @@
     },
     {
       "id": "mtg-70w-45",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  32124",
       "secondaryDescription": "HOME LENDER · REF LN-other-9104",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -668,7 +668,7 @@
     },
     {
       "id": "dd-70w-46",
-      "description": "PAYMENT TO HUMM BNPL        HUMM",
+      "description": "ANZ MOBILE BANKING PAYMENT 209818 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND B,,,INSURANCE PAYMENT",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -716,7 +716,7 @@
     {
       "id": "sav-70w-2",
       "date": "2026-03-01",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  64673 — TO BONUS",
+      "description": "ACCOUNT SERVICING FEE — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 6840.55,
@@ -731,7 +731,7 @@
       "notes": "effective 2026-03-01",
       "original": {
         "date": "2026-03-01",
-        "description": "PAY/SALARY FROM J.J. RICHARDS &  64673 — TO BONUS",
+        "description": "ACCOUNT SERVICING FEE — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 6840.55
@@ -740,7 +740,7 @@
     {
       "id": "mtg-70w-3",
       "date": "2026-03-01",
-      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — HOME LENDER · REF LN-other-9104",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 182342  FROM       884182662 — HOME LENDER · REF LN-other-9104",
       "debit": 1680,
       "credit": null,
       "balance": 5160.55,
@@ -755,7 +755,7 @@
       "notes": "effective 2026-03-01",
       "original": {
         "date": "2026-03-01",
-        "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — HOME LENDER · REF LN-other-9104",
+        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 182342  FROM       884182662 — HOME LENDER · REF LN-other-9104",
         "debit": 1680,
         "credit": null,
         "balance": 5160.55
@@ -764,7 +764,7 @@
     {
       "id": "pos-70w-4",
       "date": "2026-03-01",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — SUBURB",
+      "description": "ACCOUNT SERVICING FEE — SUBURB",
       "debit": 55.75,
       "credit": null,
       "balance": 5104.8,
@@ -779,7 +779,7 @@
       "notes": "effective 2026-03-01",
       "original": {
         "date": "2026-03-01",
-        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — SUBURB",
+        "description": "ACCOUNT SERVICING FEE — SUBURB",
         "debit": 55.75,
         "credit": null,
         "balance": 5104.8
@@ -788,7 +788,7 @@
     {
       "id": "pos-70w-5",
       "date": "2026-03-02",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 OFFICEWORKS — SUBURB",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 289245  FROM       355053073 — SUBURB",
       "debit": 61.75,
       "credit": null,
       "balance": 5043.05,
@@ -803,7 +803,7 @@
       "notes": "effective 2026-03-02",
       "original": {
         "date": "2026-03-02",
-        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 OFFICEWORKS — SUBURB",
+        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 289245  FROM       355053073 — SUBURB",
         "debit": 61.75,
         "credit": null,
         "balance": 5043.05
@@ -812,7 +812,7 @@
     {
       "id": "pos-70w-6",
       "date": "2026-03-02",
-      "description": "EFTPOS PILOT\\ — CITY",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 721635  FROM       912537366 — CITY",
       "debit": 87.33,
       "credit": null,
       "balance": 4955.72,
@@ -827,7 +827,7 @@
       "notes": "effective 2026-03-02",
       "original": {
         "date": "2026-03-02",
-        "description": "EFTPOS PILOT\\ — CITY",
+        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 721635  FROM       912537366 — CITY",
         "debit": 87.33,
         "credit": null,
         "balance": 4955.72
@@ -836,7 +836,7 @@
     {
       "id": "dd-70w-7",
       "date": "2026-03-03",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 MCDONALDS — DIRECT DEBIT",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  87779 — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 4651.41,
@@ -851,7 +851,7 @@
       "notes": "effective 2026-03-03",
       "original": {
         "date": "2026-03-03",
-        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 MCDONALDS — DIRECT DEBIT",
+        "description": "PAY/SALARY FROM J.J. RICHARDS &  87779 — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 4651.41
@@ -860,7 +860,7 @@
     {
       "id": "dd-70w-8",
       "date": "2026-03-04",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  37870 — SUBSCRIPTION",
+      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — SUBSCRIPTION",
       "debit": 40.27,
       "credit": null,
       "balance": 4611.14,
@@ -875,7 +875,7 @@
       "notes": "effective 2026-03-04",
       "original": {
         "date": "2026-03-04",
-        "description": "PAY/SALARY FROM J.J. RICHARDS &  37870 — SUBSCRIPTION",
+        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — SUBSCRIPTION",
         "debit": 40.27,
         "credit": null,
         "balance": 4611.14
@@ -908,7 +908,7 @@
     {
       "id": "p2p-70w-10",
       "date": "2026-03-05",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — OSKO / PAYID",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  13902 — OSKO / PAYID",
       "debit": 98.77,
       "credit": null,
       "balance": 4490.94,
@@ -923,7 +923,7 @@
       "notes": "effective 2026-03-05",
       "original": {
         "date": "2026-03-05",
-        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — OSKO / PAYID",
+        "description": "PAY/SALARY FROM J.J. RICHARDS &  13902 — OSKO / PAYID",
         "debit": 98.77,
         "credit": null,
         "balance": 4490.94
@@ -932,7 +932,7 @@
     {
       "id": "pos-70w-11",
       "date": "2026-03-05",
-      "description": "TRANSFER FROM MCARE BENEFITS   650791865 MCARE — LOCAL",
+      "description": "EFTPOS MEDICARE BENEFIT — LOCAL",
       "debit": 9.61,
       "credit": null,
       "balance": 4481.33,
@@ -947,7 +947,7 @@
       "notes": "effective 2026-03-05",
       "original": {
         "date": "2026-03-05",
-        "description": "TRANSFER FROM MCARE BENEFITS   650791865 MCARE — LOCAL",
+        "description": "EFTPOS MEDICARE BENEFIT — LOCAL",
         "debit": 9.61,
         "credit": null,
         "balance": 4481.33
@@ -956,7 +956,7 @@
     {
       "id": "pos-70w-12",
       "date": "2026-03-05",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 483092  FROM       608384824 — METRO",
+      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — METRO",
       "debit": 44.38,
       "credit": null,
       "balance": 4436.95,
@@ -971,7 +971,7 @@
       "notes": "effective 2026-03-05",
       "original": {
         "date": "2026-03-05",
-        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 483092  FROM       608384824 — METRO",
+        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — METRO",
         "debit": 44.38,
         "credit": null,
         "balance": 4436.95
@@ -980,7 +980,7 @@
     {
       "id": "dd-70w-13",
       "date": "2026-03-06",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 107253  FROM       881896033 — DIRECT DEBIT",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  72245 — DIRECT DEBIT",
       "debit": 497.7,
       "credit": null,
       "balance": 3939.25,
@@ -995,7 +995,7 @@
       "notes": "effective 2026-03-06",
       "original": {
         "date": "2026-03-06",
-        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 107253  FROM       881896033 — DIRECT DEBIT",
+        "description": "PAY/SALARY FROM J.J. RICHARDS &  72245 — DIRECT DEBIT",
         "debit": 497.7,
         "credit": null,
         "balance": 3939.25
@@ -1004,7 +1004,7 @@
     {
       "id": "pos-70w-14",
       "date": "2026-03-06",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 653013  FROM       217962952 — RETAIL",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  83785 — RETAIL",
       "debit": 79.66,
       "credit": null,
       "balance": 3859.59,
@@ -1019,7 +1019,7 @@
       "notes": "effective 2026-03-06",
       "original": {
         "date": "2026-03-06",
-        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 653013  FROM       217962952 — RETAIL",
+        "description": "PAY/SALARY FROM J.J. RICHARDS &  83785 — RETAIL",
         "debit": 79.66,
         "credit": null,
         "balance": 3859.59
@@ -1028,7 +1028,7 @@
     {
       "id": "dd-70w-15",
       "date": "2026-03-08",
-      "description": "ANZ MOBILE BANKING PAYMENT 111390 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND D,,,LOAN REPAYMENT — SUBSCRIPTION",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 733629  FROM       878746456 — SUBSCRIPTION",
       "debit": 116.13,
       "credit": null,
       "balance": 3743.46,
@@ -1043,7 +1043,7 @@
       "notes": "effective 2026-03-08",
       "original": {
         "date": "2026-03-08",
-        "description": "ANZ MOBILE BANKING PAYMENT 111390 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND D,,,LOAN REPAYMENT — SUBSCRIPTION",
+        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 733629  FROM       878746456 — SUBSCRIPTION",
         "debit": 116.13,
         "credit": null,
         "balance": 3743.46
@@ -1052,7 +1052,7 @@
     {
       "id": "dd-70w-16",
       "date": "2026-03-10",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — DIRECT DEBIT",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 CALTEX — DIRECT DEBIT",
       "debit": 343.65,
       "credit": null,
       "balance": 3399.81,
@@ -1067,7 +1067,7 @@
       "notes": "effective 2026-03-10",
       "original": {
         "date": "2026-03-10",
-        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — DIRECT DEBIT",
+        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 CALTEX — DIRECT DEBIT",
         "debit": 343.65,
         "credit": null,
         "balance": 3399.81
@@ -1076,7 +1076,7 @@
     {
       "id": "pos-70w-17",
       "date": "2026-03-12",
-      "description": "TRANSFER FROM MCARE BENEFITS   350151229 MCARE — WEB",
+      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — WEB",
       "debit": 94.38,
       "credit": null,
       "balance": 3305.43,
@@ -1091,7 +1091,7 @@
       "notes": "effective 2026-03-12",
       "original": {
         "date": "2026-03-12",
-        "description": "TRANSFER FROM MCARE BENEFITS   350151229 MCARE — WEB",
+        "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — WEB",
         "debit": 94.38,
         "credit": null,
         "balance": 3305.43
@@ -1100,7 +1100,7 @@
     {
       "id": "pos-70w-18",
       "date": "2026-03-12",
-      "description": "PAYMENT TO HUMM BNPL        HUMM — CITY",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 BIG W — CITY",
       "debit": 90.21,
       "credit": null,
       "balance": 3215.22,
@@ -1115,7 +1115,7 @@
       "notes": "effective 2026-03-12",
       "original": {
         "date": "2026-03-12",
-        "description": "PAYMENT TO HUMM BNPL        HUMM — CITY",
+        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 BIG W — CITY",
         "debit": 90.21,
         "credit": null,
         "balance": 3215.22
@@ -1124,7 +1124,7 @@
     {
       "id": "dd-70w-19",
       "date": "2026-03-13",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 108312  FROM       200943429 — DIRECT DEBIT",
+      "description": "EFTPOS PILOT\\ — DIRECT DEBIT",
       "debit": 212.11,
       "credit": null,
       "balance": 3003.11,
@@ -1139,7 +1139,7 @@
       "notes": "effective 2026-03-13",
       "original": {
         "date": "2026-03-13",
-        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 108312  FROM       200943429 — DIRECT DEBIT",
+        "description": "EFTPOS PILOT\\ — DIRECT DEBIT",
         "debit": 212.11,
         "credit": null,
         "balance": 3003.11
@@ -1196,7 +1196,7 @@
     {
       "id": "sav-70w-22",
       "date": "2026-03-15",
-      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — TO BONUS",
+      "description": "ANZ MOBILE BANKING PAYMENT 995041 TO SUNDERLAND A,MS KRISTY SUNDERLAND,SUNDERLAND D,,,INSURANCE PAYMENT — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 6467.06,
@@ -1211,7 +1211,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — TO BONUS",
+        "description": "ANZ MOBILE BANKING PAYMENT 995041 TO SUNDERLAND A,MS KRISTY SUNDERLAND,SUNDERLAND D,,,INSURANCE PAYMENT — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 6467.06
@@ -1220,7 +1220,7 @@
     {
       "id": "pos-70w-23",
       "date": "2026-03-15",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — WEB",
+      "description": "ACCOUNT SERVICING FEE — WEB",
       "debit": 117.86,
       "credit": null,
       "balance": 6349.2,
@@ -1235,7 +1235,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — WEB",
+        "description": "ACCOUNT SERVICING FEE — WEB",
         "debit": 117.86,
         "credit": null,
         "balance": 6349.2
@@ -1244,7 +1244,7 @@
     {
       "id": "pos-70w-24",
       "date": "2026-03-15",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 WOOLWORTHS — WEB",
+      "description": "TRANSFER FROM MCARE BENEFITS   910607972 MCARE — WEB",
       "debit": 125.51,
       "credit": null,
       "balance": 6223.69,
@@ -1259,7 +1259,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 WOOLWORTHS — WEB",
+        "description": "TRANSFER FROM MCARE BENEFITS   910607972 MCARE — WEB",
         "debit": 125.51,
         "credit": null,
         "balance": 6223.69
@@ -1268,7 +1268,7 @@
     {
       "id": "p2p-70w-25",
       "date": "2026-03-16",
-      "description": "ANZ MOBILE BANKING PAYMENT 637545 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND D,,,RENT PAYMENT — OSKO / PAYID",
+      "description": "PAYMENT TO HUMM BNPL        HUMM — OSKO / PAYID",
       "debit": 35.29,
       "credit": null,
       "balance": 6188.4,
@@ -1283,7 +1283,7 @@
       "notes": "effective 2026-03-16",
       "original": {
         "date": "2026-03-16",
-        "description": "ANZ MOBILE BANKING PAYMENT 637545 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND D,,,RENT PAYMENT — OSKO / PAYID",
+        "description": "PAYMENT TO HUMM BNPL        HUMM — OSKO / PAYID",
         "debit": 35.29,
         "credit": null,
         "balance": 6188.4
@@ -1292,7 +1292,7 @@
     {
       "id": "dd-70w-26",
       "date": "2026-03-17",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 486236  FROM       315573412 — DIRECT DEBIT",
+      "description": "TRANSFER FROM MCARE BENEFITS   403663381 MCARE — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 5884.09,
@@ -1307,7 +1307,7 @@
       "notes": "effective 2026-03-17",
       "original": {
         "date": "2026-03-17",
-        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 486236  FROM       315573412 — DIRECT DEBIT",
+        "description": "TRANSFER FROM MCARE BENEFITS   403663381 MCARE — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 5884.09
@@ -1316,7 +1316,7 @@
     {
       "id": "pos-70w-27",
       "date": "2026-03-17",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — SUBURB",
+      "description": "ACCOUNT SERVICING FEE — SUBURB",
       "debit": 44.93,
       "credit": null,
       "balance": 5839.16,
@@ -1331,7 +1331,7 @@
       "notes": "effective 2026-03-17",
       "original": {
         "date": "2026-03-17",
-        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — SUBURB",
+        "description": "ACCOUNT SERVICING FEE — SUBURB",
         "debit": 44.93,
         "credit": null,
         "balance": 5839.16
@@ -1340,7 +1340,7 @@
     {
       "id": "dd-70w-28",
       "date": "2026-03-19",
-      "description": "PAYMENT TO HUMM BNPL        HUMM — SUBSCRIPTION",
+      "description": "ANZ MOBILE BANKING PAYMENT 365841 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND A,,,UTILITY PAYMENT — SUBSCRIPTION",
       "debit": 187.23,
       "credit": null,
       "balance": 5651.93,
@@ -1355,7 +1355,7 @@
       "notes": "effective 2026-03-19",
       "original": {
         "date": "2026-03-19",
-        "description": "PAYMENT TO HUMM BNPL        HUMM — SUBSCRIPTION",
+        "description": "ANZ MOBILE BANKING PAYMENT 365841 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND A,,,UTILITY PAYMENT — SUBSCRIPTION",
         "debit": 187.23,
         "credit": null,
         "balance": 5651.93
@@ -1364,7 +1364,7 @@
     {
       "id": "pos-70w-29",
       "date": "2026-03-21",
-      "description": "TRANSFER FROM MCARE BENEFITS   174377026 MCARE — SUBURB",
+      "description": "ANZ MOBILE BANKING PAYMENT 796215 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND B,,,INSURANCE PAYMENT — SUBURB",
       "debit": 24.29,
       "credit": null,
       "balance": 5627.64,
@@ -1379,7 +1379,7 @@
       "notes": "effective 2026-03-21",
       "original": {
         "date": "2026-03-21",
-        "description": "TRANSFER FROM MCARE BENEFITS   174377026 MCARE — SUBURB",
+        "description": "ANZ MOBILE BANKING PAYMENT 796215 TO SUNDERLAND D,MS KRISTY SUNDERLAND,SUNDERLAND B,,,INSURANCE PAYMENT — SUBURB",
         "debit": 24.29,
         "credit": null,
         "balance": 5627.64
@@ -1388,7 +1388,7 @@
     {
       "id": "pos-70w-30",
       "date": "2026-03-21",
-      "description": "TRANSFER FROM MCARE BENEFITS   505802930 MCARE — METRO",
+      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 741019  FROM       552993331 — METRO",
       "debit": 23.31,
       "credit": null,
       "balance": 5604.33,
@@ -1403,7 +1403,7 @@
       "notes": "effective 2026-03-21",
       "original": {
         "date": "2026-03-21",
-        "description": "TRANSFER FROM MCARE BENEFITS   505802930 MCARE — METRO",
+        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 741019  FROM       552993331 — METRO",
         "debit": 23.31,
         "credit": null,
         "balance": 5604.33
@@ -1436,7 +1436,7 @@
     {
       "id": "pos-70w-32",
       "date": "2026-03-23",
-      "description": "ANZ M-BANKING FUNDS TFER TRANSFER 871455  FROM       625652398 — CBD",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  68490 — CBD",
       "debit": 19.19,
       "credit": null,
       "balance": 5495.19,
@@ -1451,7 +1451,7 @@
       "notes": "effective 2026-03-23",
       "original": {
         "date": "2026-03-23",
-        "description": "ANZ M-BANKING FUNDS TFER TRANSFER 871455  FROM       625652398 — CBD",
+        "description": "PAY/SALARY FROM J.J. RICHARDS &  68490 — CBD",
         "debit": 19.19,
         "credit": null,
         "balance": 5495.19
@@ -1460,7 +1460,7 @@
     {
       "id": "pos-70w-33",
       "date": "2026-03-23",
-      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — CBD",
+      "description": "ANZ MOBILE BANKING PAYMENT 900250 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND C,,,RENT PAYMENT — CBD",
       "debit": 7.62,
       "credit": null,
       "balance": 5487.57,
@@ -1475,7 +1475,7 @@
       "notes": "effective 2026-03-23",
       "original": {
         "date": "2026-03-23",
-        "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — CBD",
+        "description": "ANZ MOBILE BANKING PAYMENT 900250 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND C,,,RENT PAYMENT — CBD",
         "debit": 7.62,
         "credit": null,
         "balance": 5487.57
@@ -1484,7 +1484,7 @@
     {
       "id": "pos-70w-34",
       "date": "2026-03-25",
-      "description": "TRANSFER FROM MCARE BENEFITS   406722297 MCARE — METRO",
+      "description": "EFTPOS MEDICARE BENEFIT — METRO",
       "debit": 44.37,
       "credit": null,
       "balance": 5443.2,
@@ -1499,7 +1499,7 @@
       "notes": "effective 2026-03-25",
       "original": {
         "date": "2026-03-25",
-        "description": "TRANSFER FROM MCARE BENEFITS   406722297 MCARE — METRO",
+        "description": "EFTPOS MEDICARE BENEFIT — METRO",
         "debit": 44.37,
         "credit": null,
         "balance": 5443.2
@@ -1508,7 +1508,7 @@
     {
       "id": "pos-70w-35",
       "date": "2026-03-25",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  44065 — LOCAL",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  86898 — LOCAL",
       "debit": 35.02,
       "credit": null,
       "balance": 5408.18,
@@ -1523,7 +1523,7 @@
       "notes": "effective 2026-03-25",
       "original": {
         "date": "2026-03-25",
-        "description": "PAY/SALARY FROM J.J. RICHARDS &  44065 — LOCAL",
+        "description": "PAY/SALARY FROM J.J. RICHARDS &  86898 — LOCAL",
         "debit": 35.02,
         "credit": null,
         "balance": 5408.18
@@ -1532,7 +1532,7 @@
     {
       "id": "pos-70w-36",
       "date": "2026-03-26",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 TERRY WHITE CHEMIST — CITY",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 VODAFONE — CITY",
       "debit": 41.49,
       "credit": null,
       "balance": 5366.69,
@@ -1547,7 +1547,7 @@
       "notes": "effective 2026-03-26",
       "original": {
         "date": "2026-03-26",
-        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 TERRY WHITE CHEMIST — CITY",
+        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 VODAFONE — CITY",
         "debit": 41.49,
         "credit": null,
         "balance": 5366.69
@@ -1556,7 +1556,7 @@
     {
       "id": "p2p-70w-37",
       "date": "2026-03-27",
-      "description": "TRANSFER FROM MCARE BENEFITS   515147241 MCARE — OSKO / PAYID",
+      "description": "ANZ MOBILE BANKING PAYMENT 729676 TO SUNDERLAND B,MS KRISTY SUNDERLAND,SUNDERLAND A,,,LOAN REPAYMENT — OSKO / PAYID",
       "debit": 52.57,
       "credit": null,
       "balance": 5314.12,
@@ -1571,7 +1571,7 @@
       "notes": "effective 2026-03-27",
       "original": {
         "date": "2026-03-27",
-        "description": "TRANSFER FROM MCARE BENEFITS   515147241 MCARE — OSKO / PAYID",
+        "description": "ANZ MOBILE BANKING PAYMENT 729676 TO SUNDERLAND B,MS KRISTY SUNDERLAND,SUNDERLAND A,,,LOAN REPAYMENT — OSKO / PAYID",
         "debit": 52.57,
         "credit": null,
         "balance": 5314.12
@@ -1580,7 +1580,7 @@
     {
       "id": "pos-70w-38",
       "date": "2026-03-28",
-      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 VODAFONE — CITY",
+      "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — CITY",
       "debit": 89.73,
       "credit": null,
       "balance": 5224.39,
@@ -1595,7 +1595,7 @@
       "notes": "effective 2026-03-28",
       "original": {
         "date": "2026-03-28",
-        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 VODAFONE — CITY",
+        "description": "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381 — CITY",
         "debit": 89.73,
         "credit": null,
         "balance": 5224.39
@@ -1604,7 +1604,7 @@
     {
       "id": "pos-70w-39",
       "date": "2026-03-28",
-      "description": "EFTPOS MEDICARE BENEFIT",
+      "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 OPTUS",
       "debit": 7.63,
       "credit": null,
       "balance": 5216.76,
@@ -1619,7 +1619,7 @@
       "notes": "effective 2026-03-28",
       "original": {
         "date": "2026-03-28",
-        "description": "EFTPOS MEDICARE BENEFIT",
+        "description": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 OPTUS",
         "debit": 7.63,
         "credit": null,
         "balance": 5216.76
@@ -1652,7 +1652,7 @@
     {
       "id": "sav-70w-41",
       "date": "2026-03-29",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  65494 — TO BONUS",
+      "description": "ACCOUNT SERVICING FEE — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 8816.76,
@@ -1667,7 +1667,7 @@
       "notes": "effective 2026-03-29",
       "original": {
         "date": "2026-03-29",
-        "description": "PAY/SALARY FROM J.J. RICHARDS &  65494 — TO BONUS",
+        "description": "ACCOUNT SERVICING FEE — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 8816.76
@@ -1700,7 +1700,7 @@
     {
       "id": "pos-70w-43",
       "date": "2026-03-30",
-      "description": "PAY/SALARY FROM J.J. RICHARDS &  53654 — HWY",
+      "description": "ACCOUNT SERVICING FEE — HWY",
       "debit": 85.19,
       "credit": null,
       "balance": 8697.24,
@@ -1715,7 +1715,7 @@
       "notes": "effective 2026-03-30",
       "original": {
         "date": "2026-03-30",
-        "description": "PAY/SALARY FROM J.J. RICHARDS &  53654 — HWY",
+        "description": "ACCOUNT SERVICING FEE — HWY",
         "debit": 85.19,
         "credit": null,
         "balance": 8697.24
@@ -1724,7 +1724,7 @@
     {
       "id": "pos-70w-44",
       "date": "2026-03-30",
-      "description": "EFTPOS PILOT\\ — LOCAL",
+      "description": "TRANSFER FROM MCARE BENEFITS   481039462 MCARE — LOCAL",
       "debit": 44.64,
       "credit": null,
       "balance": 8652.6,
@@ -1739,7 +1739,7 @@
       "notes": "effective 2026-03-30",
       "original": {
         "date": "2026-03-30",
-        "description": "EFTPOS PILOT\\ — LOCAL",
+        "description": "TRANSFER FROM MCARE BENEFITS   481039462 MCARE — LOCAL",
         "debit": 44.64,
         "credit": null,
         "balance": 8652.6
@@ -1748,7 +1748,7 @@
     {
       "id": "mtg-70w-45",
       "date": "2026-03-31",
-      "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — HOME LENDER · REF LN-other-9104",
+      "description": "PAY/SALARY FROM J.J. RICHARDS &  32124 — HOME LENDER · REF LN-other-9104",
       "debit": 1680,
       "credit": null,
       "balance": 6972.6,
@@ -1763,7 +1763,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED — HOME LENDER · REF LN-other-9104",
+        "description": "PAY/SALARY FROM J.J. RICHARDS &  32124 — HOME LENDER · REF LN-other-9104",
         "debit": 1680,
         "credit": null,
         "balance": 6972.6
@@ -1772,7 +1772,7 @@
     {
       "id": "dd-70w-46",
       "date": "2026-03-31",
-      "description": "PAYMENT TO HUMM BNPL        HUMM — DIRECT DEBIT",
+      "description": "ANZ MOBILE BANKING PAYMENT 209818 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND B,,,INSURANCE PAYMENT — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 6668.29,
@@ -1787,7 +1787,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "PAYMENT TO HUMM BNPL        HUMM — DIRECT DEBIT",
+        "description": "ANZ MOBILE BANKING PAYMENT 209818 TO SUNDERLAND C,MS KRISTY SUNDERLAND,SUNDERLAND B,,,INSURANCE PAYMENT — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 6668.29
@@ -1796,9 +1796,9 @@
   ],
   "sampleDescriptions": [
     "OTHER PAYROLL CREDIT",
-    "PAY/SALARY FROM J.J. RICHARDS &  64673",
-    "PAYMENT FROM TERRY BRADFORD,TERRY BRADFORD,Scott Sunderland,,,Wyndham 00201067381",
-    "REVERSAL OF ACCOUNT SERVICING FEE MINIMUM $2000 IN DEPOSITS RECEIVED",
-    "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 OFFICEWORKS"
+    "ACCOUNT SERVICING FEE",
+    "ANZ M-BANKING FUNDS TFER TRANSFER 182342  FROM       884182662",
+    "ACCOUNT SERVICING FEE",
+    "ANZ M-BANKING FUNDS TFER TRANSFER 289245  FROM       355053073"
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "errors": [],
+  "stats": {
+    "run": 1,
+    "bank": "anz",
+    "seed": 701117,
+    "parseCount": 22,
+    "pageCount": 3,
+    "generatedCount": 22,
+    "bankDescEdits": 22,
+    "balanceMismatches": 0,
+    "closingExpected": 3519.65,
+    "materialMode": "full-ledger",
+    "editCount": 54,
+    "byField": {
+      "date": 17,
+      "description": 22,
+      "debit": 0,
+      "credit": 1,
+      "balance": 14,
+      "other": 0
+    },
+    "rowsPaired": 22,
+    "exportBytes": 79128,
+    "mathScore": 100,
+    "mathStatus": "pass",
+    "visualScore": 72,
+    "visualStatus": "fail",
+    "rendererOk": true
+  },
+  "notes": [
+    "Scanned 348 text runs (maxPages=40).",
+    "Linked 72/90 field geometries · 54 changed replacements for 22 row(s).",
+    "Final PDF: 54 replacement(s) applied · mode=full-ledger · queued=22 · ledger=54 · byField={\"date\":17,\"description\":22,\"debit\":0,\"credit\":1,\"balance\":14,\"other\":0}."
+  ]
+}

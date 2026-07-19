@@ -1,5 +1,4 @@
-import * as pdfjs from "pdfjs-dist";
-import { ensurePdfWorker } from "@/lib/pdf-worker";
+import { openPdfDocument, pdfjs, type PdfjsDocument } from "@/lib/pdfjs-api";
 import { cloneUint8Array } from "@/lib/bytes";
 import { matchFontSpec } from "@/lib/pdf-render";
 import type { PdfFontSpec } from "@/lib/types";
@@ -14,12 +13,9 @@ class PdfJsDocument implements PdfEngineDocument {
   engine = "pdfjs" as const;
   pageCount: number;
   private data: Uint8Array;
-  private doc: Awaited<ReturnType<typeof pdfjs.getDocument>["promise"]>;
+  private doc: PdfjsDocument;
 
-  constructor(
-    data: Uint8Array,
-    doc: Awaited<ReturnType<typeof pdfjs.getDocument>["promise"]>,
-  ) {
+  constructor(data: Uint8Array, doc: PdfjsDocument) {
     this.data = data;
     this.doc = doc;
     this.pageCount = doc.numPages;
@@ -138,9 +134,8 @@ export const pdfjsEngine: PdfEngine = {
   },
 
   async load(data: Uint8Array): Promise<PdfEngineDocument> {
-    await ensurePdfWorker();
     const copy = cloneUint8Array(data);
-    const doc = await pdfjs.getDocument({ data: copy }).promise;
+    const doc = await openPdfDocument(copy);
     return new PdfJsDocument(copy, doc);
   },
 };

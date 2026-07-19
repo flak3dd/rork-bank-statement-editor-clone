@@ -185,7 +185,7 @@
     },
     {
       "id": "sav-706-2",
-      "description": "Interest charged",
+      "description": "From JAMES SMITH - CREDIT TO ACCOUNT",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-01",
       "effectiveDate": "2026-03-01",
@@ -196,7 +196,7 @@
     },
     {
       "id": "mtg-706-3",
-      "description": "From EMILY WATSON - CREDIT TO ACCOUNT",
+      "description": "Interest charged",
       "secondaryDescription": "HOME LENDER · REF LN-macquarie-9078",
       "date": "2026-03-01",
       "effectiveDate": "2026-03-01",
@@ -207,7 +207,7 @@
     },
     {
       "id": "pos-706-4",
-      "description": "From HOSTPLUS PENSION - 005973644",
+      "description": "From LISA BROWN - Transfer",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-02",
       "effectiveDate": "2026-03-02",
@@ -218,7 +218,7 @@
     },
     {
       "id": "dd-706-5",
-      "description": "Funds transfer",
+      "description": "to account xx9814",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-03",
       "effectiveDate": "2026-03-03",
@@ -229,7 +229,7 @@
     },
     {
       "id": "pos-706-6",
-      "description": "Sign Up",
+      "description": "to account xx5765",
       "secondaryDescription": "MALL",
       "date": "2026-03-03",
       "effectiveDate": "2026-03-03",
@@ -240,7 +240,7 @@
     },
     {
       "id": "pos-706-7",
-      "description": "From HOSTPLUS PENSION - 005374458",
+      "description": "Interest charged",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-03",
       "effectiveDate": "2026-03-03",
@@ -251,7 +251,7 @@
     },
     {
       "id": "dd-706-8",
-      "description": "From HOSTPLUS PENSION - 005040202",
+      "description": "From EMILY WATSON - CREDIT TO ACCOUNT",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-04",
       "effectiveDate": "2026-03-04",
@@ -262,7 +262,7 @@
     },
     {
       "id": "pos-706-9",
-      "description": "from account xx8320",
+      "description": "From HOSTPLUS PENSION - 005200033",
       "secondaryDescription": "CBD",
       "date": "2026-03-04",
       "effectiveDate": "2026-03-04",
@@ -273,7 +273,7 @@
     },
     {
       "id": "p2p-706-10",
-      "description": "From RACHEL TAYLOR - Transfer",
+      "description": "Package fee",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-05",
       "effectiveDate": "2026-03-05",
@@ -284,7 +284,7 @@
     },
     {
       "id": "dd-706-11",
-      "description": "from account xx1744",
+      "description": "to account xx7968",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-06",
       "effectiveDate": "2026-03-06",
@@ -295,7 +295,7 @@
     },
     {
       "id": "pos-706-12",
-      "description": "From EMILY WATSON - CREDIT TO ACCOUNT",
+      "description": "from account xx6571",
       "secondaryDescription": "METRO",
       "date": "2026-03-07",
       "effectiveDate": "2026-03-07",
@@ -306,7 +306,7 @@
     },
     {
       "id": "pos-706-13",
-      "description": "From HOSTPLUS PENSION - 005682135",
+      "description": "Funds transfer",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-07",
       "effectiveDate": "2026-03-07",
@@ -317,7 +317,7 @@
     },
     {
       "id": "dd-706-14",
-      "description": "Sign Up",
+      "description": "Interest charged",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-08",
       "effectiveDate": "2026-03-08",
@@ -328,7 +328,7 @@
     },
     {
       "id": "pos-706-15",
-      "description": "Sign Up",
+      "description": "From HOSTPLUS PENSION - 005830620",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-08",
       "effectiveDate": "2026-03-08",
@@ -339,7 +339,7 @@
     },
     {
       "id": "pos-706-16",
-      "description": "From HOSTPLUS PENSION - 005465851",
+      "description": "Funds transfer",
       "secondaryDescription": "HWY",
       "date": "2026-03-09",
       "effectiveDate": "2026-03-09",
@@ -350,7 +350,7 @@
     },
     {
       "id": "pos-706-17",
-      "description": "Funds transfer",
+      "description": "from account xx6786",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-09",
       "effectiveDate": "2026-03-09",
@@ -361,7 +361,7 @@
     },
     {
       "id": "dd-706-18",
-      "description": "Funds transfer",
+      "description": "from account xx7409",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-10",
       "effectiveDate": "2026-03-10",
@@ -372,7 +372,7 @@
     },
     {
       "id": "pos-706-19",
-      "description": "Sign Up",
+      "description": "From ROBERT WILSON - Transfer",
       "secondaryDescription": "CBD",
       "date": "2026-03-11",
       "effectiveDate": "2026-03-11",
@@ -383,7 +383,7 @@
     },
     {
       "id": "pos-706-20",
-      "description": "Interest charged",
+      "description": "Sign Up",
       "secondaryDescription": "MALL",
       "date": "2026-03-12",
       "effectiveDate": "2026-03-12",
@@ -394,7 +394,7 @@
     },
     {
       "id": "dd-706-21",
-      "description": "Funds transfer",
+      "description": "from account xx2699",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-13",
       "effectiveDate": "2026-03-13",
@@ -405,7 +405,7 @@
     },
     {
       "id": "pos-706-22",
-      "description": "Funds transfer",
+      "description": "From RACHEL TAYLOR - Transfer",
       "secondaryDescription": "MALL",
       "date": "2026-03-14",
       "effectiveDate": "2026-03-14",
@@ -416,7 +416,7 @@
     },
     {
       "id": "pos-706-23",
-      "description": "Interest charged",
+      "description": "From SARAH JOHNSON - Transfer",
       "secondaryDescription": "MALL",
       "date": "2026-03-14",
       "effectiveDate": "2026-03-14",
@@ -438,7 +438,7 @@
     },
     {
       "id": "sav-706-25",
-      "description": "to account xx1338",
+      "description": "Package fee",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -449,7 +449,7 @@
     },
     {
       "id": "pos-706-26",
-      "description": "Interest charged",
+      "description": "From LISA BROWN - CREDIT TO ACCOUNT",
       "secondaryDescription": "WEB",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -460,7 +460,7 @@
     },
     {
       "id": "p2p-706-27",
-      "description": "to account xx8983",
+      "description": "from account xx5804",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-16",
       "effectiveDate": "2026-03-16",
@@ -471,7 +471,7 @@
     },
     {
       "id": "pos-706-28",
-      "description": "to account xx2479",
+      "description": "From JAMES SMITH - Transfer",
       "secondaryDescription": "METRO",
       "date": "2026-03-16",
       "effectiveDate": "2026-03-16",
@@ -482,7 +482,7 @@
     },
     {
       "id": "dd-706-29",
-      "description": "Funds transfer",
+      "description": "From HOSTPLUS PENSION - 005355609",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-17",
       "effectiveDate": "2026-03-17",
@@ -493,7 +493,7 @@
     },
     {
       "id": "pos-706-30",
-      "description": "Interest charged",
+      "description": "From ROBERT WILSON - Transfer",
       "secondaryDescription": "CBD",
       "date": "2026-03-17",
       "effectiveDate": "2026-03-17",
@@ -504,7 +504,7 @@
     },
     {
       "id": "dd-706-31",
-      "description": "Interest charged",
+      "description": "to account xx9134",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-19",
       "effectiveDate": "2026-03-19",
@@ -515,7 +515,7 @@
     },
     {
       "id": "pos-706-32",
-      "description": "from account xx9009",
+      "description": "Funds transfer",
       "secondaryDescription": "METRO",
       "date": "2026-03-19",
       "effectiveDate": "2026-03-19",
@@ -526,7 +526,7 @@
     },
     {
       "id": "pos-706-33",
-      "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT",
+      "description": "From HOSTPLUS PENSION - 005046627",
       "secondaryDescription": "WEB",
       "date": "2026-03-20",
       "effectiveDate": "2026-03-20",
@@ -537,7 +537,7 @@
     },
     {
       "id": "pos-706-34",
-      "description": "to account xx2256",
+      "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT",
       "secondaryDescription": "WEB",
       "date": "2026-03-20",
       "effectiveDate": "2026-03-20",
@@ -548,7 +548,7 @@
     },
     {
       "id": "pos-706-35",
-      "description": "Package fee",
+      "description": "From HOSTPLUS PENSION - 005052534",
       "secondaryDescription": "HWY",
       "date": "2026-03-21",
       "effectiveDate": "2026-03-21",
@@ -559,7 +559,7 @@
     },
     {
       "id": "pos-706-36",
-      "description": "From HOSTPLUS PENSION - 005675762",
+      "description": "from account xx6538",
       "secondaryDescription": "HWY",
       "date": "2026-03-21",
       "effectiveDate": "2026-03-21",
@@ -570,7 +570,7 @@
     },
     {
       "id": "pos-706-37",
-      "description": "Package fee",
+      "description": "from account xx1129",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-22",
       "effectiveDate": "2026-03-22",
@@ -581,7 +581,7 @@
     },
     {
       "id": "pos-706-38",
-      "description": "from account xx7778",
+      "description": "to account xx1314",
       "secondaryDescription": "RETAIL",
       "date": "2026-03-23",
       "effectiveDate": "2026-03-23",
@@ -592,7 +592,7 @@
     },
     {
       "id": "pos-706-39",
-      "description": "Sign Up",
+      "description": "from account xx4091",
       "secondaryDescription": "WEB",
       "date": "2026-03-23",
       "effectiveDate": "2026-03-23",
@@ -603,7 +603,7 @@
     },
     {
       "id": "pos-706-40",
-      "description": "Funds transfer",
+      "description": "From LISA BROWN - CREDIT TO ACCOUNT",
       "secondaryDescription": "CBD",
       "date": "2026-03-24",
       "effectiveDate": "2026-03-24",
@@ -614,7 +614,7 @@
     },
     {
       "id": "pos-706-41",
-      "description": "From HOSTPLUS PENSION - 005297056",
+      "description": "Package fee",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-25",
       "effectiveDate": "2026-03-25",
@@ -625,7 +625,7 @@
     },
     {
       "id": "pos-706-42",
-      "description": "to account xx7918",
+      "description": "From HOSTPLUS PENSION - 005051823",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-25",
       "effectiveDate": "2026-03-25",
@@ -636,7 +636,7 @@
     },
     {
       "id": "pos-706-43",
-      "description": "From SARAH JOHNSON - Transfer",
+      "description": "Funds transfer",
       "secondaryDescription": "METRO",
       "date": "2026-03-26",
       "effectiveDate": "2026-03-26",
@@ -647,7 +647,7 @@
     },
     {
       "id": "pos-706-44",
-      "description": "Package fee",
+      "description": "From HOSTPLUS PENSION - 005612554",
       "date": "2026-03-26",
       "effectiveDate": "2026-03-26",
       "amount": -3.27,
@@ -657,7 +657,7 @@
     },
     {
       "id": "p2p-706-45",
-      "description": "From LISA BROWN - Transfer",
+      "description": "From RACHEL TAYLOR - CREDIT TO ACCOUNT",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-27",
       "effectiveDate": "2026-03-27",
@@ -668,7 +668,7 @@
     },
     {
       "id": "pos-706-46",
-      "description": "to account xx4941",
+      "description": "From HOSTPLUS PENSION - 005872606",
       "secondaryDescription": "WEB",
       "date": "2026-03-28",
       "effectiveDate": "2026-03-28",
@@ -690,7 +690,7 @@
     },
     {
       "id": "sav-706-48",
-      "description": "Sign Up",
+      "description": "From DAVID NGUYEN - CREDIT TO ACCOUNT",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-29",
       "effectiveDate": "2026-03-29",
@@ -701,7 +701,7 @@
     },
     {
       "id": "pos-706-49",
-      "description": "Funds transfer",
+      "description": "from account xx1845",
       "secondaryDescription": "MALL",
       "date": "2026-03-30",
       "effectiveDate": "2026-03-30",
@@ -723,7 +723,7 @@
     },
     {
       "id": "dd-706-51",
-      "description": "to account xx8696",
+      "description": "from account xx3692",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -734,7 +734,7 @@
     },
     {
       "id": "pos-706-52",
-      "description": "From SARAH JOHNSON - CREDIT TO ACCOUNT",
+      "description": "Package fee",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
       "amount": -6.64,
@@ -744,7 +744,7 @@
     },
     {
       "id": "pos-706-53",
-      "description": "Sign Up",
+      "description": "Interest charged",
       "secondaryDescription": "HWY",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -792,7 +792,7 @@
     {
       "id": "sav-706-2",
       "date": "2026-03-01",
-      "description": "Interest charged — TO BONUS",
+      "description": "From JAMES SMITH - CREDIT TO ACCOUNT — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 6840.55,
@@ -807,7 +807,7 @@
       "notes": "effective 2026-03-01",
       "original": {
         "date": "2026-03-01",
-        "description": "Interest charged — TO BONUS",
+        "description": "From JAMES SMITH - CREDIT TO ACCOUNT — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 6840.55
@@ -816,7 +816,7 @@
     {
       "id": "mtg-706-3",
       "date": "2026-03-01",
-      "description": "From EMILY WATSON - CREDIT TO ACCOUNT — HOME LENDER · REF LN-macquarie-9078",
+      "description": "Interest charged — HOME LENDER · REF LN-macquarie-9078",
       "debit": 1680,
       "credit": null,
       "balance": 5160.55,
@@ -831,7 +831,7 @@
       "notes": "effective 2026-03-01",
       "original": {
         "date": "2026-03-01",
-        "description": "From EMILY WATSON - CREDIT TO ACCOUNT — HOME LENDER · REF LN-macquarie-9078",
+        "description": "Interest charged — HOME LENDER · REF LN-macquarie-9078",
         "debit": 1680,
         "credit": null,
         "balance": 5160.55
@@ -840,7 +840,7 @@
     {
       "id": "pos-706-4",
       "date": "2026-03-02",
-      "description": "From HOSTPLUS PENSION - 005973644 — LOCAL",
+      "description": "From LISA BROWN - Transfer — LOCAL",
       "debit": 45.42,
       "credit": null,
       "balance": 5115.13,
@@ -855,7 +855,7 @@
       "notes": "effective 2026-03-02",
       "original": {
         "date": "2026-03-02",
-        "description": "From HOSTPLUS PENSION - 005973644 — LOCAL",
+        "description": "From LISA BROWN - Transfer — LOCAL",
         "debit": 45.42,
         "credit": null,
         "balance": 5115.13
@@ -864,7 +864,7 @@
     {
       "id": "dd-706-5",
       "date": "2026-03-03",
-      "description": "Funds transfer — DIRECT DEBIT",
+      "description": "to account xx9814 — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 4810.82,
@@ -879,7 +879,7 @@
       "notes": "effective 2026-03-03",
       "original": {
         "date": "2026-03-03",
-        "description": "Funds transfer — DIRECT DEBIT",
+        "description": "to account xx9814 — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 4810.82
@@ -888,7 +888,7 @@
     {
       "id": "pos-706-6",
       "date": "2026-03-03",
-      "description": "Sign Up — MALL",
+      "description": "to account xx5765 — MALL",
       "debit": 24.63,
       "credit": null,
       "balance": 4786.19,
@@ -903,7 +903,7 @@
       "notes": "effective 2026-03-03",
       "original": {
         "date": "2026-03-03",
-        "description": "Sign Up — MALL",
+        "description": "to account xx5765 — MALL",
         "debit": 24.63,
         "credit": null,
         "balance": 4786.19
@@ -912,7 +912,7 @@
     {
       "id": "pos-706-7",
       "date": "2026-03-03",
-      "description": "From HOSTPLUS PENSION - 005374458 — SUBURB",
+      "description": "Interest charged — SUBURB",
       "debit": 70.59,
       "credit": null,
       "balance": 4715.6,
@@ -927,7 +927,7 @@
       "notes": "effective 2026-03-03",
       "original": {
         "date": "2026-03-03",
-        "description": "From HOSTPLUS PENSION - 005374458 — SUBURB",
+        "description": "Interest charged — SUBURB",
         "debit": 70.59,
         "credit": null,
         "balance": 4715.6
@@ -936,7 +936,7 @@
     {
       "id": "dd-706-8",
       "date": "2026-03-04",
-      "description": "From HOSTPLUS PENSION - 005040202 — SUBSCRIPTION",
+      "description": "From EMILY WATSON - CREDIT TO ACCOUNT — SUBSCRIPTION",
       "debit": 40.27,
       "credit": null,
       "balance": 4675.33,
@@ -951,7 +951,7 @@
       "notes": "effective 2026-03-04",
       "original": {
         "date": "2026-03-04",
-        "description": "From HOSTPLUS PENSION - 005040202 — SUBSCRIPTION",
+        "description": "From EMILY WATSON - CREDIT TO ACCOUNT — SUBSCRIPTION",
         "debit": 40.27,
         "credit": null,
         "balance": 4675.33
@@ -960,7 +960,7 @@
     {
       "id": "pos-706-9",
       "date": "2026-03-04",
-      "description": "from account xx8320 — CBD",
+      "description": "From HOSTPLUS PENSION - 005200033 — CBD",
       "debit": 14.39,
       "credit": null,
       "balance": 4660.94,
@@ -975,7 +975,7 @@
       "notes": "effective 2026-03-04",
       "original": {
         "date": "2026-03-04",
-        "description": "from account xx8320 — CBD",
+        "description": "From HOSTPLUS PENSION - 005200033 — CBD",
         "debit": 14.39,
         "credit": null,
         "balance": 4660.94
@@ -984,7 +984,7 @@
     {
       "id": "p2p-706-10",
       "date": "2026-03-05",
-      "description": "From RACHEL TAYLOR - Transfer — OSKO / PAYID",
+      "description": "Package fee — OSKO / PAYID",
       "debit": 28.33,
       "credit": null,
       "balance": 4632.61,
@@ -999,7 +999,7 @@
       "notes": "effective 2026-03-05",
       "original": {
         "date": "2026-03-05",
-        "description": "From RACHEL TAYLOR - Transfer — OSKO / PAYID",
+        "description": "Package fee — OSKO / PAYID",
         "debit": 28.33,
         "credit": null,
         "balance": 4632.61
@@ -1008,7 +1008,7 @@
     {
       "id": "dd-706-11",
       "date": "2026-03-06",
-      "description": "from account xx1744 — DIRECT DEBIT",
+      "description": "to account xx7968 — DIRECT DEBIT",
       "debit": 497.7,
       "credit": null,
       "balance": 4134.91,
@@ -1023,7 +1023,7 @@
       "notes": "effective 2026-03-06",
       "original": {
         "date": "2026-03-06",
-        "description": "from account xx1744 — DIRECT DEBIT",
+        "description": "to account xx7968 — DIRECT DEBIT",
         "debit": 497.7,
         "credit": null,
         "balance": 4134.91
@@ -1032,7 +1032,7 @@
     {
       "id": "pos-706-12",
       "date": "2026-03-07",
-      "description": "From EMILY WATSON - CREDIT TO ACCOUNT — METRO",
+      "description": "from account xx6571 — METRO",
       "debit": 16.76,
       "credit": null,
       "balance": 4118.15,
@@ -1047,7 +1047,7 @@
       "notes": "effective 2026-03-07",
       "original": {
         "date": "2026-03-07",
-        "description": "From EMILY WATSON - CREDIT TO ACCOUNT — METRO",
+        "description": "from account xx6571 — METRO",
         "debit": 16.76,
         "credit": null,
         "balance": 4118.15
@@ -1056,7 +1056,7 @@
     {
       "id": "pos-706-13",
       "date": "2026-03-07",
-      "description": "From HOSTPLUS PENSION - 005682135 — SUBURB",
+      "description": "Funds transfer — SUBURB",
       "debit": 73.77,
       "credit": null,
       "balance": 4044.38,
@@ -1071,7 +1071,7 @@
       "notes": "effective 2026-03-07",
       "original": {
         "date": "2026-03-07",
-        "description": "From HOSTPLUS PENSION - 005682135 — SUBURB",
+        "description": "Funds transfer — SUBURB",
         "debit": 73.77,
         "credit": null,
         "balance": 4044.38
@@ -1080,7 +1080,7 @@
     {
       "id": "dd-706-14",
       "date": "2026-03-08",
-      "description": "Sign Up — SUBSCRIPTION",
+      "description": "Interest charged — SUBSCRIPTION",
       "debit": 116.13,
       "credit": null,
       "balance": 3928.25,
@@ -1095,7 +1095,7 @@
       "notes": "effective 2026-03-08",
       "original": {
         "date": "2026-03-08",
-        "description": "Sign Up — SUBSCRIPTION",
+        "description": "Interest charged — SUBSCRIPTION",
         "debit": 116.13,
         "credit": null,
         "balance": 3928.25
@@ -1104,7 +1104,7 @@
     {
       "id": "pos-706-15",
       "date": "2026-03-08",
-      "description": "Sign Up — SUBURB",
+      "description": "From HOSTPLUS PENSION - 005830620 — SUBURB",
       "debit": 33.15,
       "credit": null,
       "balance": 3895.1,
@@ -1119,7 +1119,7 @@
       "notes": "effective 2026-03-08",
       "original": {
         "date": "2026-03-08",
-        "description": "Sign Up — SUBURB",
+        "description": "From HOSTPLUS PENSION - 005830620 — SUBURB",
         "debit": 33.15,
         "credit": null,
         "balance": 3895.1
@@ -1128,7 +1128,7 @@
     {
       "id": "pos-706-16",
       "date": "2026-03-09",
-      "description": "From HOSTPLUS PENSION - 005465851 — HWY",
+      "description": "Funds transfer — HWY",
       "debit": 89.3,
       "credit": null,
       "balance": 3805.8,
@@ -1143,7 +1143,7 @@
       "notes": "effective 2026-03-09",
       "original": {
         "date": "2026-03-09",
-        "description": "From HOSTPLUS PENSION - 005465851 — HWY",
+        "description": "Funds transfer — HWY",
         "debit": 89.3,
         "credit": null,
         "balance": 3805.8
@@ -1152,7 +1152,7 @@
     {
       "id": "pos-706-17",
       "date": "2026-03-09",
-      "description": "Funds transfer — LOCAL",
+      "description": "from account xx6786 — LOCAL",
       "debit": 53.86,
       "credit": null,
       "balance": 3751.94,
@@ -1167,7 +1167,7 @@
       "notes": "effective 2026-03-09",
       "original": {
         "date": "2026-03-09",
-        "description": "Funds transfer — LOCAL",
+        "description": "from account xx6786 — LOCAL",
         "debit": 53.86,
         "credit": null,
         "balance": 3751.94
@@ -1176,7 +1176,7 @@
     {
       "id": "dd-706-18",
       "date": "2026-03-10",
-      "description": "Funds transfer — DIRECT DEBIT",
+      "description": "from account xx7409 — DIRECT DEBIT",
       "debit": 343.65,
       "credit": null,
       "balance": 3408.29,
@@ -1191,7 +1191,7 @@
       "notes": "effective 2026-03-10",
       "original": {
         "date": "2026-03-10",
-        "description": "Funds transfer — DIRECT DEBIT",
+        "description": "from account xx7409 — DIRECT DEBIT",
         "debit": 343.65,
         "credit": null,
         "balance": 3408.29
@@ -1200,7 +1200,7 @@
     {
       "id": "pos-706-19",
       "date": "2026-03-11",
-      "description": "Sign Up — CBD",
+      "description": "From ROBERT WILSON - Transfer — CBD",
       "debit": 10.99,
       "credit": null,
       "balance": 3397.3,
@@ -1215,7 +1215,7 @@
       "notes": "effective 2026-03-11",
       "original": {
         "date": "2026-03-11",
-        "description": "Sign Up — CBD",
+        "description": "From ROBERT WILSON - Transfer — CBD",
         "debit": 10.99,
         "credit": null,
         "balance": 3397.3
@@ -1224,7 +1224,7 @@
     {
       "id": "pos-706-20",
       "date": "2026-03-12",
-      "description": "Interest charged — MALL",
+      "description": "Sign Up — MALL",
       "debit": 63.89,
       "credit": null,
       "balance": 3333.41,
@@ -1239,7 +1239,7 @@
       "notes": "effective 2026-03-12",
       "original": {
         "date": "2026-03-12",
-        "description": "Interest charged — MALL",
+        "description": "Sign Up — MALL",
         "debit": 63.89,
         "credit": null,
         "balance": 3333.41
@@ -1248,7 +1248,7 @@
     {
       "id": "dd-706-21",
       "date": "2026-03-13",
-      "description": "Funds transfer — DIRECT DEBIT",
+      "description": "from account xx2699 — DIRECT DEBIT",
       "debit": 212.11,
       "credit": null,
       "balance": 3121.3,
@@ -1263,7 +1263,7 @@
       "notes": "effective 2026-03-13",
       "original": {
         "date": "2026-03-13",
-        "description": "Funds transfer — DIRECT DEBIT",
+        "description": "from account xx2699 — DIRECT DEBIT",
         "debit": 212.11,
         "credit": null,
         "balance": 3121.3
@@ -1272,7 +1272,7 @@
     {
       "id": "pos-706-22",
       "date": "2026-03-14",
-      "description": "Funds transfer — MALL",
+      "description": "From RACHEL TAYLOR - Transfer — MALL",
       "debit": 163.19,
       "credit": null,
       "balance": 2958.11,
@@ -1287,7 +1287,7 @@
       "notes": "effective 2026-03-14",
       "original": {
         "date": "2026-03-14",
-        "description": "Funds transfer — MALL",
+        "description": "From RACHEL TAYLOR - Transfer — MALL",
         "debit": 163.19,
         "credit": null,
         "balance": 2958.11
@@ -1296,7 +1296,7 @@
     {
       "id": "pos-706-23",
       "date": "2026-03-14",
-      "description": "Interest charged — MALL",
+      "description": "From SARAH JOHNSON - Transfer — MALL",
       "debit": 15.58,
       "credit": null,
       "balance": 2942.53,
@@ -1311,7 +1311,7 @@
       "notes": "effective 2026-03-14",
       "original": {
         "date": "2026-03-14",
-        "description": "Interest charged — MALL",
+        "description": "From SARAH JOHNSON - Transfer — MALL",
         "debit": 15.58,
         "credit": null,
         "balance": 2942.53
@@ -1344,7 +1344,7 @@
     {
       "id": "sav-706-25",
       "date": "2026-03-15",
-      "description": "to account xx1338 — TO BONUS",
+      "description": "Package fee — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 6542.53,
@@ -1359,7 +1359,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "to account xx1338 — TO BONUS",
+        "description": "Package fee — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 6542.53
@@ -1368,7 +1368,7 @@
     {
       "id": "pos-706-26",
       "date": "2026-03-15",
-      "description": "Interest charged — WEB",
+      "description": "From LISA BROWN - CREDIT TO ACCOUNT — WEB",
       "debit": 68.64,
       "credit": null,
       "balance": 6473.89,
@@ -1383,7 +1383,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "Interest charged — WEB",
+        "description": "From LISA BROWN - CREDIT TO ACCOUNT — WEB",
         "debit": 68.64,
         "credit": null,
         "balance": 6473.89
@@ -1392,7 +1392,7 @@
     {
       "id": "p2p-706-27",
       "date": "2026-03-16",
-      "description": "to account xx8983 — OSKO / PAYID",
+      "description": "from account xx5804 — OSKO / PAYID",
       "debit": 97.52,
       "credit": null,
       "balance": 6376.37,
@@ -1407,7 +1407,7 @@
       "notes": "effective 2026-03-16",
       "original": {
         "date": "2026-03-16",
-        "description": "to account xx8983 — OSKO / PAYID",
+        "description": "from account xx5804 — OSKO / PAYID",
         "debit": 97.52,
         "credit": null,
         "balance": 6376.37
@@ -1416,7 +1416,7 @@
     {
       "id": "pos-706-28",
       "date": "2026-03-16",
-      "description": "to account xx2479 — METRO",
+      "description": "From JAMES SMITH - Transfer — METRO",
       "debit": 37.51,
       "credit": null,
       "balance": 6338.86,
@@ -1431,7 +1431,7 @@
       "notes": "effective 2026-03-16",
       "original": {
         "date": "2026-03-16",
-        "description": "to account xx2479 — METRO",
+        "description": "From JAMES SMITH - Transfer — METRO",
         "debit": 37.51,
         "credit": null,
         "balance": 6338.86
@@ -1440,7 +1440,7 @@
     {
       "id": "dd-706-29",
       "date": "2026-03-17",
-      "description": "Funds transfer — DIRECT DEBIT",
+      "description": "From HOSTPLUS PENSION - 005355609 — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 6034.55,
@@ -1455,7 +1455,7 @@
       "notes": "effective 2026-03-17",
       "original": {
         "date": "2026-03-17",
-        "description": "Funds transfer — DIRECT DEBIT",
+        "description": "From HOSTPLUS PENSION - 005355609 — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 6034.55
@@ -1464,7 +1464,7 @@
     {
       "id": "pos-706-30",
       "date": "2026-03-17",
-      "description": "Interest charged — CBD",
+      "description": "From ROBERT WILSON - Transfer — CBD",
       "debit": 17.24,
       "credit": null,
       "balance": 6017.31,
@@ -1479,7 +1479,7 @@
       "notes": "effective 2026-03-17",
       "original": {
         "date": "2026-03-17",
-        "description": "Interest charged — CBD",
+        "description": "From ROBERT WILSON - Transfer — CBD",
         "debit": 17.24,
         "credit": null,
         "balance": 6017.31
@@ -1488,7 +1488,7 @@
     {
       "id": "dd-706-31",
       "date": "2026-03-19",
-      "description": "Interest charged — SUBSCRIPTION",
+      "description": "to account xx9134 — SUBSCRIPTION",
       "debit": 187.23,
       "credit": null,
       "balance": 5830.08,
@@ -1503,7 +1503,7 @@
       "notes": "effective 2026-03-19",
       "original": {
         "date": "2026-03-19",
-        "description": "Interest charged — SUBSCRIPTION",
+        "description": "to account xx9134 — SUBSCRIPTION",
         "debit": 187.23,
         "credit": null,
         "balance": 5830.08
@@ -1512,7 +1512,7 @@
     {
       "id": "pos-706-32",
       "date": "2026-03-19",
-      "description": "from account xx9009 — METRO",
+      "description": "Funds transfer — METRO",
       "debit": 43.51,
       "credit": null,
       "balance": 5786.57,
@@ -1527,7 +1527,7 @@
       "notes": "effective 2026-03-19",
       "original": {
         "date": "2026-03-19",
-        "description": "from account xx9009 — METRO",
+        "description": "Funds transfer — METRO",
         "debit": 43.51,
         "credit": null,
         "balance": 5786.57
@@ -1536,7 +1536,7 @@
     {
       "id": "pos-706-33",
       "date": "2026-03-20",
-      "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT — WEB",
+      "description": "From HOSTPLUS PENSION - 005046627 — WEB",
       "debit": 177.42,
       "credit": null,
       "balance": 5609.15,
@@ -1551,7 +1551,7 @@
       "notes": "effective 2026-03-20",
       "original": {
         "date": "2026-03-20",
-        "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT — WEB",
+        "description": "From HOSTPLUS PENSION - 005046627 — WEB",
         "debit": 177.42,
         "credit": null,
         "balance": 5609.15
@@ -1560,7 +1560,7 @@
     {
       "id": "pos-706-34",
       "date": "2026-03-20",
-      "description": "to account xx2256 — WEB",
+      "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT — WEB",
       "debit": 13.79,
       "credit": null,
       "balance": 5595.36,
@@ -1575,7 +1575,7 @@
       "notes": "effective 2026-03-20",
       "original": {
         "date": "2026-03-20",
-        "description": "to account xx2256 — WEB",
+        "description": "From MICHAEL CHEN - CREDIT TO ACCOUNT — WEB",
         "debit": 13.79,
         "credit": null,
         "balance": 5595.36
@@ -1584,7 +1584,7 @@
     {
       "id": "pos-706-35",
       "date": "2026-03-21",
-      "description": "Package fee — HWY",
+      "description": "From HOSTPLUS PENSION - 005052534 — HWY",
       "debit": 68.8,
       "credit": null,
       "balance": 5526.56,
@@ -1599,7 +1599,7 @@
       "notes": "effective 2026-03-21",
       "original": {
         "date": "2026-03-21",
-        "description": "Package fee — HWY",
+        "description": "From HOSTPLUS PENSION - 005052534 — HWY",
         "debit": 68.8,
         "credit": null,
         "balance": 5526.56
@@ -1608,7 +1608,7 @@
     {
       "id": "pos-706-36",
       "date": "2026-03-21",
-      "description": "From HOSTPLUS PENSION - 005675762 — HWY",
+      "description": "from account xx6538 — HWY",
       "debit": 51.84,
       "credit": null,
       "balance": 5474.72,
@@ -1623,7 +1623,7 @@
       "notes": "effective 2026-03-21",
       "original": {
         "date": "2026-03-21",
-        "description": "From HOSTPLUS PENSION - 005675762 — HWY",
+        "description": "from account xx6538 — HWY",
         "debit": 51.84,
         "credit": null,
         "balance": 5474.72
@@ -1632,7 +1632,7 @@
     {
       "id": "pos-706-37",
       "date": "2026-03-22",
-      "description": "Package fee — SUBURB",
+      "description": "from account xx1129 — SUBURB",
       "debit": 29.06,
       "credit": null,
       "balance": 5445.66,
@@ -1647,7 +1647,7 @@
       "notes": "effective 2026-03-22",
       "original": {
         "date": "2026-03-22",
-        "description": "Package fee — SUBURB",
+        "description": "from account xx1129 — SUBURB",
         "debit": 29.06,
         "credit": null,
         "balance": 5445.66
@@ -1656,7 +1656,7 @@
     {
       "id": "pos-706-38",
       "date": "2026-03-23",
-      "description": "from account xx7778 — RETAIL",
+      "description": "to account xx1314 — RETAIL",
       "debit": 165.76,
       "credit": null,
       "balance": 5279.9,
@@ -1671,7 +1671,7 @@
       "notes": "effective 2026-03-23",
       "original": {
         "date": "2026-03-23",
-        "description": "from account xx7778 — RETAIL",
+        "description": "to account xx1314 — RETAIL",
         "debit": 165.76,
         "credit": null,
         "balance": 5279.9
@@ -1680,7 +1680,7 @@
     {
       "id": "pos-706-39",
       "date": "2026-03-23",
-      "description": "Sign Up — WEB",
+      "description": "from account xx4091 — WEB",
       "debit": 15.1,
       "credit": null,
       "balance": 5264.8,
@@ -1695,7 +1695,7 @@
       "notes": "effective 2026-03-23",
       "original": {
         "date": "2026-03-23",
-        "description": "Sign Up — WEB",
+        "description": "from account xx4091 — WEB",
         "debit": 15.1,
         "credit": null,
         "balance": 5264.8
@@ -1704,7 +1704,7 @@
     {
       "id": "pos-706-40",
       "date": "2026-03-24",
-      "description": "Funds transfer — CBD",
+      "description": "From LISA BROWN - CREDIT TO ACCOUNT — CBD",
       "debit": 23.91,
       "credit": null,
       "balance": 5240.89,
@@ -1719,7 +1719,7 @@
       "notes": "effective 2026-03-24",
       "original": {
         "date": "2026-03-24",
-        "description": "Funds transfer — CBD",
+        "description": "From LISA BROWN - CREDIT TO ACCOUNT — CBD",
         "debit": 23.91,
         "credit": null,
         "balance": 5240.89
@@ -1728,7 +1728,7 @@
     {
       "id": "pos-706-41",
       "date": "2026-03-25",
-      "description": "From HOSTPLUS PENSION - 005297056 — LOCAL",
+      "description": "Package fee — LOCAL",
       "debit": 51.54,
       "credit": null,
       "balance": 5189.35,
@@ -1743,7 +1743,7 @@
       "notes": "effective 2026-03-25",
       "original": {
         "date": "2026-03-25",
-        "description": "From HOSTPLUS PENSION - 005297056 — LOCAL",
+        "description": "Package fee — LOCAL",
         "debit": 51.54,
         "credit": null,
         "balance": 5189.35
@@ -1752,7 +1752,7 @@
     {
       "id": "pos-706-42",
       "date": "2026-03-25",
-      "description": "to account xx7918 — LOCAL",
+      "description": "From HOSTPLUS PENSION - 005051823 — LOCAL",
       "debit": 49.36,
       "credit": null,
       "balance": 5139.99,
@@ -1767,7 +1767,7 @@
       "notes": "effective 2026-03-25",
       "original": {
         "date": "2026-03-25",
-        "description": "to account xx7918 — LOCAL",
+        "description": "From HOSTPLUS PENSION - 005051823 — LOCAL",
         "debit": 49.36,
         "credit": null,
         "balance": 5139.99
@@ -1776,7 +1776,7 @@
     {
       "id": "pos-706-43",
       "date": "2026-03-26",
-      "description": "From SARAH JOHNSON - Transfer — METRO",
+      "description": "Funds transfer — METRO",
       "debit": 23.67,
       "credit": null,
       "balance": 5116.32,
@@ -1791,7 +1791,7 @@
       "notes": "effective 2026-03-26",
       "original": {
         "date": "2026-03-26",
-        "description": "From SARAH JOHNSON - Transfer — METRO",
+        "description": "Funds transfer — METRO",
         "debit": 23.67,
         "credit": null,
         "balance": 5116.32
@@ -1800,7 +1800,7 @@
     {
       "id": "pos-706-44",
       "date": "2026-03-26",
-      "description": "Package fee",
+      "description": "From HOSTPLUS PENSION - 005612554",
       "debit": 3.27,
       "credit": null,
       "balance": 5113.05,
@@ -1815,7 +1815,7 @@
       "notes": "effective 2026-03-26",
       "original": {
         "date": "2026-03-26",
-        "description": "Package fee",
+        "description": "From HOSTPLUS PENSION - 005612554",
         "debit": 3.27,
         "credit": null,
         "balance": 5113.05
@@ -1824,7 +1824,7 @@
     {
       "id": "p2p-706-45",
       "date": "2026-03-27",
-      "description": "From LISA BROWN - Transfer — OSKO / PAYID",
+      "description": "From RACHEL TAYLOR - CREDIT TO ACCOUNT — OSKO / PAYID",
       "debit": 87.33,
       "credit": null,
       "balance": 5025.72,
@@ -1839,7 +1839,7 @@
       "notes": "effective 2026-03-27",
       "original": {
         "date": "2026-03-27",
-        "description": "From LISA BROWN - Transfer — OSKO / PAYID",
+        "description": "From RACHEL TAYLOR - CREDIT TO ACCOUNT — OSKO / PAYID",
         "debit": 87.33,
         "credit": null,
         "balance": 5025.72
@@ -1848,7 +1848,7 @@
     {
       "id": "pos-706-46",
       "date": "2026-03-28",
-      "description": "to account xx4941 — WEB",
+      "description": "From HOSTPLUS PENSION - 005872606 — WEB",
       "debit": 86.23,
       "credit": null,
       "balance": 4939.49,
@@ -1863,7 +1863,7 @@
       "notes": "effective 2026-03-28",
       "original": {
         "date": "2026-03-28",
-        "description": "to account xx4941 — WEB",
+        "description": "From HOSTPLUS PENSION - 005872606 — WEB",
         "debit": 86.23,
         "credit": null,
         "balance": 4939.49
@@ -1896,7 +1896,7 @@
     {
       "id": "sav-706-48",
       "date": "2026-03-29",
-      "description": "Sign Up — TO BONUS",
+      "description": "From DAVID NGUYEN - CREDIT TO ACCOUNT — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 8539.49,
@@ -1911,7 +1911,7 @@
       "notes": "effective 2026-03-29",
       "original": {
         "date": "2026-03-29",
-        "description": "Sign Up — TO BONUS",
+        "description": "From DAVID NGUYEN - CREDIT TO ACCOUNT — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 8539.49
@@ -1920,7 +1920,7 @@
     {
       "id": "pos-706-49",
       "date": "2026-03-30",
-      "description": "Funds transfer — MALL",
+      "description": "from account xx1845 — MALL",
       "debit": 133.11,
       "credit": null,
       "balance": 8406.38,
@@ -1935,7 +1935,7 @@
       "notes": "effective 2026-03-30",
       "original": {
         "date": "2026-03-30",
-        "description": "Funds transfer — MALL",
+        "description": "from account xx1845 — MALL",
         "debit": 133.11,
         "credit": null,
         "balance": 8406.38
@@ -1968,7 +1968,7 @@
     {
       "id": "dd-706-51",
       "date": "2026-03-31",
-      "description": "to account xx8696 — DIRECT DEBIT",
+      "description": "from account xx3692 — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 6422.07,
@@ -1983,7 +1983,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "to account xx8696 — DIRECT DEBIT",
+        "description": "from account xx3692 — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 6422.07
@@ -1992,7 +1992,7 @@
     {
       "id": "pos-706-52",
       "date": "2026-03-31",
-      "description": "From SARAH JOHNSON - CREDIT TO ACCOUNT",
+      "description": "Package fee",
       "debit": 6.64,
       "credit": null,
       "balance": 6415.43,
@@ -2007,7 +2007,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "From SARAH JOHNSON - CREDIT TO ACCOUNT",
+        "description": "Package fee",
         "debit": 6.64,
         "credit": null,
         "balance": 6415.43
@@ -2016,7 +2016,7 @@
     {
       "id": "pos-706-53",
       "date": "2026-03-31",
-      "description": "Sign Up — HWY",
+      "description": "Interest charged — HWY",
       "debit": 76.36,
       "credit": null,
       "balance": 6339.07,
@@ -2031,7 +2031,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "Sign Up — HWY",
+        "description": "Interest charged — HWY",
         "debit": 76.36,
         "credit": null,
         "balance": 6339.07
@@ -2040,9 +2040,9 @@
   ],
   "sampleDescriptions": [
     "MACQUARIE PAYROLL CREDIT",
+    "From JAMES SMITH - CREDIT TO ACCOUNT",
     "Interest charged",
-    "From EMILY WATSON - CREDIT TO ACCOUNT",
-    "From HOSTPLUS PENSION - 005973644",
-    "Funds transfer"
+    "From LISA BROWN - Transfer",
+    "to account xx9814"
   ]
 }

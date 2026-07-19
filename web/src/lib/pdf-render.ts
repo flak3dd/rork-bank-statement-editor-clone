@@ -1,5 +1,4 @@
-import * as pdfjs from "pdfjs-dist";
-import { ensurePdfWorker } from "@/lib/pdf-worker";
+import { openPdfDocument, pdfjs } from "@/lib/pdfjs-api";
 import { cloneUint8Array } from "./bytes";
 import { parseAmount } from "./money";
 import { normalizeDate } from "./parse-transactions";
@@ -73,10 +72,9 @@ export async function renderPageToCanvas(
   canvas: HTMLCanvasElement,
   scale = 1.4,
 ): Promise<PageInfo> {
-  await ensurePdfWorker();
   // Clone — PDF.js worker may transfer/detach the buffer
   const owned = cloneUint8Array(data);
-  const doc = await pdfjs.getDocument({ data: owned }).promise;
+  const doc = await openPdfDocument(owned);
   const page = await doc.getPage(pageNumber);
   const viewport = page.getViewport({ scale });
   canvas.width = viewport.width;

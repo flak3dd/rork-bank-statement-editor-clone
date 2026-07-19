@@ -18,6 +18,9 @@ export interface RunMatch {
   score: number;
 }
 
+const SHORT_MONTHS =
+  "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec".split("|");
+
 function moneyText(n: number | null): string | null {
   if (n == null) return null;
   return n.toFixed(2);
@@ -29,18 +32,76 @@ function normMoney(s: string): number | null {
 
 function textsEqualMoney(a: string, b: number): boolean {
   const n = normMoney(a);
-  return n != null && Math.abs(n - b) < 0.005;
+  return n != null && Math.abs(n - Math.abs(b)) < 0.005;
 }
 
-function dateLike(s: string): string | null {
+function dateLike(s: string, yearHint?: number): string | null {
   const t = s.trim();
   if (/^\d{4}-\d{2}-\d{2}$/.test(t)) return t;
   try {
-    const n = normalizeDate(t);
+    const n = normalizeDate(t, yearHint);
     return /^\d{4}-\d{2}-\d{2}$/.test(n) ? n : null;
   } catch {
     return null;
   }
+}
+
+/** Score PDF run text against an ISO transaction date (handles "18 Nov"). */
+function dateMatchScore(
+  runText: string,
+  isoTarget: string,
+  yearHint?: number,
+): number {
+  const rd = dateLike(runText, yearHint);
+  if (rd && (rd === isoTarget || rd === normalizeDate(isoTarget, yearHint))) {
+    return 1;
+  }
+  const compact = runText.replace(/\s/g, "");
+  const targetSlash = isoTarget.replace(/-/g, "/");
+  if (compact === targetSlash || compact === isoTarget) return 0.9;
+
+  const parts = isoTarget.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!parts) return 0;
+  const y = parts[1];
+  const mon = Number(parts[2]);
+  const day = Number(parts[3]);
+  const monName = SHORT_MONTHS[mon - 1] ?? "";
+  const rt = runText.trim();
+
+  // 18 Nov / 18 November
+  if (
+    monName &&
+    new RegExp(`^${day}\\s+${monName}`, "i").test(rt)
+  ) {
+    if (new RegExp(String(y)).test(rt)) return 1;
+    // bare day+month (St George) — trust row order / period
+    return 0.95;
+  }
+  // 18/11/24 or 18-11-2024
+  if (
+    new RegExp(
+      `^${day}\\s*[\\/\\-]\\s*${mon}\\s*[\\/\\-]\\s*(${y}|${y.slice(2)})\\b`,
+    ).test(rt)
+  ) {
+    return 1;
+  }
+  // US 11/18/2024
+  if (
+    new RegExp(
+      `^${mon}\\s*[\\/\\-]\\s*${day}\\s*[\\/\\-]\\s*(${y}|${y.slice(2)})\\b`,
+    ).test(rt)
+  ) {
+    return 0.95;
+  }
+  return 0;
+}
+
+function yearHintFromTransactions(txns: Transaction[]): number | undefined {
+  for (const t of txns) {
+    const y = t.date?.match(/^(\d{4})-/);
+    if (y) return Number(y[1]);
+  }
+  return undefined;
 }
 
 function descScore(runText: string, description: string): number {
@@ -76,6 +137,7 @@ export function linkRunMatches(params: {
   preferOriginal?: boolean;
 }): { matches: RunMatch[]; stats: { linked: number; fields: number; runs: number } } {
   const preferOriginal = params.preferOriginal !== false;
+  const yearHint = yearHintFromTransactions(params.transactions);
   const available = params.runs.map((r, i) => ({
     ...r,
     runId: `p${r.page}-r${i}-${r.text.slice(0, 8)}`,
@@ -148,15 +210,13 @@ export function linkRunMatches(params: {
         if (c.kind === "money" && c.money != null) {
           if (textsEqualMoney(r.text, c.money)) score = 1;
           else {
-            // partial like "1,200.00" vs 1200
+            // partial like "1,200.00" vs 1200; also signed "-$99.30"
             const n = normMoney(r.text);
-            if (n != null && Math.abs(n - c.money) < 0.005) score = 0.95;
+            if (n != null && Math.abs(Math.abs(n) - Math.abs(c.money)) < 0.005)
+              score = 0.95;
           }
         } else if (c.kind === "date") {
-          const rd = dateLike(r.text);
-          if (rd && (rd === c.target || rd === normalizeDate(c.target))) score = 1;
-          else if (r.text.replace(/\s/g, "") === c.target.replace(/-/g, "/"))
-            score = 0.9;
+          score = dateMatchScore(r.text, c.target, yearHint);
         } else {
           score = descScore(r.text, c.target);
         }

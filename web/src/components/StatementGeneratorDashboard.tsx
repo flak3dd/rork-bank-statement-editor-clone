@@ -24,6 +24,8 @@ import {
   largestTransactions,
   ledgerToAppTransactions,
   normalizeStatementConfig,
+  overridesFromConfig,
+  setVariableKeys,
   type Frequency,
   type GenCategory,
   type GenerationQualityReport,
@@ -34,6 +36,7 @@ import {
   formatDashboardDate,
   formatMoneyDisplay,
 } from "@/lib/statement-gen/format";
+import { unredactStatementVariables } from "@/lib/tools/chrome-unredact";
 import { StatementPrintView } from "@/components/StatementPrintView";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,10 +57,15 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
-import type { Transaction } from "@/lib/types";
+import type { PdfEdit, Transaction } from "@/lib/types";
+import { toast } from "sonner";
 
 interface StatementGeneratorDashboardProps {
-  onApplyToWorkspace: (txns: Transaction[], label: string) => void;
+  onApplyToWorkspace: (
+    txns: Transaction[],
+    label: string,
+    extras?: { pdfEdits?: PdfEdit[]; config?: StatementConfig },
+  ) => void;
   onAudit?: (message: string) => void;
   /** Notified whenever live generation quality changes (Test Lab). */
   onQualityChange?: (report: GenerationQualityReport) => void;
@@ -67,6 +75,8 @@ interface StatementGeneratorDashboardProps {
   onBankReplaceRequest?: () => void;
   hasPdfBytes?: boolean;
   pdfEditCount?: number;
+  /** Original PDF for Unredacter chrome injection. */
+  pdfBytes?: Uint8Array | null;
 }
 
 const FREQ: Frequency[] = ["none", "weekly", "fortnightly", "monthly"];
@@ -79,12 +89,14 @@ export function StatementGeneratorDashboard({
   onBankReplaceRequest,
   hasPdfBytes,
   pdfEditCount = 0,
+  pdfBytes = null,
 }: StatementGeneratorDashboardProps) {
   const [config, setConfig] = useState<StatementConfig>(() =>
     defaultStatementConfig(),
   );
   const [showPrint, setShowPrint] = useState(false);
   const [showQualityDetail, setShowQualityDetail] = useState(true);
+  const [applyBusy, setApplyBusy] = useState(false);
 
   const result: GenerationResult = useMemo(
     () => generateStatement(config),
@@ -154,13 +166,47 @@ export function StatementGeneratorDashboard({
     });
   };
 
-  const applyToWorkspace = (andContinue: boolean) => {
-    const txns = ledgerToAppTransactions(result.rows);
-    onApplyToWorkspace(txns, "Apply generated statement");
-    onAudit?.(
-      `Applied generated statement: ${txns.length} rows · quality ${quality.grade} ${quality.score}/100`,
-    );
-    if (andContinue) onAppliedAndContinue?.();
+  const applyToWorkspace = async (andContinue: boolean) => {
+    if (applyBusy) return;
+    setApplyBusy(true);
+    try {
+      const txns = ledgerToAppTransactions(result.rows);
+      let pdfEdits: PdfEdit[] = [];
+      // Unredacter: optional variables that are set → PDF chrome text insert (NEVER blank redaction)
+      if (pdfBytes && pdfBytes.byteLength > 0) {
+        const overrides = overridesFromConfig(config);
+        const setKeys = setVariableKeys(overrides);
+        if (setKeys.length > 0) {
+          const un = await unredactStatementVariables({
+            pdfBytes,
+            overrides,
+          });
+          pdfEdits = un.edits;
+          onAudit?.(
+            `Unredacter: ${un.edits.length} chrome edit(s) · ${un.appliedKeys.join(", ") || "none linked"} · ${un.notes.slice(-1)[0] ?? ""}`,
+          );
+          if (un.edits.length > 0) {
+            toast.success("Unredacter queued", {
+              description: `${un.edits.length} identity/address field(s) — replace with text, never blank redaction`,
+            });
+          } else if (un.unmatchedKeys.length > 0) {
+            toast.message("Variables set on ledger", {
+              description: `Chrome unmatched on PDF: ${un.unmatchedKeys.join(", ")} — salary/savings/mortgage still in generated rows`,
+            });
+          }
+        }
+      }
+      onApplyToWorkspace(txns, "Apply generated statement", {
+        pdfEdits,
+        config,
+      });
+      onAudit?.(
+        `Applied generated statement: ${txns.length} rows · quality ${quality.grade} ${quality.score}/100 · unredactEdits=${pdfEdits.length}`,
+      );
+      if (andContinue) onAppliedAndContinue?.();
+    } finally {
+      setApplyBusy(false);
+    }
   };
 
   return (
@@ -173,8 +219,10 @@ export function StatementGeneratorDashboard({
               Statement generation · Test Lab
             </h3>
             <p className="text-xs text-muted-foreground leading-relaxed max-w-2xl">
-              Configure every field → live regenerate → perfect validation →
-              apply to workspace → optional bank-desc PDF replace → verify.
+              Optional variables (identity, address, salary, savings, mortgage)
+              — if set, they drive the generated ledger and Unredacter PDF
+              inject (replace with text, never blank redaction). Leave defaults
+              or clear a field to skip override.
             </p>
             <p className="text-[10px] text-muted-foreground mt-1 font-mono">
               {formatCapHint(config)}
@@ -209,20 +257,20 @@ export function StatementGeneratorDashboard({
               size="sm"
               variant="secondary"
               className="rounded-full"
-              disabled={!quality.ok}
-              onClick={() => applyToWorkspace(false)}
+              disabled={!quality.ok || applyBusy}
+              onClick={() => void applyToWorkspace(false)}
             >
               <Upload className="mr-1.5 h-3.5 w-3.5" />
-              Apply to table
+              {applyBusy ? "Applying…" : "Apply to table"}
             </Button>
             <Button
               size="sm"
               className="rounded-full"
-              disabled={!quality.ok}
-              onClick={() => applyToWorkspace(true)}
+              disabled={!quality.ok || applyBusy}
+              onClick={() => void applyToWorkspace(true)}
             >
               <ShieldCheck className="mr-1.5 h-3.5 w-3.5" />
-              Apply & continue test
+              {applyBusy ? "Applying…" : "Apply & continue test"}
             </Button>
           </div>
         </div>
@@ -437,12 +485,17 @@ export function StatementGeneratorDashboard({
                 </Field>
               </CfgSection>
 
-              {/* Account / identity */}
-              <CfgSection title="Account / identity" defaultOpen>
-                <Field label="holderName / accountHolder">
+              {/* Account / identity — optional Unredacter chrome */}
+              <CfgSection title="Account / identity (optional · Unredacter)" defaultOpen>
+                <p className="text-[10px] text-muted-foreground col-span-full leading-snug px-0.5">
+                  If set, values appear on the generated statement and are
+                  written onto the PDF as text inserts (never blank redaction).
+                </p>
+                <Field label="holderName">
                   <Input
                     className="h-9"
                     value={config.account.holderName}
+                    placeholder="Optional"
                     onChange={(e) =>
                       patchAccount({ holderName: e.target.value })
                     }
@@ -452,6 +505,7 @@ export function StatementGeneratorDashboard({
                   <Input
                     className="h-9"
                     value={config.account.accountName}
+                    placeholder="Optional"
                     onChange={(e) =>
                       patchAccount({ accountName: e.target.value })
                     }
@@ -467,17 +521,37 @@ export function StatementGeneratorDashboard({
                   />
                 </Field>
                 <div className="grid grid-cols-2 gap-2">
-                  <Field label="bsb / bsbCode">
+                  <Field label="bsb">
                     <Input
                       className="h-9"
                       value={config.account.bsb}
-                      onChange={(e) => patchAccount({ bsb: e.target.value })}
+                      placeholder="062-000"
+                      onChange={(e) =>
+                        patchAccount({
+                          bsb: e.target.value,
+                          bsbCode: e.target.value,
+                        })
+                      }
+                    />
+                  </Field>
+                  <Field label="bsbCode">
+                    <Input
+                      className="h-9"
+                      value={config.account.bsbCode}
+                      placeholder="alias of bsb"
+                      onChange={(e) =>
+                        patchAccount({
+                          bsbCode: e.target.value,
+                          bsb: e.target.value,
+                        })
+                      }
                     />
                   </Field>
                   <Field label="accountNumber">
                     <Input
                       className="h-9"
                       value={config.account.accountNumber}
+                      placeholder="Optional"
                       onChange={(e) =>
                         patchAccount({ accountNumber: e.target.value })
                       }
@@ -552,12 +626,13 @@ export function StatementGeneratorDashboard({
                 </Field>
               </CfgSection>
 
-              {/* Address / location */}
-              <CfgSection title="Address / location">
+              {/* Address / location — optional Unredacter */}
+              <CfgSection title="Address / location (optional · Unredacter)">
                 <Field label="addressLine1">
                   <Input
                     className="h-9"
                     value={config.address.addressLine1}
+                    placeholder="Optional street"
                     onChange={(e) =>
                       patchAddress({ addressLine1: e.target.value })
                     }
@@ -567,6 +642,7 @@ export function StatementGeneratorDashboard({
                   <Input
                     className="h-9"
                     value={config.address.addressLine2}
+                    placeholder="Optional suburb / city"
                     onChange={(e) =>
                       patchAddress({ addressLine2: e.target.value })
                     }
@@ -639,12 +715,13 @@ export function StatementGeneratorDashboard({
                 </Field>
               </CfgSection>
 
-              {/* Salary / income */}
-              <CfgSection title="Salary / income" defaultOpen>
+              {/* Salary / income — optional; if set, rows use these values */}
+              <CfgSection title="Salary / income (optional · generator)" defaultOpen>
                 <Field label="salaryDescription">
                   <Input
                     className="h-9"
                     value={config.salaryDescription}
+                    placeholder="If set → salary rows"
                     onChange={(e) =>
                       patch({ salaryDescription: e.target.value })
                     }
@@ -713,12 +790,13 @@ export function StatementGeneratorDashboard({
                 )}
               </CfgSection>
 
-              {/* Savings */}
-              <CfgSection title="Savings">
+              {/* Savings — optional */}
+              <CfgSection title="Savings (optional · generator)">
                 <Field label="savingsDescription">
                   <Input
                     className="h-9"
                     value={config.savingsDescription}
+                    placeholder="If set → savings rows"
                     onChange={(e) =>
                       patch({ savingsDescription: e.target.value })
                     }
@@ -754,12 +832,13 @@ export function StatementGeneratorDashboard({
                 </Field>
               </CfgSection>
 
-              {/* Mortgage / rent */}
-              <CfgSection title="Mortgage / rent">
+              {/* Mortgage / rent — optional */}
+              <CfgSection title="Mortgage / rent (optional · generator)">
                 <Field label="mortgageDescription">
                   <Input
                     className="h-9"
                     value={config.mortgageDescription}
+                    placeholder="If set → mortgage rows"
                     onChange={(e) =>
                       patch({ mortgageDescription: e.target.value })
                     }
@@ -769,6 +848,7 @@ export function StatementGeneratorDashboard({
                   <Input
                     className="h-9"
                     value={config.mortgageLender}
+                    placeholder="Optional lender"
                     onChange={(e) =>
                       patch({ mortgageLender: e.target.value })
                     }

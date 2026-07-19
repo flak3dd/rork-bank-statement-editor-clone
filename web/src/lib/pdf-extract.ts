@@ -1,5 +1,4 @@
-import * as pdfjs from "pdfjs-dist";
-import { ensurePdfWorker } from "@/lib/pdf-worker";
+import { openPdfDocument } from "@/lib/pdfjs-api";
 import { cloneUint8Array } from "@/lib/bytes";
 
 export interface PdfTextResult {
@@ -13,13 +12,12 @@ export async function extractTextFromPdf(
   source: File | Uint8Array,
   onProgress?: (ratio: number) => void,
 ): Promise<PdfTextResult> {
-  await ensurePdfWorker();
   // Always use a private copy — PDF.js may transfer/detach the buffer.
   const data =
     source instanceof Uint8Array
       ? cloneUint8Array(source)
       : new Uint8Array(await source.arrayBuffer());
-  const doc = await pdfjs.getDocument({ data }).promise;
+  const doc = await openPdfDocument(data);
   const pageCount = doc.numPages;
   const pageTexts: string[] = [];
 

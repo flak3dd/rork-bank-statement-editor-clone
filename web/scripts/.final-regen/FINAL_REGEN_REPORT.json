@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-07-19T02:13:57.135Z",
+  "startedAt": "2026-07-19T03:31:42.324Z",
   "banks": [
     "anz",
     "cba",
@@ -24,7 +24,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "ANZ MOBILE BANKING PAYMENT 676088 TO LISA BROWN"
+      "sampleDesc": "PENDING - EFTPOS UBER EATS"
     },
     {
       "bank": "cba",
@@ -54,7 +54,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "DEPOSIT WESTPAC BANKCORPDIRECT DR 773496"
+      "sampleDesc": "DEBIT CARD PURCHASE APPLE.COM/BILL HARTBEESPOOR AUS"
     },
     {
       "bank": "ing",
@@ -69,7 +69,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN112412)"
+      "sampleDesc": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN763610)"
     },
     {
       "bank": "bankwest",
@@ -84,7 +84,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "DISNEY PLUS Mernda AUS"
+      "sampleDesc": "AGL MELBOURNE AUS"
     },
     {
       "bank": "suncorp",
@@ -99,7 +99,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "DIRECT CREDIT DIRECT CREDIT118030TXN917864 914845*HL"
+      "sampleDesc": "VISA PURCHASE CHEMIST WAREHOUSE ROCKHAMPTON 02/04 AU AUD"
     },
     {
       "bank": "macquarie",
@@ -114,7 +114,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "From HOSTPLUS PENSION - 005116131"
+      "sampleDesc": "Package fee"
     },
     {
       "bank": "other",
@@ -129,7 +129,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "TRANSFER FROM MCARE BENEFITS   939852591 MCARE"
+      "sampleDesc": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 ORIGIN ENERGY"
     }
   ],
   "stress": {
@@ -139,10 +139,10 @@
     "totalRows": 3634,
     "perfect": true,
     "failures": [],
-    "durationMs": 15
+    "durationMs": 25
   },
   "perfect": true,
-  "durationMs": 255,
+  "durationMs": 261,
   "pymupdf": {
     "status": 0,
     "ok": true,

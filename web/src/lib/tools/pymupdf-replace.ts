@@ -73,7 +73,7 @@ export async function replaceStatementDataWithGeneration(
   const bank = normalizeBankId(options.bank);
   const fields = new Set(options.replace ?? ["description"]);
   const previous = options.transactions;
-  const maxPages = options.maxPages ?? 8;
+  const maxPages = options.maxPages ?? 40;
 
   const next: Transaction[] = previous.map((t) => {
     const row: Transaction = {
@@ -151,9 +151,11 @@ export async function replaceStatementDataWithGeneration(
     }
   }
 
+  // All linked fields for requested replace set — full geometry coverage
   const edits = buildFontReplicatedReplacements({
     transactions: generated,
     runMatches: paired,
+    matchOriginalStyle: true,
   });
 
   return {
@@ -168,7 +170,11 @@ export async function replaceStatementDataWithGeneration(
         .length,
     },
     mode: "table+geometry",
-    note: `Bank ${bank}: ${edits.length} geometry-linked PdfEdit(s). Export PDF applies mupdf redaction+insert (WASM). Native Pro: python tools/pymupdf_pipeline/replace_statement.py`,
+    note:
+      `Bank ${bank}: ${edits.length}/${stats.linked} geometry-linked PdfEdit(s) ` +
+      `(${edits.filter((e) => e.linkedField === "description").length} desc). ` +
+      `Export PDF merges these with any other field changes so the final PDF includes all replacement data. ` +
+      `Native Pro: python tools/pymupdf_pipeline/replace_statement.py`,
   };
 }
 

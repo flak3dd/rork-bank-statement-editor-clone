@@ -27,7 +27,7 @@ import { countDirty } from "@/lib/edit-utils";
 import { cloneUint8Array } from "@/lib/bytes";
 import { exportCsv, exportJson, downloadBytes } from "@/lib/export";
 import { runFinalMathCheck } from "@/lib/math-check";
-import { loadPdfWithFallbacks, applyReplacementsWithFallbacks, type EngineId } from "@/lib/pdf-engines";
+import { loadPdfWithFallbacks, type EngineId } from "@/lib/pdf-engines";
 import {
   DEFAULT_DOCUMENT_PARSER,
   loadParserPreference,
@@ -852,36 +852,6 @@ const Index = () => {
     [],
   );
 
-  const handleExportPdf = useCallback(async () => {
-    if (!pdfBytes || pdfEdits.length === 0) {
-      toast.message("No edits to apply", {
-        description: "Make in-place replacements on the PDF first.",
-      });
-      return;
-    }
-    try {
-      const replacements = pdfEdits.map((e) => ({
-        page: e.page,
-        bbox: e.bbox,
-        replacement: e.replacement,
-        fontSpec: e.fontSpec,
-      }));
-      // Clone — MuPDF may transfer the buffer
-      const output = await applyReplacementsWithFallbacks(
-        cloneUint8Array(pdfBytes),
-        replacements,
-      );
-      const base = activeFileName.replace(/\.pdf$/i, "") || "statement";
-      downloadBytes(`${base}-edited.pdf`, output, "application/pdf");
-      toast.success("PDF downloaded", {
-        description: `${pdfEdits.length} replacement(s) applied via ${activeEngine ?? "engine"}.`,
-      });
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "PDF export failed";
-      toast.error("PDF export failed", { description: message });
-    }
-  }, [pdfBytes, pdfEdits, activeEngine, activeFileName]);
-
   const liveSummary = useMemo(() => buildSummary(transactions), [transactions]);
   const dirtyCount = useMemo(() => countDirty(transactions), [transactions]);
 
@@ -907,6 +877,88 @@ const Index = () => {
     () => buildVisualComparison(transactions),
     [transactions],
   );
+
+  /** True when working ledger differs from source baseline (final PDF must rewrite). */
+  const hasGenerationDelta = useMemo(() => {
+    if (!sourceBaseline.length || !transactions.length) return false;
+    if (transactions.length !== sourceBaseline.length) return true;
+    return transactions.some((t, i) => {
+      const o = sourceBaseline[i];
+      if (!o) return true;
+      return (
+        t.date !== o.date ||
+        t.description !== o.description ||
+        t.debit !== o.debit ||
+        t.credit !== o.credit ||
+        t.balance !== o.balance
+      );
+    });
+  }, [sourceBaseline, transactions]);
+
+  const canExportFinalPdf =
+    Boolean(pdfBytes) && (pdfEdits.length > 0 || hasGenerationDelta);
+
+  const handleExportPdf = useCallback(async () => {
+    if (!pdfBytes) {
+      toast.message("No PDF loaded", {
+        description: "Upload a statement first.",
+      });
+      return;
+    }
+    if (pdfEdits.length === 0 && !hasGenerationDelta) {
+      toast.message("No replacements to apply", {
+        description:
+          "Generate/replace transactions or edit PDF fields first so the final PDF includes all new data.",
+      });
+      return;
+    }
+    try {
+      // Full materialize: queued edits + every changed field on every row
+      const material = await materializeCandidatePdf({
+        originalPdf: pdfBytes,
+        pdfEdits,
+        sourceBaseline:
+          sourceBaseline.length > 0 ? sourceBaseline : transactions,
+        current: transactions,
+        maxPages: 40,
+      });
+      if (material.editCount === 0) {
+        toast.message("Could not link replacements to PDF geometry", {
+          description:
+            material.notes.join(" ") ||
+            "No text runs matched. Try bank-desc replace or click-to-edit.",
+        });
+        return;
+      }
+      // Keep edit queue complete so subsequent exports/visual stay full
+      if (material.appliedEdits.length > 0) {
+        setPdfEdits(material.appliedEdits);
+      }
+      setEditedPdfBytes(material.candidatePdf);
+      const base = activeFileName.replace(/\.pdf$/i, "") || "statement";
+      downloadBytes(
+        `${base}-regenerated.pdf`,
+        material.candidatePdf,
+        "application/pdf",
+      );
+      const bf = material.coverage.byField;
+      toast.success("Final PDF downloaded", {
+        description:
+          `${material.editCount} replacement(s) · mode=${material.mode} · ` +
+          `desc=${bf.description} date=${bf.date} debit=${bf.debit} credit=${bf.credit} bal=${bf.balance}`,
+      });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "PDF export failed";
+      toast.error("PDF export failed", { description: message });
+    }
+  }, [
+    pdfBytes,
+    pdfEdits,
+    sourceBaseline,
+    transactions,
+    activeFileName,
+    hasGenerationDelta,
+  ]);
 
   const handleConfirmRender = useCallback(async () => {
     const rendered = applyRenderWithFallbacks(transactions, renderEngine);
@@ -992,14 +1044,19 @@ const Index = () => {
     setPixelRunning(true);
     setPixelProgress("Materializing candidate PDF from generator data…");
     try {
-      // Original PDF (left) vs regenerated PDF with updated generator data (right)
+      // Original PDF (left) vs regenerated PDF with ALL replacement data (right)
       const material = await materializeCandidatePdf({
         originalPdf: pdfBytes,
         pdfEdits,
-        sourceBaseline,
+        sourceBaseline:
+          sourceBaseline.length > 0 ? sourceBaseline : transactions,
         current: transactions,
+        maxPages: 40,
         onProgress: (msg) => setPixelProgress(msg),
       });
+      if (material.appliedEdits.length > 0) {
+        setPdfEdits(material.appliedEdits);
+      }
       setEditedPdfBytes(
         material.mode === "identity" ? null : material.candidatePdf,
       );
@@ -1007,7 +1064,7 @@ const Index = () => {
       setPixelProgress(
         material.mode === "identity"
           ? "Rendering identity pair @ 300 DPI…"
-          : `Rendering original vs regenerated (${material.editCount} edit(s)) @ 300 DPI…`,
+          : `Rendering original vs full regenerated PDF (${material.editCount} edit(s) · ${material.mode}) @ 300 DPI…`,
       );
 
       const report = await runVisualVerification({
@@ -1017,13 +1074,16 @@ const Index = () => {
         thresholds,
         runApplitools: true,
         compareMode:
-          material.mode === "queued-edits"
-            ? "edited"
+          material.mode === "identity"
+            ? "identity"
             : material.mode === "auto-linked"
               ? "auto-linked"
-              : "identity",
+              : "edited",
         candidateEditCount: material.editCount,
-        extraNotes: material.notes,
+        extraNotes: [
+          ...material.notes,
+          `coverage rows=${material.coverage.rowsPaired}/${material.coverage.baselineRows} fieldsApplied=${material.coverage.fieldsApplied}`,
+        ],
         onProgress: (msg) => {
           setPixelProgress(msg);
         },
@@ -1593,21 +1653,7 @@ const Index = () => {
                       onRunPixelCheck={() => void handlePixelCheck()}
                       hasPdfBytes={Boolean(pdfBytes)}
                       pdfEditCount={pdfEdits.length}
-                      hasGenerationDelta={
-                        sourceBaseline.length > 0 &&
-                        (transactions.length !== sourceBaseline.length ||
-                          transactions.some((t, i) => {
-                            const o = sourceBaseline[i];
-                            if (!o) return true;
-                            return (
-                              t.description !== o.description ||
-                              t.date !== o.date ||
-                              t.debit !== o.debit ||
-                              t.credit !== o.credit ||
-                              t.balance !== o.balance
-                            );
-                          }))
-                      }
+                      hasGenerationDelta={hasGenerationDelta}
                       hasCandidatePdf={Boolean(editedPdfBytes)}
                       onDownloadCandidate={() => {
                         if (!editedPdfBytes) return;
@@ -1636,12 +1682,13 @@ const Index = () => {
                 {workflowStep === "generate" && (
                   <StatementGeneratorDashboard
                     hasPdfBytes={Boolean(pdfBytes)}
+                    pdfBytes={pdfBytes}
                     pdfEditCount={pdfEdits.length}
                     onQualityChange={(q) => {
                       setGenQuality(q);
                       setHasGenerated(true);
                     }}
-                    onApplyToWorkspace={(txns, label) => {
+                    onApplyToWorkspace={(txns, label, extras) => {
                       setUndoState((s) =>
                         pushSnapshot(s, label, transactions, workflowStep),
                       );
@@ -1663,6 +1710,15 @@ const Index = () => {
                             }
                           : r,
                       );
+                      // Unredacter chrome edits (identity/address) — never blank
+                      if (extras?.pdfEdits?.length) {
+                        setPdfEdits((prev) => [
+                          ...prev,
+                          ...extras.pdfEdits!.filter(
+                            (e) => e.replacement.trim().length > 0,
+                          ),
+                        ]);
+                      }
                       setGenApplied(true);
                       setViewMode("compare");
                       setRenderResult(null);
@@ -1673,12 +1729,17 @@ const Index = () => {
                           payload: {
                             count: txns.length,
                             quality: genQuality?.score,
+                            unredactEdits: extras?.pdfEdits?.length ?? 0,
                           },
                         }),
                       );
                       autosaveRef.current?.touch();
                       toast.success(label, {
-                        description: `${txns.length} transactions applied · compare view open`,
+                        description: `${txns.length} transactions applied${
+                          extras?.pdfEdits?.length
+                            ? ` · ${extras.pdfEdits.length} Unredacter edit(s)`
+                            : ""
+                        } · compare view open`,
                       });
                       unlockThrough("generate");
                     }}
@@ -1777,7 +1838,7 @@ const Index = () => {
                       >
                         Export JSON
                       </Button>
-                      {pdfBytes && pdfEdits.length > 0 && (
+                      {canExportFinalPdf && (
                         <Button
                           variant="outline"
                           className="rounded-full"
@@ -1787,7 +1848,12 @@ const Index = () => {
                           }}
                         >
                           <FileText className="h-4 w-4" />
-                          Export PDF ({pdfEdits.length})
+                          Export final PDF
+                          {pdfEdits.length > 0
+                            ? ` (${pdfEdits.length})`
+                            : hasGenerationDelta
+                              ? " (all data)"
+                              : ""}
                         </Button>
                       )}
                     </div>
@@ -1845,16 +1911,17 @@ const Index = () => {
                       Engine: {activeEngine}
                     </span>
                   )}
-                  {viewMode === "pdf" && pdfEdits.length > 0 && (
+                  {viewMode === "pdf" && canExportFinalPdf && (
                     <Button
                       type="button"
                       variant="secondary"
                       size="sm"
                       className="rounded-full ml-auto"
-                      onClick={handleExportPdf}
+                      onClick={() => void handleExportPdf()}
                     >
                       <FileText className="h-3.5 w-3.5" />
-                      Export PDF ({pdfEdits.length})
+                      Export final PDF
+                      {pdfEdits.length > 0 ? ` (${pdfEdits.length})` : ""}
                     </Button>
                   )}
                   {viewMode === "compare" && (

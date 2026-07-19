@@ -1,0 +1,112 @@
+{
+  "target": 3,
+  "streak": 3,
+  "achieved": true,
+  "reports": [
+    {
+      "run": 1,
+      "bank": "anz",
+      "seed": 701117,
+      "ok": true,
+      "errors": [],
+      "stats": {
+        "run": 1,
+        "bank": "anz",
+        "seed": 701117,
+        "parseCount": 22,
+        "pageCount": 3,
+        "generatedCount": 22,
+        "bankDescEdits": 22,
+        "balanceMismatches": 0,
+        "closingExpected": 3519.65,
+        "materialMode": "full-ledger",
+        "editCount": 54,
+        "byField": {
+          "date": 17,
+          "description": 22,
+          "debit": 0,
+          "credit": 1,
+          "balance": 14,
+          "other": 0
+        },
+        "rowsPaired": 22,
+        "exportBytes": 79128,
+        "mathScore": 100,
+        "mathStatus": "pass",
+        "visualScore": 72,
+        "visualStatus": "fail",
+        "rendererOk": true
+      }
+    },
+    {
+      "run": 2,
+      "bank": "cba",
+      "seed": 702234,
+      "ok": true,
+      "errors": [],
+      "stats": {
+        "run": 2,
+        "bank": "cba",
+        "seed": 702234,
+        "parseCount": 22,
+        "pageCount": 3,
+        "generatedCount": 22,
+        "bankDescEdits": 22,
+        "balanceMismatches": 0,
+        "closingExpected": 7361.8,
+        "materialMode": "full-ledger",
+        "editCount": 55,
+        "byField": {
+          "date": 17,
+          "description": 22,
+          "debit": 0,
+          "credit": 2,
+          "balance": 14,
+          "other": 0
+        },
+        "rowsPaired": 22,
+        "exportBytes": 80574,
+        "mathScore": 100,
+        "mathStatus": "pass",
+        "visualScore": 69,
+        "visualStatus": "fail",
+        "rendererOk": true
+      }
+    },
+    {
+      "run": 3,
+      "bank": "westpac",
+      "seed": 703351,
+      "ok": true,
+      "errors": [],
+      "stats": {
+        "run": 3,
+        "bank": "westpac",
+        "seed": 703351,
+        "parseCount": 22,
+        "pageCount": 3,
+        "generatedCount": 22,
+        "bankDescEdits": 22,
+        "balanceMismatches": 0,
+        "closingExpected": 7576.96,
+        "materialMode": "full-ledger",
+        "editCount": 55,
+        "byField": {
+          "date": 17,
+          "description": 22,
+          "debit": 0,
+          "credit": 2,
+          "balance": 14,
+          "other": 0
+        },
+        "rowsPaired": 22,
+        "exportBytes": 80775,
+        "mathScore": 100,
+        "mathStatus": "pass",
+        "visualScore": 68,
+        "visualStatus": "fail",
+        "rendererOk": true
+      }
+    }
+  ]
+}
