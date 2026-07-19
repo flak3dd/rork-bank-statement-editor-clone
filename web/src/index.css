@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 173 80% 28%;
+    --primary-foreground: 166 76% 97%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 30% 96%;
+    --muted-foreground: 215 16% 42%;
+
+    --accent: 173 45% 94%;
+    --accent-foreground: 173 80% 20%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 90%;
+    --input: 214 25% 90%;
+    --ring: 173 80% 28%;
+
+    --radius: 0.85rem;
+
+    --money-in: 160 72% 32%;
+    --money-out: 8 75% 55%;
+    --surface-elevated: 0 0% 100%;
+    --hero-glow: 173 70% 40%;
+
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 173 80% 28%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 173 45% 94%;
+    --sidebar-accent-foreground: 173 80% 20%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 173 80% 28%;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 40% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 168 70% 45%;
+    --primary-foreground: 174 80% 8%;
+
+    --secondary: 217 28% 16%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 28% 14%;
+    --muted-foreground: 215 18% 65%;
+
+    --accent: 174 30% 16%;
+    --accent-foreground: 168 70% 70%;
+
+    --destructive: 0 62% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 24% 18%;
+    --input: 217 24% 18%;
+    --ring: 168 70% 45%;
+
+    --money-in: 160 65% 48%;
+    --money-out: 8 78% 62%;
+    --surface-elevated: 222 36% 12%;
+    --hero-glow: 168 70% 40%;
+
+    --sidebar-background: 222 47% 7%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 168 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 174 30% 16%;
+    --sidebar-accent-foreground: 168 70% 70%;
+    --sidebar-border: 217 24% 18%;
+    --sidebar-ring: 168 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-screen;
+    font-feature-settings: "ss01" on, "cv11" on;
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, hsl(var(--hero-glow) / 0.14), transparent 55%),
+      radial-gradient(900px 500px at 90% 0%, hsl(210 80% 50% / 0.08), transparent 50%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .money-in {
+    color: hsl(var(--money-in));
+  }
+
+  .money-out {
+    color: hsl(var(--money-out));
+  }
+
+  .surface-glass {
+    background: hsl(var(--card) / 0.82);
+    backdrop-filter: blur(14px);
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.45) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+}
