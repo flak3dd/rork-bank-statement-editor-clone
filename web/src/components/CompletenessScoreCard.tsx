@@ -36,28 +36,45 @@ export function CompletenessScoreCard({
   compact = false,
 }: CompletenessScoreCardProps) {
   return (
-    <div className="rounded-2xl border border-border/70 bg-card/80 p-4 shadow-sm space-y-3">
+    <div
+      className={cn(
+        "rounded-2xl border border-border/70 bg-card/80 shadow-sm",
+        compact ? "rounded-xl p-3 space-y-2" : "p-4 space-y-3",
+      )}
+    >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 space-y-1">
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            Parse + AI completeness
+          <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            Completeness
           </p>
-          <p className="text-sm text-muted-foreground leading-snug">{score.summary}</p>
+          {!compact && (
+            <p className="text-sm text-muted-foreground leading-snug">
+              {score.summary}
+            </p>
+          )}
         </div>
         <div
           className={cn(
-            "flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-2xl border",
+            "flex shrink-0 flex-col items-center justify-center rounded-2xl border",
+            compact ? "h-11 w-11 rounded-xl" : "h-14 w-14",
             gradeTone(score.grade),
           )}
         >
-          <span className="text-lg font-bold leading-none">{score.grade}</span>
+          <span
+            className={cn(
+              "font-bold leading-none",
+              compact ? "text-base" : "text-lg",
+            )}
+          >
+            {score.grade}
+          </span>
           <span className="text-[10px] font-medium tabular-nums mt-0.5">
             {score.overall.toFixed(0)}
           </span>
         </div>
       </div>
 
-      <Progress value={score.overall} className="h-2" />
+      <Progress value={score.overall} className={compact ? "h-1.5" : "h-2"} />
 
       {!compact && (
         <ul className="grid grid-cols-2 gap-2">

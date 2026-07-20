@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-07-19T03:31:42.324Z",
+  "startedAt": "2026-07-19T11:52:35.107Z",
   "banks": [
     "anz",
     "cba",
@@ -24,7 +24,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "PENDING - EFTPOS UBER EATS"
+      "sampleDesc": "PENDING - PAYMENT FROM JAMES SMITH inv 8406 MDE"
     },
     {
       "bank": "cba",
@@ -39,7 +39,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "Direct Credit 002962 CITIGROUP PTYLTD BROWN"
+      "sampleDesc": "Fast Transfer From JAMES SMITH PETROL"
     },
     {
       "bank": "westpac",
@@ -54,7 +54,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "DEBIT CARD PURCHASE APPLE.COM/BILL HARTBEESPOOR AUS"
+      "sampleDesc": "INTEREST"
     },
     {
       "bank": "ing",
@@ -69,7 +69,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN763610)"
+      "sampleDesc": "VISA-NETFLIX AU#1234(TXN757445)"
     },
     {
       "bank": "bankwest",
@@ -84,7 +84,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "AGL MELBOURNE AUS"
+      "sampleDesc": "AMAZON MARKETPLACE ELTHAM AUS"
     },
     {
       "bank": "suncorp",
@@ -99,7 +99,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "VISA PURCHASE CHEMIST WAREHOUSE ROCKHAMPTON 02/04 AU AUD"
+      "sampleDesc": "DIRECT DEBIT Suncorp Metway DIRECT DEBIT868863"
     },
     {
       "bank": "macquarie",
@@ -114,7 +114,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "Package fee"
+      "sampleDesc": "From DAVID NGUYEN - Transfer"
     },
     {
       "bank": "other",
@@ -129,7 +129,7 @@
       "qualityGrade": "A",
       "qualityOk": true,
       "afterRewriteOk": true,
-      "sampleDesc": "VISA DEBIT PURCHASE CARD 4532 1234 5678 9010 ORIGIN ENERGY"
+      "sampleDesc": "EFTPOS PILOT\\"
     }
   ],
   "stress": {
@@ -139,10 +139,10 @@
     "totalRows": 3634,
     "perfect": true,
     "failures": [],
-    "durationMs": 25
+    "durationMs": 18
   },
   "perfect": true,
-  "durationMs": 261,
+  "durationMs": 653,
   "pymupdf": {
     "status": 0,
     "ok": true,

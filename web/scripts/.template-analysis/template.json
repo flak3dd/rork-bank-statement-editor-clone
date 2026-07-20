@@ -1,0 +1,378 @@
+{
+  "label": "template",
+  "path": "/Users/adminuser/Desktop/St George Bank TEMPLATE- 21.08.24 to 19.11.24.pdf",
+  "byteLength": 40752,
+  "pageCount": 2,
+  "textChars": 1004,
+  "runCount": 88,
+  "runsByPage": {
+    "1": 61,
+    "2": 27
+  },
+  "txnCount": 0,
+  "sampleTxns": [],
+  "placeholders": [],
+  "topPage1Text": [
+    {
+      "t": "Date created:",
+      "x": 70,
+      "y": 812,
+      "w": 60
+    },
+    {
+      "t": " ",
+      "x": 130,
+      "y": 812,
+      "w": 2.8
+    },
+    {
+      "t": "{DATE CREATE",
+      "x": 132.8,
+      "y": 812,
+      "w": 73.4
+    },
+    {
+      "t": " ",
+      "x": 206.2,
+      "y": 812,
+      "w": 2.8
+    },
+    {
+      "t": "{TIME}",
+      "x": 208.9,
+      "y": 812,
+      "w": 30.6
+    },
+    {
+      "t": " ",
+      "x": 239.5,
+      "y": 812,
+      "w": 232.7
+    },
+    {
+      "t": "Page",
+      "x": 472.2,
+      "y": 812,
+      "w": 23.4
+    },
+    {
+      "t": " ",
+      "x": 495.5,
+      "y": 812,
+      "w": 2.8
+    },
+    {
+      "t": "{X}",
+      "x": 498.3,
+      "y": 812,
+      "w": 13.3
+    },
+    {
+      "t": " ",
+      "x": 511.7,
+      "y": 812,
+      "w": 2.8
+    },
+    {
+      "t": "of",
+      "x": 514.4,
+      "y": 812,
+      "w": 8.3
+    },
+    {
+      "t": " ",
+      "x": 522.8,
+      "y": 812,
+      "w": 2.8
+    },
+    {
+      "t": "{X}",
+      "x": 525.6,
+      "y": 812,
+      "w": 13.3
+    },
+    {
+      "t": "St.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714",
+      "x": 70,
+      "y": 792,
+      "w": 391
+    },
+    {
+      "t": "{dd mmm}{STGEORGE TRANSACTION}",
+      "x": 70,
+      "y": 335.3,
+      "w": 183
+    },
+    {
+      "t": "$10,000.00",
+      "x": 384.5,
+      "y": 335.3,
+      "w": 50
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 335.3,
+      "w": 40
+    },
+    {
+      "t": "$64,573.63",
+      "x": 474.5,
+      "y": 335.3,
+      "w": 50
+    },
+    {
+      "t": " ",
+      "x": 253,
+      "y": 335.2,
+      "w": 131.4
+    },
+    {
+      "t": "{dd mmm}{STGEORGE TRANSACTION}",
+      "x": 70,
+      "y": 298.7,
+      "w": 183
+    },
+    {
+      "t": "{AMOUNT}",
+      "x": 385.1,
+      "y": 298.7,
+      "w": 50
+    },
+    {
+      "t": " ",
+      "x": 435.1,
+      "y": 298.7,
+      "w": 39.4
+    },
+    {
+      "t": "{AMOUNT}",
+      "x": 474.5,
+      "y": 298.7,
+      "w": 50
+    },
+    {
+      "t": " ",
+      "x": 253,
+      "y": 298.6,
+      "w": 132.1
+    },
+    {
+      "t": "Date",
+      "x": 70,
+      "y": 265.4,
+      "w": 21.7
+    },
+    {
+      "t": " ",
+      "x": 91.7,
+      "y": 265.4,
+      "w": 23.3
+    },
+    {
+      "t": "Transaction",
+      "x": 115,
+      "y": 265.4,
+      "w": 56.7
+    },
+    {
+      "t": " ",
+      "x": 171.7,
+      "y": 265.4,
+      "w": 225
+    },
+    {
+      "t": "Amount",
+      "x": 396.7,
+      "y": 265.3,
+      "w": 37.8
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 265.3,
+      "w": 51.6
+    },
+    {
+      "t": "Balance",
+      "x": 486.2,
+      "y": 265.3,
+      "w": 38.4
+    },
+    {
+      "t": "Current Balance:",
+      "x": 70,
+      "y": 240.8,
+      "w": 80.6
+    },
+    {
+      "t": " ",
+      "x": 150.6,
+      "y": 240.8,
+      "w": 2.8
+    },
+    {
+      "t": "{CURRENT BALANCE}",
+      "x": 153.4,
+      "y": 240.8,
+      "w": 105
+    },
+    {
+      "t": "This statement covers the last",
+      "x": 70,
+      "y": 216.2,
+      "w": 132.8
+    },
+    {
+      "t": " ",
+      "x": 202.9,
+      "y": 216.2,
+      "w": 2.8
+    },
+    {
+      "t": "{NUMBER OF DAYS)",
+      "x": 205.6,
+      "y": 216.2,
+      "w": 96.7
+    },
+    {
+      "t": " ",
+      "x": 302.3,
+      "y": 216.2,
+      "w": 2.8
+    },
+    {
+      "t": "days of transactions",
+      "x": 305.1,
+      "y": 216.2,
+      "w": 88.9
+    },
+    {
+      "t": " ",
+      "x": 394,
+      "y": 216.2,
+      "w": 2.8
+    },
+    {
+      "t": "(",
+      "x": 396.8,
+      "y": 216.2,
+      "w": 3.3
+    },
+    {
+      "t": "{FROM DATE}",
+      "x": 400.1,
+      "y": 216.2,
+      "w": 67.2
+    },
+    {
+      "t": " ",
+      "x": 467.4,
+      "y": 216.2,
+      "w": 2.8
+    },
+    {
+      "t": "to",
+      "x": 470.1,
+      "y": 216.2,
+      "w": 9.4
+    },
+    {
+      "t": " ",
+      "x": 479.6,
+      "y": 216.2,
+      "w": 2.8
+    },
+    {
+      "t": "{TO DATE}",
+      "x": 482.4,
+      "y": 216.2,
+      "w": 51.7
+    },
+    {
+      "t": ").",
+      "x": 534,
+      "y": 216.2,
+      "w": 6.1
+    },
+    {
+      "t": "Transactions",
+      "x": 70,
+      "y": 202.2,
+      "w": 62.2
+    },
+    {
+      "t": "AUSTRALIA",
+      "x": 70,
+      "y": 177.2,
+      "w": 57.8
+    },
+    {
+      "t": "Account Opened:",
+      "x": 381.1,
+      "y": 175.5,
+      "w": 83.3
+    },
+    {
+      "t": " ",
+      "x": 464.4,
+      "y": 175.5,
+      "w": 2.8
+    },
+    {
+      "t": "{DATE}",
+      "x": 467.2,
+      "y": 175.5,
+      "w": 33.3
+    },
+    {
+      "t": "{ADDRESS LINE 2}",
+      "x": 70,
+      "y": 165.2,
+      "w": 90.6
+    },
+    {
+      "t": "{ADDRESS LINE 1}",
+      "x": 70,
+      "y": 153.2,
+      "w": 90.6
+    },
+    {
+      "t": "{BSB}",
+      "x": 424.4,
+      "y": 151.5,
+      "w": 26.7
+    },
+    {
+      "t": " ",
+      "x": 451.1,
+      "y": 151.5,
+      "w": 8.3
+    },
+    {
+      "t": "{ACCOUNT}",
+      "x": 459.4,
+      "y": 151.5,
+      "w": 56.1
+    },
+    {
+      "t": "{FIRSTNAME LASTNAME}",
+      "x": 70,
+      "y": 141.2,
+      "w": 124.4
+    },
+    {
+      "t": "Account/Card number",
+      "x": 420,
+      "y": 139.5,
+      "w": 105
+    },
+    {
+      "t": "Transaction Listing",
+      "x": 223.7,
+      "y": 114.6,
+      "w": 147.6
+    }
+  ],
+  "fullText": "Complete Freedom\nTransaction Listing \n{FIRSTNAME LASTNAME}\n{ADDRESS LINE 1}\n{ADDRESS LINE 2} \nAUSTRALIA\nAccount/Card number \n{BSB}   {ACCOUNT} \nAccount Opened:   {DATE} \nTransactions \nThis statement covers the last   {NUMBER OF DAYS)   days of transactions   ( {FROM DATE}   to   {TO DATE} ).\nCurrent Balance:   {CURRENT BALANCE} \nDate   Transaction   Amount   Balance \n{dd mmm}{STGEORGE TRANSACTION}   {AMOUNT}   {AMOUNT}\n{dd mmm}{STGEORGE TRANSACTION}   $10,000.00   $64,573.63 \nSt.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714 \nDate created:   {DATE CREATE   {TIME}   Page   {X}   of   {X}\n\nTransaction listing continued...   Account/Card number \n{ACCOUNT} \nDate   Transaction   Amount   Balance \nSt.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714 \nDate created:   {DATE CREATE {TIME} \n{dd mmm}{STGEORGE TRANSACTION}   {AMOUNT}   {AMOUNT} \nPage   {X}   of   {X}"
+}

@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "score": 90,
+  "strategy": "hybrid-merge",
+  "documentClass": "filled-statement",
+  "editCount": 46,
+  "coverage": {
+    "date": {
+      "linked": 0,
+      "changed": 0,
+      "applied": 0
+    },
+    "description": {
+      "linked": 95,
+      "changed": 22,
+      "applied": 46
+    },
+    "debit": {
+      "linked": 0,
+      "changed": 0,
+      "applied": 0
+    },
+    "credit": {
+      "linked": 0,
+      "changed": 0,
+      "applied": 0
+    },
+    "balance": {
+      "linked": 0,
+      "changed": 0,
+      "applied": 0
+    },
+    "chrome": {
+      "linked": 0,
+      "changed": 0,
+      "applied": 0
+    }
+  },
+  "gates": [
+    {
+      "id": "has-edits",
+      "pass": true,
+      "detail": "46 replacement(s) applied"
+    },
+    {
+      "id": "description-coverage",
+      "pass": true,
+      "detail": "Description apply 46/22 (need ≥35%)"
+    },
+    {
+      "id": "no-blank-replacements",
+      "pass": true,
+      "detail": "Blank replacements filtered (never redact empty)"
+    }
+  ],
+  "strategiesTried": [
+    "geometry-link",
+    "row-cluster",
+    "hybrid-merge"
+  ],
+  "notes": [
+    "documentClass=filled-statement",
+    "geometry-link: 348 runs across ≤40 pages",
+    "geometry-link: passA=95 passB=95 merged=95",
+    "row-cluster: +1 residual field edit(s)",
+    "hybrid-merge: 46 unique non-empty edit(s)"
+  ],
+  "durationMs": 452
+}

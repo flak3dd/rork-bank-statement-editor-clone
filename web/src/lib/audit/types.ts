@@ -89,15 +89,36 @@ export interface WorkflowDraft {
   };
 }
 
+/** Injection pipeline summary embedded in the merged audit report. */
+export interface InjectionAuditSection {
+  product: "Bank Statement Fidelity Editor";
+  goal: string;
+  strategy: string | null;
+  documentClass: string | null;
+  score: number | null;
+  editCount: number;
+  notes: string[];
+  gates: Array<{ id: string; pass: boolean; detail: string }>;
+  coverage: {
+    description: { applied: number; changed: number; linked: number };
+    balance: { applied: number; changed: number; linked: number };
+    date: { applied: number; changed: number; linked: number };
+  } | null;
+  writePolicy: string;
+}
+
 /** Auto-merged verification + audit JSON report. */
 export interface MergedAuditReport {
-  version: 1;
-  kind: "statement-lens.audit-report";
+  version: 2;
+  kind: "bank-statement-fidelity-editor.audit-report";
+  product: "Bank Statement Fidelity Editor";
   generatedAt: string;
   fileName: string;
   thresholds: VerificationThresholds;
   auditLog: AuditLogEntry[];
   changeHistory: ChangeHistoryEntry[];
+  /** Logic-generator data injection pipeline outcome. */
+  injection: InjectionAuditSection | null;
   verification: {
     dpi: number;
     pixelStatus: string;

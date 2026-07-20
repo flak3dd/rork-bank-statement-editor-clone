@@ -183,17 +183,19 @@ export function SideBySideComparison({
         className,
       )}
     >
-      {/* Header */}
-      <div className="border-b border-border/60 px-4 py-3 space-y-3">
+      {/* Header — primary workspace surface */}
+      <div className="border-b border-border/60 px-4 py-3.5 space-y-3 bg-gradient-to-b from-primary/8 to-transparent">
         <div className="flex flex-wrap items-start justify-between gap-2">
-          <div className="flex items-center gap-2 min-w-0">
-            <ArrowLeftRight className="h-4 w-4 text-primary shrink-0" />
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm shadow-primary/25">
+              <ArrowLeftRight className="h-4 w-4" />
+            </div>
             <div>
-              <p className="text-sm font-semibold tracking-tight">
+              <p className="text-base font-semibold tracking-tight">
                 Live side-by-side comparison
               </p>
               <p className="text-[11px] text-muted-foreground">
-                Left stays frozen · right updates as workflow changes
+                Left stays frozen · right updates as you edit, generate, or replace
               </p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CalendarRange,
   Cloud,
@@ -19,6 +19,7 @@ import {
   deployProcessorVersion,
   extractWithHybridGeometry,
   fetchDocAiAdminSnapshot,
+  fillStGeorgeTemplate,
   getPageTextRunsFromBytes,
   linkRunMatches,
   pairGeneratedToMatches,
@@ -36,6 +37,7 @@ import {
   type EngineMode,
   type GeometryRun,
 } from "@/lib/tools";
+import { overridesFromConfig, defaultStatementConfig } from "@/lib/statement-gen";
 import type { PdfEdit, Transaction } from "@/lib/types";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -53,46 +55,110 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
+export type AdditionalToolsTab =
+  | "generator"
+  | "dates"
+  | "fonts"
+  | "docai"
+  | "geometry"
+  | "remote";
+
 export interface AdditionalToolsPanelProps {
   transactions: Transaction[];
   pdfBytes: Uint8Array | null;
   fileName: string;
+  /** Statement text for YAML bank-template detection. */
+  rawText?: string;
   engineMode: EngineMode;
   onEngineModeChange: (mode: EngineMode) => void;
   onReplaceTransactions: (txns: Transaction[], label: string) => void;
   onAddPdfEdits?: (edits: PdfEdit[]) => void;
   onAudit?: (type: string, message: string) => void;
+  /**
+   * Called when St George template fill produces a full candidate PDF
+   * (template shell + variables + txn slots).
+   */
+  onCandidatePdf?: (
+    pdf: Uint8Array,
+    meta: { edits: PdfEdit[]; notes: string[]; mode: string },
+  ) => void;
+  /** Initial tab (uncontrolled default). */
+  defaultTab?: AdditionalToolsTab;
+  /** Controlled active tab — when set, panel follows parent. */
+  activeTab?: AdditionalToolsTab;
+  onActiveTabChange?: (tab: AdditionalToolsTab) => void;
+  /** Compact chrome for context rail. */
+  compact?: boolean;
 }
 
 export function AdditionalToolsPanel({
   transactions,
   pdfBytes,
   fileName,
+  rawText,
   engineMode,
   onEngineModeChange,
   onReplaceTransactions,
   onAddPdfEdits,
   onAudit,
+  onCandidatePdf,
+  defaultTab = "generator",
+  activeTab: controlledTab,
+  onActiveTabChange,
+  compact = false,
 }: AdditionalToolsPanelProps) {
+  const [internalTab, setInternalTab] = useState<AdditionalToolsTab>(
+    controlledTab ?? defaultTab,
+  );
+
+  useEffect(() => {
+    if (controlledTab != null) {
+      setInternalTab(controlledTab);
+    }
+  }, [controlledTab]);
+
+  const tab = controlledTab ?? internalTab;
+  const setTab = (next: AdditionalToolsTab) => {
+    if (controlledTab == null) setInternalTab(next);
+    onActiveTabChange?.(next);
+  };
+
   return (
-    <div className="rounded-2xl border border-border/70 bg-card/80 shadow-sm overflow-hidden">
-      <div className="border-b border-border/60 px-4 py-3 flex items-center gap-2">
-        <FlaskConical className="h-4 w-4 text-primary" />
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold tracking-tight">Additional tools</p>
-          <p className="text-[11px] text-muted-foreground">
-            Generator · date shift · fonts · Doc AI · geometry · remote
-            {engineMode === "remote" ? " · upload uses remote" : ""}
-          </p>
+    <div
+      className={cn(
+        "rounded-2xl border border-border/70 bg-card/80 shadow-sm overflow-hidden",
+        compact && "rounded-xl",
+      )}
+    >
+      {/* Title lives on the parent collapsible ("Advanced tools") when compact */}
+      {!compact && (
+        <div className="border-b border-border/60 px-4 py-3 flex items-center gap-2">
+          <FlaskConical className="h-4 w-4 text-primary" />
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold tracking-tight">Additional tools</p>
+            <p className="text-[11px] text-muted-foreground">
+              Generator · date shift · fonts · Doc AI · geometry · remote
+              {engineMode === "remote" ? " · upload uses remote" : ""}
+            </p>
+          </div>
+          {engineMode === "remote" && (
+            <Badge variant="secondary" className="text-[10px] shrink-0">
+              remote pipeline
+            </Badge>
+          )}
         </div>
-        {engineMode === "remote" && (
-          <Badge variant="secondary" className="text-[10px] shrink-0">
-            remote pipeline
-          </Badge>
-        )}
-      </div>
-      <Tabs defaultValue="generator" className="w-full">
-        <TabsList className="w-full justify-start flex-wrap h-auto gap-1 p-2 bg-muted/30 rounded-none">
+      )}
+      <Tabs
+        value={tab}
+        onValueChange={(v) => setTab(v as AdditionalToolsTab)}
+        className="w-full"
+      >
+        <TabsList
+          className={cn(
+            "w-full justify-start flex-wrap h-auto gap-1 p-2 bg-muted/30 rounded-none",
+            compact && "border-0",
+          )}
+        >
           <TabsTrigger value="generator" className="text-xs">
             Generator
           </TabsTrigger>
@@ -118,8 +184,11 @@ export function AdditionalToolsPanel({
             <GeneratorTab
               transactions={transactions}
               pdfBytes={pdfBytes}
+              rawText={rawText}
+              fileName={fileName}
               onReplaceTransactions={onReplaceTransactions}
               onAddPdfEdits={onAddPdfEdits}
+              onCandidatePdf={onCandidatePdf}
               onAudit={onAudit}
             />
           </TabsContent>
@@ -162,14 +231,23 @@ export function AdditionalToolsPanel({
 function GeneratorTab({
   transactions,
   pdfBytes,
+  rawText,
+  fileName,
   onReplaceTransactions,
   onAddPdfEdits,
+  onCandidatePdf,
   onAudit,
 }: {
   transactions: Transaction[];
   pdfBytes: Uint8Array | null;
+  rawText?: string;
+  fileName?: string;
   onReplaceTransactions: (txns: Transaction[], label: string) => void;
   onAddPdfEdits?: (edits: PdfEdit[]) => void;
+  onCandidatePdf?: (
+    pdf: Uint8Array,
+    meta: { edits: PdfEdit[]; notes: string[]; mode: string },
+  ) => void;
   onAudit?: (type: string, message: string) => void;
 }) {
   const bounds = periodBounds(transactions);
@@ -179,10 +257,85 @@ function GeneratorTab({
   const [start, setStart] = useState(bounds.start ?? "2026-03-01");
   const [end, setEnd] = useState(bounds.end ?? "2026-03-31");
   const [locale, setLocale] = useState<"au" | "us">("au");
-  const [bank, setBank] = useState<BankId>("anz");
+  /** "auto" uses parsers/templates YAML detection from rawText. */
+  const [bank, setBank] = useState<BankId | "auto">("auto");
+  const [yamlTemplateId, setYamlTemplateId] = useState<string>("auto");
   const [lastSeed, setLastSeed] = useState<number | null>(null);
   const [linkStats, setLinkStats] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  /** Fill bundled St George Complete Freedom template with variables + ledger. */
+  const runStGeorgeTemplateFill = async () => {
+    if (transactions.length === 0) {
+      toast.message("No transactions", {
+        description: "Parse a statement or generate a ledger first.",
+      });
+      return;
+    }
+    setBusy(true);
+    setLinkStats(null);
+    try {
+      // Prefer bundled public template; fall back to current PDF if it is a template
+      let templateBytes: Uint8Array | null = null;
+      try {
+        const res = await fetch("/templates/st-george-complete-freedom.pdf");
+        if (res.ok) {
+          templateBytes = new Uint8Array(await res.arrayBuffer());
+        }
+      } catch {
+        /* ignore */
+      }
+      if (!templateBytes && pdfBytes) {
+        templateBytes = cloneUint8Array(pdfBytes);
+      }
+      if (!templateBytes) {
+        toast.error("St George template not found", {
+          description:
+            "Expected /templates/st-george-complete-freedom.pdf in public assets.",
+        });
+        return;
+      }
+
+      const cfg = defaultStatementConfig();
+      const variables = overridesFromConfig(cfg);
+      const filled = await fillStGeorgeTemplate({
+        templatePdf: templateBytes,
+        transactions,
+        variables,
+        periodStart: start || bounds.start || undefined,
+        periodEnd: end || bounds.end || undefined,
+        accountOpened: "2021-08-31",
+        currentBalance:
+          transactions[transactions.length - 1]?.balance ?? opening,
+      });
+
+      if (filled.edits.length && onAddPdfEdits) {
+        onAddPdfEdits(filled.edits);
+      }
+      onCandidatePdf?.(filled.candidatePdf, {
+        edits: filled.edits,
+        notes: filled.notes,
+        mode: filled.mode,
+      });
+      setLinkStats(
+        `St George template fill: ${filled.edits.length} edits · ` +
+          `${filled.transactionSlotsFilled}/${filled.transactionSlotsAvailable} txn slots · ` +
+          filled.notes.slice(-1)[0],
+      );
+      onAudit?.(
+        "note",
+        `st-george-template-fill: ${filled.edits.length} edits, ${filled.transactionSlotsFilled} slots`,
+      );
+      toast.success("St George template filled", {
+        description: `${filled.edits.length} field(s) · ${filled.transactionSlotsFilled} transaction row(s) · preview updated`,
+      });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      toast.error("Template fill failed", { description: message });
+    } finally {
+      setBusy(false);
+    }
+  };
 
   const run = async () => {
     setBusy(true);
@@ -270,12 +423,14 @@ function GeneratorTab({
       const result = await replaceStatementDataWithGeneration({
         transactions,
         pdfBytes: pdfBytes ? cloneUint8Array(pdfBytes) : null,
-        bank,
+        bank: bank === "auto" ? "auto" : bank,
+        rawText: rawText ?? "",
+        templateId: yamlTemplateId === "auto" ? null : yamlTemplateId,
         replace: ["description"],
       });
       onReplaceTransactions(
         result.transactions,
-        `pymupdf-replace bank=${result.bank}`,
+        `pymupdf-replace bank=${result.bank} tpl=${yamlTemplateId}`,
       );
       if (result.edits.length && onAddPdfEdits) {
         onAddPdfEdits(result.edits);
@@ -304,23 +459,47 @@ function GeneratorTab({
   return (
     <div className="space-y-3">
       <p className="text-xs text-muted-foreground leading-relaxed">
-        Uses <strong>transactionalDescriptionGenerator</strong> (ANZ/CBA/Westpac/…)
-        for bank-authentic text, then links PDF text-run bboxes for replica
-        export. Native Pro rewrite:{" "}
-        <code className="text-[10px] break-all">{pymupdfCliHint(bank, seed)}</code>
+        Uses <strong>parsers/templates/*.yaml</strong> to detect bank layout
+        (columns, date order, currency, cleanup) plus{" "}
+        <strong>transactionalDescriptionGenerator</strong> for authentic text,
+        then links PDF runs for export. Native Pro:{" "}
+        <code className="text-[10px] break-all">
+          {pymupdfCliHint(bank === "auto" ? "westpac" : bank, seed)}
+        </code>
       </p>
       <div className="grid grid-cols-2 gap-2">
         <Field label="Bank generator">
-          <Select value={bank} onValueChange={(v) => setBank(v as BankId)}>
+          <Select
+            value={bank}
+            onValueChange={(v) => setBank(v as BankId | "auto")}
+          >
             <SelectTrigger className="h-9">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="auto">Auto (YAML detect)</SelectItem>
               {BANK_IDS.map((id) => (
                 <SelectItem key={id} value={id}>
                   {BANK_LABELS[id]}
                 </SelectItem>
               ))}
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field label="YAML layout template">
+          <Select value={yamlTemplateId} onValueChange={setYamlTemplateId}>
+            <SelectTrigger className="h-9">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="auto">Auto detect</SelectItem>
+              <SelectItem value="westpac">Westpac / St.George</SelectItem>
+              <SelectItem value="anz">ANZ</SelectItem>
+              <SelectItem value="commonwealth">CommBank</SelectItem>
+              <SelectItem value="nab">NAB</SelectItem>
+              <SelectItem value="chase">Chase</SelectItem>
+              <SelectItem value="bankofamerica">Bank of America</SelectItem>
+              <SelectItem value="generic">Generic</SelectItem>
             </SelectContent>
           </Select>
         </Field>
@@ -398,6 +577,25 @@ function GeneratorTab({
         <Wand2 className="mr-2 h-4 w-4" />
         {busy ? "Linking runs…" : "Generate full ledger + font link"}
       </Button>
+      <div className="rounded-xl border border-primary/25 bg-primary/5 p-3 space-y-2">
+        <p className="text-[11px] font-semibold text-foreground">
+          St George Complete Freedom template
+        </p>
+        <p className="text-[10px] text-muted-foreground leading-relaxed">
+          Fill the official template shell (
+          <code className="text-[9px]">{"{FIRSTNAME LASTNAME}"}</code>, BSB,
+          account, period, txn rows) to match statement #726 format. Uses
+          bundled template + current ledger. No redactions.
+        </p>
+        <Button
+          className="rounded-full w-full"
+          disabled={busy || transactions.length === 0}
+          onClick={() => void runStGeorgeTemplateFill()}
+        >
+          <FlaskConical className="mr-2 h-4 w-4" />
+          {busy ? "Filling template…" : "Fill St George template → PDF"}
+        </Button>
+      </div>
       {lastSeed != null && (
         <p className="text-[11px] text-muted-foreground">
           Last seed <code>{lastSeed}</code>
@@ -551,6 +749,32 @@ function FontsTab({
   );
 }
 
+/** Short, non-scary message for Doc AI auth / API failures (hide raw JSON blobs). */
+function friendlyDocAiError(raw: string | undefined): string | null {
+  if (!raw) return null;
+  const lower = raw.toLowerCase();
+  if (
+    lower.includes("401") ||
+    lower.includes("invalid authentication") ||
+    lower.includes("unauthenticated") ||
+    lower.includes("access token")
+  ) {
+    return "Google auth expired or missing. Run the Doc AI token refresh script, then click Refresh versions.";
+  }
+  if (lower.includes("403") || lower.includes("permission")) {
+    return "Permission denied for this processor. Check project/processor IAM and VITE_GOOGLE_DOCAI_* env.";
+  }
+  if (lower.includes("set vite_google_docai")) {
+    return raw;
+  }
+  // Truncate long HTTP dumps
+  if (raw.length > 140 || raw.includes("{")) {
+    const head = raw.split(/[{:]/)[0]?.trim() || "Doc AI request failed";
+    return `${head.slice(0, 80)}${raw.length > 80 ? "…" : ""} — check token / processor path.`;
+  }
+  return raw;
+}
+
 function DocAiTab({ onAudit }: { onAudit?: (type: string, message: string) => void }) {
   const [snap, setSnap] = useState<Awaited<
     ReturnType<typeof fetchDocAiAdminSnapshot>
@@ -565,7 +789,14 @@ function DocAiTab({ onAudit }: { onAudit?: (type: string, message: string) => vo
     try {
       const s = await fetchDocAiAdminSnapshot();
       setSnap(s);
-      onAudit?.("note", `Doc AI admin: ${s.versions.length} version(s)`);
+      if (s.error) {
+        onAudit?.(
+          "note",
+          `Doc AI admin: ${friendlyDocAiError(s.error) ?? s.error}`,
+        );
+      } else {
+        onAudit?.("note", `Doc AI admin: ${s.versions.length} version(s)`);
+      }
     } finally {
       setBusy(false);
     }
@@ -580,7 +811,8 @@ function DocAiTab({ onAudit }: { onAudit?: (type: string, message: string) => vo
       onAudit?.("note", r.message);
       await refresh();
     } catch (err) {
-      setMsg(err instanceof Error ? err.message : String(err));
+      const raw = err instanceof Error ? err.message : String(err);
+      setMsg(friendlyDocAiError(raw) ?? raw);
     } finally {
       setBusy(false);
     }
@@ -595,7 +827,8 @@ function DocAiTab({ onAudit }: { onAudit?: (type: string, message: string) => vo
       onAudit?.("note", r.message);
       await refresh();
     } catch (err) {
-      setMsg(err instanceof Error ? err.message : String(err));
+      const raw = err instanceof Error ? err.message : String(err);
+      setMsg(friendlyDocAiError(raw) ?? raw);
     } finally {
       setBusy(false);
     }
@@ -618,48 +851,77 @@ function DocAiTab({ onAudit }: { onAudit?: (type: string, message: string) => vo
       </Button>
       {snap && (
         <div className="space-y-2">
-          <Badge variant={snap.configured ? "secondary" : "outline"}>
-            {snap.configured ? "configured" : "needs config"}
-          </Badge>
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge
+              variant={
+                snap.error
+                  ? "outline"
+                  : snap.configured
+                    ? "secondary"
+                    : "outline"
+              }
+            >
+              {snap.error
+                ? "auth / API error"
+                : snap.configured
+                  ? "configured"
+                  : "needs config"}
+            </Badge>
+          </div>
           {snap.processorPath && (
-            <p className="text-[10px] text-muted-foreground break-all">
-              {snap.processorPath}
+            <p
+              className="text-[10px] text-muted-foreground break-all font-mono"
+              title={snap.processorPath}
+            >
+              {snap.processorPath.length > 64
+                ? `…${snap.processorPath.slice(-48)}`
+                : snap.processorPath}
             </p>
           )}
           {snap.error && (
-            <p className="text-xs text-destructive">{snap.error}</p>
+            <div className="rounded-lg border border-amber-500/35 bg-amber-500/10 px-2.5 py-2 text-[11px] text-amber-950 dark:text-amber-100 leading-snug">
+              {friendlyDocAiError(snap.error)}
+              <p className="mt-1 text-[10px] opacity-80">
+                Token:{" "}
+                <code className="text-[9px]">
+                  scripts/refresh-docai-token.sh
+                </code>
+              </p>
+            </div>
           )}
-          <ScrollArea className="h-[120px] rounded-lg border border-border/60">
-            <ul className="divide-y divide-border/40 text-xs">
-              {snap.versions.map((v) => (
-                <li
-                  key={v.name}
-                  className="px-3 py-2 flex items-center justify-between gap-2"
-                >
-                  <div className="min-w-0">
-                    <p className="font-medium truncate">
-                      {v.displayName || v.name.split("/").pop()}
-                    </p>
-                    <p className="text-muted-foreground">{v.state ?? "—"}</p>
-                  </div>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="h-7 text-[10px] shrink-0"
-                    disabled={busy}
-                    onClick={() => void deploy(v.name)}
+          {!snap.error && (
+            <ScrollArea className="h-[120px] rounded-lg border border-border/60">
+              <ul className="divide-y divide-border/40 text-xs">
+                {snap.versions.map((v) => (
+                  <li
+                    key={v.name}
+                    className="px-3 py-2 flex items-center justify-between gap-2"
                   >
-                    Deploy
-                  </Button>
-                </li>
-              ))}
-              {snap.versions.length === 0 && !snap.error && (
-                <li className="px-3 py-4 text-muted-foreground text-center">
-                  No versions returned
-                </li>
-              )}
-            </ul>
-          </ScrollArea>
+                    <div className="min-w-0">
+                      <p className="font-medium truncate">
+                        {v.displayName || v.name.split("/").pop()}
+                      </p>
+                      <p className="text-muted-foreground">{v.state ?? "—"}</p>
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="h-7 text-[10px] shrink-0"
+                      disabled={busy}
+                      onClick={() => void deploy(v.name)}
+                    >
+                      Deploy
+                    </Button>
+                  </li>
+                ))}
+                {snap.versions.length === 0 && (
+                  <li className="px-3 py-4 text-muted-foreground text-center">
+                    No versions returned
+                  </li>
+                )}
+              </ul>
+            </ScrollArea>
+          )}
         </div>
       )}
       <Field label="Train display name">

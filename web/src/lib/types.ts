@@ -1,3 +1,5 @@
+import type { StatementLayoutAnalysis } from "@/lib/statement-layout/types";
+
 /** Spending categories used for AI + heuristic labeling. */
 export type TransactionCategory =
   | "Income"
@@ -120,6 +122,12 @@ export interface ExtractionResult {
   hybrid?: HybridParseMeta;
   /** Document parser used for extraction. */
   parser?: DocumentParserMeta;
+  /**
+   * Frozen three-part layout profile from upload (Stage 1 Step 1).
+   * Static chrome · header/footer variables · transaction table + structure profile.
+   * Downstream OEM replica reuses this — does not re-classify cold.
+   */
+  layout?: StatementLayoutAnalysis | null;
 }
 
 export interface HybridParseMeta {

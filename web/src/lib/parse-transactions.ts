@@ -1,7 +1,12 @@
 import { categorizeDescription } from "./categorize";
 import { computeCompletenessScore } from "./completeness";
 import { attachOriginals } from "./edit-utils";
-import { parseAmount, round2 } from "./money";
+import {
+  collapseDoubledMoneyGlyphs,
+  isMoneyToken,
+  parseAmount,
+  round2,
+} from "./money";
 import type {
   CompletenessFinding,
   ExtractionResult,
@@ -32,9 +37,10 @@ const DATE_PATTERNS: RegExp[] = [
   ),
 ];
 
-// Allow leading minus before currency: -$99.30 · $10,000.00 · ($12.00)
+// Money only: require currency symbol and/or exactly two decimals.
+// Do NOT match bare account integers (was poisoning ANZ transfer refs).
 const AMOUNT_TOKEN =
-  /-?\s*[$£€]?\s*-?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?|[$£€]\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?|\(\s*[$£€]?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})\s*\)|-?\d+(?:\.\d{2})/;
+  /-?\s*[$£€]\s*-?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?|-?\s*\d{1,3}(?:,\d{3})*\.\d{2}|\(\s*[$£€]?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})\s*\)/;
 
 const HEADER_HINT =
   /\b(date|description|particulars|details|debit|credit|withdrawal|deposit|balance|amount|narrative)\b/i;
@@ -42,8 +48,20 @@ const HEADER_HINT =
 const NOISE =
   /^(page\s+\d+|continued|opening\s+balance|closing\s+balance|statement\s+period|account\s+number|bsb|total|subtotal|please\s+note|important|www\.|http)/i;
 
+/** Page chrome only — must not match dated OPENING BALANCE txn rows. */
+const PAGE_CHROME =
+  /^(account statement|australia and new zealand|anz\s*plus\s*$|page\s+\d+\s+of\s+\d+|branch number|account name|account number)\b|afsl|credit licence|abn\s+\d|page\s+\d+\s+of\s+\d+/i;
+
 /** Infer year for "18 Nov" style dates from statement text period. */
 function inferYearFromContext(text: string): number {
+  // ANZ Plus period: "01 Apr 2026 – 30 Jun 2026"
+  const anzPeriod = text.match(
+    /\b(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(20\d{2}))\s*[–—\-to]+\s*\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(20\d{2})\b/i,
+  );
+  if (anzPeriod) {
+    const y = Number(anzPeriod[2] || anzPeriod[3]);
+    if (y >= 2000) return y;
+  }
   const m = text.match(
     /\b(20\d{2})\s*to\s*(20\d{2})\b|\b(20\d{2})-(\d{2})-(\d{2})\s*to\s*(20\d{2})|\bto\s*(\d{1,2})-([A-Za-z]{3})-(\d{2,4})\b|\((\d{1,2})-([A-Za-z]{3})-(\d{4})\s*to\s*(\d{1,2})-([A-Za-z]{3})-(\d{4})\)/i,
   );
@@ -54,8 +72,356 @@ function inferYearFromContext(text: string): number {
     }
   }
   const years = [...text.matchAll(/\b(20\d{2})\b/g)].map((x) => Number(x[1]));
-  if (years.length) return years[years.length - 1];
+  if (years.length) {
+    // Prefer the most common year (statement period), not a stray ref
+    const counts = new Map<number, number>();
+    for (const y of years) counts.set(y, (counts.get(y) ?? 0) + 1);
+    let best = years[0];
+    let bestN = 0;
+    for (const [y, n] of counts) {
+      if (n > bestN) {
+        best = y;
+        bestN = n;
+      }
+    }
+    return best;
+  }
   return new Date().getUTCFullYear();
+}
+
+function isAnzPlusText(text: string): boolean {
+  return (
+    /ANZ\s*Plus/i.test(text) ||
+    (/Australia and New Zealand Banking/i.test(text) &&
+      /Date\s+Description\s+Credit\s+Debit\s+Balance/i.test(text)) ||
+    /Date\s+Description\s+Credit\s+Debit\s+Balance/i.test(text)
+  );
+}
+
+/**
+ * Pull trailing money tokens from a line. Handles clean "$8.00   $10,452.00"
+ * and OCR-garbled "$ $4 4,,3 39 98 8..9 90 0   $14,168.92".
+ * Glyph collapse is applied only to the money region — never the description.
+ */
+function extractTrailingMoneyPair(
+  line: string,
+): { movement: number | null; balance: number | null; descRest: string } {
+  const raw = line.trim();
+  if (!raw) return { movement: null, balance: null, descRest: "" };
+
+  // 1) Clean trailing balance: $12,345.67 at end
+  const balMatch = raw.match(/(\$\s*[\d,]+\.\d{2})\s*$/);
+  if (balMatch && balMatch.index != null) {
+    const balance = parseAmount(balMatch[1]);
+    const before = raw.slice(0, balMatch.index).trim();
+
+    // Clean movement just before balance
+    const movClean = before.match(/(\$\s*[\d,]+\.\d{2}|-?[\d,]+\.\d{2})\s*$/);
+    if (movClean && movClean.index != null) {
+      const movement = parseAmount(movClean[1]);
+      const descRest = before.slice(0, movClean.index).replace(/[\s$]+$/g, "").trim();
+      return {
+        movement: movement != null ? Math.abs(movement) : null,
+        balance: balance != null ? Math.abs(balance) : null,
+        descRest,
+      };
+    }
+
+    // Garbled movement zone after last alnum/word char of description
+    let split = -1;
+    for (let i = before.length - 1; i >= 0; i--) {
+      const ch = before[i];
+      if (/[A-Za-z0-9#/]/.test(ch)) {
+        split = i;
+        break;
+      }
+    }
+    // Prefer split before `$ $` garbage if present
+    const garbledAt = before.search(/\$\s*\$/);
+    if (garbledAt >= 0) split = Math.max(split, garbledAt - 1);
+
+    if (garbledAt >= 0 || /\$\s*\$|\d\s+\d/.test(before)) {
+      const descRest = before.slice(0, garbledAt >= 0 ? garbledAt : split + 1).trim();
+      const moneyZone = before.slice(garbledAt >= 0 ? garbledAt : split + 1);
+      const movement = parseAmount(collapseDoubledMoneyGlyphs(moneyZone));
+      return {
+        movement: movement != null ? Math.abs(movement) : null,
+        balance: balance != null ? Math.abs(balance) : null,
+        descRest: descRest || before,
+      };
+    }
+
+    // Single trailing amount only (opening balance style)
+    return {
+      movement: null,
+      balance: balance != null ? Math.abs(balance) : null,
+      descRest: before,
+    };
+  }
+
+  // 2) Clean tokens only (no currency balance at end)
+  const moneyRe = /\$?\s*-?[\d,]+\.\d{2}/g;
+  const matches = [...raw.matchAll(moneyRe)].filter(
+    (m) => isMoneyToken(m[0]) || /[\d,]+\.\d{2}/.test(m[0]),
+  );
+  if (matches.length === 0) {
+    return { movement: null, balance: null, descRest: raw };
+  }
+  const tail = matches.slice(-2);
+  let cutAt = raw.length;
+  for (const m of tail) {
+    if (m.index != null && m.index < cutAt) cutAt = m.index;
+  }
+  const values = tail
+    .map((m) => parseAmount(m[0]))
+    .filter((n): n is number => n != null)
+    .map((n) => Math.abs(n));
+  let movement: number | null = null;
+  let balance: number | null = null;
+  if (values.length === 1) balance = values[0];
+  else if (values.length >= 2) {
+    movement = values[values.length - 2];
+    balance = values[values.length - 1];
+  }
+  return {
+    movement,
+    balance,
+    descRest: raw.slice(0, cutAt).replace(/[\s$]+$/g, "").trim() || raw,
+  };
+}
+
+function classifyAnzMovement(
+  description: string,
+  movement: number | null,
+): { debit: number | null; credit: number | null } {
+  if (movement == null || movement === 0) {
+    return { debit: null, credit: null };
+  }
+  const d = description.toUpperCase().replace(/\s+/g, " ");
+  // Explicit credit signals (allow missing spaces after collapse edge-cases)
+  if (
+    /\b(SALARY|PAYROLL|DEPOSIT|REFUND|INTEREST|REVERSAL|INCOMING)\b/.test(d) ||
+    /\bCREDIT\b/.test(d) ||
+    /TRANSFER\s*FROM/.test(d)
+  ) {
+    return { debit: null, credit: movement };
+  }
+  // Explicit debit signals (ANZ Plus default for VISA DEBIT / TRANSFER TO)
+  if (
+    /VISA\s*DEBIT|DIRECT\s*DEBIT|TRANSFER\s*TO/.test(d) ||
+    /\b(WITHDRAWAL|PURCHASE|PAYMENT|EFTPOS|ATM|FEE|OSKO)\b/.test(d) ||
+    (/\bDEBIT\b/.test(d) && !/\bCREDIT\b/.test(d))
+  ) {
+    return { debit: movement, credit: null };
+  }
+  // Default outflow
+  return { debit: movement, credit: null };
+}
+
+/**
+ * ANZ Plus multi-line statement parser.
+ * Layout: Date | Description | Credit | Debit | Balance
+ * Rows often split:
+ *   02 Apr   VISA DEBIT PURCHASE …
+ *   GOLDEN BAY
+ *   $8.00   $10,452.00
+ */
+function parseAnzPlus(lines: string[], yearHint: number): Transaction[] {
+  const dateHead = new RegExp(
+    String.raw`^(\d{1,2}\s+(?:${MONTH})[a-z]*)\s+(.+)$`,
+    "i",
+  );
+  const out: Transaction[] = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+    // Skip chrome / doubled-glyph headers
+    if (
+      !line ||
+      PAGE_CHROME.test(line) ||
+      /^date\s+description/i.test(line) ||
+      /^[A-Z]\s+[A-Z]\s+N\s+Z/i.test(line) ||
+      /A\s+AN\s+NZ/i.test(line)
+    ) {
+      i += 1;
+      continue;
+    }
+
+    const m = line.match(dateHead);
+    if (!m) {
+      i += 1;
+      continue;
+    }
+
+    const date = normalizeDate(m[1], yearHint);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      i += 1;
+      continue;
+    }
+
+    let description = m[2].trim();
+    let movement: number | null = null;
+    let balance: number | null = null;
+
+    // Amounts may already be on the date line
+    const onLine = extractTrailingMoneyPair(description);
+    if (onLine.balance != null || onLine.movement != null) {
+      description = onLine.descRest || description;
+      movement = onLine.movement;
+      balance = onLine.balance;
+    }
+
+    // Gather continuation lines until next date row or we have money
+    let j = i + 1;
+    while (j < lines.length) {
+      const nxt = lines[j];
+      if (!nxt) {
+        j += 1;
+        continue;
+      }
+      if (dateHead.test(nxt)) break;
+      if (PAGE_CHROME.test(nxt) || /^date\s+description/i.test(nxt)) {
+        j += 1;
+        continue;
+      }
+
+      // Amount-only / amount-pair line
+      const pair = extractTrailingMoneyPair(nxt);
+      const looksLikeMoneyLine =
+        pair.balance != null &&
+        (pair.movement != null ||
+          /^[\s$0-9,.\-]+$/.test(collapseDoubledMoneyGlyphs(nxt)));
+
+      if (looksLikeMoneyLine) {
+        if (pair.movement != null) movement = pair.movement;
+        if (pair.balance != null) balance = pair.balance;
+        // residual text before amounts (rare)
+        if (pair.descRest && /[A-Za-z]{3,}/.test(pair.descRest)) {
+          description = `${description} ${pair.descRest}`.trim();
+        }
+        j += 1;
+        break;
+      }
+
+      // Description continuation (location, effective date, salary ref)
+      if (
+        nxt.length > 1 &&
+        !HEADER_HINT.test(nxt) &&
+        !NOISE.test(nxt) &&
+        !/^\d+\s+of\s+\d+$/i.test(nxt)
+      ) {
+        description = `${description} ${nxt}`.trim();
+      }
+      j += 1;
+      // safety: don't run away more than a few lines without money
+      if (j - i > 6 && movement == null && balance == null) break;
+    }
+
+    description = description.replace(/\s{2,}/g, " ").trim();
+
+    // Opening balance: single amount is balance, not a movement
+    if (/^OPENING\s+BALANCE/i.test(description)) {
+      if (movement != null && balance == null) {
+        balance = movement;
+        movement = null;
+      }
+      const { category, confidence } = categorizeDescription(
+        description,
+        null,
+        null,
+      );
+      out.push({
+        id: uid("anz", out.length),
+        date,
+        description: "OPENING BALANCE",
+        debit: null,
+        credit: null,
+        balance,
+        category,
+        categorySource: "heuristic",
+        categoryConfidence: confidence,
+        flags: ["anz-plus", "opening-balance"],
+      });
+      i = Math.max(j, i + 1);
+      continue;
+    }
+
+    // Closing balance rows
+    if (/^CLOSING\s+BALANCE/i.test(description)) {
+      if (movement != null && balance == null) {
+        balance = movement;
+        movement = null;
+      }
+      i = Math.max(j, i + 1);
+      continue;
+    }
+
+    if (movement == null && balance == null) {
+      i = Math.max(j, i + 1);
+      continue;
+    }
+
+    // Infer missing movement from running balance when OCR killed the amount
+    if (
+      movement == null &&
+      balance != null &&
+      out.length > 0 &&
+      out[out.length - 1].balance != null
+    ) {
+      const prevBal = out[out.length - 1].balance!;
+      const delta = round2(balance - prevBal);
+      if (Math.abs(delta) >= 0.01) {
+        movement = Math.abs(delta);
+      }
+    }
+
+    let { debit: finalDebit, credit: finalCredit } = classifyAnzMovement(
+      description,
+      movement,
+    );
+
+    // Balance-chain override only when it cleanly matches one side
+    if (
+      balance != null &&
+      out.length > 0 &&
+      out[out.length - 1].balance != null &&
+      movement != null
+    ) {
+      const prevBal = out[out.length - 1].balance!;
+      const expectedCredit = round2(prevBal + movement);
+      const expectedDebit = round2(prevBal - movement);
+      if (Math.abs(expectedCredit - balance) < 0.02) {
+        finalCredit = movement;
+        finalDebit = null;
+      } else if (Math.abs(expectedDebit - balance) < 0.02) {
+        finalDebit = movement;
+        finalCredit = null;
+      }
+      // else keep description-based classification (gaps / missing rows)
+    }
+
+    const { category, confidence } = categorizeDescription(
+      description,
+      finalCredit,
+      finalDebit,
+    );
+    out.push({
+      id: uid("anz", out.length),
+      date,
+      description,
+      debit: finalDebit,
+      credit: finalCredit,
+      balance,
+      category,
+      categorySource: "heuristic",
+      categoryConfidence: confidence,
+      flags: ["anz-plus"],
+    });
+    i = Math.max(j, i + 1);
+  }
+
+  return out;
 }
 
 export function normalizeDate(raw: string, yearHint?: number): string {
@@ -133,10 +499,23 @@ function extractAmounts(rest: string): {
   description: string;
   amounts: number[];
 } {
+  // Prefer structured trailing pair (preserves description text)
+  const pair = extractTrailingMoneyPair(rest);
+  if (pair.balance != null || pair.movement != null) {
+    const amounts: number[] = [];
+    if (pair.movement != null) amounts.push(pair.movement);
+    if (pair.balance != null) amounts.push(pair.balance);
+    return {
+      description: pair.descRest.replace(/[\s|·•]+$/g, "").replace(/\s{2,}/g, " "),
+      amounts,
+    };
+  }
+
   const amounts: number[] = [];
   const matches = [...rest.matchAll(new RegExp(AMOUNT_TOKEN, "g"))];
-  // Prefer trailing amount tokens (rightmost columns)
+  // Prefer trailing money tokens (currency or .cc) — never bare account ints
   const significant = matches.filter((m) => {
+    if (!isMoneyToken(m[0]) && !/[\d,]+\.\d{2}/.test(m[0])) return false;
     const v = parseAmount(m[0]);
     return v != null && Math.abs(v) >= 0.01;
   });
@@ -184,20 +563,41 @@ function classifyDebitCredit(
   }
 
   if (amounts.length === 2) {
-    // amount + balance
-    return { debit: amounts[0], credit: null, balance: amounts[1] };
+    // movement + balance — classify via description (not always debit)
+    const movement = amounts[0];
+    const balance = amounts[1];
+    if (
+      /\b(deposit|salary|payroll|refund|interest|transfer\s+from|incoming|credit)\b/i.test(
+        description,
+      )
+    ) {
+      return { debit: null, credit: movement, balance };
+    }
+    if (
+      /\b(withdrawal|purchase|payment|fee|debit|pos|transfer\s+to|direct\s+debit|visa)\b/i.test(
+        description,
+      )
+    ) {
+      return { debit: movement, credit: null, balance };
+    }
+    return { debit: movement, credit: null, balance };
   }
 
-  // 3 amounts: debit, credit, balance — zeros mean empty column
+  // 3 amounts: ANZ Plus order is Credit, Debit, Balance (not Debit, Credit)
   const [a, b, c] = amounts;
-  let debit: number | null = a;
-  let credit: number | null = b;
-  if (a === 0) debit = null;
-  if (b === 0) credit = null;
-  // If both non-zero rare; keep as-is
+  let credit: number | null = a;
+  let debit: number | null = b;
+  if (a === 0) credit = null;
+  if (b === 0) debit = null;
+  // If both non-zero, keep one based on description
   if (debit != null && credit != null && debit > 0 && credit > 0) {
-    // Prefer larger as the movement if one looks like balance already in c
-    // keep both for review
+    if (
+      /\b(salary|transfer\s+from|deposit|credit|refund)\b/i.test(description)
+    ) {
+      debit = null;
+    } else {
+      credit = null;
+    }
   }
   return { debit, credit, balance: c };
 }
@@ -225,6 +625,22 @@ export function parseTransactionsHybrid(text: string): ParseHybridResult {
     .split(/\r?\n/)
     .map((l) => l.replace(/\s+/g, " ").trim())
     .filter(Boolean);
+
+  // Prefer bank-specialist parsers when the statement format is clear
+  if (isAnzPlusText(text)) {
+    const anz = parseAnzPlus(lines, yearHint);
+    if (anz.length >= 3) {
+      return {
+        transactions: attachOriginals(anz),
+        meta: {
+          lineParserCount: anz.length,
+          recoveredContinuationLines: 0,
+          aiValidated: false,
+          enginesTried: ["anz-plus-multiline"],
+        },
+      };
+    }
+  }
 
   const txns: Transaction[] = [];
   let pending: Transaction | null = null;
@@ -657,6 +1073,8 @@ export function buildExtractionResult(params: {
   aiScoreHint?: number | null;
   findings?: CompletenessFinding[];
   parser?: ExtractionResult["parser"];
+  /** Frozen Stage-1 three-part layout (static | vars | txn table). */
+  layout?: ExtractionResult["layout"];
 }): ExtractionResult {
   const limitedExtraction =
     params.rawText.trim().length < 80 || params.transactions.length === 0;
@@ -700,5 +1118,6 @@ export function buildExtractionResult(params: {
     extractedAt: new Date().toISOString(),
     hybrid: params.hybrid,
     parser: params.parser,
+    layout: params.layout ?? null,
   };
 }

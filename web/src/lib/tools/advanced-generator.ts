@@ -198,6 +198,78 @@ export function advancedGenerator(options: GeneratorOptions): GeneratedBundle {
 }
 
 /**
+ * Map a single PDF text-run's original fragment to the matching fragment of the
+ * new description. NEVER dumps the full multi-line description onto one run.
+ */
+export function descriptionFragmentForRun(
+  runOriginal: string,
+  fullOriginal: string,
+  fullNew: string,
+): string {
+  const run = (runOriginal || "").replace(/\s+/g, " ").trim();
+  const oldFullRaw = fullOriginal || run;
+  const newFullRaw = fullNew || "";
+  const oldFull = oldFullRaw.replace(/\s+/g, " ").trim();
+  const newFull = newFullRaw.replace(/\s+/g, " ").trim();
+  if (!newFull) return run;
+  if (!run) return newFull;
+  // Whole-field single run
+  if (run === oldFull) return newFull;
+
+  // A) Unchanged fragment still present in the new full description
+  if (newFull.includes(run)) return run;
+
+  // B) Multi-line forms: match by line index
+  const splitLines = (s: string) =>
+    s
+      .split(/\n+/)
+      .map((x) => x.replace(/\s+/g, " ").trim())
+      .filter(Boolean);
+  const oldLines = splitLines(oldFullRaw);
+  const newLines = splitLines(newFullRaw);
+  if (oldLines.length > 1) {
+    const idx = oldLines.findIndex((l) => l === run);
+    if (idx >= 0 && newLines[idx]) return newLines[idx];
+  }
+
+  // C) Patch only tokens inside THIS run that differ between oldFull and newFull
+  const oldWords = oldFull.split(/\s+/).filter(Boolean);
+  const newWords = newFull.split(/\s+/).filter(Boolean);
+  if (oldWords.length === newWords.length) {
+    let patched = run;
+    let any = false;
+    for (let i = 0; i < oldWords.length; i++) {
+      if (oldWords[i] !== newWords[i] && patched.includes(oldWords[i])) {
+        patched = patched
+          .split(oldWords[i])
+          .join(newWords[i]);
+        any = true;
+      }
+    }
+    if (any) return patched;
+  } else {
+    // Unequal lengths: replace words in run that disappeared from newFull
+    const newWordSet = new Set(newWords);
+    const oldWordSet = new Set(oldWords);
+    let patched = run;
+    let any = false;
+    for (const w of run.split(/\s+/)) {
+      if (!newWordSet.has(w) && oldWordSet.has(w)) {
+        const replacement = newWords.find((nw) => !oldWordSet.has(nw));
+        if (replacement) {
+          patched = patched.split(w).join(replacement);
+          any = true;
+        }
+      }
+    }
+    if (any) return patched;
+  }
+
+  // D) Last resort: keep run length — never expand to full description
+  return run;
+}
+
+/**
  * Build PdfEdit replacements for generated/edited values using donor font replication.
  * Aligns string replacements to run geometry when provided.
  */
@@ -239,7 +311,13 @@ export function buildFontReplicatedReplacements(params: {
         ? formatDateLikeOriginal(t.date, m.original)
         : t.date;
     } else if (m.field === "description") {
-      replacement = t.description;
+      // Multi-line OEM rows (St George etc.): each PDF run is ONE line.
+      // Never dump the full joined description onto a secondary run.
+      replacement = descriptionFragmentForRun(
+        m.original,
+        t.original?.description ?? m.original,
+        t.description,
+      );
     } else if (m.field === "debit") {
       replacement =
         t.debit != null
@@ -263,11 +341,13 @@ export function buildFontReplicatedReplacements(params: {
           : "";
     }
 
-    if (!replacement) {
-      if (!params.clearEmpty) continue;
-      replacement = " ".repeat(Math.max(1, m.original.length));
+    // NEVER empty-out: skip blank replacements
+    if (!String(replacement).trim()) {
+      continue;
     }
-    if (replacement === m.original) continue;
+    // Skip no-ops for money/date. For description always re-paint: multi-line
+    // redaction can wipe sibling lines of the same text object.
+    if (replacement === m.original && m.field !== "description") continue;
 
     edits.push({
       id: `rep-${m.runId}-${Math.random().toString(36).slice(2, 8)}`,

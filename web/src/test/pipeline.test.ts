@@ -153,3 +153,82 @@ describe("visual validate + math check", () => {
     expect(s.net).toBeCloseTo(s.totalIn - s.totalOut, 2);
   });
 });
+
+import { withSourceOriginals } from "@/lib/edit-utils";
+
+describe("balance preview after additional-tools replace", () => {
+  it("shows replaced descriptions and recomputes from new amounts", () => {
+    const baseline = [
+      {
+        id: "a",
+        date: "2024-01-01",
+        description: "OLD MERCHANT",
+        debit: 10,
+        credit: null,
+        balance: 90,
+        category: "Other" as const,
+        categorySource: "heuristic" as const,
+        categoryConfidence: 0.5,
+        flags: [] as string[],
+        original: {
+          date: "2024-01-01",
+          description: "OLD MERCHANT",
+          debit: 10,
+          credit: null,
+          balance: 90,
+        },
+      },
+      {
+        id: "b",
+        date: "2024-01-02",
+        description: "OLD SALARY",
+        debit: null,
+        credit: 50,
+        balance: 140,
+        category: "Wages" as const,
+        categorySource: "heuristic" as const,
+        categoryConfidence: 0.5,
+        flags: [] as string[],
+        original: {
+          date: "2024-01-02",
+          description: "OLD SALARY",
+          debit: null,
+          credit: 50,
+          balance: 140,
+        },
+      },
+    ];
+    const replaced = [
+      {
+        ...baseline[0],
+        id: "gen-0",
+        description: "NEW BANK DESC A",
+        debit: 25,
+        credit: null,
+        balance: 75,
+        flags: ["generated"],
+      },
+      {
+        ...baseline[1],
+        id: "gen-1",
+        description: "NEW BANK DESC B",
+        debit: null,
+        credit: 100,
+        balance: 175,
+        flags: ["generated"],
+      },
+    ];
+    const next = withSourceOriginals(replaced, baseline);
+    expect(next[0].description).toBe("NEW BANK DESC A");
+    expect(next[0].original?.description).toBe("OLD MERCHANT");
+    expect(next[0].isDirty !== false || next[0].original).toBeTruthy();
+
+    const preview = buildBalancePreview(next, "recompute", 100);
+    expect(preview.rows[0].description).toBe("NEW BANK DESC A");
+    expect(preview.rows[1].description).toBe("NEW BANK DESC B");
+    expect(preview.rows[0].debit).toBe(25);
+    expect(preview.rows[1].credit).toBe(100);
+    expect(preview.rows[0].expectedBalance).toBe(75);
+    expect(preview.rows[1].expectedBalance).toBe(175);
+  });
+});

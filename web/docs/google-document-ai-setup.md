@@ -20,12 +20,28 @@ Stored in `web/.env.local` (gitignored).
 
 ## Refresh token (hourly)
 
-Google user access tokens expire (~1 hour):
+Google user access tokens expire (~1 hour). **401 invalid credentials** almost always means the token expired:
 
 ```bash
 cd web && ./scripts/refresh-docai-token.sh
-# then restart: npm run dev
+# then fully restart Vite (env is baked at start):
+#   stop npm run dev, then npm run dev -- --host 127.0.0.1 --port 8080
 ```
+
+### 403 billing
+
+If the API returns **403 This API method requires billing to be enabled**, open  
+https://console.cloud.google.com/billing and link a billing account to the project  
+(`VITE_GOOGLE_DOCAI_PROJECT`). Document AI will not process without billing.
+
+### Browser CORS
+
+The app uses Vite proxies in dev:
+
+- `/api/llamaparse/*` → Llama Cloud  
+- `/api/docai/*` → Google Document AI  
+
+Restart Vite after changing `vite.config.ts`.
 
 ## Create processors (console)
 

@@ -21,17 +21,21 @@ const PARSERS: Record<DocumentParserId, DocumentParser> = {
   "offline-heuristic": offlineHeuristicParser,
 };
 
-/** Display order — Mindee first (default). */
+/**
+ * Display order — LlamaParse / Google Doc AI required for production parse.
+ * Local engines remain for structure enrichment and offline emergencies.
+ */
 export const DOCUMENT_PARSER_ORDER: DocumentParserId[] = [
-  "mindee",
   "llamaparse",
   "google-docai",
   "pymupdf",
+  "mindee",
   "local-ocr",
   "offline-heuristic",
 ];
 
-export const DEFAULT_DOCUMENT_PARSER: DocumentParserId = "mindee";
+/** Prefer LlamaParse; upload still requires LlamaParse OR Doc AI. */
+export const DEFAULT_DOCUMENT_PARSER: DocumentParserId = "llamaparse";
 
 export function listDocumentParsers(): DocumentParserInfo[] {
   return DOCUMENT_PARSER_ORDER.map((id) => {

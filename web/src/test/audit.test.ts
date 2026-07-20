@@ -133,8 +133,70 @@ describe("workflow draft + merged report", () => {
       transactionCount: 3,
       dirtyCount: 1,
     });
-    expect(report.kind).toBe("statement-lens.audit-report");
+    expect(report.kind).toBe("bank-statement-fidelity-editor.audit-report");
+    expect(report.product).toBe("Bank Statement Fidelity Editor");
+    expect(report.version).toBe(2);
+    expect(report.injection).toBeNull();
     expect(report.summary.transactionCount).toBe(3);
     expect(report.auditLog).toHaveLength(1);
+  });
+
+  it("embeds injection pipeline summary for replica audit", () => {
+    const report = buildMergedAuditReport({
+      fileName: "stmt.pdf",
+      thresholds: normalizeThresholds(),
+      auditLog: [],
+      changeHistory: [],
+      pixelReport: null,
+      mathResult: null,
+      transactionCount: 10,
+      dirtyCount: 8,
+      injection: {
+        strategy: "hybrid-merge",
+        documentClass: "filled-statement",
+        score: 90,
+        editCount: 22,
+        notes: ["geometry-link pass"],
+        gates: [{ id: "has-edits", pass: true, detail: "22 edits" }],
+        coverage: {
+          description: { applied: 20, changed: 22, linked: 22 },
+          balance: { applied: 22, changed: 22, linked: 22 },
+          date: { applied: 10, changed: 10, linked: 10 },
+        },
+      },
+    });
+    expect(report.injection?.product).toBe("Bank Statement Fidelity Editor");
+    expect(report.injection?.editCount).toBe(22);
+    expect(report.injection?.strategy).toBe("hybrid-merge");
+  });
+});
+
+describe("audit page lines", () => {
+  it("builds printable injection audit lines", async () => {
+    const { buildAuditPageLines } = await import("@/lib/audit/append-audit-page");
+    const report = buildMergedAuditReport({
+      fileName: "s.pdf",
+      thresholds: normalizeThresholds(),
+      auditLog: appendAuditEvent([], "export", "done"),
+      changeHistory: [],
+      pixelReport: null,
+      mathResult: null,
+      transactionCount: 2,
+      dirtyCount: 1,
+      injection: {
+        strategy: "template-tokens",
+        documentClass: "token-template",
+        score: 90,
+        editCount: 5,
+      },
+    });
+    const lines = buildAuditPageLines(report, {
+      strategy: "template-tokens",
+      editCount: 5,
+      score: 90,
+    });
+    expect(lines[0]).toContain("BANK STATEMENT FIDELITY EDITOR");
+    expect(lines.some((l) => l.includes("template-tokens"))).toBe(true);
+    expect(lines.some((l) => l.includes("FreeText"))).toBe(true);
   });
 });

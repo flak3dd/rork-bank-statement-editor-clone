@@ -1,0 +1,453 @@
+{
+  "path": "filled-geometry",
+  "score": 100,
+  "editCount": 33,
+  "summary": {
+    "bankId": "westpac",
+    "documentClass": "filled-statement",
+    "staticRuns": 127,
+    "varRuns": 18,
+    "txnRowsMapped": 42,
+    "structureRecipe": "Westpac: date(dd mmm) · date · description · debit · credit · balance · AUD",
+    "writePolicy": "OEM vectors kept for Part1 static; Part2/Part3 FreeText inject; no redactions left in output; YAML template-assisted generation; multi-engine write"
+  },
+  "gates": [
+    {
+      "id": "oem-write",
+      "pass": true,
+      "detail": "33 OEM injection(s) via filled-geometry"
+    },
+    {
+      "id": "oem-static-preserved",
+      "pass": true,
+      "detail": "Static chrome retained from original OEM PDF vectors"
+    },
+    {
+      "id": "oem-structure",
+      "pass": true,
+      "detail": "bank=st-george conf=0.95"
+    },
+    {
+      "id": "oem-description-coverage",
+      "pass": true,
+      "detail": "desc 7/4 (need ≥25%)"
+    },
+    {
+      "id": "oem-no-redactions",
+      "pass": true,
+      "detail": "Square cover + FreeText only — redactions never written"
+    }
+  ],
+  "notes": [
+    "tpl: template from bankHint=westpac",
+    "tpl: st-george/westpac family → westpac generator + westpac yaml",
+    "tpl: columns=[date,description,debit,credit,balance] dateOrder=dmy currency=AUD layout=debit_credit_balance",
+    "structure: bank=st-george reformatted 0/42 (native lines kept) · Date (dd mmm) | Primary type line (often embeds process date e.g. 'Visa Purchase 14Nov') | optional ",
+    "oem-path=filled-geometry",
+    "generation-template=westpac bankGen=westpac",
+    "perfect: strategy=hybrid-merge score=100 edits=33",
+    "geometry-link: 348 runs across ≤3 pages",
+    "geometry-link: passA=206 passB=206 merged=206",
+    "row-cluster: +0 residual field edit(s)",
+    "hybrid-merge: 33 unique non-empty edit(s)",
+    "OEM result: score=100/100 path=filled-geometry edits=33 bytes=191279"
+  ],
+  "edits": [
+    {
+      "page": 1,
+      "field": "description",
+      "original": "Oz Lotteries Melbourne",
+      "replacement": "Oz Lotteries Sydney",
+      "bbox": {
+        "x": 115,
+        "y": 300.67999999999995,
+        "width": 103.93000000000002,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "description",
+      "original": "Oz Lotteries Melbourne",
+      "replacement": "Oz Lotteries Sydney",
+      "bbox": {
+        "x": 115,
+        "y": 205.07000000000005,
+        "width": 103.93000000000002,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "description",
+      "original": "Oz Lotteries Melbourne",
+      "replacement": "Oz Lotteries Sydney",
+      "bbox": {
+        "x": 115,
+        "y": 461.06,
+        "width": 103.93000000000002,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "description",
+      "original": "Visa Purchase 14Nov",
+      "replacement": "Visa Purchase 14Nov",
+      "bbox": {
+        "x": 115,
+        "y": 288.67999999999995,
+        "width": 96.15000000000002,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "debit",
+      "original": "-$99.30",
+      "replacement": "-$100.41",
+      "bbox": {
+        "x": 400.59,
+        "y": 288.67999999999995,
+        "width": 33.910000000000004,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "balance",
+      "original": "$64,474.33",
+      "replacement": "$64,475.44",
+      "bbox": {
+        "x": 153.35000000000002,
+        "y": 230.72000000000003,
+        "width": 50.04000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "credit",
+      "original": "$10,000.00",
+      "replacement": "$10,002.22",
+      "bbox": {
+        "x": 384.46,
+        "y": 398.39,
+        "width": 50.04000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "balance",
+      "original": "$44,573.63",
+      "replacement": "$44,574.74",
+      "bbox": {
+        "x": 474.46,
+        "y": 398.39,
+        "width": 50.04000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "credit",
+      "original": "$1,000.00",
+      "replacement": "$1,002.22",
+      "bbox": {
+        "x": 390.02,
+        "y": 508.1,
+        "width": 44.48000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "balance",
+      "original": "$34,423.63",
+      "replacement": "$34,424.74",
+      "bbox": {
+        "x": 474.46,
+        "y": 508.1,
+        "width": 50.04000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "credit",
+      "original": "$10,000.00",
+      "replacement": "$10,002.22",
+      "bbox": {
+        "x": 384.46,
+        "y": 617.81,
+        "width": 50.04000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "balance",
+      "original": "$22,423.63",
+      "replacement": "$22,424.74",
+      "bbox": {
+        "x": 474.46,
+        "y": 617.81,
+        "width": 50.04000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "credit",
+      "original": "$1,000.00",
+      "replacement": "$1,002.22",
+      "bbox": {
+        "x": 390.02,
+        "y": 727.52,
+        "width": 44.48000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 1,
+      "field": "balance",
+      "original": "$1,423.63",
+      "replacement": "$1,424.74",
+      "bbox": {
+        "x": 480.02,
+        "y": 727.52,
+        "width": 44.48000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "description",
+      "original": "Visa Purchase 07Nov",
+      "replacement": "Visa Purchase 07Nov",
+      "bbox": {
+        "x": 115,
+        "y": 193.07000000000005,
+        "width": 96.15000000000002,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "debit",
+      "original": "-$69.10",
+      "replacement": "-$70.21",
+      "bbox": {
+        "x": 400.59,
+        "y": 193.07000000000005,
+        "width": 33.910000000000004,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "balance",
+      "original": "$473.63",
+      "replacement": "$474.74",
+      "bbox": {
+        "x": 488.36,
+        "y": 193.07000000000005,
+        "width": 36.14000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "description",
+      "original": "Eftpos Debit 05Nov19:05",
+      "replacement": "Eftpos Debit 05Nov19:05",
+      "bbox": {
+        "x": 115,
+        "y": 302.78,
+        "width": 111.17000000000002,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "debit",
+      "original": "-$100.00",
+      "replacement": "-$101.11",
+      "bbox": {
+        "x": 395.03,
+        "y": 302.78,
+        "width": 39.470000000000006,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "balance",
+      "original": "$667.73",
+      "replacement": "$668.84",
+      "bbox": {
+        "x": 488.36,
+        "y": 302.78,
+        "width": 36.14000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "debit",
+      "original": "-$800.00",
+      "replacement": "-$801.11",
+      "bbox": {
+        "x": 395.03,
+        "y": 412.49,
+        "width": 39.470000000000006,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "balance",
+      "original": "$1,017.73",
+      "replacement": "$1,018.84",
+      "bbox": {
+        "x": 480.02,
+        "y": 412.49,
+        "width": 44.48000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "debit",
+      "original": "-$22.56",
+      "replacement": "-$23.67",
+      "bbox": {
+        "x": 400.59,
+        "y": 522.2,
+        "width": 33.910000000000004,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "balance",
+      "original": "$840.99",
+      "replacement": "$842.10",
+      "bbox": {
+        "x": 488.36,
+        "y": 522.2,
+        "width": 36.14000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "debit",
+      "original": "-$24.01",
+      "replacement": "-$25.12",
+      "bbox": {
+        "x": 400.59,
+        "y": 631.91,
+        "width": 33.910000000000004,
+        "height": 10
+      }
+    },
+    {
+      "page": 2,
+      "field": "balance",
+      "original": "$886.12",
+      "replacement": "$887.23",
+      "bbox": {
+        "x": 488.36,
+        "y": 631.91,
+        "width": 36.14000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "credit",
+      "original": "$1,000.00",
+      "replacement": "$1,002.22",
+      "bbox": {
+        "x": 390.02,
+        "y": 375.92,
+        "width": 44.48000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "balance",
+      "original": "$1,978.32",
+      "replacement": "$1,979.43",
+      "bbox": {
+        "x": 480.02,
+        "y": 229.64,
+        "width": 44.48000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "debit",
+      "original": "-$140.00",
+      "replacement": "-$141.11",
+      "bbox": {
+        "x": 395.03,
+        "y": 339.35,
+        "width": 39.470000000000006,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "balance",
+      "original": "$1,149.32",
+      "replacement": "$1,150.43",
+      "bbox": {
+        "x": 480.02,
+        "y": 339.35,
+        "width": 44.48000000000001,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "description",
+      "original": "Visa Purchase 21Aug",
+      "replacement": "Visa Purchase 21Aug",
+      "bbox": {
+        "x": 115,
+        "y": 449.06,
+        "width": 96.16000000000003,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "debit",
+      "original": "-$127.90",
+      "replacement": "-$129.01",
+      "bbox": {
+        "x": 395.03,
+        "y": 449.06,
+        "width": 39.470000000000006,
+        "height": 10
+      }
+    },
+    {
+      "page": 3,
+      "field": "balance",
+      "original": "$434.32",
+      "replacement": "$435.43",
+      "bbox": {
+        "x": 488.36,
+        "y": 449.06,
+        "width": 36.14000000000001,
+        "height": 10
+      }
+    }
+  ]
+}

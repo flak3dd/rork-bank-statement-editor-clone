@@ -23,30 +23,67 @@ async function sleep(ms: number, signal?: AbortSignal) {
   });
 }
 
+function llamaBaseUrls(): { uploadUrl: string; statusBase: string } {
+  const toolkit = toolkitBase();
+  if (toolkit) {
+    return {
+      uploadUrl: `${toolkit}/v2/llamaparse/upload`,
+      statusBase: `${toolkit}/v2/llamaparse`,
+    };
+  }
+  // Browser: Vite dev proxy avoids CORS NetworkError
+  if (typeof window !== "undefined") {
+    return {
+      uploadUrl: "/api/llamaparse/upload",
+      statusBase: "/api/llamaparse",
+    };
+  }
+  return {
+    uploadUrl: "https://api.cloud.llamaindex.ai/api/v1/parsing/upload",
+    statusBase: "https://api.cloud.llamaindex.ai/api/v1/parsing",
+  };
+}
+
+function friendlyLlamaError(err: unknown): string {
+  const msg = err instanceof Error ? err.message : String(err);
+  if (/NetworkError|Failed to fetch|Load failed|network/i.test(msg)) {
+    return (
+      "LlamaParse network/CORS error. Restart Vite (dev proxy /api/llamaparse) " +
+      "or set VITE_TOOLKIT_BASE if using a backend proxy. Original: " +
+      msg
+    );
+  }
+  return msg;
+}
+
 async function callLlamaParse(input: ParserInput): Promise<{ rawText: string; pageCount: number }> {
   const key = llamaKey();
   if (!key) throw new Error("LlamaParse API key not configured");
 
-  const toolkit = toolkitBase();
-  const uploadUrl =
-    toolkit
-      ? `${toolkit}/v2/llamaparse/upload`
-      : "https://api.cloud.llamaindex.ai/api/v1/parsing/upload";
-  const statusBase =
-    toolkit
-      ? `${toolkit}/v2/llamaparse`
-      : "https://api.cloud.llamaindex.ai/api/v1/parsing";
+  const { uploadUrl, statusBase } = llamaBaseUrls();
 
   const form = new FormData();
-  form.append("file", new Blob([input.bytes], { type: "application/pdf" }), input.fileName);
+  // BlobPart typing: copy into a fresh ArrayBuffer-backed Uint8Array
+  const ab = new ArrayBuffer(input.bytes.byteLength);
+  new Uint8Array(ab).set(input.bytes);
+  form.append(
+    "file",
+    new Blob([ab], { type: "application/pdf" }),
+    input.fileName,
+  );
 
   input.onProgress?.(0.2, "Uploading to LlamaParse…");
-  const up = await fetch(uploadUrl, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}` },
-    body: form,
-    signal: input.signal,
-  });
+  let up: Response;
+  try {
+    up = await fetch(uploadUrl, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}` },
+      body: form,
+      signal: input.signal,
+    });
+  } catch (err) {
+    throw new Error(friendlyLlamaError(err));
+  }
   if (!up.ok) {
     const t = await up.text().catch(() => "");
     throw new Error(`LlamaParse upload ${up.status}: ${t.slice(0, 180)}`);
@@ -153,7 +190,8 @@ export const llamaParseParser: DocumentParser = {
         },
       };
     } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
+      const message = friendlyLlamaError(err);
+      // Re-throw for required-cloud path (do not mask as silent offline success)
       const offline = await runOfflineHeuristicParse(input, {
         enginesTried,
         fallbackFrom: "llamaparse",

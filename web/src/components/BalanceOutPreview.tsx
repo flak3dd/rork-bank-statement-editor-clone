@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { AlertTriangle, CheckCircle2, Diff } from "lucide-react";
 import type { BalanceEngineId, BalancePreviewResult } from "@/lib/types";
 import { BALANCE_ENGINES } from "@/lib/types";
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 
 interface BalanceOutPreviewProps {
   preview: BalancePreviewResult;
@@ -20,17 +22,32 @@ interface BalanceOutPreviewProps {
   onSelectRow?: (transactionId: string) => void;
 }
 
+type RowFilter = "all" | "mismatch" | "dirty";
+
+/**
+ * Balance Out Preview — always reflects the current working ledger
+ * (including Additional Tools / generator replacements), not a frozen snapshot.
+ */
 export function BalanceOutPreview({
   preview,
   engine,
   onEngineChange,
   onSelectRow,
 }: BalanceOutPreviewProps) {
-  const mismatches = preview.rows.filter((r) => r.mismatched);
+  const [filter, setFilter] = useState<RowFilter>("all");
+
+  const visible = useMemo(() => {
+    if (filter === "mismatch") return preview.rows.filter((r) => r.mismatched);
+    if (filter === "dirty") return preview.rows.filter((r) => r.isDirty);
+    return preview.rows;
+  }, [preview.rows, filter]);
+
+  const dirtyCount = preview.dirtyCount;
+  const mismatchCount = preview.mismatchCount;
 
   return (
-    <div className="space-y-4">
-      <div className="rounded-2xl border border-border/70 bg-card/80 p-4 shadow-sm space-y-4">
+    <div className="space-y-3">
+      <div className="rounded-2xl border border-border/70 bg-card/80 p-4 shadow-sm space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -38,10 +55,13 @@ export function BalanceOutPreview({
               <h3 className="text-sm font-semibold tracking-tight">
                 Balance Out Preview
               </h3>
+              <Badge variant="secondary" className="text-[10px] tabular-nums">
+                {preview.rows.length} rows · live
+              </Badge>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed max-w-xl">
-              Per-row stated vs engine-expected balances. Yellow overlays mark
-              drifts above $0.05. Dirty (edited) rows are tagged separately.
+              Live working ledger (table + Additional tools replacements). Stated
+              vs engine-expected balances. Yellow = drift above $0.05.
             </p>
           </div>
           <Select
@@ -64,10 +84,10 @@ export function BalanceOutPreview({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           <Stat
             label="Mismatches"
-            value={String(preview.mismatchCount)}
-            tone={preview.mismatchCount === 0 ? "good" : "warn"}
+            value={String(mismatchCount)}
+            tone={mismatchCount === 0 ? "good" : "warn"}
           />
-          <Stat label="Edited rows" value={String(preview.dirtyCount)} />
+          <Stat label="Edited / replaced" value={String(dirtyCount)} />
           <Stat
             label="Opening"
             value={formatMoney(preview.openingBalance)}
@@ -93,65 +113,122 @@ export function BalanceOutPreview({
           )}
           <p className="text-xs leading-relaxed">
             {preview.chainHealthy
-              ? `Chain healthy under ${engine} engine — stated balances align with expected.`
-              : `${preview.mismatchCount} row(s) diverge under ${engine}. Review yellow rows in the table, or continue to Confirm & Render to apply engine balances.`}
+              ? `Chain healthy under ${engine} — stated balances align with expected for the current replacement ledger.`
+              : `${mismatchCount} row(s) diverge under ${engine}. Values below are the current working set (after Additional tools). Continue to Confirm & Render to apply engine balances.`}
           </p>
+        </div>
+
+        <div className="flex flex-wrap gap-1.5">
+          {(
+            [
+              ["all", `All (${preview.rows.length})`],
+              ["mismatch", `Mismatches (${mismatchCount})`],
+              ["dirty", `Dirty (${dirtyCount})`],
+            ] as const
+          ).map(([id, label]) => (
+            <Button
+              key={id}
+              type="button"
+              size="sm"
+              variant={filter === id ? "default" : "outline"}
+              className="rounded-full h-7 text-[11px]"
+              onClick={() => setFilter(id)}
+            >
+              {label}
+            </Button>
+          ))}
         </div>
       </div>
 
-      {mismatches.length > 0 && (
-        <div className="rounded-2xl border border-amber-500/30 bg-card/80 shadow-sm overflow-hidden">
-          <div className="border-b border-amber-500/20 bg-amber-500/10 px-4 py-2.5">
-            <p className="text-xs font-semibold text-amber-900 dark:text-amber-100">
-              Mismatch detail ({mismatches.length})
-            </p>
-          </div>
-          <ScrollArea className="h-[min(36vh,320px)]">
-            <ul className="divide-y divide-border/60">
-              {mismatches.map((r) => (
-                <li key={r.transactionId}>
-                  <button
-                    type="button"
-                    className="w-full text-left px-4 py-3 hover:bg-amber-500/5 transition-colors row-balance-mismatch"
+      {/* Full live ledger — always shows current replacement descriptions / amounts */}
+      <div className="rounded-2xl border border-border/70 bg-card/80 shadow-sm overflow-hidden">
+        <div className="border-b border-border/50 bg-muted/30 px-4 py-2 flex flex-wrap items-center justify-between gap-2">
+          <p className="text-xs font-semibold">
+            Working ledger · {visible.length} shown
+          </p>
+          <p className="text-[10px] text-muted-foreground">
+            Description / debit / credit update when Additional tools replace
+          </p>
+        </div>
+        {visible.length === 0 ? (
+          <p className="px-4 py-8 text-center text-xs text-muted-foreground">
+            No rows match this filter.
+          </p>
+        ) : (
+          <ScrollArea className="h-[min(48vh,420px)]">
+            <table className="w-full text-xs">
+              <thead className="sticky top-0 bg-card/95 backdrop-blur border-b border-border/60 z-10">
+                <tr className="text-left text-[10px] uppercase tracking-wide text-muted-foreground">
+                  <th className="px-2 py-2 font-medium w-8">#</th>
+                  <th className="px-2 py-2 font-medium">Date</th>
+                  <th className="px-2 py-2 font-medium">Description</th>
+                  <th className="px-2 py-2 font-medium text-right">Debit</th>
+                  <th className="px-2 py-2 font-medium text-right">Credit</th>
+                  <th className="px-2 py-2 font-medium text-right">Stated</th>
+                  <th className="px-2 py-2 font-medium text-right">Expected</th>
+                  <th className="px-2 py-2 font-medium text-right">Δ</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/40">
+                {visible.map((r) => (
+                  <tr
+                    key={r.transactionId}
+                    className={cn(
+                      "hover:bg-muted/40 cursor-pointer transition-colors",
+                      r.mismatched && "row-balance-mismatch bg-amber-500/5",
+                      r.isDirty && !r.mismatched && "bg-primary/5",
+                    )}
                     onClick={() => onSelectRow?.(r.transactionId)}
                   >
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="text-xs font-medium tabular-nums">
-                        #{r.index + 1}
-                      </span>
-                      <span className="text-xs text-muted-foreground tabular-nums">
-                        {r.date}
-                      </span>
-                      {r.isDirty && (
-                        <Badge
-                          variant="secondary"
-                          className="text-[10px] bg-amber-500/15"
-                        >
-                          edited
-                        </Badge>
+                    <td className="px-2 py-2 tabular-nums text-muted-foreground">
+                      {r.index + 1}
+                    </td>
+                    <td className="px-2 py-2 tabular-nums whitespace-nowrap">
+                      {r.date}
+                    </td>
+                    <td className="px-2 py-2 max-w-[14rem]">
+                      <div className="flex items-start gap-1.5 min-w-0">
+                        <span className="truncate font-medium" title={r.description}>
+                          {r.description}
+                        </span>
+                        {r.isDirty && (
+                          <Badge
+                            variant="secondary"
+                            className="text-[9px] h-4 px-1 shrink-0 bg-amber-500/15"
+                          >
+                            {r.fieldsChanged.join(",") || "edit"}
+                          </Badge>
+                        )}
+                      </div>
+                    </td>
+                    <td className="px-2 py-2 text-right tabular-nums money-out">
+                      {r.debit != null ? formatMoney(r.debit) : "—"}
+                    </td>
+                    <td className="px-2 py-2 text-right tabular-nums money-in">
+                      {r.credit != null ? formatMoney(r.credit) : "—"}
+                    </td>
+                    <td className="px-2 py-2 text-right tabular-nums">
+                      {formatMoney(r.statedBalance)}
+                    </td>
+                    <td className="px-2 py-2 text-right tabular-nums font-medium">
+                      {formatMoney(r.expectedBalance)}
+                    </td>
+                    <td
+                      className={cn(
+                        "px-2 py-2 text-right tabular-nums",
+                        r.mismatched &&
+                          "text-amber-800 dark:text-amber-200 font-semibold",
                       )}
-                    </div>
-                    <p className="text-sm font-medium truncate">{r.description}</p>
-                    <div className="mt-1.5 flex flex-wrap gap-3 text-xs tabular-nums">
-                      <span>
-                        Stated{" "}
-                        <strong>{formatMoney(r.statedBalance)}</strong>
-                      </span>
-                      <span>
-                        Expected{" "}
-                        <strong>{formatMoney(r.expectedBalance)}</strong>
-                      </span>
-                      <span className="text-amber-800 dark:text-amber-200">
-                        Δ {r.delta != null ? formatMoney(r.delta) : "—"}
-                      </span>
-                    </div>
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    >
+                      {r.delta != null ? formatMoney(r.delta) : "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </ScrollArea>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
@@ -177,7 +254,7 @@ function Stat({
       <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
         {label}
       </p>
-      <p className="text-sm font-semibold tabular-nums mt-0.5 truncate">{value}</p>
+      <p className="text-sm font-semibold tabular-nums mt-0.5">{value}</p>
     </div>
   );
 }

@@ -60,7 +60,10 @@ export interface PdfEngineDocument {
   extractPageText(pageNumber: number): Promise<string>;
   /** Extract all text runs from a page without rendering pixels. */
   extractPageRuns(pageNumber: number, scale: number): Promise<TextRun[]>;
-  /** Apply redaction-based replacements and return new PDF bytes. */
+  /**
+   * Apply geometry replacements and return new PDF bytes.
+   * MuPDF: optional content burn + FreeText. Options control burn/chunk behavior.
+   */
   applyReplacements(
     replacements: Array<{
       page: number;
@@ -68,6 +71,12 @@ export interface PdfEngineDocument {
       replacement: string;
       fontSpec: PdfFontSpec;
     }>,
+    options?: {
+      burnOriginal?: boolean;
+      /** top-down (default) = PDF.js/blueprint; pdf = already PDF user space */
+      coordSpace?: "top-down" | "pdf";
+      minApplyRatio?: number;
+    },
   ): Promise<Uint8Array>;
   /** Save the current document state to PDF bytes. */
   save(): Promise<Uint8Array>;

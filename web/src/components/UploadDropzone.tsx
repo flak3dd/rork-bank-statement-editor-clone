@@ -93,11 +93,12 @@ export function UploadDropzone({
           </div>
           <div className="space-y-2">
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">
-              Drop a statement PDF
+              Drop a source statement PDF
             </h2>
             <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-              Parse with Mindee, LlamaParse, Document AI, PyMuPDF, Local OCR, or offline
-              YAML templates — then edit, balance, and export. Original PDF file is not rewritten.
+              Requires <strong>LlamaParse</strong> or <strong>Google Document AI</strong>{" "}
+              for parse. Final statement PDF is written via <strong>PDFium</strong>{" "}
+              (geometry inject + Pdfium save). Source PDF stays the visual baseline.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
@@ -125,8 +126,10 @@ export function UploadDropzone({
       <div className="mt-5 flex items-start gap-3 rounded-xl border border-border/70 bg-card/70 px-4 py-3 text-left">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          <span className="font-medium text-foreground">Privacy:</span> processing is for analysis
-          and export only. Statement Lens does not forge balances or modify the PDF file.
+          <span className="font-medium text-foreground">Exact replica export:</span>{" "}
+          logic-generator injection rewrites matched geometry (Square cover + FreeText,
+          never redactions). Final PDF includes all injected data plus an audit trail
+          page; JSON audit report downloads with export.
         </p>
       </div>
     </div>

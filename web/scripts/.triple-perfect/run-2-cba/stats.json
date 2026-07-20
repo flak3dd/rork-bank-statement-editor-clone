@@ -7,30 +7,30 @@
     "parseCount": 22,
     "pageCount": 3,
     "generatedCount": 22,
-    "bankDescEdits": 22,
+    "bankDescEdits": 45,
     "balanceMismatches": 0,
     "closingExpected": 7361.8,
     "materialMode": "full-ledger",
-    "editCount": 55,
+    "editCount": 78,
     "byField": {
       "date": 17,
-      "description": 22,
+      "description": 45,
       "debit": 0,
       "credit": 2,
       "balance": 14,
       "other": 0
     },
     "rowsPaired": 22,
-    "exportBytes": 80574,
+    "exportBytes": 418275,
     "mathScore": 100,
     "mathStatus": "pass",
-    "visualScore": 69,
+    "visualScore": 83,
     "visualStatus": "fail",
     "rendererOk": true
   },
   "notes": [
     "Scanned 348 text runs (maxPages=40).",
-    "Linked 72/90 field geometries · 55 changed replacements for 22 row(s).",
-    "Final PDF: 55 replacement(s) applied · mode=full-ledger · queued=22 · ledger=55 · byField={\"date\":17,\"description\":22,\"debit\":0,\"credit\":2,\"balance\":14,\"other\":0}."
+    "Linked 95/90 field geometries · 78 changed replacements for 22 row(s).",
+    "Final PDF: 78 replacement(s) applied · mode=full-ledger · queued=45 · ledger=78 · byField={\"date\":17,\"description\":45,\"debit\":0,\"credit\":2,\"balance\":14,\"other\":0}."
   ]
 }

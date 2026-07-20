@@ -1,13 +1,13 @@
 {
   "baselineRows": 22,
   "generatedRows": 22,
-  "bankDescEdits": 22,
-  "ledgerEdits": 55,
-  "applied": 55,
+  "bankDescEdits": 45,
+  "ledgerEdits": 78,
+  "applied": 78,
   "mode": "full-ledger",
   "byField": {
     "date": 17,
-    "description": 22,
+    "description": 45,
     "debit": 0,
     "credit": 2,
     "balance": 14,
@@ -15,57 +15,57 @@
   },
   "notes": [
     "Scanned 348 text runs (maxPages=40).",
-    "Linked 72/90 field geometries · 55 changed replacements for 22 row(s).",
-    "Final PDF: 55 replacement(s) applied · mode=full-ledger · queued=22 · ledger=55 · byField={\"date\":17,\"description\":22,\"debit\":0,\"credit\":2,\"balance\":14,\"other\":0}."
+    "Linked 95/90 field geometries · 78 changed replacements for 22 row(s).",
+    "Final PDF: 78 replacement(s) applied · mode=full-ledger · queued=45 · ledger=78 · byField={\"date\":17,\"description\":45,\"debit\":0,\"credit\":2,\"balance\":14,\"other\":0}."
   ],
   "sampleEdits": [
     {
       "field": "description",
       "page": 1,
       "original": "Oz Lotteries Melbourne",
-      "replacement": "ANZ MOBILE BANKING PAYMENT 391582 TO DAV"
+      "replacement": "Oz Lotteries Melbourne"
+    },
+    {
+      "field": "description",
+      "page": 2,
+      "original": "Oz Lotteries Melbourne",
+      "replacement": "Oz Lotteries Melbourne"
+    },
+    {
+      "field": "description",
+      "page": 3,
+      "original": "Oz Lotteries Melbourne",
+      "replacement": "Oz Lotteries Melbourne"
     },
     {
       "field": "description",
       "page": 1,
       "original": "Elysia Anne Leav",
-      "replacement": "ANZ INTERNET BANKING BPAY ORIGIN ENERGY "
+      "replacement": "Elysia Anne Leav"
     },
     {
       "field": "description",
       "page": 1,
       "original": "Elysia Anne Leav",
-      "replacement": "PAYMENT TO SARAH JOHNSON 999531"
+      "replacement": "Elysia Anne Leav"
     },
     {
       "field": "description",
       "page": 1,
       "original": "Elysia Anne Leav",
-      "replacement": "PENDING - PAYMENT FROM SARAH JOHNSON inv"
-    },
-    {
-      "field": "description",
-      "page": 1,
-      "original": "Ct.1228Hu Ct.1228Hu Ladbrokes Wit Ladbro",
-      "replacement": "PENDING - EFTPOS NETFLIX"
-    },
-    {
-      "field": "description",
-      "page": 1,
-      "original": "Interbank Trans Elysia Anne Leaver",
-      "replacement": "VISA DEBIT PURCHASE CARD VISA DEBIT PURC"
+      "replacement": "Elysia Anne Leav"
     },
     {
       "field": "description",
       "page": 1,
       "original": "Elysia Anne Leav",
-      "replacement": "ANZ MOBILE BANKING PAYMENT 669108 TO SAR"
+      "replacement": "Elysia Anne Leav"
     },
     {
       "field": "description",
       "page": 1,
-      "original": "Interbank Trans Elysia Anne Leaver",
-      "replacement": "TRANSFER FROM TELSTRA"
+      "original": "Elysia Anne Leav",
+      "replacement": "Elysia Anne Leav"
     }
   ]
 }

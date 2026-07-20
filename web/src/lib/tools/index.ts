@@ -9,3 +9,4 @@ export * from "./pdf-runs";
 export * from "./bank-descriptions";
 export * from "./pymupdf-replace";
 export * from "./chrome-unredact";
+export * from "@/lib/st-george-template";

@@ -184,11 +184,20 @@ export async function fetchDocAiAdminSnapshot(): Promise<DocAiAdminSnapshot> {
       fetchedAt: new Date().toISOString(),
     };
   } catch (err) {
+    const raw = err instanceof Error ? err.message : String(err);
+    // Prefer short auth message over multi-line JSON dumps in the UI
+    let error = raw;
+    if (/401|invalid authentication|unauthenticated|access token/i.test(raw)) {
+      error =
+        "List versions HTTP 401: invalid or expired OAuth token. Refresh VITE_GOOGLE_DOCAI_TOKEN.";
+    } else if (raw.length > 200) {
+      error = `${raw.slice(0, 160)}…`;
+    }
     return {
       configured: true,
       processorPath: processorPath(cfg),
       versions: [],
-      error: err instanceof Error ? err.message : String(err),
+      error,
       fetchedAt: new Date().toISOString(),
     };
   }

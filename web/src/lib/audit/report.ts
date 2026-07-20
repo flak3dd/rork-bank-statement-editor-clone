@@ -4,10 +4,11 @@ import type { VerificationThresholds } from "@/lib/verification/thresholds";
 import type {
   AuditLogEntry,
   ChangeHistoryEntry,
+  InjectionAuditSection,
   MergedAuditReport,
 } from "./types";
 
-export function buildMergedAuditReport(params: {
+export interface BuildMergedAuditReportParams {
   fileName: string;
   thresholds: VerificationThresholds;
   auditLog: AuditLogEntry[];
@@ -16,17 +17,44 @@ export function buildMergedAuditReport(params: {
   mathResult: MathCheckResult | null;
   transactionCount: number;
   dirtyCount: number;
-}): MergedAuditReport {
+  /** Perfect-replacement / generator injection snapshot. */
+  injection?: Partial<InjectionAuditSection> | null;
+}
+
+export function buildMergedAuditReport(
+  params: BuildMergedAuditReportParams,
+): MergedAuditReport {
   const { pixelReport, mathResult } = params;
 
+  const injection: InjectionAuditSection | null = params.injection
+    ? {
+        product: "Bank Statement Fidelity Editor",
+        goal:
+          params.injection.goal ??
+          "Exact replica via automated logic generator data injection",
+        strategy: params.injection.strategy ?? null,
+        documentClass: params.injection.documentClass ?? null,
+        score: params.injection.score ?? null,
+        editCount: params.injection.editCount ?? 0,
+        notes: params.injection.notes ?? [],
+        gates: params.injection.gates ?? [],
+        coverage: params.injection.coverage ?? null,
+        writePolicy:
+          params.injection.writePolicy ??
+          "Square cover + FreeText; redactions never written",
+      }
+    : null;
+
   return {
-    version: 1,
-    kind: "statement-lens.audit-report",
+    version: 2,
+    kind: "bank-statement-fidelity-editor.audit-report",
+    product: "Bank Statement Fidelity Editor",
     generatedAt: new Date().toISOString(),
     fileName: params.fileName,
     thresholds: params.thresholds,
     auditLog: params.auditLog,
     changeHistory: params.changeHistory,
+    injection,
     verification: pixelReport
       ? {
           dpi: pixelReport.dpi,

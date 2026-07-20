@@ -1,6 +1,12 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { toast } from "sonner";
-import { AppHeader } from "@/components/AppHeader";
+import { AppHeader, type UiMode } from "@/components/AppHeader";
 import { UploadDropzone } from "@/components/UploadDropzone";
 import { ExtractProgress } from "@/components/ExtractProgress";
 import { SummaryCards } from "@/components/SummaryCards";
@@ -16,22 +22,39 @@ import { VisualValidate } from "@/components/VisualValidate";
 import { ApiStatusPanel } from "@/components/ApiStatusPanel";
 import { FinalMathCheck } from "@/components/FinalMathCheck";
 import { PdfDocumentViewer } from "@/components/PdfDocumentViewer";
+import { RegeneratedPdfPreview } from "@/components/RegeneratedPdfPreview";
 import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   aiCategorizeTransactions,
   aiHybridValidate,
   AI_MODEL_ID,
 } from "@/lib/ai";
-import { applyRenderWithFallbacks, buildBalancePreview } from "@/lib/balance-engine";
-import { countDirty } from "@/lib/edit-utils";
+import {
+  applyRenderWithFallbacks,
+  buildBalancePreview,
+  recomputeBalances,
+  inferOpeningBalance,
+} from "@/lib/balance-engine";
+import { countDirty, withSourceOriginals } from "@/lib/edit-utils";
 import { cloneUint8Array } from "@/lib/bytes";
 import { exportCsv, exportJson, downloadBytes } from "@/lib/export";
 import { runFinalMathCheck } from "@/lib/math-check";
-import { loadPdfWithFallbacks, type EngineId } from "@/lib/pdf-engines";
+import {
+  loadPdfWithFallbacks,
+  type EngineId,
+} from "@/lib/pdf-engines";
+import { safeErrorMessage } from "@/lib/pdf-engines/mupdf-engine";
 import {
   DEFAULT_DOCUMENT_PARSER,
   loadParserPreference,
   runDocumentParser,
+  runRequiredCloudParser,
+  cloudParserStatus,
   saveParserPreference,
   type DocumentParserId,
 } from "@/lib/parsers";
@@ -46,6 +69,13 @@ import {
   runVisualVerification,
   type VisualVerificationReport,
 } from "@/lib/verification";
+import { runPerfectReplacement } from "@/lib/perfect-replacement";
+import { runOemPerfectReplica } from "@/lib/oem-replica";
+import {
+  analyzeStatementLayout,
+  summarizeLayoutAnalysis,
+  type StatementLayoutAnalysis,
+} from "@/lib/statement-layout";
 import type { ApiStatusReport } from "@/lib/api-status";
 import {
   runFidelityForensics,
@@ -68,6 +98,7 @@ import {
   createAutosaveController,
   diffTransactionFields,
   downloadMergedReport,
+  appendAuditPageToPdf,
   emptyUndoState,
   loadDraftFromStorage,
   pushSnapshot,
@@ -76,6 +107,7 @@ import {
   writeWorkflowJsonFile,
   type AuditLogEntry,
   type ChangeHistoryEntry,
+  type InjectionAuditSection,
   type UndoRedoState,
   type WorkflowDraft,
 } from "@/lib/audit";
@@ -86,9 +118,15 @@ import {
   VERIFICATION_DPI,
 } from "@/lib/verification/thresholds";
 import { AuditPanel } from "@/components/AuditPanel";
-import { AdditionalToolsPanel } from "@/components/AdditionalToolsPanel";
+import {
+  AdditionalToolsPanel,
+  type AdditionalToolsTab,
+} from "@/components/AdditionalToolsPanel";
 import { VerificationThresholdsPanel } from "@/components/VerificationThresholds";
-import { StatementGeneratorDashboard } from "@/components/StatementGeneratorDashboard";
+import {
+  StatementGeneratorDashboard,
+  type StatementGeneratorHandle,
+} from "@/components/StatementGeneratorDashboard";
 import { FidelityForensicsPanel } from "@/components/FidelityForensicsPanel";
 import { SideBySideComparison } from "@/components/SideBySideComparison";
 import {
@@ -120,16 +158,19 @@ import type {
 } from "@/lib/types";
 import { WORKFLOW_STEPS } from "@/lib/types";
 import {
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   FileText,
-  Layers3,
   Sparkles,
   Eye,
   Table,
   FlaskConical,
   ArrowLeftRight,
+  PanelRight,
+  PanelRightClose,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 function initialSteps(parserLabel?: string): ExtractStep[] {
   return [
@@ -139,7 +180,11 @@ function initialSteps(parserLabel?: string): ExtractStep[] {
       label: parserLabel ? `Parse · ${parserLabel}` : "Document parser",
       status: "pending",
     },
-    { id: "structure", label: "Structure transactions", status: "pending" },
+    {
+      id: "structure",
+      label: "Three-part layout (static · vars · txns)",
+      status: "pending",
+    },
     { id: "ai", label: "AI validate & categorize", status: "pending" },
     { id: "score", label: "Completeness scoring", status: "pending" },
     { id: "done", label: "Ready to edit", status: "pending" },
@@ -192,7 +237,8 @@ const Index = () => {
   const [mathRunning, setMathRunning] = useState(false);
   const [pdfBytes, setPdfBytes] = useState<Uint8Array | null>(null);
   const [pdfEdits, setPdfEdits] = useState<PdfEdit[]>([]);
-  const [viewMode, setViewMode] = useState<"table" | "pdf" | "compare">("table");
+  /** Default to live compare — primary workspace surface. */
+  const [viewMode, setViewMode] = useState<"table" | "pdf" | "compare">("compare");
   const [activeEngine, setActiveEngine] = useState<EngineId | null>(null);
   const [selectedTxnId, setSelectedTxnId] = useState<string | null>(null);
   const [parserId, setParserId] = useState<DocumentParserId>(() => {
@@ -214,12 +260,28 @@ const Index = () => {
   const [pixelReport, setPixelReport] = useState<VisualVerificationReport | null>(null);
   const [pixelRunning, setPixelRunning] = useState(false);
   const [pixelProgress, setPixelProgress] = useState("");
-  /** Last materialized candidate PDF (generator-updated) for visual step. */
+  /** Live materialized candidate PDF — rebuilds after every ledger/edit step. */
   const [editedPdfBytes, setEditedPdfBytes] = useState<Uint8Array | null>(null);
+  const [liveMaterializing, setLiveMaterializing] = useState(false);
+  const [liveMaterializeMode, setLiveMaterializeMode] = useState<string | null>(
+    null,
+  );
+  const [liveMaterializeEdits, setLiveMaterializeEdits] = useState(0);
+  const [liveMaterializeNotes, setLiveMaterializeNotes] = useState<string[]>(
+    [],
+  );
+  const liveMaterializeSeq = useRef(0);
   const [forensicsReport, setForensicsReport] = useState<FidelityForensicsReport | null>(null);
   const [forensicsRunning, setForensicsRunning] = useState(false);
   /** Frozen original parse ledger for fidelity forensics vs working set. */
   const [sourceBaseline, setSourceBaseline] = useState<Transaction[]>([]);
+  /**
+   * Frozen Stage-1 three-part layout profile (upload-time).
+   * Layer 1 static-chrome · Layer 2 variables · Layer 3 transactions + structure.
+   * Passed into OEM rematerialize so write path does not re-classify cold.
+   */
+  const [layoutProfile, setLayoutProfile] =
+    useState<StatementLayoutAnalysis | null>(null);
 
   /** Test Lab: generate → validate → replace → fidelity workflow. */
   const [testLabMode, setTestLabMode] = useState(false);
@@ -231,6 +293,20 @@ const Index = () => {
   const [exportedOnce, setExportedOnce] = useState(false);
   const [stressRunning, setStressRunning] = useState(false);
   const [stressSummary, setStressSummary] = useState<string | null>(null);
+
+  /** Workspace chrome: mode, collapsible rail, advanced tools tab. */
+  const [railOpen, setRailOpen] = useState(true);
+  /** Secondary rail panels — closed by default; click header to show. */
+  const [insightsOpen, setInsightsOpen] = useState(false);
+  const [parserOpen, setParserOpen] = useState(false);
+  const [auditOpen, setAuditOpen] = useState(false);
+  const [completenessOpen, setCompletenessOpen] = useState(false);
+  /** Advanced tools are a primary surface — open by default. */
+  const [advancedOpen, setAdvancedOpen] = useState(true);
+  const [toolsTab, setToolsTab] = useState<AdditionalToolsTab>("generator");
+  /** Generate step: workspace ledger collapsed unless operator expands. */
+  const [workspaceLedgerOpen, setWorkspaceLedgerOpen] = useState(false);
+  const generatorRef = useRef<StatementGeneratorHandle | null>(null);
 
   const [auditLog, setAuditLog] = useState<AuditLogEntry[]>([]);
   const [changeHistory, setChangeHistory] = useState<ChangeHistoryEntry[]>([]);
@@ -299,7 +375,7 @@ const Index = () => {
     setMathResult(null);
     setPdfBytes(null);
     setPdfEdits([]);
-    setViewMode("table");
+    setViewMode("compare");
     setActiveEngine(null);
     setSelectedTxnId(null);
     setPixelReport(null);
@@ -311,6 +387,7 @@ const Index = () => {
     setLastDraftSavedAt(null);
     setForensicsReport(null);
     setSourceBaseline([]);
+    setLayoutProfile(null);
     setTestLabMode(false);
     setGenQuality(null);
     setGenApplied(false);
@@ -373,7 +450,7 @@ const Index = () => {
     setMathResult(null);
     setPixelReport(null);
     setForensicsReport(null);
-    setViewMode("table");
+    setViewMode("compare");
     setAuditLog((log) =>
       appendAuditEvent(
         log,
@@ -401,7 +478,7 @@ const Index = () => {
     setMathResult(null);
     setPdfBytes(null);
     setPdfEdits([]);
-    setViewMode("table");
+    setViewMode("compare");
     setActiveEngine(null);
     setSelectedTxnId(null);
     setPixelReport(null);
@@ -413,6 +490,7 @@ const Index = () => {
     setLastDraftSavedAt(null);
     setForensicsReport(null);
     setSourceBaseline([]);
+    setLayoutProfile(null);
 
     try {
       next = setStep(next, "read", "active");
@@ -436,6 +514,15 @@ const Index = () => {
       let pageCount = 1;
       let parserMeta: NonNullable<ExtractionResult["parser"]>;
       let parserFindings: CompletenessFinding[] = [];
+
+      // Product rule: every parse MUST call LlamaParse or Google Document AI
+      // (unless pure remote engine is used). Local parsers cannot satisfy this alone.
+      const cloudStatus = cloudParserStatus();
+      if (!useRemote && !cloudStatus.any) {
+        throw new Error(
+          "LlamaParse or Google Document AI is required. Set VITE_LLAMAPARSE_API_KEY and/or VITE_GOOGLE_DOCAI_* credentials.",
+        );
+      }
 
       if (useRemote) {
         setSteps((prev) =>
@@ -565,26 +652,45 @@ const Index = () => {
       } else {
         if (engineMode === "remote" && !isRemoteEngineConfigured()) {
           toast.message("Remote mode on, but no engine URL", {
-            description: "Set VITE_REMOTE_ENGINE_URL or configure Tools → Remote. Using local parsers.",
+            description:
+              "Set VITE_REMOTE_ENGINE_URL or configure Tools → Remote. Using required cloud parsers (LlamaParse / Doc AI).",
           });
         }
-        const parsed = await runDocumentParser(parserId, {
-          file,
-          bytes: cloneUint8Array(bytes),
-          fileName: file.name,
-          onProgress: (ratio, message) => {
-            setProgress(0.1 + ratio * 0.45);
-            if (message) {
-              setSteps((prev) =>
-                prev.map((s) =>
-                  s.id === "parse" && s.status === "active"
-                    ? { ...s, label: message }
-                    : s,
-                ),
-              );
-            }
+        // Exactly one cloud engine: dropdown selection, or default (LlamaParse if set).
+        // Never runs LlamaParse and Google DocAI in the same upload.
+        const preferredCloud =
+          parserId === "llamaparse" || parserId === "google-docai"
+            ? parserId
+            : cloudStatus.llamaparse
+              ? "llamaparse"
+              : "google-docai";
+        setSteps((prev) =>
+          prev.map((s) =>
+            s.id === "parse"
+              ? { ...s, label: `Cloud parse (${preferredCloud} only)…` }
+              : s,
+          ),
+        );
+        const parsed = await runRequiredCloudParser(
+          {
+            file,
+            bytes: cloneUint8Array(bytes),
+            fileName: file.name,
+            onProgress: (ratio, message) => {
+              setProgress(0.1 + ratio * 0.45);
+              if (message) {
+                setSteps((prev) =>
+                  prev.map((s) =>
+                    s.id === "parse" && s.status === "active"
+                      ? { ...s, label: message }
+                      : s,
+                  ),
+                );
+              }
+            },
           },
-        });
+          preferredCloud,
+        );
         rawText = parsed.rawText;
         txns = parsed.transactions;
         pageCount = parsed.pageCount;
@@ -613,21 +719,89 @@ const Index = () => {
       setSteps([...next]);
       setProgress(0.58);
 
-      await new Promise((r) => setTimeout(r, 30));
+      // Stage 1 Step 1 — freeze three-part layout at upload (not only at OEM write).
+      // Layer 1 static-chrome · Layer 2 variables · Layer 3 transactions + structure profile.
+      let frozenLayout: StatementLayoutAnalysis | null = null;
+      const bankHint =
+        parserMeta.bankTemplateId ??
+        parserMeta.bankTemplateName ??
+        file.name;
+      try {
+        setSteps((prev) =>
+          prev.map((s) =>
+            s.id === "structure" && s.status === "active"
+              ? {
+                  ...s,
+                  label: "Three-part layout · geometry runs + bank profile…",
+                }
+              : s,
+          ),
+        );
+        frozenLayout = await analyzeStatementLayout(cloneUint8Array(bytes), {
+          fileName: file.name,
+          maxPages: Math.min(pageCount || 12, 12),
+          rawText,
+          bankHint,
+        });
+        setLayoutProfile(frozenLayout);
+        setProgress(0.62);
+      } catch (layoutErr) {
+        const msg =
+          layoutErr instanceof Error
+            ? layoutErr.message
+            : String(layoutErr);
+        parserFindings = [
+          ...parserFindings,
+          {
+            id: "layout-soft-fail",
+            severity: "warning" as const,
+            title: "Three-part layout soft-fail",
+            detail: `analyzeStatementLayout failed — OEM will re-analyze at write: ${msg}`,
+          },
+        ];
+        setLayoutProfile(null);
+      }
+
+      const layoutFindings: CompletenessFinding[] = frozenLayout
+        ? [
+            {
+              id: "layout-three-part",
+              severity: frozenLayout.score >= 70 ? "info" : "warning",
+              title: "Three-part layout locked",
+              detail: `score ${frozenLayout.score}/100 · class=${frozenLayout.documentClass} · bank=${frozenLayout.txnStructure.bankId} · static=${frozenLayout.part1.runs.length} vars=${frozenLayout.part2.runs.length} txnRows=${frozenLayout.part3.rows.length} · pitch≈${frozenLayout.part3.rowPitchMedian?.toFixed(1) ?? "?"}pt`,
+            },
+            ...frozenLayout.gates
+              .filter((g) => !g.pass)
+              .map((g) => ({
+                id: `layout-gate-${g.id}`,
+                severity: "warning" as const,
+                title: `Layout gate: ${g.id}`,
+                detail: g.detail,
+              })),
+          ]
+        : [];
 
       let extraction = buildExtractionResult({
         fileName: file.name,
-        pageCount,
+        pageCount: frozenLayout?.pageCount || pageCount,
         rawText,
         transactions: txns,
         hybrid: {
           lineParserCount: txns.length,
           recoveredContinuationLines: 0,
           aiValidated: false,
-          enginesTried: parserMeta.enginesTried,
+          enginesTried: [
+            ...parserMeta.enginesTried,
+            ...(frozenLayout ? ["statement-layout.three-part"] : []),
+          ],
         },
         parser: parserMeta,
-        findings: [...parserFindings, ...analyzeCompleteness(txns)],
+        findings: [
+          ...parserFindings,
+          ...layoutFindings,
+          ...analyzeCompleteness(txns),
+        ],
+        layout: frozenLayout,
       });
 
       next = setStep(next, "structure", "done");
@@ -641,19 +815,23 @@ const Index = () => {
         const ai = await aiHybridValidate(txns, localFindings);
         extraction = buildExtractionResult({
           fileName: file.name,
-          pageCount,
+          pageCount: frozenLayout?.pageCount || pageCount,
           rawText,
           transactions: txns,
           hybrid: {
             lineParserCount: txns.length,
             recoveredContinuationLines: 0,
             aiValidated: ai.validated,
-            enginesTried: parserMeta.enginesTried,
+            enginesTried: [
+              ...parserMeta.enginesTried,
+              ...(frozenLayout ? ["statement-layout.three-part"] : []),
+            ],
           },
           aiValidated: ai.validated,
           aiScoreHint: ai.scoreHint,
-          findings: [...parserFindings, ...ai.findings],
+          findings: [...parserFindings, ...layoutFindings, ...ai.findings],
           parser: parserMeta,
+          layout: frozenLayout,
         });
         next = setStep(next, "ai", "done");
       } catch {
@@ -663,18 +841,22 @@ const Index = () => {
         });
         extraction = buildExtractionResult({
           fileName: file.name,
-          pageCount,
+          pageCount: frozenLayout?.pageCount || pageCount,
           rawText,
           transactions: txns,
           hybrid: {
             lineParserCount: txns.length,
             recoveredContinuationLines: 0,
             aiValidated: false,
-            enginesTried: parserMeta.enginesTried,
+            enginesTried: [
+              ...parserMeta.enginesTried,
+              ...(frozenLayout ? ["statement-layout.three-part"] : []),
+            ],
           },
           aiValidated: false,
           parser: parserMeta,
           findings: extraction.findings,
+          layout: frozenLayout,
         });
       }
 
@@ -713,8 +895,11 @@ const Index = () => {
       const tpl = parserMeta.bankTemplateName
         ? ` · template ${parserMeta.bankTemplateName}`
         : "";
-      toast.success("Parse + AI validate complete", {
-        description: `${extraction.summary.transactionCount} txns${parserNote}${tpl} · score ${extraction.completenessScore.overall.toFixed(0)}/100 (${extraction.completenessScore.grade})`,
+      const layoutNote = frozenLayout
+        ? ` · layout ${frozenLayout.score}/100 (${frozenLayout.documentClass}/${frozenLayout.txnStructure.bankId})`
+        : "";
+      toast.success("Parse + layout + AI validate complete", {
+        description: `${extraction.summary.transactionCount} txns${parserNote}${tpl}${layoutNote} · score ${extraction.completenessScore.overall.toFixed(0)}/100 (${extraction.completenessScore.grade})`,
       });
       setAuditLog((prev) =>
         appendAuditEvent(prev, "parse.complete", `Parsed ${extraction.summary.transactionCount} transactions via ${parserMeta.label}`, {
@@ -723,6 +908,9 @@ const Index = () => {
             parserId: parserMeta.id,
             count: extraction.summary.transactionCount,
             completeness: extraction.completenessScore.overall,
+            layout: frozenLayout
+              ? summarizeLayoutAnalysis(frozenLayout)
+              : null,
           },
         }),
       );
@@ -860,6 +1048,252 @@ const Index = () => {
     [transactions, balanceEngine],
   );
 
+  /**
+   * Apply Additional tools / generator ledger into workspace so Balance Out
+   * Preview, compare, and table all see the new values immediately.
+   */
+  const applyReplacedLedger = useCallback(
+    (txns: Transaction[], label: string) => {
+      setUndoState((s) =>
+        pushSnapshot(s, label, transactions, workflowStep),
+      );
+      const baseline =
+        sourceBaseline.length > 0
+          ? sourceBaseline
+          : transactions.map((t) => ({ ...t }));
+      if (sourceBaseline.length === 0 && transactions.length > 0) {
+        setSourceBaseline(transactions.map((t) => ({ ...t })));
+      }
+
+      // Pin originals to pre-replace / parse baseline so dirty + balance preview track replacements
+      let next = withSourceOriginals(txns, baseline);
+
+      // When amounts changed (full generator), re-sync running balances from opening
+      const amountsChanged = next.some((t, i) => {
+        const b = baseline[i];
+        if (!b) return true;
+        return (
+          t.debit !== b.debit ||
+          t.credit !== b.credit ||
+          t.balance !== b.balance
+        );
+      });
+      if (amountsChanged && next.length > 0) {
+        // Prefer generator chain: derive opening from first row (balance − movement)
+        let opening =
+          inferOpeningBalance(next) ??
+          inferOpeningBalance(baseline) ??
+          0;
+        const expected = recomputeBalances(next, opening);
+        next = next.map((t, i) => ({
+          ...t,
+          balance: expected[i] ?? t.balance,
+        }));
+        setBalanceEngine("recompute");
+      }
+
+      setTransactions(next);
+      setResult((r) =>
+        r
+          ? {
+              ...r,
+              transactions: next,
+              summary: buildSummary(next),
+            }
+          : r,
+      );
+      setViewMode("compare");
+      setRenderResult(null);
+      setMathResult(null);
+      setPixelReport(null);
+      // Keep previous candidate until live rematerialize finishes (do not clear)
+      setAuditLog((log) =>
+        appendAuditEvent(log, "note", label, {
+          actor: "user",
+          payload: {
+            count: next.length,
+            dirty: next.filter((t) => t.flags.includes("replaced")).length,
+          },
+        }),
+      );
+      autosaveRef.current?.touch();
+      toast.success(label, {
+        description: `${next.length} transactions · balance + PDF preview update live`,
+      });
+    },
+    [transactions, workflowStep, sourceBaseline],
+  );
+
+  /**
+   * Rebuild regenerated PDF via OEM Perfect Replica (auto workflow):
+   * three-part layout + bank structure fidelity + perfect replacement / layered fill.
+   */
+  const rebuildLiveCandidatePdf = useCallback(async () => {
+    if (!pdfBytes || pdfBytes.byteLength < 50) {
+      setEditedPdfBytes(null);
+      setLiveMaterializeMode(null);
+      setLiveMaterializeEdits(0);
+      setLiveMaterializeNotes([]);
+      return;
+    }
+    const seq = ++liveMaterializeSeq.current;
+    setLiveMaterializing(true);
+    try {
+      const safeEdits = pdfEdits.filter(
+        (e) => String(e.replacement ?? "").trim().length > 0,
+      );
+      const oem = await runOemPerfectReplica({
+        sourcePdf: pdfBytes,
+        sourceBaseline:
+          sourceBaseline.length > 0 ? sourceBaseline : transactions,
+        current: transactions,
+        queuedEdits: safeEdits,
+        rawText: result?.rawText,
+        fileName: result?.fileName ?? activeFileName,
+        maxPages: 40,
+        minDescriptionCoverage: 0.4,
+        preserveTxnStructure: true,
+        strict: false,
+        layout: layoutProfile ?? result?.layout ?? null,
+      });
+      if (seq !== liveMaterializeSeq.current) return;
+      setEditedPdfBytes(oem.editCount === 0 ? null : oem.candidatePdf);
+      setLiveMaterializeMode(
+        `oem:${oem.path}:${oem.summary.documentClass}:score${oem.score}`,
+      );
+      setLiveMaterializeEdits(oem.editCount);
+      setLiveMaterializeNotes([
+        `OEM ${oem.path} · bank=${oem.summary.bankId ?? "?"} · ${oem.durationMs}ms`,
+        ...oem.notes.slice(-3),
+        ...oem.gates.map((g) => `${g.pass ? "✓" : "✗"} ${g.id}: ${g.detail}`),
+      ]);
+    } catch (err) {
+      if (seq !== liveMaterializeSeq.current) return;
+      // Soft fallback: perfect replacement alone, then classic materialize
+      try {
+        const perfect = await runPerfectReplacement({
+          sourcePdf: pdfBytes,
+          sourceBaseline:
+            sourceBaseline.length > 0 ? sourceBaseline : transactions,
+          current: transactions,
+          queuedEdits: pdfEdits.filter(
+            (e) => String(e.replacement ?? "").trim().length > 0,
+          ),
+          rawText: result?.rawText,
+          maxPages: 40,
+          minDescriptionCoverage: 0.4,
+          strict: false,
+        });
+        if (seq !== liveMaterializeSeq.current) return;
+        setEditedPdfBytes(
+          perfect.editCount === 0 ? null : perfect.candidatePdf,
+        );
+        setLiveMaterializeMode(
+          `fallback-pr:${perfect.strategy}:score${perfect.score}`,
+        );
+        setLiveMaterializeEdits(perfect.editCount);
+        setLiveMaterializeNotes([
+          `OEM failed → perfect replacement: ${err instanceof Error ? err.message : String(err)}`,
+          ...perfect.notes.slice(-2),
+        ]);
+      } catch {
+        try {
+          const material = await materializeCandidatePdf({
+            originalPdf: pdfBytes,
+            pdfEdits: pdfEdits.filter(
+              (e) => String(e.replacement ?? "").trim().length > 0,
+            ),
+            sourceBaseline:
+              sourceBaseline.length > 0 ? sourceBaseline : transactions,
+            current: transactions,
+            maxPages: 40,
+          });
+          if (seq !== liveMaterializeSeq.current) return;
+          setEditedPdfBytes(
+            material.mode === "identity" ? null : material.candidatePdf,
+          );
+          setLiveMaterializeMode(`fallback:${material.mode}`);
+          setLiveMaterializeEdits(material.editCount);
+          setLiveMaterializeNotes([
+            `OEM/PR failed → materialize: ${err instanceof Error ? err.message : String(err)}`,
+            ...material.notes.slice(-2),
+          ]);
+        } catch (err2) {
+          setLiveMaterializeNotes([
+            `Live rematerialize failed: ${err2 instanceof Error ? err2.message : String(err2)}`,
+          ]);
+        }
+      }
+    } finally {
+      if (seq === liveMaterializeSeq.current) {
+        setLiveMaterializing(false);
+      }
+    }
+  }, [
+    pdfBytes,
+    pdfEdits,
+    sourceBaseline,
+    transactions,
+    result?.rawText,
+    result?.fileName,
+    result?.layout,
+    layoutProfile,
+    activeFileName,
+  ]);
+
+  // Fingerprint of inputs that should refresh the regenerated PDF preview.
+  // Hash-style: length + head/mid/tail so mid-ledger edits still invalidate.
+  const livePdfFingerprint = useMemo(() => {
+    const ledger = transactions
+      .map(
+        (t) =>
+          `${t.id}|${t.date}|${t.description}|${t.debit}|${t.credit}|${t.balance}`,
+      )
+      .join(";");
+    const mid = Math.floor(ledger.length / 2);
+    const ledgerKey = `${ledger.length}:${ledger.slice(0, 800)}|${ledger.slice(mid, mid + 400)}|${ledger.slice(-800)}`;
+    const edits = pdfEdits
+      .map((e) => `${e.page}:${e.runId}:${e.replacement.slice(0, 40)}`)
+      .join(";");
+    const editsKey = `${edits.length}:${edits.slice(0, 600)}|${edits.slice(-400)}`;
+    return `${pdfBytes?.byteLength ?? 0}#${ledgerKey}#${editsKey}`;
+  }, [pdfBytes, transactions, pdfEdits]);
+
+  // Debounced live rematerialize after any step changes ledger / edits
+  useEffect(() => {
+    if (!pdfBytes) return;
+    const hasWork =
+      pdfEdits.some((e) => String(e.replacement ?? "").trim().length > 0) ||
+      (sourceBaseline.length > 0 &&
+        (transactions.length !== sourceBaseline.length ||
+          transactions.some((t, i) => {
+            const o = sourceBaseline[i];
+            if (!o) return true;
+            return (
+              t.date !== o.date ||
+              t.description !== o.description ||
+              t.debit !== o.debit ||
+              t.credit !== o.credit ||
+              t.balance !== o.balance
+            );
+          })));
+    if (!hasWork) {
+      setEditedPdfBytes(null);
+      setLiveMaterializeMode("identity");
+      setLiveMaterializeEdits(0);
+      setLiveMaterializeNotes([
+        "No ledger/PDF delta yet — original shown until you edit or replace.",
+      ]);
+      return;
+    }
+    const t = window.setTimeout(() => {
+      void rebuildLiveCandidatePdf();
+    }, 450);
+    return () => window.clearTimeout(t);
+    // fingerprint captures ledger/edits/pdf; rebuild uses latest closure
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [livePdfFingerprint, pdfBytes, rebuildLiveCandidatePdf]);
+
   const mismatchIds = useMemo(
     () => new Set(balancePreview.rows.filter((r) => r.mismatched).map((r) => r.transactionId)),
     [balancePreview],
@@ -913,43 +1347,185 @@ const Index = () => {
       return;
     }
     try {
-      // Full materialize: queued edits + every changed field on every row
-      const material = await materializeCandidatePdf({
-        originalPdf: pdfBytes,
-        pdfEdits,
-        sourceBaseline:
-          sourceBaseline.length > 0 ? sourceBaseline : transactions,
-        current: transactions,
-        maxPages: 40,
-      });
-      if (material.editCount === 0) {
-        toast.message("Could not link replacements to PDF geometry", {
-          description:
-            material.notes.join(" ") ||
-            "No text runs matched. Try bank-desc replace or click-to-edit.",
+      let candidate: Uint8Array;
+      let injectionMeta: Partial<InjectionAuditSection> & {
+        strategy?: string;
+        documentClass?: string;
+        score?: number;
+        editCount?: number;
+        notes?: string[];
+        gates?: Array<{ id: string; pass: boolean; detail: string }>;
+        coverage?: InjectionAuditSection["coverage"];
+      };
+
+      // Prefer already-built live candidate when available (avoids double write crash)
+      if (
+        editedPdfBytes &&
+        editedPdfBytes.byteLength > 100 &&
+        liveMaterializeMode &&
+        liveMaterializeMode !== "identity" &&
+        !liveMaterializing
+      ) {
+        candidate = editedPdfBytes;
+        const modeParts = liveMaterializeMode.split(":");
+        injectionMeta = {
+          strategy: modeParts[0] ?? liveMaterializeMode,
+          documentClass: modeParts[1] ?? null,
+          score: (() => {
+            const m = liveMaterializeMode.match(/score(\d+)/);
+            return m ? Number(m[1]) : null;
+          })(),
+          editCount: liveMaterializeEdits,
+          notes: liveMaterializeNotes,
+          gates: [],
+          coverage: null,
+        };
+      } else {
+        // OEM Perfect Replica: frozen upload layout + structure + write engines
+        const oem = await runOemPerfectReplica({
+          sourcePdf: pdfBytes,
+          sourceBaseline:
+            sourceBaseline.length > 0 ? sourceBaseline : transactions,
+          current: transactions,
+          queuedEdits: pdfEdits.filter(
+            (e) => String(e.replacement ?? "").trim().length > 0,
+          ),
+          rawText: result?.rawText,
+          fileName: result?.fileName ?? activeFileName,
+          maxPages: 40,
+          minDescriptionCoverage: 0.35,
+          preserveTxnStructure: true,
+          strict: false,
+          layout: layoutProfile ?? result?.layout ?? null,
         });
-        return;
+        if (oem.editCount === 0) {
+          toast.message("Could not produce OEM replica injections", {
+            description:
+              oem.notes.slice(-3).join(" · ") ||
+              "No geometry matched. Try bank-desc replace or St George template fill.",
+          });
+          return;
+        }
+        if (oem.appliedEdits.length > 0) {
+          setPdfEdits(oem.appliedEdits);
+        }
+        setEditedPdfBytes(oem.candidatePdf);
+        setLiveMaterializeMode(
+          `oem:${oem.path}:${oem.summary.documentClass}:score${oem.score}`,
+        );
+        setLiveMaterializeEdits(oem.editCount);
+        setLiveMaterializeNotes(oem.notes.slice(-4));
+        candidate = oem.candidatePdf;
+        const cov = oem.perfect?.coverage;
+        injectionMeta = {
+          strategy: `oem:${oem.path}`,
+          documentClass: oem.summary.documentClass,
+          score: oem.score,
+          editCount: oem.editCount,
+          notes: oem.notes,
+          gates: oem.gates,
+          coverage: cov
+            ? {
+                description: cov.description,
+                balance: cov.balance,
+                date: cov.date,
+              }
+            : null,
+        };
       }
-      // Keep edit queue complete so subsequent exports/visual stay full
-      if (material.appliedEdits.length > 0) {
-        setPdfEdits(material.appliedEdits);
+
+      // Hard gates: never export empty / non-PDF / identity when delta expected
+      if (!candidate || candidate.byteLength < 100) {
+        throw new Error("Replica PDF is empty or too small to export");
       }
-      setEditedPdfBytes(material.candidatePdf);
+      const head = String.fromCharCode(
+        candidate[0] ?? 0,
+        candidate[1] ?? 0,
+        candidate[2] ?? 0,
+        candidate[3] ?? 0,
+      );
+      if (head !== "%PDF") {
+        throw new Error(
+          `Replica bytes are not a PDF (header=${JSON.stringify(head)})`,
+        );
+      }
+      if (
+        hasGenerationDelta &&
+        (injectionMeta.editCount ?? 0) === 0 &&
+        candidate.byteLength === pdfBytes.byteLength
+      ) {
+        throw new Error(
+          "Generation delta exists but 0 injections landed — refusing identity export",
+        );
+      }
+
+      const report = buildMergedAuditReport({
+        fileName: activeFileName || "statement.pdf",
+        thresholds,
+        auditLog,
+        changeHistory,
+        pixelReport,
+        mathResult,
+        transactionCount: transactions.length,
+        dirtyCount,
+        injection: injectionMeta,
+      });
+
+      const withAudit = await appendAuditPageToPdf(
+        candidate,
+        report,
+        {
+          strategy: injectionMeta.strategy ?? undefined,
+          documentClass: injectionMeta.documentClass ?? undefined,
+          score: injectionMeta.score ?? undefined,
+          editCount: injectionMeta.editCount,
+          notes: injectionMeta.notes,
+          gates: injectionMeta.gates,
+          coverage: injectionMeta.coverage
+            ? {
+                description: injectionMeta.coverage.description,
+                balance: injectionMeta.coverage.balance,
+              }
+            : undefined,
+        },
+      );
+
       const base = activeFileName.replace(/\.pdf$/i, "") || "statement";
       downloadBytes(
         `${base}-regenerated.pdf`,
-        material.candidatePdf,
+        withAudit.pdf,
         "application/pdf",
       );
-      const bf = material.coverage.byField;
-      toast.success("Final PDF downloaded", {
+      // Stagger JSON so browsers do not collapse the second download
+      window.setTimeout(() => downloadMergedReport(report), 250);
+      setExportedOnce(true);
+      setAuditLog((log) =>
+        appendAuditEvent(
+          log,
+          "export",
+          `Final replica PDF + audit report (${injectionMeta.editCount ?? 0} edits; audit page ${withAudit.appended ? "on" : "off"})`,
+          {
+            actor: "user",
+            payload: {
+              editCount: injectionMeta.editCount,
+              strategy: injectionMeta.strategy,
+              score: injectionMeta.score,
+              auditPage: withAudit.appended,
+              auditNote: withAudit.note,
+            },
+          },
+        ),
+      );
+
+      toast.success("OEM replica exported", {
         description:
-          `${material.editCount} replacement(s) · mode=${material.mode} · ` +
-          `desc=${bf.description} date=${bf.date} debit=${bf.debit} credit=${bf.credit} bal=${bf.balance}`,
+          `${injectionMeta.editCount ?? 0} injection(s) · score ${injectionMeta.score ?? "—"}/100 · ` +
+          `${withAudit.note} · JSON audit downloaded`,
       });
     } catch (err) {
-      const message = err instanceof Error ? err.message : "PDF export failed";
-      toast.error("PDF export failed", { description: message });
+      toast.error("PDF export failed", {
+        description: safeErrorMessage(err),
+      });
     }
   }, [
     pdfBytes,
@@ -958,15 +1534,34 @@ const Index = () => {
     transactions,
     activeFileName,
     hasGenerationDelta,
+    editedPdfBytes,
+    liveMaterializeMode,
+    liveMaterializeEdits,
+    liveMaterializeNotes,
+    liveMaterializing,
+    result?.rawText,
+    result?.layout,
+    layoutProfile,
+    thresholds,
+    auditLog,
+    changeHistory,
+    pixelReport,
+    mathResult,
+    dirtyCount,
   ]);
 
   const handleConfirmRender = useCallback(async () => {
+    // Balance cascade first (hybrid/recompute/stated)
     const rendered = applyRenderWithFallbacks(transactions, renderEngine);
 
+    // Prefer MuPDF for PDF probe (write-capable); fall back to Pdfium/PDF.js
     let pdfEngineMeta: RenderResult["pdfEngine"];
     if (pdfBytes) {
       try {
-        const loaded = await loadPdfWithFallbacks(cloneUint8Array(pdfBytes));
+        const loaded = await loadPdfWithFallbacks(
+          cloneUint8Array(pdfBytes),
+          "pdfium",
+        );
         pdfEngineMeta = {
           engineUsed: loaded.engineUsed,
           enginesTried: loaded.enginesTried,
@@ -975,7 +1570,8 @@ const Index = () => {
         };
         loaded.document.destroy();
       } catch (err) {
-        const message = err instanceof Error ? err.message : "PDF engine probe failed";
+        const message =
+          err instanceof Error ? err.message : "PDF engine probe failed";
         toast.message("PDF engines unavailable", { description: message });
       }
     }
@@ -984,9 +1580,11 @@ const Index = () => {
       ...rendered,
       pdfEngine: pdfEngineMeta,
       summary: pdfEngineMeta
-        ? `${rendered.summary} PDF engine: ${pdfEngineMeta.engineUsed}${
-            pdfEngineMeta.fallbackUsed ? " (fallback)" : ""
-          }.`
+        ? `${rendered.summary} PDF load probe: ${pdfEngineMeta.engineUsed}${
+            pdfEngineMeta.fallbackUsed
+              ? ` (fallback via ${pdfEngineMeta.enginesTried.join("→")})`
+              : " (primary)"
+          }. Export final PDF writes via PDFium (write engine of record).`
         : rendered.summary,
     };
 
@@ -1002,10 +1600,29 @@ const Index = () => {
     );
     setRenderResult(full);
     setMathResult(null);
-    toast.success("Render applied", { description: full.summary });
+
+    // Kick live OEM rematerialize so balance changes hit the candidate PDF
+    if (pdfBytes && full.rowsUpdated > 0) {
+      window.setTimeout(() => {
+        void rebuildLiveCandidatePdf();
+      }, 100);
+    }
+
+    toast.success(
+      full.rowsUpdated > 0
+        ? `Render applied — ${full.rowsUpdated} balance(s) updated`
+        : "Render applied — balances already consistent",
+      { description: full.summary },
+    );
     unlockThrough("render");
     return full;
-  }, [transactions, renderEngine, unlockThrough, pdfBytes]);
+  }, [
+    transactions,
+    renderEngine,
+    unlockThrough,
+    pdfBytes,
+    rebuildLiveCandidatePdf,
+  ]);
 
   const handleMathCheck = useCallback(() => {
     setMathRunning(true);
@@ -1375,6 +1992,220 @@ const Index = () => {
   }, [result, transactions, pixelReport, unlockThrough, sourceBaseline]);
 
   const currentStepMeta = WORKFLOW_STEPS.find((s) => s.id === workflowStep);
+  const uiMode: UiMode = testLabMode ? "testlab" : "editor";
+
+  const openBankDescTools = useCallback(() => {
+    setRailOpen(true);
+    setAdvancedOpen(true);
+    setToolsTab("generator");
+    toast.message("Additional tools · Generator", {
+      description:
+        "Replace original descriptions with bank generators + font link — step unchanged",
+    });
+  }, []);
+
+  const testLabStages = useMemo(
+    () =>
+      buildTestStages({
+        workflowStep,
+        hasGenerated: hasGenerated || workflowStep === "generate",
+        qualityOk: genQuality?.ok ?? null,
+        qualityScore: genQuality?.score ?? null,
+        applied: genApplied,
+        pdfEdits: pdfEdits.length,
+        hasPdf: Boolean(pdfBytes),
+        mathOk: mathResult
+          ? mathResult.status === "pass" || (mathResult.score ?? 0) >= 70
+          : null,
+        visualOk: pixelReport
+          ? pixelReport.pixelStatus === "pass" || pixelReport.pixelScore >= 90
+          : null,
+        forensicsOk: forensicsReport
+          ? forensicsReport.verdict === "pass"
+          : null,
+        exported: exportedOnce,
+      }),
+    [
+      workflowStep,
+      hasGenerated,
+      genQuality,
+      genApplied,
+      pdfEdits.length,
+      pdfBytes,
+      mathResult,
+      pixelReport,
+      forensicsReport,
+      exportedOnce,
+    ],
+  );
+
+  const handleTestLabJump = useCallback(
+    (id: TestStageId, step?: WorkflowStep) => {
+      if (step) goToStep(step);
+      if (id === "replace") openBankDescTools();
+    },
+    [goToStep, openBankDescTools],
+  );
+
+  const handleRunStress = useCallback(() => {
+    setStressRunning(true);
+    setStressSummary(null);
+    window.setTimeout(() => {
+      try {
+        const report = runStressSuite(50, 4242);
+        const msg = report.perfect
+          ? `Stress PASS · ${report.passed}/${report.n} · ${report.totalRows} rows · ${report.durationMs}ms`
+          : `Stress FAIL · ${report.failed}/${report.n} failed · e.g. seed ${report.failures[0]?.seed}: ${report.failures[0]?.messages[0] ?? ""}`;
+        setStressSummary(msg);
+        setAuditLog((log) =>
+          appendAuditEvent(log, "note", msg, {
+            actor: "user",
+            payload: {
+              perfect: report.perfect,
+              passed: report.passed,
+              n: report.n,
+            },
+          }),
+        );
+        if (report.perfect) {
+          toast.success("Stress suite perfect", { description: msg });
+        } else {
+          toast.error("Stress suite failures", { description: msg });
+        }
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Stress failed";
+        setStressSummary(message);
+        toast.error("Stress suite error", { description: message });
+      } finally {
+        setStressRunning(false);
+      }
+    }, 30);
+  }, []);
+
+  const stagePrimaryLabel = useMemo(() => {
+    switch (workflowStep) {
+      case "edit":
+        return "Continue to Balance";
+      case "balance":
+        return "Continue to Render";
+      case "render":
+        return "Confirm & apply balances";
+      case "visual":
+        return pixelReport ? "Continue to Math" : "Run pixel check";
+      case "math":
+        return mathResult ? "Continue to Generate" : "Run math check";
+      case "generate":
+        return genApplied
+          ? "Continue to Forensics"
+          : "Apply generated statement";
+      case "fidelity":
+        return forensicsReport ? "Continue to Complete" : "Run forensics";
+      case "complete":
+        return canExportFinalPdf ? "Export final PDF" : "Export CSV";
+      default:
+        return "Continue";
+    }
+  }, [
+    workflowStep,
+    pixelReport,
+    mathResult,
+    forensicsReport,
+    genApplied,
+    canExportFinalPdf,
+  ]);
+
+  const handleStagePrimary = useCallback(() => {
+    if (workflowStep === "complete") {
+      if (canExportFinalPdf) {
+        void handleExportPdf();
+        setExportedOnce(true);
+        return;
+      }
+      if (result) {
+        exportCsv(
+          { ...result, summary: liveSummary, transactions },
+          transactions,
+          includeNotes,
+        );
+        setExportedOnce(true);
+        toast.success("CSV downloaded");
+      }
+      return;
+    }
+    if (workflowStep === "generate") {
+      if (genApplied) {
+        advance();
+        return;
+      }
+      void generatorRef.current?.apply(false);
+      return;
+    }
+    if (workflowStep === "visual" && !pixelReport) {
+      void handlePixelCheck();
+      return;
+    }
+    if (workflowStep === "math" && !mathResult) {
+      handleMathCheck();
+      return;
+    }
+    if (workflowStep === "render" && !renderResult) {
+      void handleConfirmRender().then(() => advance());
+      return;
+    }
+    if (workflowStep === "fidelity" && !forensicsReport) {
+      void handleForensics().then(() => advance());
+      return;
+    }
+    advance();
+  }, [
+    workflowStep,
+    pixelReport,
+    mathResult,
+    renderResult,
+    forensicsReport,
+    genApplied,
+    canExportFinalPdf,
+    handleExportPdf,
+    handlePixelCheck,
+    handleMathCheck,
+    handleConfirmRender,
+    handleForensics,
+    advance,
+    result,
+    liveSummary,
+    transactions,
+    includeNotes,
+  ]);
+
+  const gateChips = useMemo(() => {
+    const chips: Partial<Record<WorkflowStep, string>> = {};
+    if (dirtyCount > 0) chips.edit = `${dirtyCount} dirty`;
+    if (balancePreview.mismatchCount > 0) {
+      chips.balance = `${balancePreview.mismatchCount} mismatch`;
+    }
+    if (renderResult) chips.render = renderResult.engineUsed;
+    if (pixelReport) {
+      chips.visual = `${pixelReport.pixelStatus} ${pixelReport.pixelScore}`;
+    }
+    if (mathResult) chips.math = `${mathResult.status} ${mathResult.score}`;
+    if (genApplied) chips.generate = "applied";
+    else if (hasGenerated) chips.generate = "generated";
+    if (forensicsReport) {
+      chips.fidelity = `${forensicsReport.verdict} ${forensicsReport.overallScore}`;
+    }
+    if (exportedOnce) chips.complete = "exported";
+    return chips;
+  }, [
+    dirtyCount,
+    balancePreview.mismatchCount,
+    renderResult,
+    pixelReport,
+    mathResult,
+    genApplied,
+    hasGenerated,
+    forensicsReport,
+    exportedOnce,
+  ]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -1385,50 +2216,56 @@ const Index = () => {
             : undefined
         }
         apiStatus={apiStatus}
+        showModeSwitch={phase === "workspace" && Boolean(result)}
+        uiMode={uiMode}
+        onUiModeChange={(mode) => {
+          setTestLabMode(mode === "testlab");
+          if (mode === "testlab") {
+            toast.message("Test Lab mode", {
+              description:
+                "Checklist primary — jump stages or run stress suite in the rail",
+            });
+          }
+        }}
+        engineTag={activeEngine}
+        engineMode={engineMode}
       />
 
-      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 py-8 sm:py-10">
+      <main className="flex-1 mx-auto w-full max-w-[1400px] px-4 sm:px-6 py-6 sm:py-8">
         {phase === "upload" && (
-          <div className="space-y-10">
-            <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <div className="space-y-6">
+            <div className="text-center space-y-2 max-w-2xl mx-auto">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                 <Sparkles className="h-3.5 w-3.5" />
-                Multi-parser · AI validate · {AI_MODEL_ID}
+                Exact replica · logic generator injection · {AI_MODEL_ID}
               </div>
-              <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-                Parse, edit, balance, verify
+              <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+                Bank Statement Fidelity Editor
               </h1>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                Choose Mindee Financial (default), LlamaParse, Google Document AI, PyMuPDF,
-                Local OCR, or offline heuristic + bank YAML templates — then edit, balance,
-                and verify. Or open <strong>Test Lab</strong> for perfect generation
-                without a PDF.
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Load a source statement, inject generated data via intelligent logic
+                engines, and export a pixel-perfect visual and mathematical replica.
+                Or start <strong>Test Lab</strong> for synthetic generation without a source file.
               </p>
             </div>
 
-            {/* Test Lab entry */}
-            <div className="max-w-2xl mx-auto w-full rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card to-card p-5 shadow-sm space-y-3">
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                  <FlaskConical className="h-5 w-5" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold">Test Lab workflow</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">
-                    Configure statement cfg → generate → perfect validation → apply →
-                    bank-desc replace (with PDF) → math → visual pixel checks →
-                    forensics → export. Stress suite available in-session.
-                  </p>
-                </div>
+            {/* Test Lab entry — compact single row */}
+            <div className="max-w-2xl mx-auto w-full flex flex-wrap items-center justify-between gap-2 rounded-full border border-primary/25 bg-primary/8 px-2 py-1.5 pl-3 shadow-sm">
+              <div className="flex items-center gap-2 min-w-0 text-[11px] text-muted-foreground">
+                <FlaskConical className="h-3.5 w-3.5 text-primary shrink-0" />
+                <span className="font-semibold text-foreground text-xs">Test Lab</span>
+                <span className="hidden sm:inline truncate">
+                  generate · apply · replace · verify
+                </span>
               </div>
-              <div className="flex flex-wrap gap-2">
-                <Button className="rounded-full" onClick={startTestLab}>
-                  <FlaskConical className="mr-1.5 h-4 w-4" />
-                  Start Test Lab (no PDF)
+              <div className="flex flex-wrap gap-1.5 shrink-0">
+                <Button size="sm" className="rounded-full h-7 text-[11px] px-3" onClick={startTestLab}>
+                  Start (no PDF)
                 </Button>
                 <Button
+                  size="sm"
                   variant="outline"
-                  className="rounded-full"
+                  className="rounded-full h-7 text-[11px] px-3"
                   onClick={() => {
                     setTestLabMode(true);
                     toast.message("Upload a PDF to begin Test Lab with geometry", {
@@ -1437,24 +2274,9 @@ const Index = () => {
                     });
                   }}
                 >
-                  Test Lab + PDF upload
+                  + PDF
                 </Button>
               </div>
-              <ol className="grid sm:grid-cols-4 gap-2 text-[10px] text-muted-foreground">
-                {[
-                  "1 Configure & generate",
-                  "2 Perfect validate",
-                  "3 Apply / replace",
-                  "4 Math · visual · forensics",
-                ].map((s) => (
-                  <li
-                    key={s}
-                    className="rounded-lg border border-border/50 bg-background/50 px-2 py-1.5"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ol>
             </div>
 
             {engineMode === "remote" && (
@@ -1489,34 +2311,11 @@ const Index = () => {
               <ApiStatusPanel onReport={setApiStatus} />
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-              {[
-                {
-                  icon: FileText,
-                  title: "1. Multi-parser",
-                  body: "Mindee · LlamaParse · Doc AI · PyMuPDF · Local OCR · Offline YAML.",
-                },
-                {
-                  icon: Sparkles,
-                  title: "2. Edit & balance",
-                  body: "Inline table edits, yellow mismatch overlays, engine fallbacks.",
-                },
-                {
-                  icon: Layers3,
-                  title: "3. Validate & export",
-                  body: "Visual multi-layer diff, final math check, CSV/JSON export.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-2xl border border-border/70 bg-card/70 p-4 text-left shadow-sm"
-                >
-                  <item.icon className="h-5 w-5 text-primary mb-2" />
-                  <p className="font-medium text-sm">{item.title}</p>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{item.body}</p>
-                </div>
-              ))}
-            </div>
+            <p className="max-w-2xl mx-auto text-center text-[11px] text-muted-foreground">
+              Required parse: LlamaParse <strong>or</strong> Google Document AI · Write engine:{" "}
+              <strong>PDFium</strong> · Pipeline: cloud parse → inject → balance → OEM rewrite →
+              export final PDF + audit
+            </p>
           </div>
         )}
 
@@ -1543,24 +2342,134 @@ const Index = () => {
         )}
 
         {phase === "workspace" && result && (
-          <div className="space-y-5">
-            <div className="rounded-2xl border border-border/70 bg-card/70 p-3 sm:p-4 space-y-3 shadow-sm">
+          <div className="space-y-4">
+            {/* Pipeline status strip — always visible; Test Lab is a compact hover chip */}
+            <div className="flex flex-wrap items-center gap-1.5 stage-shell px-3 py-2">
+              <span className="pipeline-chip pipeline-chip-active max-w-[14rem] truncate" title={result.fileName}>
+                <FileText className="h-3 w-3 shrink-0" />
+                {result.fileName}
+              </span>
+              <span className="pipeline-chip">
+                Step · <span className="font-semibold text-foreground">{currentStepMeta?.short ?? workflowStep}</span>
+              </span>
+              {(testLabMode ||
+                workflowStep === "generate" ||
+                hasGenerated ||
+                genApplied) && (
+                <TestWorkflowPanel
+                  variant="compact"
+                  expandOn="hover"
+                  align="end"
+                  stages={testLabStages}
+                  onJump={handleTestLabJump}
+                  stressRunning={stressRunning}
+                  stressSummary={stressSummary}
+                  onRunStress={handleRunStress}
+                />
+              )}
+              {pdfBytes && (
+                <span
+                  className={cn(
+                    "pipeline-chip",
+                    pdfEdits.length > 0 && "pipeline-chip-active",
+                  )}
+                >
+                  pdfEdits · <span className="font-mono font-semibold text-foreground">{pdfEdits.length}</span>
+                </span>
+              )}
+              <span
+                className={cn(
+                  "pipeline-chip",
+                  hasGenerationDelta ? "pipeline-chip-warn" : "pipeline-chip-pass",
+                )}
+                title={
+                  hasGenerationDelta
+                    ? "Working ledger differs from source — final PDF will rewrite matched text"
+                    : "No ledger delta vs source baseline"
+                }
+              >
+                {hasGenerationDelta ? "delta · yes" : "delta · identity"}
+              </span>
+              {renderResult && (
+                <span className="pipeline-chip font-mono">
+                  materialize · {renderResult.engineUsed}
+                </span>
+              )}
+              {canExportFinalPdf ? (
+                <Button
+                  type="button"
+                  size="sm"
+                  className="rounded-full h-7 text-[11px] ml-auto"
+                  onClick={() => {
+                    void handleExportPdf();
+                    setExportedOnce(true);
+                  }}
+                >
+                  <FileText className="h-3.5 w-3.5" />
+                  Export final PDF
+                  {pdfEdits.length > 0
+                    ? ` (${pdfEdits.length})`
+                    : hasGenerationDelta
+                      ? " (all data)"
+                      : ""}
+                </Button>
+              ) : !pdfBytes ? (
+                <span
+                  className="pipeline-chip ml-auto"
+                  title="Upload a source PDF to materialize and export a regenerated final PDF"
+                >
+                  Final PDF · needs source PDF
+                </span>
+              ) : null}
+              <Button
+                type="button"
+                size="sm"
+                variant="ghost"
+                className="rounded-full h-7 text-[11px] text-muted-foreground"
+                onClick={() => setRailOpen((v) => !v)}
+                aria-pressed={railOpen}
+                title={railOpen ? "Hide context rail" : "Show context rail"}
+              >
+                {railOpen ? (
+                  <PanelRightClose className="h-3.5 w-3.5" />
+                ) : (
+                  <PanelRight className="h-3.5 w-3.5" />
+                )}
+                <span className="hidden sm:inline">{railOpen ? "Hide rail" : "Show rail"}</span>
+              </Button>
+            </div>
+
+            {/* Stage nav — always stepper; Test Lab is compact chip in pipeline strip */}
+            <div className="stage-shell p-3 sm:p-4 space-y-3">
               <WorkflowStepper
                 current={workflowStep}
                 unlocked={unlocked}
+                gateChips={gateChips}
                 onStepClick={(s) => {
-                  if (unlocked.includes(s) || STEP_ORDER.indexOf(s) <= STEP_ORDER.indexOf(workflowStep)) {
+                  if (
+                    unlocked.includes(s) ||
+                    STEP_ORDER.indexOf(s) <= STEP_ORDER.indexOf(workflowStep)
+                  ) {
                     setWorkflowStep(s);
                   }
                 }}
               />
               {currentStepMeta && (
-                <p className="text-xs text-muted-foreground px-1">
-                  <span className="font-semibold text-foreground">
-                    {currentStepMeta.label}:
-                  </span>{" "}
-                  {currentStepMeta.description}
-                </p>
+                <div className="flex flex-wrap items-start justify-between gap-2 border-t border-border/50 pt-3 px-0.5">
+                  <div className="min-w-0">
+                    <h2 className="text-lg font-semibold tracking-tight leading-tight">
+                      {currentStepMeta.label}
+                    </h2>
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed max-w-2xl">
+                      {currentStepMeta.description}
+                    </p>
+                  </div>
+                  {gateChips[workflowStep] && (
+                    <span className="pipeline-chip pipeline-chip-active shrink-0">
+                      {gateChips[workflowStep]}
+                    </span>
+                  )}
+                </div>
               )}
             </div>
 
@@ -1596,402 +2505,506 @@ const Index = () => {
               onRedo={handleRedo}
             />
 
-            <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
-              <div className="space-y-4 min-w-0">
-                <SummaryCards summary={liveSummary} limited={result.limitedExtraction} />
+            <div
+              className={cn(
+                "grid gap-4",
+                railOpen
+                  ? "lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)]"
+                  : "grid-cols-1",
+              )}
+            >
+              {/* MAIN: compare is hero; money strip is secondary */}
+              <div className="stage-shell min-w-0 flex flex-col overflow-hidden">
+                <div className="space-y-3 p-3 sm:p-4 flex-1 min-w-0">
+                  {workflowStep !== "generate" && (
+                    <SummaryCards
+                      summary={liveSummary}
+                      limited={result.limitedExtraction}
+                      variant="compact"
+                    />
+                  )}
 
-                {/* Step-specific panels */}
-                {workflowStep === "balance" && (
-                  <BalanceOutPreview
-                    preview={balancePreview}
-                    engine={balanceEngine}
-                    onEngineChange={setBalanceEngine}
-                    onSelectRow={(id) => {
-                      setHighlightId(id);
-                      setQuery("");
-                      setCategoryFilter("all");
-                    }}
-                  />
-                )}
-
-                {workflowStep === "render" && (
-                  <ConfirmRenderPanel
-                    preferredEngine={renderEngine}
-                    onPreferredEngineChange={setRenderEngine}
-                    mismatchCount={balancePreview.mismatchCount}
-                    dirtyCount={dirtyCount}
-                    onConfirm={handleConfirmRender}
-                    lastResult={renderResult}
-                    hasPdfBytes={Boolean(pdfBytes)}
-                  />
-                )}
-
-                {workflowStep === "visual" && (
-                  <>
-                    <VerificationThresholdsPanel
-                      value={thresholds}
-                      onChange={(t) => {
-                        setThresholds(t);
-                        saveThresholds(t);
-                        setAuditLog((log) =>
-                          appendAuditEvent(
-                            log,
-                            "threshold.change",
-                            `Thresholds: visualDiff=${t.visualDiff}, retries=${t.maxRetries}`,
-                            { actor: "user", payload: { ...t } },
-                          ),
-                        );
+                  {/* Step-specific panels */}
+                  {workflowStep === "balance" && (
+                    <BalanceOutPreview
+                      preview={balancePreview}
+                      engine={balanceEngine}
+                      onEngineChange={setBalanceEngine}
+                      onSelectRow={(id) => {
+                        setHighlightId(id);
+                        setQuery("");
+                        setCategoryFilter("all");
                       }}
                     />
-                    <VisualValidate
-                      result={visualResult}
-                      highlightId={highlightId}
-                      onSelectRow={(id) => setHighlightId(id)}
-                      pixelReport={pixelReport}
-                      pixelRunning={pixelRunning}
-                      pixelProgress={pixelProgress}
-                      onRunPixelCheck={() => void handlePixelCheck()}
+                  )}
+
+                  {workflowStep === "render" && (
+                    <ConfirmRenderPanel
+                      preferredEngine={renderEngine}
+                      onPreferredEngineChange={setRenderEngine}
+                      mismatchCount={balancePreview.mismatchCount}
+                      dirtyCount={dirtyCount}
+                      onConfirm={handleConfirmRender}
+                      lastResult={renderResult}
                       hasPdfBytes={Boolean(pdfBytes)}
+                    />
+                  )}
+
+                  {workflowStep === "visual" && (
+                    <>
+                      <VerificationThresholdsPanel
+                        value={thresholds}
+                        onChange={(t) => {
+                          setThresholds(t);
+                          saveThresholds(t);
+                          setAuditLog((log) =>
+                            appendAuditEvent(
+                              log,
+                              "threshold.change",
+                              `Thresholds: visualDiff=${t.visualDiff}, retries=${t.maxRetries}`,
+                              { actor: "user", payload: { ...t } },
+                            ),
+                          );
+                        }}
+                      />
+                      <VisualValidate
+                        result={visualResult}
+                        highlightId={highlightId}
+                        onSelectRow={(id) => setHighlightId(id)}
+                        pixelReport={pixelReport}
+                        pixelRunning={pixelRunning}
+                        pixelProgress={pixelProgress}
+                        onRunPixelCheck={() => void handlePixelCheck()}
+                        hasPdfBytes={Boolean(pdfBytes)}
+                        pdfEditCount={pdfEdits.length}
+                        hasGenerationDelta={hasGenerationDelta}
+                        hasCandidatePdf={Boolean(editedPdfBytes)}
+                        onDownloadCandidate={() => {
+                          if (!editedPdfBytes) return;
+                          const base =
+                            activeFileName.replace(/\.pdf$/i, "") || "statement";
+                          downloadBytes(
+                            `${base}-regenerated.pdf`,
+                            editedPdfBytes,
+                            "application/pdf",
+                          );
+                          toast.success("Regenerated PDF downloaded");
+                        }}
+                      />
+                    </>
+                  )}
+
+                  {workflowStep === "math" && (
+                    <FinalMathCheck
+                      result={mathResult}
+                      onRun={handleMathCheck}
+                      running={mathRunning}
+                      onSelectRow={(id) => setHighlightId(id)}
+                    />
+                  )}
+
+                  {workflowStep === "generate" && (
+                    <StatementGeneratorDashboard
+                      ref={generatorRef}
+                      hasPdfBytes={Boolean(pdfBytes)}
+                      pdfBytes={pdfBytes}
                       pdfEditCount={pdfEdits.length}
-                      hasGenerationDelta={hasGenerationDelta}
-                      hasCandidatePdf={Boolean(editedPdfBytes)}
-                      onDownloadCandidate={() => {
-                        if (!editedPdfBytes) return;
-                        const base =
-                          activeFileName.replace(/\.pdf$/i, "") || "statement";
-                        downloadBytes(
-                          `${base}-regenerated.pdf`,
-                          editedPdfBytes,
-                          "application/pdf",
+                      onQualityChange={(q) => {
+                        setGenQuality(q);
+                        setHasGenerated(true);
+                      }}
+                      onApplyToWorkspace={(txns, label, extras) => {
+                        setUndoState((s) =>
+                          pushSnapshot(s, label, transactions, workflowStep),
                         );
-                        toast.success("Regenerated PDF downloaded");
+                        if (sourceBaseline.length === 0) {
+                          setSourceBaseline(
+                            transactions.length
+                              ? transactions.map((t) => ({ ...t }))
+                              : txns.map((t) => ({ ...t })),
+                          );
+                        }
+                        setTransactions(txns);
+                        setResult((r) =>
+                          r
+                            ? {
+                                ...r,
+                                transactions: txns,
+                                summary: buildSummary(txns),
+                              }
+                            : r,
+                        );
+                        if (extras?.pdfEdits?.length) {
+                          setPdfEdits((prev) => [
+                            ...prev,
+                            ...extras.pdfEdits!.filter(
+                              (e) => e.replacement.trim().length > 0,
+                            ),
+                          ]);
+                        }
+                        setGenApplied(true);
+                        setWorkspaceLedgerOpen(false);
+                        setViewMode("compare");
+                        setRenderResult(null);
+                        setMathResult(null);
+                        setAuditLog((log) =>
+                          appendAuditEvent(log, "note", label, {
+                            actor: "user",
+                            payload: {
+                              count: txns.length,
+                              quality: genQuality?.score,
+                              unredactEdits: extras?.pdfEdits?.length ?? 0,
+                            },
+                          }),
+                        );
+                        autosaveRef.current?.touch();
+                        toast.success(label, {
+                          description: `${txns.length} transactions applied${
+                            extras?.pdfEdits?.length
+                              ? ` · ${extras.pdfEdits.length} Unredacter edit(s)`
+                              : ""
+                          } · open Workspace ledger below if needed`,
+                        });
+                        unlockThrough("generate");
+                      }}
+                      onAppliedAndContinue={() => {
+                        setTestLabMode(true);
+                        if (pdfBytes) {
+                          openBankDescTools();
+                        } else {
+                          goToStep("math");
+                          toast.message("Next: Final math check", {
+                            description:
+                              "Upload a PDF later for visual/pixel & bank-desc replace",
+                          });
+                        }
+                      }}
+                      onBankReplaceRequest={openBankDescTools}
+                      onAudit={(message) => {
+                        setAuditLog((log) =>
+                          appendAuditEvent(log, "note", message, {
+                            actor: "user",
+                          }),
+                        );
                       }}
                     />
-                  </>
-                )}
+                  )}
 
-                {workflowStep === "math" && (
-                  <FinalMathCheck
-                    result={mathResult}
-                    onRun={handleMathCheck}
-                    running={mathRunning}
-                    onSelectRow={(id) => setHighlightId(id)}
-                  />
-                )}
+                  {workflowStep === "fidelity" && (
+                    <FidelityForensicsPanel
+                      report={forensicsReport}
+                      running={forensicsRunning}
+                      onRun={() => void handleForensics()}
+                      onSelectRow={(id) => {
+                        setHighlightId(id);
+                        setQuery("");
+                        setCategoryFilter("all");
+                      }}
+                    />
+                  )}
 
-                {workflowStep === "generate" && (
-                  <StatementGeneratorDashboard
-                    hasPdfBytes={Boolean(pdfBytes)}
-                    pdfBytes={pdfBytes}
-                    pdfEditCount={pdfEdits.length}
-                    onQualityChange={(q) => {
-                      setGenQuality(q);
-                      setHasGenerated(true);
-                    }}
-                    onApplyToWorkspace={(txns, label, extras) => {
-                      setUndoState((s) =>
-                        pushSnapshot(s, label, transactions, workflowStep),
-                      );
-                      // Freeze original before overwrite so compare has a left column
-                      if (sourceBaseline.length === 0) {
-                        setSourceBaseline(
-                          transactions.length
-                            ? transactions.map((t) => ({ ...t }))
-                            : txns.map((t) => ({ ...t })),
-                        );
-                      }
-                      setTransactions(txns);
-                      setResult((r) =>
-                        r
-                          ? {
-                              ...r,
-                              transactions: txns,
-                              summary: buildSummary(txns),
-                            }
-                          : r,
-                      );
-                      // Unredacter chrome edits (identity/address) — never blank
-                      if (extras?.pdfEdits?.length) {
-                        setPdfEdits((prev) => [
-                          ...prev,
-                          ...extras.pdfEdits!.filter(
-                            (e) => e.replacement.trim().length > 0,
-                          ),
-                        ]);
-                      }
-                      setGenApplied(true);
-                      setViewMode("compare");
-                      setRenderResult(null);
-                      setMathResult(null);
-                      setAuditLog((log) =>
-                        appendAuditEvent(log, "note", label, {
-                          actor: "user",
-                          payload: {
-                            count: txns.length,
-                            quality: genQuality?.score,
-                            unredactEdits: extras?.pdfEdits?.length ?? 0,
-                          },
-                        }),
-                      );
-                      autosaveRef.current?.touch();
-                      toast.success(label, {
-                        description: `${txns.length} transactions applied${
-                          extras?.pdfEdits?.length
-                            ? ` · ${extras.pdfEdits.length} Unredacter edit(s)`
-                            : ""
-                        } · compare view open`,
-                      });
-                      unlockThrough("generate");
-                    }}
-                    onAppliedAndContinue={() => {
-                      setTestLabMode(true);
-                      if (pdfBytes) {
-                        goToStep("edit");
-                        toast.message("Next: bank-desc replace or Continue → Math", {
-                          description:
-                            "Use Additional tools → Generator, or jump Math / Visual",
-                        });
-                      } else {
-                        goToStep("math");
-                        toast.message("Next: Final math check", {
-                          description:
-                            "Upload a PDF later for visual/pixel & bank-desc replace",
-                        });
-                      }
-                    }}
-                    onBankReplaceRequest={() => {
-                      setTestLabMode(true);
-                      goToStep("edit");
-                      toast.message("Open Additional tools → Generator", {
-                        description:
-                          "Replace original descriptions with bank generators + font link",
-                      });
-                    }}
-                    onAudit={(message) => {
-                      setAuditLog((log) =>
-                        appendAuditEvent(log, "note", message, {
-                          actor: "user",
-                        }),
-                      );
-                    }}
-                  />
-                )}
-
-                {workflowStep === "fidelity" && (
-                  <FidelityForensicsPanel
-                    report={forensicsReport}
-                    running={forensicsRunning}
-                    onRun={() => void handleForensics()}
-                    onSelectRow={(id) => {
-                      setHighlightId(id);
-                      setQuery("");
-                      setCategoryFilter("all");
-                    }}
-                  />
-                )}
-
-                {workflowStep === "complete" && (
-                  <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5 space-y-3">
-                    <h3 className="text-sm font-semibold">Pipeline complete</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Working set is ready for export. Completeness grade{" "}
-                      <strong>{result.completenessScore.grade}</strong> (
-                      {result.completenessScore.overall.toFixed(0)}/100)
-                      {mathResult
-                        ? ` · math ${mathResult.status} (${mathResult.score}/100)`
-                        : " · run math check for a verification score"}
-                      {renderResult
-                        ? ` · rendered with ${renderResult.engineUsed}`
-                        : ""}
-                      {forensicsReport
-                        ? ` · forensics ${forensicsReport.verdict} ${forensicsReport.overallScore}/100 (${forensicsReport.grade})`
-                        : " · run Fidelity Forensics for source-match audit"}
-                      .
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <Button
-                        className="rounded-full"
-                        onClick={() => {
-                          exportCsv(
-                            { ...result, summary: liveSummary, transactions },
-                            transactions,
-                            includeNotes,
-                          );
-                          setExportedOnce(true);
-                          toast.success("CSV downloaded");
-                        }}
-                      >
-                        Export CSV
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="rounded-full"
-                        onClick={() => {
-                          exportJson(
-                            { ...result, summary: liveSummary, transactions },
-                            transactions,
-                            includeNotes,
-                          );
-                          setExportedOnce(true);
-                          toast.success("JSON downloaded");
-                        }}
-                      >
-                        Export JSON
-                      </Button>
-                      {canExportFinalPdf && (
+                  {workflowStep === "complete" && (
+                    <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5 space-y-3">
+                      <h3 className="text-sm font-semibold">Export hub</h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Working set is ready for export. Completeness grade{" "}
+                        <strong>{result.completenessScore.grade}</strong> (
+                        {result.completenessScore.overall.toFixed(0)}/100)
+                        {mathResult
+                          ? ` · math ${mathResult.status} (${mathResult.score}/100)`
+                          : " · run math check for a verification score"}
+                        {renderResult
+                          ? ` · rendered with ${renderResult.engineUsed}`
+                          : ""}
+                        {forensicsReport
+                          ? ` · forensics ${forensicsReport.verdict} ${forensicsReport.overallScore}/100 (${forensicsReport.grade})`
+                          : " · run Fidelity Forensics for source-match audit"}
+                        .
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <Button
+                          className="rounded-full"
+                          onClick={() => {
+                            exportCsv(
+                              { ...result, summary: liveSummary, transactions },
+                              transactions,
+                              includeNotes,
+                            );
+                            setExportedOnce(true);
+                            toast.success("CSV downloaded");
+                          }}
+                        >
+                          Export CSV
+                        </Button>
                         <Button
                           variant="outline"
                           className="rounded-full"
                           onClick={() => {
-                            void handleExportPdf();
+                            exportJson(
+                              { ...result, summary: liveSummary, transactions },
+                              transactions,
+                              includeNotes,
+                            );
                             setExportedOnce(true);
+                            toast.success("JSON downloaded");
                           }}
                         >
-                          <FileText className="h-4 w-4" />
-                          Export final PDF
-                          {pdfEdits.length > 0
-                            ? ` (${pdfEdits.length})`
-                            : hasGenerationDelta
-                              ? " (all data)"
-                              : ""}
+                          Export JSON
                         </Button>
-                      )}
+                        {canExportFinalPdf && (
+                          <Button
+                            variant="outline"
+                            className="rounded-full"
+                            onClick={() => {
+                              void handleExportPdf();
+                              setExportedOnce(true);
+                            }}
+                          >
+                            <FileText className="h-4 w-4" />
+                            Export final PDF
+                            {pdfEdits.length > 0
+                              ? ` (${pdfEdits.length})`
+                              : hasGenerationDelta
+                                ? " (all data)"
+                                : ""}
+                          </Button>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* View mode: Table · Compare · PDF */}
-                <div className="flex flex-wrap items-center gap-2">
-                  <Button
-                    type="button"
-                    variant={viewMode === "table" ? "default" : "outline"}
-                    size="sm"
-                    className="rounded-full"
-                    onClick={() => setViewMode("table")}
-                  >
-                    <Table className="h-3.5 w-3.5" />
-                    Table
-                  </Button>
-                  <Button
-                    type="button"
-                    variant={viewMode === "compare" ? "default" : "outline"}
-                    size="sm"
-                    className="rounded-full"
-                    onClick={() => setViewMode("compare")}
-                    disabled={sourceBaseline.length === 0}
-                    title={
-                      sourceBaseline.length === 0
-                        ? "Parse a statement to freeze the original baseline"
-                        : "Live original vs current generation"
-                    }
-                  >
-                    <ArrowLeftRight className="h-3.5 w-3.5" />
-                    Compare
-                    {sourceBaseline.length > 0 && (
-                      <span className="ml-1 text-[10px] opacity-80">
-                        live
-                      </span>
-                    )}
-                  </Button>
-                  {pdfBytes &&
-                    (workflowStep === "edit" || workflowStep === "balance") && (
-                      <Button
-                        type="button"
-                        variant={viewMode === "pdf" ? "default" : "outline"}
-                        size="sm"
-                        className="rounded-full"
-                        onClick={() => setViewMode("pdf")}
+                  {/* Data surface: hidden on Generate until applied + expanded */}
+                  {workflowStep === "generate" ? (
+                    genApplied ? (
+                      <Collapsible
+                        open={workspaceLedgerOpen}
+                        onOpenChange={setWorkspaceLedgerOpen}
                       >
-                        <Eye className="h-3.5 w-3.5" />
-                        PDF Editor
-                      </Button>
-                    )}
-                  {viewMode === "pdf" && activeEngine && (
-                    <span className="text-xs text-muted-foreground ml-1">
-                      Engine: {activeEngine}
-                    </span>
+                        <div className="rounded-xl border border-border/60 bg-muted/20">
+                          <CollapsibleTrigger asChild>
+                            <button
+                              type="button"
+                              className="flex w-full items-center justify-between gap-2 px-3 py-2.5 text-left hover:bg-muted/40 transition-colors"
+                            >
+                              <span className="text-sm font-semibold">
+                                Workspace ledger
+                              </span>
+                              <span className="flex items-center gap-2 text-[11px] text-muted-foreground">
+                                {transactions.length} rows · compare after apply
+                                <ChevronDown
+                                  className={cn(
+                                    "h-4 w-4 transition-transform",
+                                    workspaceLedgerOpen && "rotate-180",
+                                  )}
+                                />
+                              </span>
+                            </button>
+                          </CollapsibleTrigger>
+                          <CollapsibleContent>
+                            <div className="border-t border-border/50 p-3 space-y-3">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <Button
+                                  type="button"
+                                  variant={
+                                    viewMode === "table" ? "default" : "outline"
+                                  }
+                                  size="sm"
+                                  className="rounded-full h-8"
+                                  onClick={() => setViewMode("table")}
+                                >
+                                  <Table className="h-3.5 w-3.5" />
+                                  Table
+                                </Button>
+                                <Button
+                                  type="button"
+                                  variant={
+                                    viewMode === "compare"
+                                      ? "default"
+                                      : "outline"
+                                  }
+                                  size="sm"
+                                  className="rounded-full h-8"
+                                  onClick={() => setViewMode("compare")}
+                                  disabled={sourceBaseline.length === 0}
+                                >
+                                  <ArrowLeftRight className="h-3.5 w-3.5" />
+                                  Compare
+                                </Button>
+                              </div>
+                              {viewMode === "compare" ? (
+                                <SideBySideComparison
+                                  original={sourceBaseline}
+                                  current={transactions}
+                                  highlightId={highlightId}
+                                  onSelectRow={(id) => {
+                                    setHighlightId(id);
+                                    setSelectedTxnId(id);
+                                  }}
+                                  originalLabel="Original (frozen at parse)"
+                                  currentLabel="Current / generation (live)"
+                                />
+                              ) : (
+                                <TransactionTable
+                                  transactions={filtered}
+                                  sortKey={sortKey}
+                                  sortDir={sortDir}
+                                  onSort={onSort}
+                                  onCategoryChange={onCategoryChange}
+                                  onTransactionChange={patchTransaction}
+                                  highlightId={highlightId}
+                                  editable={false}
+                                  readOnly
+                                />
+                              )}
+                            </div>
+                          </CollapsibleContent>
+                        </div>
+                      </Collapsible>
+                    ) : (
+                      <p className="text-[11px] text-muted-foreground px-0.5">
+                        Apply generated statement to update the workspace ledger.
+                        Table / compare stay collapsed so this step stays one primary surface.
+                      </p>
+                    )
+                  ) : (
+                    <>
+                      {/* View mode: Compare is primary; table/PDF secondary */}
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Button
+                          type="button"
+                          variant={
+                            viewMode === "compare" ? "default" : "outline"
+                          }
+                          size="sm"
+                          className="rounded-full h-8"
+                          onClick={() => setViewMode("compare")}
+                          disabled={sourceBaseline.length === 0}
+                          title={
+                            sourceBaseline.length === 0
+                              ? "Parse a statement to freeze the original baseline"
+                              : "Live original vs current generation"
+                          }
+                        >
+                          <ArrowLeftRight className="h-3.5 w-3.5" />
+                          Live compare
+                          {sourceBaseline.length > 0 && (
+                            <span className="ml-1 text-[10px] opacity-80">
+                              primary
+                            </span>
+                          )}
+                        </Button>
+                        <Button
+                          type="button"
+                          variant={viewMode === "table" ? "default" : "outline"}
+                          size="sm"
+                          className="rounded-full h-8"
+                          onClick={() => setViewMode("table")}
+                        >
+                          <Table className="h-3.5 w-3.5" />
+                          Table
+                        </Button>
+                        {pdfBytes && (
+                          <Button
+                            type="button"
+                            variant={
+                              viewMode === "pdf" ? "default" : "outline"
+                            }
+                            size="sm"
+                            className="rounded-full h-8"
+                            onClick={() => setViewMode("pdf")}
+                          >
+                            <Eye className="h-3.5 w-3.5" />
+                            PDF
+                            {editedPdfBytes ? " · live regen" : ""}
+                          </Button>
+                        )}
+                        {viewMode === "pdf" && (
+                          <span className="text-[10px] text-muted-foreground ml-1">
+                            Source + edit overlays · full regen panel below
+                          </span>
+                        )}
+                      </div>
+
+                      {viewMode === "compare" ? (
+                        <SideBySideComparison
+                          original={sourceBaseline}
+                          current={transactions}
+                          highlightId={highlightId}
+                          onSelectRow={(id) => {
+                            setHighlightId(id);
+                            setSelectedTxnId(id);
+                          }}
+                          originalLabel="Original (frozen at parse)"
+                          currentLabel="Current / generation (live)"
+                        />
+                      ) : viewMode === "pdf" && pdfBytes ? (
+                        <PdfDocumentViewer
+                          /* Source + overlay queue for click-edit; full regen is in panel below */
+                          fileData={pdfBytes}
+                          pageCount={result.pageCount}
+                          edits={pdfEdits}
+                          onEditsChange={setPdfEdits}
+                          transactions={transactions}
+                          onUpdateTransaction={onUpdateTransaction}
+                          selectedTransactionId={selectedTxnId}
+                          onEngineChange={setActiveEngine}
+                        />
+                      ) : (
+                        <TransactionTable
+                          transactions={filtered}
+                          sortKey={sortKey}
+                          sortDir={sortDir}
+                          onSort={onSort}
+                          onCategoryChange={onCategoryChange}
+                          onTransactionChange={patchTransaction}
+                          highlightId={highlightId}
+                          editable={
+                            workflowStep === "edit" ||
+                            workflowStep === "balance"
+                          }
+                          readOnly={
+                            workflowStep === "visual" ||
+                            workflowStep === "math" ||
+                            workflowStep === "fidelity" ||
+                            workflowStep === "complete"
+                          }
+                          mismatchIds={
+                            workflowStep === "balance" ||
+                            workflowStep === "render"
+                              ? mismatchIds
+                              : undefined
+                          }
+                          expectedBalances={
+                            workflowStep === "balance" ||
+                            workflowStep === "render"
+                              ? expectedBalances
+                              : undefined
+                          }
+                        />
+                      )}
+                    </>
                   )}
-                  {viewMode === "pdf" && canExportFinalPdf && (
-                    <Button
-                      type="button"
-                      variant="secondary"
-                      size="sm"
-                      className="rounded-full ml-auto"
-                      onClick={() => void handleExportPdf()}
-                    >
-                      <FileText className="h-3.5 w-3.5" />
-                      Export final PDF
-                      {pdfEdits.length > 0 ? ` (${pdfEdits.length})` : ""}
-                    </Button>
-                  )}
-                  {viewMode === "compare" && (
-                    <span className="text-[10px] text-muted-foreground ml-auto max-w-xs text-right leading-snug">
-                      Right column tracks edits, generate apply, bank-desc
-                      replace, and balance engines
-                    </span>
+
+                  {/* Live regenerated PDF — rebuilds after every step with updates */}
+                  {pdfBytes && (
+                    <RegeneratedPdfPreview
+                      candidatePdf={editedPdfBytes}
+                      originalPdf={pdfBytes}
+                      pageCountHint={result.pageCount}
+                      materializing={liveMaterializing}
+                      materializeMode={liveMaterializeMode}
+                      editCount={liveMaterializeEdits}
+                      notes={liveMaterializeNotes}
+                      onRefresh={() => void rebuildLiveCandidatePdf()}
+                    />
                   )}
                 </div>
 
-                {viewMode === "compare" ? (
-                  <SideBySideComparison
-                    original={sourceBaseline}
-                    current={transactions}
-                    highlightId={highlightId}
-                    onSelectRow={(id) => {
-                      setHighlightId(id);
-                      setSelectedTxnId(id);
-                    }}
-                    originalLabel="Original (frozen at parse)"
-                    currentLabel="Current / generation (live)"
-                  />
-                ) : viewMode === "pdf" &&
-                  pdfBytes &&
-                  (workflowStep === "edit" || workflowStep === "balance") ? (
-                  <PdfDocumentViewer
-                    fileData={pdfBytes}
-                    pageCount={result.pageCount}
-                    edits={pdfEdits}
-                    onEditsChange={setPdfEdits}
-                    transactions={transactions}
-                    onUpdateTransaction={onUpdateTransaction}
-                    selectedTransactionId={selectedTxnId}
-                    onEngineChange={setActiveEngine}
-                  />
-                ) : (
-                  <TransactionTable
-                    transactions={filtered}
-                    sortKey={sortKey}
-                    sortDir={sortDir}
-                    onSort={onSort}
-                    onCategoryChange={onCategoryChange}
-                    onTransactionChange={patchTransaction}
-                    highlightId={highlightId}
-                    editable={
-                      workflowStep === "edit" || workflowStep === "balance"
-                    }
-                    readOnly={
-                      workflowStep === "visual" ||
-                      workflowStep === "math" ||
-                      workflowStep === "generate" ||
-                      workflowStep === "fidelity" ||
-                      workflowStep === "complete"
-                    }
-                    mismatchIds={
-                      workflowStep === "balance" || workflowStep === "render"
-                        ? mismatchIds
-                        : undefined
-                    }
-                    expectedBalances={
-                      workflowStep === "balance" || workflowStep === "render"
-                        ? expectedBalances
-                        : undefined
-                    }
-                  />
-                )}
-
-                <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                {/* Sticky stage action bar */}
+                <div className="stage-action-bar">
                   <Button
                     variant="outline"
+                    size="sm"
                     className="rounded-full"
                     disabled={workflowStep === "edit"}
                     onClick={back}
@@ -1999,233 +3012,406 @@ const Index = () => {
                     <ChevronLeft className="mr-1 h-4 w-4" />
                     Back
                   </Button>
-                  <div className="flex items-center gap-2">
-                    {workflowStep === "math" && !mathResult && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    {workflowStep === "render" && !renderResult && (
                       <Button
                         variant="secondary"
+                        size="sm"
+                        className="rounded-full"
+                        onClick={advance}
+                      >
+                        Skip ahead
+                      </Button>
+                    )}
+                    {workflowStep === "math" && mathResult && (
+                      <Button
+                        variant="secondary"
+                        size="sm"
                         className="rounded-full"
                         onClick={handleMathCheck}
                       >
-                        Run check first
+                        Re-run math
                       </Button>
                     )}
-                    {workflowStep === "render" && !renderResult && (
-                      <span className="text-xs text-muted-foreground hidden sm:inline">
-                        Confirm render, or skip ahead
-                      </span>
+                    {workflowStep === "visual" && pixelReport && (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        className="rounded-full"
+                        onClick={() => void handlePixelCheck()}
+                      >
+                        Re-run pixel
+                      </Button>
+                    )}
+                    {workflowStep === "complete" && (
+                      <>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          className="rounded-full"
+                          onClick={() => {
+                            exportJson(
+                              {
+                                ...result,
+                                summary: liveSummary,
+                                transactions,
+                              },
+                              transactions,
+                              includeNotes,
+                            );
+                            setExportedOnce(true);
+                            toast.success("JSON downloaded");
+                          }}
+                        >
+                          Export JSON
+                        </Button>
+                        {canExportFinalPdf && (
+                          <Button
+                            variant="secondary"
+                            size="sm"
+                            className="rounded-full"
+                            onClick={() => {
+                              exportCsv(
+                                {
+                                  ...result,
+                                  summary: liveSummary,
+                                  transactions,
+                                },
+                                transactions,
+                                includeNotes,
+                              );
+                              setExportedOnce(true);
+                              toast.success("CSV downloaded");
+                            }}
+                          >
+                            Export CSV
+                          </Button>
+                        )}
+                      </>
+                    )}
+                    {workflowStep === "generate" && genApplied && (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        className="rounded-full"
+                        onClick={() => void generatorRef.current?.apply(false)}
+                      >
+                        Re-apply
+                      </Button>
                     )}
                     <Button
+                      size="sm"
                       className="rounded-full"
-                      disabled={workflowStep === "complete"}
-                      onClick={() => {
-                        if (workflowStep === "math" && !mathResult) {
-                          handleMathCheck();
-                        }
-                        if (workflowStep === "render" && !renderResult) {
-                          void handleConfirmRender().then(() => advance());
-                          return;
-                        }
-                        if (workflowStep === "fidelity" && !forensicsReport) {
-                          void handleForensics().then(() => advance());
-                          return;
-                        }
-                        advance();
-                      }}
+                      onClick={handleStagePrimary}
                     >
-                      {workflowStep === "complete" ? "Done" : "Continue"}
-                      <ChevronRight className="ml-1 h-4 w-4" />
+                      {stagePrimaryLabel}
+                      {workflowStep !== "complete" &&
+                        !(workflowStep === "generate" && !genApplied) && (
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        )}
                     </Button>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-4 xl:sticky xl:top-20 xl:self-start">
-                {(testLabMode ||
-                  workflowStep === "generate" ||
-                  hasGenerated ||
-                  genApplied) && (
-                  <TestWorkflowPanel
-                    stages={buildTestStages({
-                      workflowStep,
-                      hasGenerated: hasGenerated || workflowStep === "generate",
-                      qualityOk: genQuality?.ok ?? null,
-                      qualityScore: genQuality?.score ?? null,
-                      applied: genApplied,
-                      pdfEdits: pdfEdits.length,
-                      hasPdf: Boolean(pdfBytes),
-                      mathOk: mathResult
-                        ? mathResult.status === "pass" ||
-                          (mathResult.score ?? 0) >= 70
-                        : null,
-                      visualOk: pixelReport
-                        ? pixelReport.pixelStatus === "pass" ||
-                          pixelReport.pixelScore >= 90
-                        : null,
-                      forensicsOk: forensicsReport
-                        ? forensicsReport.verdict === "pass"
-                        : null,
-                      exported: exportedOnce,
-                    })}
-                    onJump={(id: TestStageId, step) => {
-                      if (step) goToStep(step);
-                      if (id === "replace") {
-                        toast.message("Bank-desc replace", {
-                          description:
-                            "Additional tools → Generator → Replace original descriptions",
-                        });
-                      }
-                    }}
-                    stressRunning={stressRunning}
-                    stressSummary={stressSummary}
-                    onRunStress={() => {
-                      setStressRunning(true);
-                      setStressSummary(null);
-                      // Defer so UI can paint spinner
-                      window.setTimeout(() => {
-                        try {
-                          const report = runStressSuite(50, 4242);
-                          const msg = report.perfect
-                            ? `Stress PASS · ${report.passed}/${report.n} · ${report.totalRows} rows · ${report.durationMs}ms`
-                            : `Stress FAIL · ${report.failed}/${report.n} failed · e.g. seed ${report.failures[0]?.seed}: ${report.failures[0]?.messages[0] ?? ""}`;
-                          setStressSummary(msg);
-                          setAuditLog((log) =>
-                            appendAuditEvent(log, "note", msg, {
-                              actor: "user",
-                              payload: {
-                                perfect: report.perfect,
-                                passed: report.passed,
-                                n: report.n,
-                              },
-                            }),
-                          );
-                          if (report.perfect) {
-                            toast.success("Stress suite perfect", {
-                              description: msg,
-                            });
-                          } else {
-                            toast.error("Stress suite failures", {
-                              description: msg,
-                            });
-                          }
-                        } catch (err) {
-                          const message =
-                            err instanceof Error ? err.message : "Stress failed";
-                          setStressSummary(message);
-                          toast.error("Stress suite error", {
-                            description: message,
-                          });
-                        } finally {
-                          setStressRunning(false);
-                        }
-                      }, 30);
-                    }}
-                  />
-                )}
-                <CompletenessScoreCard score={result.completenessScore} />
-                {result.parser && (
-                  <div className="rounded-2xl border border-border/70 bg-card/80 p-4 shadow-sm space-y-2 text-xs">
-                    <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-                      Document parser
+              {/* CONTEXT RAIL — collapsible */}
+              {railOpen && (
+                <aside className="space-y-3 lg:sticky lg:top-16 lg:self-start max-h-[calc(100vh-5rem)] lg:overflow-y-auto">
+                  {/* Primary: Advanced tools */}
+                  <Collapsible open={advancedOpen} onOpenChange={setAdvancedOpen}>
+                    <div className="rounded-2xl border border-primary/25 bg-card shadow-md overflow-hidden ring-1 ring-primary/10">
+                      <CollapsibleTrigger asChild>
+                        <button
+                          type="button"
+                          className="flex w-full items-center justify-between gap-2 px-3.5 py-3 text-left hover:bg-primary/5 transition-colors border-b border-border/40"
+                        >
+                          <div className="min-w-0">
+                            <span className="text-sm font-semibold tracking-tight">
+                              Advanced tools
+                            </span>
+                            <p className="text-[10px] text-muted-foreground mt-0.5">
+                              Generator · bank-desc · dates · fonts · Doc AI · geometry · remote
+                            </p>
+                          </div>
+                          <ChevronDown
+                            className={cn(
+                              "h-4 w-4 text-muted-foreground shrink-0 transition-transform",
+                              advancedOpen && "rotate-180",
+                            )}
+                          />
+                        </button>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div>
+                          {/* compact: outer "Advanced tools" header already shown — avoid double title */}
+                          <AdditionalToolsPanel
+                            compact
+                            transactions={transactions}
+                            pdfBytes={pdfBytes}
+                            fileName={result.fileName}
+                            rawText={result.rawText}
+                            engineMode={engineMode}
+                            activeTab={toolsTab}
+                            onActiveTabChange={setToolsTab}
+                            onEngineModeChange={(m) => {
+                              setEngineMode(m);
+                              saveEngineMode(m);
+                            }}
+                            onReplaceTransactions={(txns, label) => {
+                              applyReplacedLedger(txns, label);
+                            }}
+                            onAddPdfEdits={(edits) => {
+                              // NEVER REDACT: only queue edits with real replacement text
+                              const safe = edits.filter(
+                                (e) => String(e.replacement ?? "").trim().length > 0,
+                              );
+                              if (!safe.length) {
+                                toast.message("No text replacements to queue", {
+                                  description:
+                                    "Empty inserts refused (never redact without text)",
+                                });
+                                return;
+                              }
+                              setPdfEdits((prev) => [...prev, ...safe]);
+                              toast.message("Font-replicated edits queued", {
+                                description: `${safe.length} replacement(s) · never blank redaction`,
+                              });
+                            }}
+                            onCandidatePdf={(pdf, meta) => {
+                              // St George template fill: show filled shell immediately
+                              setEditedPdfBytes(pdf);
+                              setLiveMaterializeMode(meta.mode);
+                              setLiveMaterializeEdits(meta.edits.length);
+                              setLiveMaterializeNotes(meta.notes);
+                              // Replace edit queue with template-slot edits only
+                              // (don't mix statement-run geometry with template tokens)
+                              const safe = meta.edits.filter(
+                                (e) =>
+                                  String(e.replacement ?? "").trim().length > 0,
+                              );
+                              setPdfEdits(safe);
+                              toast.success("Template PDF ready", {
+                                description:
+                                  "Regenerated preview = St George template + your variables/transactions",
+                              });
+                            }}
+                            onAudit={(_type, message) => {
+                              setAuditLog((log) =>
+                                appendAuditEvent(log, "note", message, {
+                                  actor: "user",
+                                }),
+                              );
+                            }}
+                          />
+                        </div>
+                      </CollapsibleContent>
+                    </div>
+                  </Collapsible>
+
+                  {/* Secondary meta — click headers to expand (closed by default) */}
+                  <div className="space-y-1.5">
+                    <p className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground px-0.5">
+                      More details
                     </p>
-                    <p className="text-sm font-semibold">{result.parser.label}</p>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {result.parser.durationMs}ms
-                      {result.parser.fallbackUsed ? " · fallback used" : ""}
-                      {result.parser.structuredFromApi ? " · structured API" : ""}
-                      {result.parser.bankTemplateName
-                        ? ` · ${result.parser.bankTemplateName}`
-                        : ""}
-                    </p>
-                    {result.parser.enginesTried.length > 0 && (
-                      <p className="text-[10px] text-muted-foreground break-all">
-                        {result.parser.enginesTried.join(" → ")}
-                      </p>
+
+                    {/* Completeness — compact toggle */}
+                    <Collapsible
+                      open={completenessOpen}
+                      onOpenChange={setCompletenessOpen}
+                    >
+                      <div className="rounded-lg border border-border/60 bg-card/70 overflow-hidden">
+                        <CollapsibleTrigger asChild>
+                          <button
+                            type="button"
+                            className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left hover:bg-muted/40 transition-colors"
+                          >
+                            <span className="text-xs font-semibold">
+                              Completeness
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                              <span className="text-[10px] tabular-nums text-muted-foreground">
+                                {result.completenessScore.score}
+                                /100
+                              </span>
+                              <ChevronDown
+                                className={cn(
+                                  "h-3.5 w-3.5 text-muted-foreground transition-transform",
+                                  completenessOpen && "rotate-180",
+                                )}
+                              />
+                            </span>
+                          </button>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="border-t border-border/50 p-2">
+                            <CompletenessScoreCard
+                              score={result.completenessScore}
+                              compact
+                            />
+                          </div>
+                        </CollapsibleContent>
+                      </div>
+                    </Collapsible>
+
+                    {/* Document parser */}
+                    {result.parser && (
+                      <Collapsible open={parserOpen} onOpenChange={setParserOpen}>
+                        <div className="rounded-lg border border-border/60 bg-card/70 overflow-hidden">
+                          <CollapsibleTrigger asChild>
+                            <button
+                              type="button"
+                              className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left hover:bg-muted/40 transition-colors"
+                            >
+                              <div className="min-w-0">
+                                <span className="text-xs font-semibold">
+                                  Document parser
+                                </span>
+                                {!parserOpen && (
+                                  <p className="text-[10px] text-muted-foreground truncate">
+                                    {result.parser.label}
+                                  </p>
+                                )}
+                              </div>
+                              <ChevronDown
+                                className={cn(
+                                  "h-3.5 w-3.5 text-muted-foreground shrink-0 transition-transform",
+                                  parserOpen && "rotate-180",
+                                )}
+                              />
+                            </button>
+                          </CollapsibleTrigger>
+                          <CollapsibleContent>
+                            <div className="border-t border-border/50 px-3 py-2.5 space-y-1 text-xs">
+                              <p className="text-sm font-semibold">
+                                {result.parser.label}
+                              </p>
+                              <p className="text-muted-foreground leading-relaxed">
+                                {result.parser.durationMs}ms
+                                {result.parser.fallbackUsed
+                                  ? " · fallback used"
+                                  : ""}
+                                {result.parser.structuredFromApi
+                                  ? " · structured API"
+                                  : ""}
+                                {result.parser.bankTemplateName
+                                  ? ` · ${result.parser.bankTemplateName}`
+                                  : ""}
+                              </p>
+                              {result.parser.enginesTried.length > 0 && (
+                                <p className="text-[10px] text-muted-foreground break-all font-mono">
+                                  {result.parser.enginesTried.join(" → ")}
+                                </p>
+                              )}
+                            </div>
+                          </CollapsibleContent>
+                        </div>
+                      </Collapsible>
                     )}
+
+                    {/* Insights */}
+                    <Collapsible open={insightsOpen} onOpenChange={setInsightsOpen}>
+                      <div className="rounded-lg border border-border/60 bg-card/70 overflow-hidden">
+                        <CollapsibleTrigger asChild>
+                          <button
+                            type="button"
+                            className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left hover:bg-muted/40 transition-colors"
+                          >
+                            <div className="min-w-0">
+                              <span className="text-xs font-semibold">
+                                Insights
+                              </span>
+                              {!insightsOpen && (
+                                <p className="text-[10px] text-muted-foreground">
+                                  Charts · findings
+                                </p>
+                              )}
+                            </div>
+                            <ChevronDown
+                              className={cn(
+                                "h-3.5 w-3.5 text-muted-foreground shrink-0 transition-transform",
+                                insightsOpen && "rotate-180",
+                              )}
+                            />
+                          </button>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="border-t border-border/50 p-3 space-y-3">
+                            <StatementCharts transactions={transactions} />
+                            <FindingsPanel
+                              findings={result.findings}
+                              onSelect={(id) => {
+                                if (!id) return;
+                                setHighlightId(id);
+                                setQuery("");
+                                setCategoryFilter("all");
+                              }}
+                            />
+                          </div>
+                        </CollapsibleContent>
+                      </div>
+                    </Collapsible>
+
+                    {/* Verification & audit */}
+                    <Collapsible open={auditOpen} onOpenChange={setAuditOpen}>
+                      <div className="rounded-lg border border-border/60 bg-card/70 overflow-hidden">
+                        <CollapsibleTrigger asChild>
+                          <button
+                            type="button"
+                            className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left hover:bg-muted/40 transition-colors"
+                          >
+                            <div className="min-w-0">
+                              <span className="text-xs font-semibold">
+                                Verification &amp; audit
+                              </span>
+                              {!auditOpen && (
+                                <p className="text-[10px] text-muted-foreground tabular-nums">
+                                  {auditLog.length} events
+                                  {lastDraftSavedAt
+                                    ? " · draft saved"
+                                    : ""}
+                                </p>
+                              )}
+                            </div>
+                            <ChevronDown
+                              className={cn(
+                                "h-3.5 w-3.5 text-muted-foreground shrink-0 transition-transform",
+                                auditOpen && "rotate-180",
+                              )}
+                            />
+                          </button>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="border-t border-border/50">
+                            <AuditPanel
+                              auditLog={auditLog}
+                              changeHistory={changeHistory}
+                              mergedReport={mergedReport}
+                              onDownloadDraft={() => void handleDownloadDraft()}
+                              onDownloadReport={handleDownloadReport}
+                              lastDraftSavedAt={lastDraftSavedAt}
+                            />
+                          </div>
+                        </CollapsibleContent>
+                      </div>
+                    </Collapsible>
                   </div>
-                )}
-                <StatementCharts transactions={transactions} />
-                <FindingsPanel
-                  findings={result.findings}
-                  onSelect={(id) => {
-                    if (!id) return;
-                    setHighlightId(id);
-                    setQuery("");
-                    setCategoryFilter("all");
-                  }}
-                />
-                <AdditionalToolsPanel
-                  transactions={transactions}
-                  pdfBytes={pdfBytes}
-                  fileName={result.fileName}
-                  engineMode={engineMode}
-                  onEngineModeChange={(m) => {
-                    setEngineMode(m);
-                    saveEngineMode(m);
-                  }}
-                  onReplaceTransactions={(txns, label) => {
-                    setUndoState((s) => pushSnapshot(s, label, transactions, workflowStep));
-                    if (sourceBaseline.length === 0) {
-                      setSourceBaseline(transactions.map((t) => ({ ...t })));
-                    }
-                    setTransactions(txns);
-                    setResult((r) =>
-                      r
-                        ? {
-                            ...r,
-                            transactions: txns,
-                            summary: buildSummary(txns),
-                          }
-                        : r,
-                    );
-                    setViewMode("compare");
-                    setRenderResult(null);
-                    setMathResult(null);
-                    setAuditLog((log) =>
-                      appendAuditEvent(log, "note", label, {
-                        actor: "user",
-                        payload: { count: txns.length },
-                      }),
-                    );
-                    autosaveRef.current?.touch();
-                    toast.success(label, {
-                      description: `${txns.length} transactions · compare view open`,
-                    });
-                  }}
-                  onAddPdfEdits={(edits) => {
-                    if (!edits.length) return;
-                    setPdfEdits((prev) => [...prev, ...edits]);
-                    toast.message("Font-replicated edits queued", {
-                      description: `${edits.length} replacement(s)`,
-                    });
-                  }}
-                  onAudit={(type, message) => {
-                    setAuditLog((log) =>
-                      appendAuditEvent(log, "note", message, { actor: "user" }),
-                    );
-                  }}
-                />
-                <AuditPanel
-                  auditLog={auditLog}
-                  changeHistory={changeHistory}
-                  mergedReport={mergedReport}
-                  onDownloadDraft={() => void handleDownloadDraft()}
-                  onDownloadReport={handleDownloadReport}
-                  lastDraftSavedAt={lastDraftSavedAt}
-                />
-                {dirtyCount > 0 && (
-                  <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-xs text-amber-950 dark:text-amber-100">
-                    <strong>{dirtyCount}</strong> row(s) differ from the original
-                    parse. Per-row revert is available on the Edit step.
-                  </div>
-                )}
-              </div>
+
+                  {dirtyCount > 0 && (
+                    <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2.5 text-xs text-amber-950 dark:text-amber-100">
+                      <strong>{dirtyCount}</strong> row(s) differ from the original
+                      parse. Per-row revert is available on the Edit step.
+                    </div>
+                  )}
+                </aside>
+              )}
             </div>
           </div>
         )}
       </main>
 
-      <footer className="border-t border-border/60 py-4 text-center text-xs text-muted-foreground">
-        Statement Lens · Pdfium verify · SSIM · tile · pHash · Eyes optional
+      <footer className="border-t border-border/60 py-3 text-center text-[11px] text-muted-foreground">
+        Bank Statement Fidelity Editor · exact replica via logic generator injection ·
+        Pdfium · SSIM · tile · pHash · forensics · Eyes optional
       </footer>
     </div>
   );

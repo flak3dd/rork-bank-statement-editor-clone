@@ -1,0 +1,436 @@
+{
+  "label": "statement",
+  "path": "/Users/adminuser/Downloads/1132%20(2)/698/St George Bank Acc Statement #726 - 21.08.24 to 19.11.24.pdf",
+  "byteLength": 22547,
+  "pageCount": 3,
+  "textChars": 4205,
+  "runCount": 348,
+  "runsByPage": {
+    "1": 123,
+    "2": 128,
+    "3": 97
+  },
+  "txnCount": 22,
+  "sampleTxns": [
+    {
+      "date": "2024-11-18",
+      "desc": "Visa Purchase Oz Lotteries Melbourne",
+      "debit": 14,
+      "credit": null,
+      "bal": null
+    },
+    {
+      "date": "2024-11-18",
+      "desc": "Elysia Anne Leav Interbank Trans",
+      "debit": null,
+      "credit": 10000,
+      "bal": 64573.63
+    },
+    {
+      "date": "2024-11-18",
+      "desc": "Elysia Anne Leav Interbank Trans",
+      "debit": null,
+      "credit": 10000,
+      "bal": 54573.63
+    },
+    {
+      "date": "2024-11-18",
+      "desc": "Elysia Anne Leav Interbank Trans",
+      "debit": null,
+      "credit": 10000,
+      "bal": 44573.63
+    },
+    {
+      "date": "2024-11-18",
+      "desc": "Sct Deposit Ct.1228Hu Ct.1228Hu Ladbrokes Wit Ladbro",
+      "debit": null,
+      "credit": 250,
+      "bal": 34573.63
+    },
+    {
+      "date": "2024-11-16",
+      "desc": "Osko Deposit Interbank Trans Elysia Anne Leaver",
+      "debit": null,
+      "credit": 1000,
+      "bal": 34423.63
+    },
+    {
+      "date": "2024-11-15",
+      "desc": "Elysia Anne Leav Interbank Trans",
+      "debit": null,
+      "credit": 10000,
+      "bal": 33423.63
+    },
+    {
+      "date": "2024-11-15",
+      "desc": "Osko Deposit Interbank Trans Elysia Anne Leaver",
+      "debit": null,
+      "credit": 1000,
+      "bal": 23423.63
+    }
+  ],
+  "placeholders": [],
+  "topPage1Text": [
+    {
+      "t": "Date created: 19-Nov-2024 07:28 am",
+      "x": 70,
+      "y": 812,
+      "w": 165.1
+    },
+    {
+      "t": " ",
+      "x": 235.1,
+      "y": 812,
+      "w": 237.1
+    },
+    {
+      "t": "Page 1 of",
+      "x": 472.2,
+      "y": 812,
+      "w": 42.8
+    },
+    {
+      "t": "3",
+      "x": 519,
+      "y": 812,
+      "w": 5.6
+    },
+    {
+      "t": "St.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714",
+      "x": 70,
+      "y": 792,
+      "w": 391
+    },
+    {
+      "t": "Interbank Trans Elysia Anne Leaver",
+      "x": 115,
+      "y": 749.5,
+      "w": 159
+    },
+    {
+      "t": "14 Nov",
+      "x": 70,
+      "y": 737.5,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 737.5,
+      "w": 13.3
+    },
+    {
+      "t": "Osko Deposit 14Nov05:37",
+      "x": 115,
+      "y": 737.5,
+      "w": 116.7
+    },
+    {
+      "t": "$1,000.00",
+      "x": 390,
+      "y": 737.5,
+      "w": 44.5
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 737.5,
+      "w": 45.5
+    },
+    {
+      "t": "$1,423.63",
+      "x": 480,
+      "y": 737.5,
+      "w": 44.5
+    },
+    {
+      "t": "014164000000000000",
+      "x": 115,
+      "y": 713,
+      "w": 100.1
+    },
+    {
+      "t": "14 Nov",
+      "x": 70,
+      "y": 701,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 701,
+      "w": 13.3
+    },
+    {
+      "t": "Clough Projects",
+      "x": 115,
+      "y": 701,
+      "w": 70.6
+    },
+    {
+      "t": "$1,000.00",
+      "x": 390,
+      "y": 701,
+      "w": 44.5
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 701,
+      "w": 45.5
+    },
+    {
+      "t": "$2,423.63",
+      "x": 480,
+      "y": 701,
+      "w": 44.5
+    },
+    {
+      "t": "Interbank Trans",
+      "x": 115,
+      "y": 676.4,
+      "w": 70
+    },
+    {
+      "t": "14 Nov",
+      "x": 70,
+      "y": 664.4,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 664.4,
+      "w": 13.3
+    },
+    {
+      "t": "Elysia Anne Leav",
+      "x": 115,
+      "y": 664.4,
+      "w": 77.3
+    },
+    {
+      "t": "$10,000.00",
+      "x": 384.5,
+      "y": 664.4,
+      "w": 50
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 664.4,
+      "w": 40
+    },
+    {
+      "t": "$12,423.63",
+      "x": 474.5,
+      "y": 664.4,
+      "w": 50
+    },
+    {
+      "t": "Interbank Trans",
+      "x": 115,
+      "y": 639.8,
+      "w": 70
+    },
+    {
+      "t": "14 Nov",
+      "x": 70,
+      "y": 627.8,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 627.8,
+      "w": 13.3
+    },
+    {
+      "t": "Elysia Anne Leav",
+      "x": 115,
+      "y": 627.8,
+      "w": 77.3
+    },
+    {
+      "t": "$10,000.00",
+      "x": 384.5,
+      "y": 627.8,
+      "w": 50
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 627.8,
+      "w": 40
+    },
+    {
+      "t": "$22,423.63",
+      "x": 474.5,
+      "y": 627.8,
+      "w": 50
+    },
+    {
+      "t": "Interbank Trans Elysia Anne Leaver",
+      "x": 115,
+      "y": 603.2,
+      "w": 159
+    },
+    {
+      "t": "15 Nov",
+      "x": 70,
+      "y": 591.2,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 591.2,
+      "w": 13.3
+    },
+    {
+      "t": "Osko Deposit 15Nov06:20",
+      "x": 115,
+      "y": 591.2,
+      "w": 116.7
+    },
+    {
+      "t": "$1,000.00",
+      "x": 390,
+      "y": 591.2,
+      "w": 44.5
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 591.2,
+      "w": 40
+    },
+    {
+      "t": "$23,423.63",
+      "x": 474.5,
+      "y": 591.2,
+      "w": 50
+    },
+    {
+      "t": "Interbank Trans",
+      "x": 115,
+      "y": 566.7,
+      "w": 70
+    },
+    {
+      "t": "15 Nov",
+      "x": 70,
+      "y": 554.7,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 554.7,
+      "w": 13.3
+    },
+    {
+      "t": "Elysia Anne Leav",
+      "x": 115,
+      "y": 554.7,
+      "w": 77.3
+    },
+    {
+      "t": "$10,000.00",
+      "x": 384.5,
+      "y": 554.7,
+      "w": 50
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 554.7,
+      "w": 40
+    },
+    {
+      "t": "$33,423.63",
+      "x": 474.5,
+      "y": 554.7,
+      "w": 50
+    },
+    {
+      "t": "Interbank Trans Elysia Anne Leaver",
+      "x": 115,
+      "y": 530.1,
+      "w": 159
+    },
+    {
+      "t": "16 Nov",
+      "x": 70,
+      "y": 518.1,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 518.1,
+      "w": 13.3
+    },
+    {
+      "t": "Osko Deposit 16Nov07:51",
+      "x": 115,
+      "y": 518.1,
+      "w": 116.7
+    },
+    {
+      "t": "$1,000.00",
+      "x": 390,
+      "y": 518.1,
+      "w": 44.5
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 518.1,
+      "w": 40
+    },
+    {
+      "t": "$34,423.63",
+      "x": 474.5,
+      "y": 518.1,
+      "w": 50
+    },
+    {
+      "t": "Paypal *Ladbrokes Sydney Au",
+      "x": 115,
+      "y": 493.5,
+      "w": 135.1
+    },
+    {
+      "t": "16 Nov",
+      "x": 70,
+      "y": 481.5,
+      "w": 31.7
+    },
+    {
+      "t": " ",
+      "x": 101.7,
+      "y": 481.5,
+      "w": 13.3
+    },
+    {
+      "t": "Eftpos Debit 16Nov14:18",
+      "x": 115,
+      "y": 481.5,
+      "w": 111.2
+    },
+    {
+      "t": "-$100.00",
+      "x": 395,
+      "y": 481.5,
+      "w": 39.5
+    },
+    {
+      "t": " ",
+      "x": 434.5,
+      "y": 481.5,
+      "w": 40
+    }
+  ],
+  "fullText": "Complete Freedom\nTransaction Listing \nELYSIA LEAVER\n48 DENISON ST\nCOOMA NSW 2630\nAUSTRALIA\nAccount/Card number \n116-879   453 657 726 \nAccount Opened:   31-Aug-2021 \nTransactions \nThis statement covers the last 90 days of transactions   (21-Aug-2024 to 19-Nov-2024).\nCurrent Balance:   $64,474.33 \nDate   Transaction   Amount   Balance \n18 Nov   Visa Purchase 14Nov\nOz Lotteries Melbourne\n-$99.30   $64,474.33\n18 Nov   Elysia Anne Leav\nInterbank Trans\n$10,000.00   $64,573.63\n18 Nov   Elysia Anne Leav\nInterbank Trans\n$10,000.00   $54,573.63\n18 Nov   Elysia Anne Leav\nInterbank Trans\n$10,000.00   $44,573.63\n18 Nov   Sct Deposit 17Nov09:55\nCt.1228Hu Ct.1228Hu Ladbrokes Wit Ladbro\n$250.00   $34,573.63\n16 Nov   Eftpos Debit 16Nov14:18\nPaypal *Ladbrokes Sydney Au\n-$100.00   $34,323.63\n16 Nov   Osko Deposit 16Nov07:51\nInterbank Trans Elysia Anne Leaver\n$1,000.00   $34,423.63\n15 Nov   Elysia Anne Leav\nInterbank Trans\n$10,000.00   $33,423.63\n15 Nov   Osko Deposit 15Nov06:20\nInterbank Trans Elysia Anne Leaver\n$1,000.00   $23,423.63\n14 Nov   Elysia Anne Leav\nInterbank Trans\n$10,000.00   $22,423.63\n14 Nov   Elysia Anne Leav\nInterbank Trans\n$10,000.00   $12,423.63\n14 Nov   Clough Projects\n014164000000000000\n$1,000.00   $2,423.63\n14 Nov   Osko Deposit 14Nov05:37\nInterbank Trans Elysia Anne Leaver\n$1,000.00   $1,423.63 \nSt.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714 \nDate created: 19-Nov-2024 07:28 am   Page 1 of 3\n\n13 Nov   Osko Withdrawal 13Nov07:42\nBet Nation 50 Betnation Deposi\n-$50.00   $423.63\n11 Nov   Visa Purchase 07Nov\nOz Lotteries Melbourne\n-$69.10   $473.63\n11 Nov   Eftpos Debit 10Nov08:12\nPaypal *Sportsbet Sydney Au\n-$25.00   $542.73\n08 Nov   Eftpos Debit 08Nov15:23\nPaypal *Ladbrokes Sydney Au\n-$100.00   $567.73\n05 Nov   Eftpos Debit 05Nov19:05\nPaypal *Ladbrokes Sydney Au\n-$100.00   $667.73\n05 Nov   Eftpos Debit 05Nov06:09\nPaypal *Ladbrokes Sydney Au\n-$150.00   $767.73\n05 Nov   Eftpos Debit 05Nov06:06\nPaypal *Ladbrokes Sydney Au\n-$100.00   $917.73\n17 Oct   Tfr Wdl BPAY Internet 17Oct20:30\n4265572883518110 Hsbc Cards\n-$800.00   $1,017.73\n14 Oct   Clough Projects\n014164000000000000\n$1,000.00   $1,817.73\n14 Oct   Eftpos Debit 13Oct16:35\nUber* Trip\\\n-$23.26   $817.73\n14 Oct   Eftpos Debit 13Oct14:03\nUber* Trip\\\n-$22.56   $840.99\n14 Oct   Eftpos Debit 13Oct03:29\nUber *Trip Help.Uber.Com\\\n-$22.58   $863.55\n11 Oct   Eftpos Credit 11Oct15:49\nUber* Trip\\\n$0.01   $886.13\n11 Oct   Eftpos Debit 11Oct15:23\nUber* Trip\\\n-$24.01   $886.12\n11 Oct   Eftpos Debit 11Oct13:43\nUber* Trip\\\n-$24.51   $910.13\n07 Oct   Eftpos Debit 06Oct23:53\nUber Eats* Eats\\\n-$27.24   $934.64 \nTransaction listing continued...   Account/Card number \n453 657 726 \nDate   Transaction   Amount   Balance \nSt.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714 \nDate created: 19-Nov-2024 07:28 am   Page 2 of 3\n\n05 Oct   Eftpos Debit 04Oct15:03\nUber *Trip Help.Uber.Com\\\n-$16.44   $961.88\n24 Sep   Tfr Wdl BPAY Internet 24Sep11:51\n4265572883518110 Hsbc Cards\n-$1,000.00   $978.32\n24 Sep   Osko Deposit 24Sep11:50\nInterbank Trans Elysia Anne Leaver\n$1,000.00   $1,978.32\n21 Sep   Osko Withdrawal 21Sep12:57\nE Leaver B Patrick\n-$40.00   $978.32\n17 Sep   Osko Withdrawal 17Sep19:07\nElysia Bronnie Cave\n-$131.00   $1,018.32\n14 Sep   Osko Withdrawal 14Sep20:37\nDave Ibbitson\n-$140.00   $1,149.32\n13 Sep   Clough Projects\n014164000000000000\n$1,000.00   $1,289.32\n02 Sep   Osko Withdrawal 02Sep20:35\nDog Food Benjamin Patrick\n-$145.00   $289.32\n24 Aug   Visa Purchase 21Aug\nOz Lotteries Melbourne\n-$127.90   $434.32\n24 Aug   Eftpos Debit 24Aug21:05\nPaypal *Ladbrokes Sydney Au\n-$100.00   $562.22 \nTotals for this report   Debits:   -$3,437.90   Credits:   $67,250.01 \nThings you should know \nThis listing shows only those transactions that have been processed and may not include intraday transactions. \nTransaction listing continued...   Account/Card number \n453 657 726 \nDate   Transaction   Amount   Balance \nSt.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714 \nDate created: 19-Nov-2024 07:28 am   Page 3 of 3"
+}

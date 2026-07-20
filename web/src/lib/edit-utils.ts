@@ -24,6 +24,27 @@ export function attachOriginals(transactions: Transaction[]): Transaction[] {
   }));
 }
 
+/**
+ * After Additional tools / generator replace: pin `original` to the pre-replace
+ * (or source baseline) snapshot so Balance Out / dirty flags reflect replacements.
+ */
+export function withSourceOriginals(
+  next: Transaction[],
+  source: Transaction[],
+): Transaction[] {
+  return next.map((t, i) => {
+    const src = source[i];
+    const original = src
+      ? (src.original ?? snapshotOf(src))
+      : (t.original ?? snapshotOf(t));
+    return {
+      ...t,
+      original,
+      flags: [...new Set([...t.flags, "replaced"])],
+    };
+  });
+}
+
 export function moneyEqual(a: number | null, b: number | null, eps = 0.005): boolean {
   if (a == null && b == null) return true;
   if (a == null || b == null) return false;

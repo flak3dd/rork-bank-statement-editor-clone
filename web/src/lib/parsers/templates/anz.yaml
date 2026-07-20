@@ -4,17 +4,25 @@ match:
   - ANZ Bank
   - Australia and New Zealand Banking
   - ANZ Internet Banking
+  - ANZ Plus
   - anz.com
 dateOrder: dmy
 columnOrder:
   - date
   - description
-  - amount
+  - credit
+  - debit
   - balance
 noise:
   - anz
+  - anz plus
   - bsb
   - transaction details
   - processed date
+  - effective date
+  - account statement
 currency: AUD
-notes: ANZ often uses single Amount column (signed or CR/DR markers).
+notes: >
+  ANZ Plus uses Date | Description | Credit | Debit | Balance.
+  Multi-line rows: description + location, then $movement $balance.
+  FreeText OCR may double glyphs on credit amounts ($ $4 4,,3… → $4,398.90).

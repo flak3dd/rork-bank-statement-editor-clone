@@ -316,11 +316,11 @@ def plan_replacements(
 
 
 def apply_replacements(doc: fitz.Document, plan: list[Replacement]) -> int:
-    """Redact original spans and insert new text at the same baseline.
+    """Cover original spans with white rects and insert new text (NO redactions).
 
-    Geometry is captured *before* redaction. After white-out, we draw with
-    ``insert_text`` at (x0, baseline_y) so lines stay row-aligned — this is
-    the high-fidelity path for reproducing an exact layout replica.
+    Policy: never use ``add_redact_annot`` / ``apply_redactions`` — output PDFs
+    must not contain redaction annotations. White filled draw rects + insert_text
+    keep row alignment without Redact subtypes.
     """
     by_page: dict[int, list[Replacement]] = {}
     for r in plan:
@@ -329,24 +329,37 @@ def apply_replacements(doc: fitz.Document, plan: list[Replacement]) -> int:
     applied = 0
     for page_index, items in by_page.items():
         page = doc[page_index]
-        # Snapshot geometry before any mutation
-        inserts: list[tuple[Replacement, float, float, float, tuple[float, float, float]]] = []
+
+        # Drop any existing redaction annotations on this page
+        try:
+            for annot in list(page.annots() or []):
+                try:
+                    if annot.type[0] == fitz.PDF_ANNOT_REDACT:  # type: ignore[attr-defined]
+                        page.delete_annot(annot)
+                    elif "redact" in str(annot.type).lower():
+                        page.delete_annot(annot)
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
         for r in items:
+            if not (r.replacement or "").strip():
+                continue
             x0, y0, x1, y1 = r.bbox
             fontsize = max(4.0, min(float(r.size), 18.0))
-            # PDF text baseline ≈ bottom of span bbox
             baseline_y = y1 - max(0.5, fontsize * 0.12)
-            color = tuple(r.color) if r.color and len(r.color) >= 3 else (0.0, 0.0, 0.0)
-            inserts.append((r, x0, baseline_y, fontsize, color))  # type: ignore[arg-type]
+            color = (
+                tuple(r.color)
+                if r.color and len(r.color) >= 3
+                else (0.0, 0.0, 0.0)
+            )
 
             rect = fitz.Rect(x0, y0, x1, y1)
             rect = rect + (-0.6, -0.4, 0.6, 0.4)
-            page.add_redact_annot(rect, fill=(1, 1, 1), text="")
+            # White cover — NOT a redaction annotation
+            page.draw_rect(rect, color=(1, 1, 1), fill=(1, 1, 1), overlay=True)
 
-        page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE)
-
-        for r, x0, baseline_y, fontsize, color in inserts:
-            # Primary: single-line baseline insert (stable row alignment)
             page.insert_text(
                 fitz.Point(x0, baseline_y),
                 r.replacement,

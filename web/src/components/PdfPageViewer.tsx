@@ -67,12 +67,27 @@ export function PdfPageViewer({
 
     docRef.current.renderPage(pageNumber, scale).then((page) => {
       if (cancelled) return;
-      canvas.width = page.width;
-      canvas.height = page.height;
+      // Use ImageData integer dims — float page.width caused IndexSizeError
+      const w = Math.max(1, Math.floor(page.imageData.width || page.width || 1));
+      const h = Math.max(
+        1,
+        Math.floor(page.imageData.height || page.height || 1),
+      );
+      canvas.width = w;
+      canvas.height = h;
       const ctx = canvas.getContext("2d");
-      if (ctx) ctx.putImageData(page.imageData, 0, 0);
+      if (ctx) {
+        try {
+          ctx.putImageData(page.imageData, 0, 0);
+        } catch {
+          const copy = ctx.createImageData(w, h);
+          const n = Math.min(copy.data.length, page.imageData.data.length);
+          copy.data.set(page.imageData.data.subarray(0, n));
+          ctx.putImageData(copy, 0, 0);
+        }
+      }
       setRuns(page.runs);
-      setDims({ width: page.width, height: page.height });
+      setDims({ width: w, height: h });
       setLoading(false);
     });
 

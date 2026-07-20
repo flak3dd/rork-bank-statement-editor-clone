@@ -1,0 +1,256 @@
+{
+  "pdf": "/Users/adminuser/Downloads/cloned_80xxxxx78_90d_y_final_clean.pdf",
+  "bytes": 121487,
+  "startedAt": "2026-07-19T19:40:59.273Z",
+  "extract": {
+    "pageCount": 12,
+    "textLength": 18771,
+    "engine": "pdfjs",
+    "sample": "Gregory Thompson \n18 Sawley Cres \nGOLDEN BAY, WA 6174 \nAccount Number \n663 388 173 \nOpening Balance\n$10,460.00\nClosing Balance\n$26,053.79 \nANZ Plus \nBranch Number (BSB) \n014111 \nAccount Name \nGREGORY THOMPSON \nDate   Description   Credit   Debit   Balance\n01 Apr   OPENING BALANCE   $10,460.00\n02 Apr   VISA DEBIT PURCHASE CARD 5076 STARBUCKS\nGOLDEN BAY\n$8.00   $10,452.00\n02 Apr   TRANSFER TO 013-00"
+  },
+  "parse": {
+    "txnCount": 163,
+    "enginesTried": [],
+    "first3": [
+      {
+        "date": "2026-04-01",
+        "desc": "OPENING BALANCE",
+        "debit": null,
+        "credit": null,
+        "balance": 10460
+      },
+      {
+        "date": "2026-04-02",
+        "desc": "VISA DEBIT PURCHASE CARD 5076 STARBUCKS GOLDEN BAY",
+        "debit": 8,
+        "credit": null,
+        "balance": 10452
+      },
+      {
+        "date": "2026-04-02",
+        "desc": "TRANSFER TO 013-002-801917986 #680467",
+        "debit": 256.9,
+        "credit": null,
+        "balance": 10195.1
+      }
+    ]
+  },
+  "layout": {
+    "score": 100,
+    "documentClass": "filled-statement",
+    "bank": "anz",
+    "structureConf": 0.75,
+    "recipe": "Date | Description (ANZ channel codes / merchant) | Debit | Credit | Balance; refs often trailing",
+    "pageCount": 12,
+    "pageSize": {
+      "width": 595,
+      "height": 842
+    },
+    "part1_static": 585,
+    "part2_vars": 370,
+    "part3_txnRows": 256,
+    "columns": {
+      "dateX": 45.9375,
+      "amountX": 444.325,
+      "balanceX": 507.80625
+    },
+    "bodyYMin": 136.25,
+    "bodyYMax": 782.1125,
+    "rowPitchMedian": 27.63749999999999,
+    "gates": [
+      {
+        "id": "has-static",
+        "pass": true,
+        "detail": "585 static run(s)"
+      },
+      {
+        "id": "has-txn-or-shell",
+        "pass": true,
+        "detail": "256 txn row(s)"
+      },
+      {
+        "id": "three-parts-present",
+        "pass": true,
+        "detail": "static=585 vars=370 txns=256"
+      }
+    ],
+    "notes": [
+      "Step 1: three-part layout map (static | header/footer vars | transaction table).",
+      "Step 2: bank transaction structure profile from Part 3 samples.",
+      "coordSystem=pdf-bottom-left",
+      "bank=anz structureConf=0.75",
+      "Date | Description (ANZ channel codes / merchant) | Debit | Credit | Balance; refs often trailing"
+    ],
+    "durationMs": 40
+  },
+  "ledgerSource": "hybrid-parse",
+  "ledgerCount": 163,
+  "sourceMath": {
+    "score": 100,
+    "status": "pass",
+    "balanceChainOk": true,
+    "openingPlusNetOk": true,
+    "items": [
+      {
+        "id": "count",
+        "status": "pass",
+        "title": "Transaction count",
+        "detail": "163 row(s) in working set."
+      },
+      {
+        "id": "hollow",
+        "status": "pass",
+        "title": "Amount presence",
+        "detail": "Every row has at least one amount or balance field."
+      },
+      {
+        "id": "dual",
+        "status": "pass",
+        "title": "Column exclusivity",
+        "detail": "No row has both debit and credit filled as positive amounts."
+      },
+      {
+        "id": "chain",
+        "status": "pass",
+        "title": "Running balance chain",
+        "detail": "Stated balances match recompute engine within tolerance."
+      },
+      {
+        "id": "open-net-close",
+        "status": "pass",
+        "title": "Opening + movements vs closing",
+        "detail": "Closing 26053.79 matches opening + net movements."
+      },
+      {
+        "id": "totals",
+        "status": "pass",
+        "title": "Summary totals",
+        "detail": "In 31224.31 · Out 15630.52 · Net 15593.79."
+      },
+      {
+        "id": "reparse",
+        "status": "pass",
+        "title": "Re-parse count",
+        "detail": "Raw text re-parse yields 163 row(s)."
+      }
+    ]
+  },
+  "balancePreview": {
+    "opening": 10460,
+    "mismatchCount": 0,
+    "engine": "hybrid",
+    "chainHealthy": true
+  },
+  "perfectReplacement": {
+    "ok": true,
+    "editCount": 372,
+    "strategy": "hybrid-merge",
+    "score": 100,
+    "coverage": {
+      "date": {
+        "linked": 0,
+        "changed": 0,
+        "applied": 0
+      },
+      "description": {
+        "linked": 768,
+        "changed": 163,
+        "applied": 291
+      },
+      "debit": {
+        "linked": 0,
+        "changed": 38,
+        "applied": 38
+      },
+      "credit": {
+        "linked": 0,
+        "changed": 2,
+        "applied": 2
+      },
+      "balance": {
+        "linked": 0,
+        "changed": 41,
+        "applied": 41
+      },
+      "chrome": {
+        "linked": 0,
+        "changed": 0,
+        "applied": 0
+      }
+    },
+    "notes": [
+      "documentClass=filled-statement",
+      "geometry-link: 1539 runs across ≤12 pages",
+      "geometry-link: passA=768 passB=768 merged=768",
+      "row-cluster: +4 residual field edit(s)",
+      "hybrid-merge: 372 unique non-empty edit(s)"
+    ],
+    "durationMs": 1609
+  },
+  "oem": {
+    "ok": true,
+    "path": "filled-geometry",
+    "score": 100,
+    "editCount": 372,
+    "summary": {
+      "bankId": "anz",
+      "documentClass": "filled-statement",
+      "staticRuns": 585,
+      "varRuns": 370,
+      "txnRowsMapped": 256,
+      "structureRecipe": "ANZ: date(dd/mm/yyyy) · date · description · credit · debit · balance · AUD",
+      "writePolicy": "OEM vectors kept for Part1 static; Part2/Part3 FreeText inject; no redactions left in output; YAML template-assisted generation; multi-engine write"
+    },
+    "gates": [
+      {
+        "id": "oem-write",
+        "pass": true,
+        "detail": "372 OEM injection(s) via filled-geometry"
+      },
+      {
+        "id": "oem-static-preserved",
+        "pass": true,
+        "detail": "Static chrome retained from original OEM PDF vectors"
+      },
+      {
+        "id": "oem-structure",
+        "pass": true,
+        "detail": "bank=anz conf=0.75"
+      },
+      {
+        "id": "oem-description-coverage",
+        "pass": true,
+        "detail": "desc 291/163 (need ≥20%)"
+      },
+      {
+        "id": "oem-no-redactions",
+        "pass": true,
+        "detail": "Square cover + FreeText only — redactions never written"
+      }
+    ],
+    "notes": [
+      "oem-path=filled-geometry",
+      "generation-template=anz bankGen=anz",
+      "perfect: strategy=hybrid-merge score=100 edits=372",
+      "geometry-link: 1539 runs across ≤12 pages",
+      "geometry-link: passA=768 passB=768 merged=768",
+      "row-cluster: +4 residual field edit(s)",
+      "hybrid-merge: 372 unique non-empty edit(s)",
+      "OEM result: score=100/100 path=filled-geometry edits=372 bytes=5961226"
+    ],
+    "durationMs": 1521,
+    "layoutFrozen": true
+  },
+  "materialize": {
+    "error": "Could not write final statement PDF (368 replacement(s)) via engines [pdfium, mupdf, remote]: pdfium: pdfium write: MuPDF inject failed at offset 192/368 · mupdf: mupdf failed after chunk retries near offset 0/368 · remote: Remote engine URL not configured"
+  },
+  "finishedAt": "2026-07-19T19:41:03.376Z",
+  "passSummary": {
+    "hasText": true,
+    "hasTxns": true,
+    "layoutScore": 100,
+    "layoutGatesPass": true,
+    "perfectWrote": true,
+    "oemWrote": true
+  }
+}

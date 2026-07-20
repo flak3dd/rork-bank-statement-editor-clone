@@ -11,6 +11,34 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    /**
+     * Browser cannot call cloud parsers cross-origin (CORS → NetworkError).
+     * Dev proxies forward Authorization headers to LlamaParse / Document AI.
+     */
+    proxy: {
+      "/api/llamaparse": {
+        target: "https://api.cloud.llamaindex.ai",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (p) => p.replace(/^\/api\/llamaparse/, "/api/v1/parsing"),
+      },
+      // Document AI: /api/docai/us/... → https://us-documentai.googleapis.com/...
+      "/api/docai": {
+        target: "https://us-documentai.googleapis.com",
+        changeOrigin: true,
+        secure: true,
+        rewrite: (p) => p.replace(/^\/api\/docai/, ""),
+        configure: (proxy) => {
+          // Support eu region via Host header override when path contains /locations/eu/
+          proxy.on("proxyReq", (proxyReq, req) => {
+            const url = req.url ?? "";
+            if (url.includes("/locations/eu/")) {
+              proxyReq.setHeader("host", "eu-documentai.googleapis.com");
+            }
+          });
+        },
+      },
+    },
   },
   plugins: [react()],
   resolve: {

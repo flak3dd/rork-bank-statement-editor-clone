@@ -31,7 +31,7 @@ export function getApplitoolsConfig(): ApplitoolsConfig | null {
       "https://eyesapi.applitools.com",
     appName:
       envFirst("VITE_APPLITOOLS_APP_NAME", "EXPO_PUBLIC_APPLITOOLS_APP_NAME") ??
-      "Statement Lens",
+      "Bank Statement Fidelity Editor",
     batchName:
       envFirst("VITE_APPLITOOLS_BATCH_NAME") ?? "Statement visual validation",
   };

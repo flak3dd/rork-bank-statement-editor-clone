@@ -69,20 +69,20 @@ export function Toolbar({
   onRedo,
 }: ToolbarProps) {
   return (
-    <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-      <div className="flex flex-1 flex-col sm:flex-row gap-2 min-w-0">
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-1 flex-col xs:flex-row sm:flex-row gap-1.5 min-w-0">
         <div className="relative flex-1 min-w-0">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Search description, date, amount…"
-            className="pl-9 h-10 bg-card/80"
+            className="pl-8 h-8 text-sm bg-card/80"
             aria-label="Search transactions"
           />
         </div>
         <Select value={category} onValueChange={onCategoryChange}>
-          <SelectTrigger className="w-full sm:w-[180px] h-10 bg-card/80">
+          <SelectTrigger className="w-full sm:w-[150px] h-8 text-xs bg-card/80">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
@@ -96,9 +96,9 @@ export function Toolbar({
         </Select>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <p className="text-xs text-muted-foreground mr-1 tabular-nums">
-          {resultCount} / {totalCount}
+      <div className="flex flex-wrap items-center gap-1.5">
+        <p className="text-[11px] text-muted-foreground mr-0.5 tabular-nums">
+          {resultCount}/{totalCount}
         </p>
         <div className="flex items-center rounded-full border border-border/70 bg-card/70 p-0.5">
           <Tooltip>
@@ -107,12 +107,12 @@ export function Toolbar({
                 type="button"
                 size="icon"
                 variant="ghost"
-                className="h-8 w-8 rounded-full"
+                className="h-7 w-7 rounded-full"
                 disabled={!canUndo}
                 onClick={onUndo}
                 aria-label="Undo"
               >
-                <Undo2 className="h-4 w-4" />
+                <Undo2 className="h-3.5 w-3.5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>Undo (⌘Z)</TooltipContent>
@@ -123,31 +123,32 @@ export function Toolbar({
                 type="button"
                 size="icon"
                 variant="ghost"
-                className="h-8 w-8 rounded-full"
+                className="h-7 w-7 rounded-full"
                 disabled={!canRedo}
                 onClick={onRedo}
                 aria-label="Redo"
               >
-                <Redo2 className="h-4 w-4" />
+                <Redo2 className="h-3.5 w-3.5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>Redo (⌘⇧Z)</TooltipContent>
           </Tooltip>
         </div>
-        <div className="flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-3 py-1.5">
+        <div className="flex items-center gap-1.5 rounded-full border border-border/70 bg-card/70 px-2.5 py-1">
           <Switch
             id="include-notes"
             checked={includeNotes}
             onCheckedChange={onIncludeNotesChange}
+            className="scale-90"
           />
-          <Label htmlFor="include-notes" className="text-xs cursor-pointer">
-            Include notes
+          <Label htmlFor="include-notes" className="text-[11px] cursor-pointer">
+            Notes
           </Label>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="rounded-full">
-              <Download className="mr-2 h-4 w-4" />
+            <Button size="sm" variant="outline" className="rounded-full h-8 text-xs">
+              <Download className="mr-1.5 h-3.5 w-3.5" />
               Export
             </Button>
           </DropdownMenuTrigger>
@@ -164,9 +165,14 @@ export function Toolbar({
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button variant="outline" className="rounded-full" onClick={onReset}>
-          <RotateCcw className="mr-2 h-4 w-4" />
-          New file
+        <Button
+          size="sm"
+          variant="ghost"
+          className="rounded-full h-8 text-xs text-muted-foreground"
+          onClick={onReset}
+        >
+          <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
+          New
         </Button>
       </div>
     </div>

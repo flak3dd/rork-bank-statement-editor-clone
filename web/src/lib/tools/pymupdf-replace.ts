@@ -35,8 +35,12 @@ export interface PymupdfReplaceOptions {
   transactions: Transaction[];
   /** PDF bytes for geometry linking (optional — table-only without it). */
   pdfBytes?: Uint8Array | null;
-  /** Bank generator id (anz, cba, westpac, …). */
+  /** Bank generator id (anz, cba, westpac, …) or "auto" for YAML detect. */
   bank: string;
+  /** Raw statement text — enables parsers/templates YAML detection. */
+  rawText?: string;
+  /** Force YAML template id (anz, westpac, commonwealth, …). */
+  templateId?: string | null;
   /** Which fields to regenerate. Default descriptions only. */
   replace?: Array<"description" | "debit" | "credit" | "balance">;
   /** Max pages to scan for text runs. */
@@ -70,20 +74,55 @@ export interface PymupdfReplaceResult {
 export async function replaceStatementDataWithGeneration(
   options: PymupdfReplaceOptions,
 ): Promise<PymupdfReplaceResult> {
-  const bank = normalizeBankId(options.bank);
   const fields = new Set(options.replace ?? ["description"]);
   const previous = options.transactions;
   const maxPages = options.maxPages ?? 40;
 
-  const next: Transaction[] = previous.map((t) => {
+  // YAML bank templates assist: detect brand + map to generator + cleanup
+  let bank = normalizeBankId(options.bank === "auto" ? "other" : options.bank);
+  let templateNote = "";
+  let baseRows = previous;
+
+  if (fields.has("description")) {
+    try {
+      const { assistLedgerWithBankTemplate } = await import(
+        "@/lib/generation/from-bank-template"
+      );
+      const assisted = assistLedgerWithBankTemplate({
+        transactions: previous,
+        rawText: options.rawText ?? "",
+        templateId: options.templateId,
+        bankHint: options.bank === "auto" ? null : options.bank,
+        rewriteDescriptions: true,
+        applyCleanup: true,
+      });
+      baseRows = assisted.transactions;
+      bank = assisted.context.bankId;
+      templateNote = `yaml-template=${assisted.context.template.id}; ${assisted.notes.slice(-2).join("; ")}`;
+    } catch {
+      baseRows = previous.map((t) => ({
+        ...t,
+        description: generateBankDescription(bank),
+        flags: [...new Set([...(t.flags ?? []), "bank-desc", bank])],
+      }));
+    }
+  }
+
+  const next: Transaction[] = baseRows.map((t, i) => {
+    const prev = previous[i] ?? t;
     const row: Transaction = {
       ...t,
-      original: t.original ?? snapshotOf(t),
-      flags: [...new Set([...t.flags, "bank-desc", bank, "pymupdf-replace"])],
+      original: prev.original ?? snapshotOf(prev),
+      flags: [
+        ...new Set([
+          ...(t.flags ?? []),
+          "bank-desc",
+          bank,
+          "pymupdf-replace",
+          "tpl-assist",
+        ]),
+      ],
     };
-    if (fields.has("description")) {
-      row.description = generateBankDescription(bank);
-    }
     // Money field regeneration is optional and conservative — leave values
     // unless explicitly requested (balance chain integrity is caller's job).
     if (fields.has("debit") && row.debit != null) {
@@ -112,6 +151,7 @@ export async function replaceStatementDataWithGeneration(
       },
       mode: "table-only",
       note:
+        (templateNote ? `${templateNote}. ` : "") +
         "No PDF bytes — table replaced with bank generators only. " +
         "Use Python PyMuPDF CLI for native PDF rewrite: " +
         "tools/pymupdf_pipeline/replace_statement.py",
@@ -171,6 +211,7 @@ export async function replaceStatementDataWithGeneration(
     },
     mode: "table+geometry",
     note:
+      (templateNote ? `${templateNote}. ` : "") +
       `Bank ${bank}: ${edits.length}/${stats.linked} geometry-linked PdfEdit(s) ` +
       `(${edits.filter((e) => e.linkedField === "description").length} desc). ` +
       `Export PDF merges these with any other field changes so the final PDF includes all replacement data. ` +

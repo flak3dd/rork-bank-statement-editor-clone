@@ -2,6 +2,8 @@
 
 This document explains the core concepts behind the statement generation system in plain language. It is intentionally generic and does not describe any one bank or brand.
 
+Product framing: the generator is the **intelligent balance and transaction** half of the [Bank Statement Fidelity Editor](./product-concept.md) — synthetic data is then injected into a source PDF via the Perfect Replacement Pipeline for an exact visual replica.
+
 ## 1. Purpose and structure
 
 A statement generator turns a short configuration into a realistic-looking bank statement. The system is split into four concerns: the data that describes the account and the period, the engine that fabricates a plausible series of transactions, the formatter that turns those transactions into a printable multi-page document, and the dashboard used to tweak the configuration and review results.

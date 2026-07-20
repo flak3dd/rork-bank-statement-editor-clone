@@ -5,10 +5,10 @@
   "achieved": true,
   "finalStreak": 5,
   "streakFingerprints": [
-    "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":true,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"ANZ MOBILE BANKING PAYMENT 507738 TO MICHAEL CHEN\"}",
+    "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":true,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"VISA DEBIT PURCHASE CARD VISA DEBIT PURCHASE CARD 5076 UBER EATS\"}",
     "{\"parser\":\"pymupdf\",\"bank\":\"cba\",\"seed\":11110,\"periodDays\":28,\"salaryAmount\":3050,\"cardSpendPct\":20,\"billsSubsPct\":14,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":false,\"genClose\":66843.73,\"rewriteClose\":67999.11,\"editCount\":58,\"sampleDesc\":\"CBA SALARY 11110 — FROM PAYROLL\"}",
-    "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"runVisual\":true,\"genClose\":67584.53,\"rewriteClose\":67351.4,\"editCount\":22,\"sampleDesc\":\"DEPOSIT WESTPAC BANKCORPDIRECT DR 792798\"}",
-    "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":false,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"Transfer from SAV 00299053 Mobile# 560148462\"}",
+    "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"runVisual\":true,\"genClose\":67584.53,\"rewriteClose\":67351.4,\"editCount\":22,\"sampleDesc\":\"DEPOSIT WESTPAC BANKCORPDIRECT DR 730615\"}",
+    "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":false,\"genClose\":null,\"rewriteClose\":5,\"editCount\":22,\"sampleDesc\":\"Ext Tfr - NET#1001963113 to 47845929 RACHEL TAYLOR ING - ING Direct\"}",
     "{\"parser\":\"local-ocr\",\"bank\":\"bankwest\",\"seed\":11440,\"periodDays\":49,\"salaryAmount\":3800,\"cardSpendPct\":35,\"billsSubsPct\":26,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runVisual\":true,\"genClose\":69688.05,\"rewriteClose\":68381.29,\"editCount\":59,\"sampleDesc\":\"BANKWEST SALARY 11440 — FROM PAYROLL\"}"
   ],
   "totalAttempts": 5,
@@ -32,7 +32,7 @@
         "pageCount": 3,
         "rawTextLen": 3840,
         "linkStats": "linked 72/90 · edits 22 · runs 348",
-        "sampleDesc": "ANZ MOBILE BANKING PAYMENT 507738 TO MICHAEL CHEN",
+        "sampleDesc": "VISA DEBIT PURCHASE CARD VISA DEBIT PURCHASE CARD 5076 UBER EATS",
         "editCount": 22,
         "workingCount": 22,
         "genClose": null,
@@ -50,10 +50,10 @@
           "Final PDF: 22 replacement(s) applied · mode=full-ledger · queued=22 · ledger=22 · byField={\"date\":0,\"description\":22,\"debit\":0,\"credit\":0,\"balance\":0,\"other\":0}."
         ],
         "visualStatus": "fail",
-        "visualScore": 68,
+        "visualScore": 67,
         "visualMode": "edited",
         "rendererOk": true,
-        "exportBytes": 48836
+        "exportBytes": 49075
       },
       "fingerprint": "{\"parser\":\"offline-heuristic\",\"bank\":\"anz\",\"seed\":11000,\"periodDays\":21,\"salaryAmount\":2800,\"cardSpendPct\":15,\"billsSubsPct\":10,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"run"
     },
@@ -90,7 +90,7 @@
           "Linked 72/90 field geometries · 58 changed replacements for 22 row(s).",
           "Final PDF: 58 replacement(s) applied · mode=full-ledger · queued=58 · ledger=58 · byField={\"date\":22,\"description\":22,\"debit\":0,\"credit\":0,\"balance\":14,\"other\":0}."
         ],
-        "exportBytes": 87227
+        "exportBytes": 87365
       },
       "fingerprint": "{\"parser\":\"pymupdf\",\"bank\":\"cba\",\"seed\":11110,\"periodDays\":28,\"salaryAmount\":3050,\"cardSpendPct\":20,\"billsSubsPct\":14,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute\",\"runV"
     },
@@ -110,7 +110,7 @@
         "rawTextLen": 3840,
         "linkStats": "linked 72/90 · edits 22 · runs 348",
         "qualityOk": true,
-        "sampleDesc": "DEPOSIT WESTPAC BANKCORPDIRECT DR 792798",
+        "sampleDesc": "DEPOSIT WESTPAC BANKCORPDIRECT DR 730615",
         "editCount": 22,
         "workingCount": 22,
         "genClose": 67584.53,
@@ -128,10 +128,10 @@
           "Final PDF: 59 replacement(s) applied · mode=full-ledger · queued=22 · ledger=59 · byField={\"date\":22,\"description\":22,\"debit\":0,\"credit\":1,\"balance\":14,\"other\":0}."
         ],
         "visualStatus": "fail",
-        "visualScore": 62,
+        "visualScore": 64,
         "visualMode": "edited",
         "rendererOk": true,
-        "exportBytes": 49638
+        "exportBytes": 48937
       },
       "fingerprint": "{\"parser\":\"offline-heuristic\",\"bank\":\"westpac\",\"seed\":11220,\"periodDays\":35,\"salaryAmount\":3300,\"cardSpendPct\":25,\"billsSubsPct\":18,\"hasRental\":false,\"replaceMode\":\"hybrid\",\"balanceEngine\":\"stated\",\"r"
     },
@@ -152,7 +152,7 @@
         "pageCount": 3,
         "rawTextLen": 3840,
         "linkStats": "linked 72/90 · edits 22 · runs 348",
-        "sampleDesc": "Transfer from SAV 00299053 Mobile# 560148462",
+        "sampleDesc": "Ext Tfr - NET#1001963113 to 47845929 RACHEL TAYLOR ING - ING Direct",
         "editCount": 22,
         "workingCount": 22,
         "genClose": null,
@@ -169,7 +169,7 @@
           "Linked 72/90 field geometries · 22 changed replacements for 22 row(s).",
           "Final PDF: 22 replacement(s) applied · mode=full-ledger · queued=22 · ledger=22 · byField={\"date\":0,\"description\":22,\"debit\":0,\"credit\":0,\"balance\":0,\"other\":0}."
         ],
-        "exportBytes": 49218
+        "exportBytes": 49178
       },
       "fingerprint": "{\"parser\":\"pymupdf\",\"bank\":\"ing\",\"seed\":11330,\"periodDays\":42,\"salaryAmount\":3550,\"cardSpendPct\":30,\"billsSubsPct\":22,\"hasRental\":true,\"replaceMode\":\"bank-desc\",\"balanceEngine\":\"hybrid\",\"runVisual\":fa"
     },
@@ -207,10 +207,10 @@
           "Final PDF: 59 replacement(s) applied · mode=full-ledger · queued=59 · ledger=59 · byField={\"date\":22,\"description\":22,\"debit\":0,\"credit\":1,\"balance\":14,\"other\":0}."
         ],
         "visualStatus": "fail",
-        "visualScore": 66,
+        "visualScore": 65,
         "visualMode": "edited",
         "rendererOk": true,
-        "exportBytes": 86586
+        "exportBytes": 86459
       },
       "fingerprint": "{\"parser\":\"local-ocr\",\"bank\":\"bankwest\",\"seed\":11440,\"periodDays\":49,\"salaryAmount\":3800,\"cardSpendPct\":35,\"billsSubsPct\":26,\"hasRental\":false,\"replaceMode\":\"generate-apply\",\"balanceEngine\":\"recompute"
     }

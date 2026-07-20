@@ -1,0 +1,105 @@
+{
+  "edits": 27,
+  "filledTokens": [
+    "{FIRSTNAME LASTNAME}",
+    "{ADDRESS LINE 1}",
+    "{ADDRESS LINE 2}",
+    "{BSB}",
+    "{ACCOUNT}",
+    "{DATE}",
+    "{NUMBER OF DAYS)",
+    "{FROM DATE}",
+    "{TO DATE}",
+    "{CURRENT BALANCE}",
+    "{DATE CREATE",
+    "{TIME}",
+    "{X}",
+    "{DATE CREATE {TIME}"
+  ],
+  "unmatchedTokens": [],
+  "slots": 3,
+  "slotsFilled": 3,
+  "notes": [
+    "Scanned 88 template text runs (maxPages=8).",
+    "Detected 3 transaction row slot(s) on template.",
+    "Template has 3 txn row slot(s); 19 transaction(s) not painted (need more template rows / multi-page slots).",
+    "Filled 18 chrome token run(s), 3 txn slot(s), 27 PdfEdit(s) total."
+  ],
+  "sampleEdits": [
+    {
+      "page": 1,
+      "original": "{FIRSTNAME LASTNAME}",
+      "replacement": "ELYSIA LEAVER"
+    },
+    {
+      "page": 1,
+      "original": "{ADDRESS LINE 1}",
+      "replacement": "48 DENISON ST"
+    },
+    {
+      "page": 1,
+      "original": "{ADDRESS LINE 2}",
+      "replacement": "COOMA NSW 2630"
+    },
+    {
+      "page": 1,
+      "original": "{BSB}",
+      "replacement": "116-879"
+    },
+    {
+      "page": 1,
+      "original": "{ACCOUNT}",
+      "replacement": "453 657 726"
+    },
+    {
+      "page": 1,
+      "original": "{DATE}",
+      "replacement": "31-Aug-2021"
+    },
+    {
+      "page": 1,
+      "original": "{NUMBER OF DAYS)",
+      "replacement": "91"
+    },
+    {
+      "page": 1,
+      "original": "{FROM DATE}",
+      "replacement": "21-Aug-2024"
+    },
+    {
+      "page": 1,
+      "original": "{TO DATE}",
+      "replacement": "19-Nov-2024"
+    },
+    {
+      "page": 1,
+      "original": "{CURRENT BALANCE}",
+      "replacement": "$64,474.33"
+    },
+    {
+      "page": 1,
+      "original": "{DATE CREATE",
+      "replacement": "19-Jul-2026"
+    },
+    {
+      "page": 1,
+      "original": "{TIME}",
+      "replacement": "10:00 pm"
+    },
+    {
+      "page": 1,
+      "original": "{X}",
+      "replacement": "1"
+    },
+    {
+      "page": 1,
+      "original": "{X}",
+      "replacement": "1"
+    },
+    {
+      "page": 2,
+      "original": "{ACCOUNT}",
+      "replacement": "453 657 726"
+    }
+  ]
+}

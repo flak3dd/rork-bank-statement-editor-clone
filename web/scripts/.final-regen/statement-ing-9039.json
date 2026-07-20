@@ -185,7 +185,7 @@
     },
     {
       "id": "sav-6z3-2",
-      "description": "VISA-CHEMIST WAREHOUSE AU#1234(TXN430931)",
+      "description": "Transfer from SAV 00299053 Mobile# 567802966",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-01",
       "effectiveDate": "2026-03-01",
@@ -196,7 +196,7 @@
     },
     {
       "id": "mtg-6z3-3",
-      "description": "Ext Tfr - NET#1069802972 to 47603454 MICHAEL CHEN ING - ING Direct",
+      "description": "VISA-ORIGIN ENERGY AU#1234(TXN874658)",
       "secondaryDescription": "HOME LENDER · REF LN-ing-9039",
       "date": "2026-03-01",
       "effectiveDate": "2026-03-01",
@@ -207,7 +207,7 @@
     },
     {
       "id": "dd-6z3-4",
-      "description": "EFT Declined #51 - BIG W",
+      "description": "Transfer from SAV 00299053 Mobile# 562174507",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-03",
       "effectiveDate": "2026-03-03",
@@ -218,7 +218,7 @@
     },
     {
       "id": "pos-6z3-5",
-      "description": "Ext Tfr - NET#1071924867 to 47536556 JAMES SMITH ING - ING Direct",
+      "description": "Debit Adjustment#978105-Int Tran Fee - ALDI",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-03",
       "effectiveDate": "2026-03-03",
@@ -229,7 +229,7 @@
     },
     {
       "id": "dd-6z3-6",
-      "description": "Debit Adjustment#945496-Int Tran Fee - ALDI",
+      "description": "VISA-AGL AU#1234(TXN174469) Apple Pay",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-04",
       "effectiveDate": "2026-03-04",
@@ -240,7 +240,7 @@
     },
     {
       "id": "pos-6z3-7",
-      "description": "VISA-BUNNINGS AU#1234(TXN173464)",
+      "description": "Ext Tfr - NET#1043885385 to 47631757 RACHEL TAYLOR ING - ING Direct",
       "secondaryDescription": "CITY",
       "date": "2026-03-04",
       "effectiveDate": "2026-03-04",
@@ -251,7 +251,7 @@
     },
     {
       "id": "pos-6z3-8",
-      "description": "EFT Declined #51 - AGL",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN723903)",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-04",
       "effectiveDate": "2026-03-04",
@@ -262,7 +262,7 @@
     },
     {
       "id": "p2p-6z3-9",
-      "description": "VISA-ORIGIN ENERGY AU#1234(TXN657913)",
+      "description": "Ext Tfr - NET#1026321657 to 47064850 ROBERT WILSON ING - ING Direct",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-05",
       "effectiveDate": "2026-03-05",
@@ -273,7 +273,7 @@
     },
     {
       "id": "pos-6z3-10",
-      "description": "Transfer from SAV 00299053 Mobile# 568341512",
+      "description": "Transfer from SAV 00299053 Mobile# 567221681",
       "secondaryDescription": "METRO",
       "date": "2026-03-05",
       "effectiveDate": "2026-03-05",
@@ -284,7 +284,7 @@
     },
     {
       "id": "pos-6z3-11",
-      "description": "Transfer from SAV 00299053 Mobile# 568585925",
+      "description": "Ext Tfr - NET#1073982097 to 47156447 JAMES SMITH ING - ING Direct",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-05",
       "effectiveDate": "2026-03-05",
@@ -295,7 +295,7 @@
     },
     {
       "id": "dd-6z3-12",
-      "description": "VISA-AMPOL AU#1234(TXN457883) Apple Pay",
+      "description": "Transfer from SAV 00299053 Mobile# 568450859",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-06",
       "effectiveDate": "2026-03-06",
@@ -306,7 +306,7 @@
     },
     {
       "id": "pos-6z3-13",
-      "description": "VISA-APPLE.COM/BILL AU#1234(TXN441368)",
+      "description": "VISA-MYER AU#1234(TXN604951) Apple Pay",
       "date": "2026-03-06",
       "effectiveDate": "2026-03-06",
       "amount": -42.63,
@@ -316,7 +316,7 @@
     },
     {
       "id": "pos-6z3-14",
-      "description": "EFT Declined #51 - UNITED",
+      "description": "EFT Declined #51 - VODAFONE",
       "secondaryDescription": "WEB",
       "date": "2026-03-06",
       "effectiveDate": "2026-03-06",
@@ -327,7 +327,7 @@
     },
     {
       "id": "dd-6z3-15",
-      "description": "Debit Adjustment#998946-Int Tran Fee - NETFLIX",
+      "description": "VISA-WESTFIELD AU#1234(TXN762048)",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-08",
       "effectiveDate": "2026-03-08",
@@ -338,7 +338,7 @@
     },
     {
       "id": "pos-6z3-16",
-      "description": "Debit Adjustment#921554-Int Tran Fee - TERRY WHITE CHEMIST",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN858021)",
       "secondaryDescription": "WEB",
       "date": "2026-03-08",
       "effectiveDate": "2026-03-08",
@@ -349,7 +349,7 @@
     },
     {
       "id": "pos-6z3-17",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN231331)",
+      "description": "Debit Adjustment#909575-Int Tran Fee - PRICELINE PHARMACY",
       "secondaryDescription": "RETAIL",
       "date": "2026-03-08",
       "effectiveDate": "2026-03-08",
@@ -360,7 +360,7 @@
     },
     {
       "id": "dd-6z3-18",
-      "description": "Debit Adjustment#990307-Int Tran Fee - DISNEY PLUS",
+      "description": "VISA-VODAFONE AU#1234(TXN397672)",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-10",
       "effectiveDate": "2026-03-10",
@@ -371,7 +371,7 @@
     },
     {
       "id": "pos-6z3-19",
-      "description": "Ext Tfr - NET#1024055543 to 47123586 RACHEL TAYLOR ING - ING Direct",
+      "description": "Ext Tfr - NET#1075996084 to 47774315 EMILY WATSON ING - ING Direct",
       "secondaryDescription": "METRO",
       "date": "2026-03-10",
       "effectiveDate": "2026-03-10",
@@ -382,7 +382,7 @@
     },
     {
       "id": "dd-6z3-20",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN581609)",
+      "description": "Transfer from SAV 00299053 Mobile# 561123705",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-13",
       "effectiveDate": "2026-03-13",
@@ -393,7 +393,7 @@
     },
     {
       "id": "pos-6z3-21",
-      "description": "VISA-TERRY WHITE CHEMIST AU#1234(TXN327753)",
+      "description": "Transfer from SAV 00299053 Mobile# 560843514",
       "secondaryDescription": "WEB",
       "date": "2026-03-14",
       "effectiveDate": "2026-03-14",
@@ -404,7 +404,7 @@
     },
     {
       "id": "pos-6z3-22",
-      "description": "VISA-BIG W AU#1234(TXN378868)",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN375393)",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-14",
       "effectiveDate": "2026-03-14",
@@ -426,7 +426,7 @@
     },
     {
       "id": "sav-6z3-24",
-      "description": "Ext Tfr - NET#1048439858 to 47238800 SARAH JOHNSON ING - ING Direct",
+      "description": "VISA-TERRY WHITE CHEMIST AU#1234(TXN768927)",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -437,7 +437,7 @@
     },
     {
       "id": "pos-6z3-25",
-      "description": "VISA-AGL AU#1234(TXN502986)",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN579479)",
       "secondaryDescription": "RETAIL",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -448,7 +448,7 @@
     },
     {
       "id": "pos-6z3-26",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN684645)",
+      "description": "VISA-TELSTRA AU#1234(TXN865903)",
       "secondaryDescription": "CBD",
       "date": "2026-03-15",
       "effectiveDate": "2026-03-15",
@@ -459,7 +459,7 @@
     },
     {
       "id": "p2p-6z3-27",
-      "description": "VISA-SHELL AU#1234(TXN839243) Apple Pay",
+      "description": "Ext Tfr - NET#1086220316 to 47426901 EMILY WATSON ING - ING Direct",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-16",
       "effectiveDate": "2026-03-16",
@@ -470,7 +470,7 @@
     },
     {
       "id": "dd-6z3-28",
-      "description": "Transfer from SAV 00299053 Mobile# 560627953",
+      "description": "EFT Declined #51 - AMAZON MARKETPLACE",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-17",
       "effectiveDate": "2026-03-17",
@@ -481,7 +481,7 @@
     },
     {
       "id": "pos-6z3-29",
-      "description": "VISA-CHEMIST WAREHOUSE AU#1234(TXN171165)",
+      "description": "Transfer from SAV 00299053 Mobile# 569029680",
       "secondaryDescription": "MALL",
       "date": "2026-03-18",
       "effectiveDate": "2026-03-18",
@@ -492,7 +492,7 @@
     },
     {
       "id": "pos-6z3-30",
-      "description": "Ext Tfr - NET#1088890984 to 47838421 RACHEL TAYLOR ING - ING Direct",
+      "description": "Transfer from SAV 00299053 Mobile# 564133251",
       "secondaryDescription": "METRO",
       "date": "2026-03-18",
       "effectiveDate": "2026-03-18",
@@ -503,7 +503,7 @@
     },
     {
       "id": "dd-6z3-31",
-      "description": "VISA-ALDI AU#1234(TXN765614)",
+      "description": "EFT Declined #51 - CALTEX",
       "secondaryDescription": "SUBSCRIPTION",
       "date": "2026-03-19",
       "effectiveDate": "2026-03-19",
@@ -514,7 +514,7 @@
     },
     {
       "id": "pos-6z3-32",
-      "description": "VISA-ALDI AU#1234(TXN653221) Apple Pay",
+      "description": "Transfer from SAV 00299053 Mobile# 569490532",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-19",
       "effectiveDate": "2026-03-19",
@@ -525,7 +525,7 @@
     },
     {
       "id": "pos-6z3-33",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN588620)",
+      "description": "Debit Adjustment#912456-Int Tran Fee - ORIGIN ENERGY",
       "secondaryDescription": "CITY",
       "date": "2026-03-19",
       "effectiveDate": "2026-03-19",
@@ -536,7 +536,7 @@
     },
     {
       "id": "pos-6z3-34",
-      "description": "Debit Adjustment#962244-Int Tran Fee - WESTFIELD",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN955210)",
       "secondaryDescription": "CITY",
       "date": "2026-03-20",
       "effectiveDate": "2026-03-20",
@@ -547,7 +547,7 @@
     },
     {
       "id": "pos-6z3-35",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN287844)",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN411641)",
       "secondaryDescription": "CITY",
       "date": "2026-03-22",
       "effectiveDate": "2026-03-22",
@@ -558,7 +558,7 @@
     },
     {
       "id": "pos-6z3-36",
-      "description": "Transfer from SAV 00299053 Mobile# 566055664",
+      "description": "EFT Declined #51 - AGL",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-22",
       "effectiveDate": "2026-03-22",
@@ -569,7 +569,7 @@
     },
     {
       "id": "pos-6z3-37",
-      "description": "VISA-PRICELINE PHARMACY AU#1234(TXN864839)",
+      "description": "VISA-BP AU#1234(TXN822089)",
       "date": "2026-03-23",
       "effectiveDate": "2026-03-23",
       "amount": -9.06,
@@ -579,7 +579,7 @@
     },
     {
       "id": "pos-6z3-38",
-      "description": "Transfer from SAV 00299053 Mobile# 563145226",
+      "description": "EFT Declined #51 - BP",
       "secondaryDescription": "CITY",
       "date": "2026-03-23",
       "effectiveDate": "2026-03-23",
@@ -590,7 +590,7 @@
     },
     {
       "id": "pos-6z3-39",
-      "description": "VISA-OPTUS AU#1234(TXN650784)",
+      "description": "VISA-JB HI FI AU#1234(TXN571675)",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-24",
       "effectiveDate": "2026-03-24",
@@ -601,7 +601,7 @@
     },
     {
       "id": "pos-6z3-40",
-      "description": "Debit Adjustment#923935-Int Tran Fee - AGL",
+      "description": "Ext Tfr - NET#1093450521 to 47764475 JAMES SMITH ING - ING Direct",
       "secondaryDescription": "CBD",
       "date": "2026-03-26",
       "effectiveDate": "2026-03-26",
@@ -612,7 +612,7 @@
     },
     {
       "id": "p2p-6z3-41",
-      "description": "Ext Tfr - NET#1044490261 to 47705034 JAMES SMITH ING - ING Direct",
+      "description": "EFT Declined #51 - DAVID JONES",
       "secondaryDescription": "OSKO / PAYID",
       "date": "2026-03-27",
       "effectiveDate": "2026-03-27",
@@ -623,7 +623,7 @@
     },
     {
       "id": "pos-6z3-42",
-      "description": "VISA-JB HI FI AU#1234(TXN163546)",
+      "description": "EFT Declined #51 - IGA",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-28",
       "effectiveDate": "2026-03-28",
@@ -634,7 +634,7 @@
     },
     {
       "id": "pos-6z3-43",
-      "description": "Transfer from SAV 00299053 Mobile# 562137390",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN808987)",
       "secondaryDescription": "LOCAL",
       "date": "2026-03-28",
       "effectiveDate": "2026-03-28",
@@ -656,7 +656,7 @@
     },
     {
       "id": "sav-6z3-45",
-      "description": "Ext Tfr - NET#1074026946 to 47316720 MICHAEL CHEN ING - ING Direct",
+      "description": "Transfer from SAV 00299053 Mobile# 560016019",
       "secondaryDescription": "TO BONUS",
       "date": "2026-03-29",
       "effectiveDate": "2026-03-29",
@@ -667,7 +667,7 @@
     },
     {
       "id": "pos-6z3-46",
-      "description": "VISA-BIG W AU#1234(TXN189203)",
+      "description": "VISA-WESTFIELD AU#1234(TXN588504)",
       "secondaryDescription": "SUBURB",
       "date": "2026-03-29",
       "effectiveDate": "2026-03-29",
@@ -678,7 +678,7 @@
     },
     {
       "id": "pos-6z3-47",
-      "description": "Transfer from SAV 00299053 Mobile# 566532749",
+      "description": "VISA-HARRIS FARM AU#1234(TXN942450)",
       "date": "2026-03-30",
       "effectiveDate": "2026-03-30",
       "amount": -52.08,
@@ -688,7 +688,7 @@
     },
     {
       "id": "pos-6z3-48",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN887932)",
+      "description": "Transfer from SAV 00299053 Mobile# 569677634",
       "secondaryDescription": "RETAIL",
       "date": "2026-03-30",
       "effectiveDate": "2026-03-30",
@@ -699,7 +699,7 @@
     },
     {
       "id": "mtg-6z3-49",
-      "description": "Debit Adjustment#955571-Int Tran Fee - NETFLIX",
+      "description": "Transfer from SAV 00299053 Mobile# 563068476",
       "secondaryDescription": "HOME LENDER · REF LN-ing-9039",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -710,7 +710,7 @@
     },
     {
       "id": "dd-6z3-50",
-      "description": "Debit Adjustment#951911-Int Tran Fee - 7-ELEVEN",
+      "description": "Ext Tfr - NET#1049925775 to 47294633 EMILY WATSON ING - ING Direct",
       "secondaryDescription": "DIRECT DEBIT",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -721,7 +721,7 @@
     },
     {
       "id": "pos-6z3-51",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN727954)",
+      "description": "VISA-NETFLIX AU#1234(TXN632061) Apple Pay",
       "secondaryDescription": "MALL",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -732,7 +732,7 @@
     },
     {
       "id": "pos-6z3-52",
-      "description": "Transfer from SAV 00299053 Mobile# 563421109",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN218351)",
       "secondaryDescription": "METRO",
       "date": "2026-03-31",
       "effectiveDate": "2026-03-31",
@@ -780,7 +780,7 @@
     {
       "id": "sav-6z3-2",
       "date": "2026-03-01",
-      "description": "VISA-CHEMIST WAREHOUSE AU#1234(TXN430931) — TO BONUS",
+      "description": "Transfer from SAV 00299053 Mobile# 567802966 — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 6840.55,
@@ -795,7 +795,7 @@
       "notes": "effective 2026-03-01",
       "original": {
         "date": "2026-03-01",
-        "description": "VISA-CHEMIST WAREHOUSE AU#1234(TXN430931) — TO BONUS",
+        "description": "Transfer from SAV 00299053 Mobile# 567802966 — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 6840.55
@@ -804,7 +804,7 @@
     {
       "id": "mtg-6z3-3",
       "date": "2026-03-01",
-      "description": "Ext Tfr - NET#1069802972 to 47603454 MICHAEL CHEN ING - ING Direct — HOME LENDER · REF LN-ing-9039",
+      "description": "VISA-ORIGIN ENERGY AU#1234(TXN874658) — HOME LENDER · REF LN-ing-9039",
       "debit": 1680,
       "credit": null,
       "balance": 5160.55,
@@ -819,7 +819,7 @@
       "notes": "effective 2026-03-01",
       "original": {
         "date": "2026-03-01",
-        "description": "Ext Tfr - NET#1069802972 to 47603454 MICHAEL CHEN ING - ING Direct — HOME LENDER · REF LN-ing-9039",
+        "description": "VISA-ORIGIN ENERGY AU#1234(TXN874658) — HOME LENDER · REF LN-ing-9039",
         "debit": 1680,
         "credit": null,
         "balance": 5160.55
@@ -828,7 +828,7 @@
     {
       "id": "dd-6z3-4",
       "date": "2026-03-03",
-      "description": "EFT Declined #51 - BIG W — DIRECT DEBIT",
+      "description": "Transfer from SAV 00299053 Mobile# 562174507 — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 4856.24,
@@ -843,7 +843,7 @@
       "notes": "effective 2026-03-03",
       "original": {
         "date": "2026-03-03",
-        "description": "EFT Declined #51 - BIG W — DIRECT DEBIT",
+        "description": "Transfer from SAV 00299053 Mobile# 562174507 — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 4856.24
@@ -852,7 +852,7 @@
     {
       "id": "pos-6z3-5",
       "date": "2026-03-03",
-      "description": "Ext Tfr - NET#1071924867 to 47536556 JAMES SMITH ING - ING Direct — LOCAL",
+      "description": "Debit Adjustment#978105-Int Tran Fee - ALDI — LOCAL",
       "debit": 52.48,
       "credit": null,
       "balance": 4803.76,
@@ -867,7 +867,7 @@
       "notes": "effective 2026-03-03",
       "original": {
         "date": "2026-03-03",
-        "description": "Ext Tfr - NET#1071924867 to 47536556 JAMES SMITH ING - ING Direct — LOCAL",
+        "description": "Debit Adjustment#978105-Int Tran Fee - ALDI — LOCAL",
         "debit": 52.48,
         "credit": null,
         "balance": 4803.76
@@ -876,7 +876,7 @@
     {
       "id": "dd-6z3-6",
       "date": "2026-03-04",
-      "description": "Debit Adjustment#945496-Int Tran Fee - ALDI — SUBSCRIPTION",
+      "description": "VISA-AGL AU#1234(TXN174469) Apple Pay — SUBSCRIPTION",
       "debit": 40.27,
       "credit": null,
       "balance": 4763.49,
@@ -891,7 +891,7 @@
       "notes": "effective 2026-03-04",
       "original": {
         "date": "2026-03-04",
-        "description": "Debit Adjustment#945496-Int Tran Fee - ALDI — SUBSCRIPTION",
+        "description": "VISA-AGL AU#1234(TXN174469) Apple Pay — SUBSCRIPTION",
         "debit": 40.27,
         "credit": null,
         "balance": 4763.49
@@ -900,7 +900,7 @@
     {
       "id": "pos-6z3-7",
       "date": "2026-03-04",
-      "description": "VISA-BUNNINGS AU#1234(TXN173464) — CITY",
+      "description": "Ext Tfr - NET#1043885385 to 47631757 RACHEL TAYLOR ING - ING Direct — CITY",
       "debit": 93.52,
       "credit": null,
       "balance": 4669.97,
@@ -915,7 +915,7 @@
       "notes": "effective 2026-03-04",
       "original": {
         "date": "2026-03-04",
-        "description": "VISA-BUNNINGS AU#1234(TXN173464) — CITY",
+        "description": "Ext Tfr - NET#1043885385 to 47631757 RACHEL TAYLOR ING - ING Direct — CITY",
         "debit": 93.52,
         "credit": null,
         "balance": 4669.97
@@ -924,7 +924,7 @@
     {
       "id": "pos-6z3-8",
       "date": "2026-03-04",
-      "description": "EFT Declined #51 - AGL — SUBURB",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN723903) — SUBURB",
       "debit": 34.88,
       "credit": null,
       "balance": 4635.09,
@@ -939,7 +939,7 @@
       "notes": "effective 2026-03-04",
       "original": {
         "date": "2026-03-04",
-        "description": "EFT Declined #51 - AGL — SUBURB",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN723903) — SUBURB",
         "debit": 34.88,
         "credit": null,
         "balance": 4635.09
@@ -948,7 +948,7 @@
     {
       "id": "p2p-6z3-9",
       "date": "2026-03-05",
-      "description": "VISA-ORIGIN ENERGY AU#1234(TXN657913) — OSKO / PAYID",
+      "description": "Ext Tfr - NET#1026321657 to 47064850 ROBERT WILSON ING - ING Direct — OSKO / PAYID",
       "debit": 119.12,
       "credit": null,
       "balance": 4515.97,
@@ -963,7 +963,7 @@
       "notes": "effective 2026-03-05",
       "original": {
         "date": "2026-03-05",
-        "description": "VISA-ORIGIN ENERGY AU#1234(TXN657913) — OSKO / PAYID",
+        "description": "Ext Tfr - NET#1026321657 to 47064850 ROBERT WILSON ING - ING Direct — OSKO / PAYID",
         "debit": 119.12,
         "credit": null,
         "balance": 4515.97
@@ -972,7 +972,7 @@
     {
       "id": "pos-6z3-10",
       "date": "2026-03-05",
-      "description": "Transfer from SAV 00299053 Mobile# 568341512 — METRO",
+      "description": "Transfer from SAV 00299053 Mobile# 567221681 — METRO",
       "debit": 40.04,
       "credit": null,
       "balance": 4475.93,
@@ -987,7 +987,7 @@
       "notes": "effective 2026-03-05",
       "original": {
         "date": "2026-03-05",
-        "description": "Transfer from SAV 00299053 Mobile# 568341512 — METRO",
+        "description": "Transfer from SAV 00299053 Mobile# 567221681 — METRO",
         "debit": 40.04,
         "credit": null,
         "balance": 4475.93
@@ -996,7 +996,7 @@
     {
       "id": "pos-6z3-11",
       "date": "2026-03-05",
-      "description": "Transfer from SAV 00299053 Mobile# 568585925 — SUBURB",
+      "description": "Ext Tfr - NET#1073982097 to 47156447 JAMES SMITH ING - ING Direct — SUBURB",
       "debit": 43.42,
       "credit": null,
       "balance": 4432.51,
@@ -1011,7 +1011,7 @@
       "notes": "effective 2026-03-05",
       "original": {
         "date": "2026-03-05",
-        "description": "Transfer from SAV 00299053 Mobile# 568585925 — SUBURB",
+        "description": "Ext Tfr - NET#1073982097 to 47156447 JAMES SMITH ING - ING Direct — SUBURB",
         "debit": 43.42,
         "credit": null,
         "balance": 4432.51
@@ -1020,7 +1020,7 @@
     {
       "id": "dd-6z3-12",
       "date": "2026-03-06",
-      "description": "VISA-AMPOL AU#1234(TXN457883) Apple Pay — DIRECT DEBIT",
+      "description": "Transfer from SAV 00299053 Mobile# 568450859 — DIRECT DEBIT",
       "debit": 497.7,
       "credit": null,
       "balance": 3934.81,
@@ -1035,7 +1035,7 @@
       "notes": "effective 2026-03-06",
       "original": {
         "date": "2026-03-06",
-        "description": "VISA-AMPOL AU#1234(TXN457883) Apple Pay — DIRECT DEBIT",
+        "description": "Transfer from SAV 00299053 Mobile# 568450859 — DIRECT DEBIT",
         "debit": 497.7,
         "credit": null,
         "balance": 3934.81
@@ -1044,7 +1044,7 @@
     {
       "id": "pos-6z3-13",
       "date": "2026-03-06",
-      "description": "VISA-APPLE.COM/BILL AU#1234(TXN441368)",
+      "description": "VISA-MYER AU#1234(TXN604951) Apple Pay",
       "debit": 42.63,
       "credit": null,
       "balance": 3892.18,
@@ -1059,7 +1059,7 @@
       "notes": "effective 2026-03-06",
       "original": {
         "date": "2026-03-06",
-        "description": "VISA-APPLE.COM/BILL AU#1234(TXN441368)",
+        "description": "VISA-MYER AU#1234(TXN604951) Apple Pay",
         "debit": 42.63,
         "credit": null,
         "balance": 3892.18
@@ -1068,7 +1068,7 @@
     {
       "id": "pos-6z3-14",
       "date": "2026-03-06",
-      "description": "EFT Declined #51 - UNITED — WEB",
+      "description": "EFT Declined #51 - VODAFONE — WEB",
       "debit": 187.06,
       "credit": null,
       "balance": 3705.12,
@@ -1083,7 +1083,7 @@
       "notes": "effective 2026-03-06",
       "original": {
         "date": "2026-03-06",
-        "description": "EFT Declined #51 - UNITED — WEB",
+        "description": "EFT Declined #51 - VODAFONE — WEB",
         "debit": 187.06,
         "credit": null,
         "balance": 3705.12
@@ -1092,7 +1092,7 @@
     {
       "id": "dd-6z3-15",
       "date": "2026-03-08",
-      "description": "Debit Adjustment#998946-Int Tran Fee - NETFLIX — SUBSCRIPTION",
+      "description": "VISA-WESTFIELD AU#1234(TXN762048) — SUBSCRIPTION",
       "debit": 116.13,
       "credit": null,
       "balance": 3588.99,
@@ -1107,7 +1107,7 @@
       "notes": "effective 2026-03-08",
       "original": {
         "date": "2026-03-08",
-        "description": "Debit Adjustment#998946-Int Tran Fee - NETFLIX — SUBSCRIPTION",
+        "description": "VISA-WESTFIELD AU#1234(TXN762048) — SUBSCRIPTION",
         "debit": 116.13,
         "credit": null,
         "balance": 3588.99
@@ -1116,7 +1116,7 @@
     {
       "id": "pos-6z3-16",
       "date": "2026-03-08",
-      "description": "Debit Adjustment#921554-Int Tran Fee - TERRY WHITE CHEMIST — WEB",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN858021) — WEB",
       "debit": 71.31,
       "credit": null,
       "balance": 3517.68,
@@ -1131,7 +1131,7 @@
       "notes": "effective 2026-03-08",
       "original": {
         "date": "2026-03-08",
-        "description": "Debit Adjustment#921554-Int Tran Fee - TERRY WHITE CHEMIST — WEB",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN858021) — WEB",
         "debit": 71.31,
         "credit": null,
         "balance": 3517.68
@@ -1140,7 +1140,7 @@
     {
       "id": "pos-6z3-17",
       "date": "2026-03-08",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN231331) — RETAIL",
+      "description": "Debit Adjustment#909575-Int Tran Fee - PRICELINE PHARMACY — RETAIL",
       "debit": 28.32,
       "credit": null,
       "balance": 3489.36,
@@ -1155,7 +1155,7 @@
       "notes": "effective 2026-03-08",
       "original": {
         "date": "2026-03-08",
-        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN231331) — RETAIL",
+        "description": "Debit Adjustment#909575-Int Tran Fee - PRICELINE PHARMACY — RETAIL",
         "debit": 28.32,
         "credit": null,
         "balance": 3489.36
@@ -1164,7 +1164,7 @@
     {
       "id": "dd-6z3-18",
       "date": "2026-03-10",
-      "description": "Debit Adjustment#990307-Int Tran Fee - DISNEY PLUS — DIRECT DEBIT",
+      "description": "VISA-VODAFONE AU#1234(TXN397672) — DIRECT DEBIT",
       "debit": 343.65,
       "credit": null,
       "balance": 3145.71,
@@ -1179,7 +1179,7 @@
       "notes": "effective 2026-03-10",
       "original": {
         "date": "2026-03-10",
-        "description": "Debit Adjustment#990307-Int Tran Fee - DISNEY PLUS — DIRECT DEBIT",
+        "description": "VISA-VODAFONE AU#1234(TXN397672) — DIRECT DEBIT",
         "debit": 343.65,
         "credit": null,
         "balance": 3145.71
@@ -1188,7 +1188,7 @@
     {
       "id": "pos-6z3-19",
       "date": "2026-03-10",
-      "description": "Ext Tfr - NET#1024055543 to 47123586 RACHEL TAYLOR ING - ING Direct — METRO",
+      "description": "Ext Tfr - NET#1075996084 to 47774315 EMILY WATSON ING - ING Direct — METRO",
       "debit": 26.95,
       "credit": null,
       "balance": 3118.76,
@@ -1203,7 +1203,7 @@
       "notes": "effective 2026-03-10",
       "original": {
         "date": "2026-03-10",
-        "description": "Ext Tfr - NET#1024055543 to 47123586 RACHEL TAYLOR ING - ING Direct — METRO",
+        "description": "Ext Tfr - NET#1075996084 to 47774315 EMILY WATSON ING - ING Direct — METRO",
         "debit": 26.95,
         "credit": null,
         "balance": 3118.76
@@ -1212,7 +1212,7 @@
     {
       "id": "dd-6z3-20",
       "date": "2026-03-13",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN581609) — DIRECT DEBIT",
+      "description": "Transfer from SAV 00299053 Mobile# 561123705 — DIRECT DEBIT",
       "debit": 212.11,
       "credit": null,
       "balance": 2906.65,
@@ -1227,7 +1227,7 @@
       "notes": "effective 2026-03-13",
       "original": {
         "date": "2026-03-13",
-        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN581609) — DIRECT DEBIT",
+        "description": "Transfer from SAV 00299053 Mobile# 561123705 — DIRECT DEBIT",
         "debit": 212.11,
         "credit": null,
         "balance": 2906.65
@@ -1236,7 +1236,7 @@
     {
       "id": "pos-6z3-21",
       "date": "2026-03-14",
-      "description": "VISA-TERRY WHITE CHEMIST AU#1234(TXN327753) — WEB",
+      "description": "Transfer from SAV 00299053 Mobile# 560843514 — WEB",
       "debit": 131.43,
       "credit": null,
       "balance": 2775.22,
@@ -1251,7 +1251,7 @@
       "notes": "effective 2026-03-14",
       "original": {
         "date": "2026-03-14",
-        "description": "VISA-TERRY WHITE CHEMIST AU#1234(TXN327753) — WEB",
+        "description": "Transfer from SAV 00299053 Mobile# 560843514 — WEB",
         "debit": 131.43,
         "credit": null,
         "balance": 2775.22
@@ -1260,7 +1260,7 @@
     {
       "id": "pos-6z3-22",
       "date": "2026-03-14",
-      "description": "VISA-BIG W AU#1234(TXN378868) — LOCAL",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN375393) — LOCAL",
       "debit": 22.52,
       "credit": null,
       "balance": 2752.7,
@@ -1275,7 +1275,7 @@
       "notes": "effective 2026-03-14",
       "original": {
         "date": "2026-03-14",
-        "description": "VISA-BIG W AU#1234(TXN378868) — LOCAL",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN375393) — LOCAL",
         "debit": 22.52,
         "credit": null,
         "balance": 2752.7
@@ -1308,7 +1308,7 @@
     {
       "id": "sav-6z3-24",
       "date": "2026-03-15",
-      "description": "Ext Tfr - NET#1048439858 to 47238800 SARAH JOHNSON ING - ING Direct — TO BONUS",
+      "description": "VISA-TERRY WHITE CHEMIST AU#1234(TXN768927) — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 6352.7,
@@ -1323,7 +1323,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "Ext Tfr - NET#1048439858 to 47238800 SARAH JOHNSON ING - ING Direct — TO BONUS",
+        "description": "VISA-TERRY WHITE CHEMIST AU#1234(TXN768927) — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 6352.7
@@ -1332,7 +1332,7 @@
     {
       "id": "pos-6z3-25",
       "date": "2026-03-15",
-      "description": "VISA-AGL AU#1234(TXN502986) — RETAIL",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN579479) — RETAIL",
       "debit": 22.76,
       "credit": null,
       "balance": 6329.94,
@@ -1347,7 +1347,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "VISA-AGL AU#1234(TXN502986) — RETAIL",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN579479) — RETAIL",
         "debit": 22.76,
         "credit": null,
         "balance": 6329.94
@@ -1356,7 +1356,7 @@
     {
       "id": "pos-6z3-26",
       "date": "2026-03-15",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN684645) — CBD",
+      "description": "VISA-TELSTRA AU#1234(TXN865903) — CBD",
       "debit": 6.99,
       "credit": null,
       "balance": 6322.95,
@@ -1371,7 +1371,7 @@
       "notes": "effective 2026-03-15",
       "original": {
         "date": "2026-03-15",
-        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN684645) — CBD",
+        "description": "VISA-TELSTRA AU#1234(TXN865903) — CBD",
         "debit": 6.99,
         "credit": null,
         "balance": 6322.95
@@ -1380,7 +1380,7 @@
     {
       "id": "p2p-6z3-27",
       "date": "2026-03-16",
-      "description": "VISA-SHELL AU#1234(TXN839243) Apple Pay — OSKO / PAYID",
+      "description": "Ext Tfr - NET#1086220316 to 47426901 EMILY WATSON ING - ING Direct — OSKO / PAYID",
       "debit": 99.89,
       "credit": null,
       "balance": 6223.06,
@@ -1395,7 +1395,7 @@
       "notes": "effective 2026-03-16",
       "original": {
         "date": "2026-03-16",
-        "description": "VISA-SHELL AU#1234(TXN839243) Apple Pay — OSKO / PAYID",
+        "description": "Ext Tfr - NET#1086220316 to 47426901 EMILY WATSON ING - ING Direct — OSKO / PAYID",
         "debit": 99.89,
         "credit": null,
         "balance": 6223.06
@@ -1404,7 +1404,7 @@
     {
       "id": "dd-6z3-28",
       "date": "2026-03-17",
-      "description": "Transfer from SAV 00299053 Mobile# 560627953 — DIRECT DEBIT",
+      "description": "EFT Declined #51 - AMAZON MARKETPLACE — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 5918.75,
@@ -1419,7 +1419,7 @@
       "notes": "effective 2026-03-17",
       "original": {
         "date": "2026-03-17",
-        "description": "Transfer from SAV 00299053 Mobile# 560627953 — DIRECT DEBIT",
+        "description": "EFT Declined #51 - AMAZON MARKETPLACE — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 5918.75
@@ -1428,7 +1428,7 @@
     {
       "id": "pos-6z3-29",
       "date": "2026-03-18",
-      "description": "VISA-CHEMIST WAREHOUSE AU#1234(TXN171165) — MALL",
+      "description": "Transfer from SAV 00299053 Mobile# 569029680 — MALL",
       "debit": 223.27,
       "credit": null,
       "balance": 5695.48,
@@ -1443,7 +1443,7 @@
       "notes": "effective 2026-03-18",
       "original": {
         "date": "2026-03-18",
-        "description": "VISA-CHEMIST WAREHOUSE AU#1234(TXN171165) — MALL",
+        "description": "Transfer from SAV 00299053 Mobile# 569029680 — MALL",
         "debit": 223.27,
         "credit": null,
         "balance": 5695.48
@@ -1452,7 +1452,7 @@
     {
       "id": "pos-6z3-30",
       "date": "2026-03-18",
-      "description": "Ext Tfr - NET#1088890984 to 47838421 RACHEL TAYLOR ING - ING Direct — METRO",
+      "description": "Transfer from SAV 00299053 Mobile# 564133251 — METRO",
       "debit": 54.92,
       "credit": null,
       "balance": 5640.56,
@@ -1467,7 +1467,7 @@
       "notes": "effective 2026-03-18",
       "original": {
         "date": "2026-03-18",
-        "description": "Ext Tfr - NET#1088890984 to 47838421 RACHEL TAYLOR ING - ING Direct — METRO",
+        "description": "Transfer from SAV 00299053 Mobile# 564133251 — METRO",
         "debit": 54.92,
         "credit": null,
         "balance": 5640.56
@@ -1476,7 +1476,7 @@
     {
       "id": "dd-6z3-31",
       "date": "2026-03-19",
-      "description": "VISA-ALDI AU#1234(TXN765614) — SUBSCRIPTION",
+      "description": "EFT Declined #51 - CALTEX — SUBSCRIPTION",
       "debit": 187.23,
       "credit": null,
       "balance": 5453.33,
@@ -1491,7 +1491,7 @@
       "notes": "effective 2026-03-19",
       "original": {
         "date": "2026-03-19",
-        "description": "VISA-ALDI AU#1234(TXN765614) — SUBSCRIPTION",
+        "description": "EFT Declined #51 - CALTEX — SUBSCRIPTION",
         "debit": 187.23,
         "credit": null,
         "balance": 5453.33
@@ -1500,7 +1500,7 @@
     {
       "id": "pos-6z3-32",
       "date": "2026-03-19",
-      "description": "VISA-ALDI AU#1234(TXN653221) Apple Pay — LOCAL",
+      "description": "Transfer from SAV 00299053 Mobile# 569490532 — LOCAL",
       "debit": 23.28,
       "credit": null,
       "balance": 5430.05,
@@ -1515,7 +1515,7 @@
       "notes": "effective 2026-03-19",
       "original": {
         "date": "2026-03-19",
-        "description": "VISA-ALDI AU#1234(TXN653221) Apple Pay — LOCAL",
+        "description": "Transfer from SAV 00299053 Mobile# 569490532 — LOCAL",
         "debit": 23.28,
         "credit": null,
         "balance": 5430.05
@@ -1524,7 +1524,7 @@
     {
       "id": "pos-6z3-33",
       "date": "2026-03-19",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN588620) — CITY",
+      "description": "Debit Adjustment#912456-Int Tran Fee - ORIGIN ENERGY — CITY",
       "debit": 93.11,
       "credit": null,
       "balance": 5336.94,
@@ -1539,7 +1539,7 @@
       "notes": "effective 2026-03-19",
       "original": {
         "date": "2026-03-19",
-        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN588620) — CITY",
+        "description": "Debit Adjustment#912456-Int Tran Fee - ORIGIN ENERGY — CITY",
         "debit": 93.11,
         "credit": null,
         "balance": 5336.94
@@ -1548,7 +1548,7 @@
     {
       "id": "pos-6z3-34",
       "date": "2026-03-20",
-      "description": "Debit Adjustment#962244-Int Tran Fee - WESTFIELD — CITY",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN955210) — CITY",
       "debit": 73.6,
       "credit": null,
       "balance": 5263.34,
@@ -1563,7 +1563,7 @@
       "notes": "effective 2026-03-20",
       "original": {
         "date": "2026-03-20",
-        "description": "Debit Adjustment#962244-Int Tran Fee - WESTFIELD — CITY",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN955210) — CITY",
         "debit": 73.6,
         "credit": null,
         "balance": 5263.34
@@ -1572,7 +1572,7 @@
     {
       "id": "pos-6z3-35",
       "date": "2026-03-22",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN287844) — CITY",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN411641) — CITY",
       "debit": 54.51,
       "credit": null,
       "balance": 5208.83,
@@ -1587,7 +1587,7 @@
       "notes": "effective 2026-03-22",
       "original": {
         "date": "2026-03-22",
-        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN287844) — CITY",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN411641) — CITY",
         "debit": 54.51,
         "credit": null,
         "balance": 5208.83
@@ -1596,7 +1596,7 @@
     {
       "id": "pos-6z3-36",
       "date": "2026-03-22",
-      "description": "Transfer from SAV 00299053 Mobile# 566055664 — LOCAL",
+      "description": "EFT Declined #51 - AGL — LOCAL",
       "debit": 31.71,
       "credit": null,
       "balance": 5177.12,
@@ -1611,7 +1611,7 @@
       "notes": "effective 2026-03-22",
       "original": {
         "date": "2026-03-22",
-        "description": "Transfer from SAV 00299053 Mobile# 566055664 — LOCAL",
+        "description": "EFT Declined #51 - AGL — LOCAL",
         "debit": 31.71,
         "credit": null,
         "balance": 5177.12
@@ -1620,7 +1620,7 @@
     {
       "id": "pos-6z3-37",
       "date": "2026-03-23",
-      "description": "VISA-PRICELINE PHARMACY AU#1234(TXN864839)",
+      "description": "VISA-BP AU#1234(TXN822089)",
       "debit": 9.06,
       "credit": null,
       "balance": 5168.06,
@@ -1635,7 +1635,7 @@
       "notes": "effective 2026-03-23",
       "original": {
         "date": "2026-03-23",
-        "description": "VISA-PRICELINE PHARMACY AU#1234(TXN864839)",
+        "description": "VISA-BP AU#1234(TXN822089)",
         "debit": 9.06,
         "credit": null,
         "balance": 5168.06
@@ -1644,7 +1644,7 @@
     {
       "id": "pos-6z3-38",
       "date": "2026-03-23",
-      "description": "Transfer from SAV 00299053 Mobile# 563145226 — CITY",
+      "description": "EFT Declined #51 - BP — CITY",
       "debit": 101.19,
       "credit": null,
       "balance": 5066.87,
@@ -1659,7 +1659,7 @@
       "notes": "effective 2026-03-23",
       "original": {
         "date": "2026-03-23",
-        "description": "Transfer from SAV 00299053 Mobile# 563145226 — CITY",
+        "description": "EFT Declined #51 - BP — CITY",
         "debit": 101.19,
         "credit": null,
         "balance": 5066.87
@@ -1668,7 +1668,7 @@
     {
       "id": "pos-6z3-39",
       "date": "2026-03-24",
-      "description": "VISA-OPTUS AU#1234(TXN650784) — LOCAL",
+      "description": "VISA-JB HI FI AU#1234(TXN571675) — LOCAL",
       "debit": 52.8,
       "credit": null,
       "balance": 5014.07,
@@ -1683,7 +1683,7 @@
       "notes": "effective 2026-03-24",
       "original": {
         "date": "2026-03-24",
-        "description": "VISA-OPTUS AU#1234(TXN650784) — LOCAL",
+        "description": "VISA-JB HI FI AU#1234(TXN571675) — LOCAL",
         "debit": 52.8,
         "credit": null,
         "balance": 5014.07
@@ -1692,7 +1692,7 @@
     {
       "id": "pos-6z3-40",
       "date": "2026-03-26",
-      "description": "Debit Adjustment#923935-Int Tran Fee - AGL — CBD",
+      "description": "Ext Tfr - NET#1093450521 to 47764475 JAMES SMITH ING - ING Direct — CBD",
       "debit": 8.57,
       "credit": null,
       "balance": 5005.5,
@@ -1707,7 +1707,7 @@
       "notes": "effective 2026-03-26",
       "original": {
         "date": "2026-03-26",
-        "description": "Debit Adjustment#923935-Int Tran Fee - AGL — CBD",
+        "description": "Ext Tfr - NET#1093450521 to 47764475 JAMES SMITH ING - ING Direct — CBD",
         "debit": 8.57,
         "credit": null,
         "balance": 5005.5
@@ -1716,7 +1716,7 @@
     {
       "id": "p2p-6z3-41",
       "date": "2026-03-27",
-      "description": "Ext Tfr - NET#1044490261 to 47705034 JAMES SMITH ING - ING Direct — OSKO / PAYID",
+      "description": "EFT Declined #51 - DAVID JONES — OSKO / PAYID",
       "debit": 43.48,
       "credit": null,
       "balance": 4962.02,
@@ -1731,7 +1731,7 @@
       "notes": "effective 2026-03-27",
       "original": {
         "date": "2026-03-27",
-        "description": "Ext Tfr - NET#1044490261 to 47705034 JAMES SMITH ING - ING Direct — OSKO / PAYID",
+        "description": "EFT Declined #51 - DAVID JONES — OSKO / PAYID",
         "debit": 43.48,
         "credit": null,
         "balance": 4962.02
@@ -1740,7 +1740,7 @@
     {
       "id": "pos-6z3-42",
       "date": "2026-03-28",
-      "description": "VISA-JB HI FI AU#1234(TXN163546) — LOCAL",
+      "description": "EFT Declined #51 - IGA — LOCAL",
       "debit": 14.59,
       "credit": null,
       "balance": 4947.43,
@@ -1755,7 +1755,7 @@
       "notes": "effective 2026-03-28",
       "original": {
         "date": "2026-03-28",
-        "description": "VISA-JB HI FI AU#1234(TXN163546) — LOCAL",
+        "description": "EFT Declined #51 - IGA — LOCAL",
         "debit": 14.59,
         "credit": null,
         "balance": 4947.43
@@ -1764,7 +1764,7 @@
     {
       "id": "pos-6z3-43",
       "date": "2026-03-28",
-      "description": "Transfer from SAV 00299053 Mobile# 562137390 — LOCAL",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN808987) — LOCAL",
       "debit": 50.48,
       "credit": null,
       "balance": 4896.95,
@@ -1779,7 +1779,7 @@
       "notes": "effective 2026-03-28",
       "original": {
         "date": "2026-03-28",
-        "description": "Transfer from SAV 00299053 Mobile# 562137390 — LOCAL",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN808987) — LOCAL",
         "debit": 50.48,
         "credit": null,
         "balance": 4896.95
@@ -1812,7 +1812,7 @@
     {
       "id": "sav-6z3-45",
       "date": "2026-03-29",
-      "description": "Ext Tfr - NET#1074026946 to 47316720 MICHAEL CHEN ING - ING Direct — TO BONUS",
+      "description": "Transfer from SAV 00299053 Mobile# 560016019 — TO BONUS",
       "debit": 250,
       "credit": null,
       "balance": 8496.95,
@@ -1827,7 +1827,7 @@
       "notes": "effective 2026-03-29",
       "original": {
         "date": "2026-03-29",
-        "description": "Ext Tfr - NET#1074026946 to 47316720 MICHAEL CHEN ING - ING Direct — TO BONUS",
+        "description": "Transfer from SAV 00299053 Mobile# 560016019 — TO BONUS",
         "debit": 250,
         "credit": null,
         "balance": 8496.95
@@ -1836,7 +1836,7 @@
     {
       "id": "pos-6z3-46",
       "date": "2026-03-29",
-      "description": "VISA-BIG W AU#1234(TXN189203) — SUBURB",
+      "description": "VISA-WESTFIELD AU#1234(TXN588504) — SUBURB",
       "debit": 77.65,
       "credit": null,
       "balance": 8419.3,
@@ -1851,7 +1851,7 @@
       "notes": "effective 2026-03-29",
       "original": {
         "date": "2026-03-29",
-        "description": "VISA-BIG W AU#1234(TXN189203) — SUBURB",
+        "description": "VISA-WESTFIELD AU#1234(TXN588504) — SUBURB",
         "debit": 77.65,
         "credit": null,
         "balance": 8419.3
@@ -1860,7 +1860,7 @@
     {
       "id": "pos-6z3-47",
       "date": "2026-03-30",
-      "description": "Transfer from SAV 00299053 Mobile# 566532749",
+      "description": "VISA-HARRIS FARM AU#1234(TXN942450)",
       "debit": 52.08,
       "credit": null,
       "balance": 8367.22,
@@ -1875,7 +1875,7 @@
       "notes": "effective 2026-03-30",
       "original": {
         "date": "2026-03-30",
-        "description": "Transfer from SAV 00299053 Mobile# 566532749",
+        "description": "VISA-HARRIS FARM AU#1234(TXN942450)",
         "debit": 52.08,
         "credit": null,
         "balance": 8367.22
@@ -1884,7 +1884,7 @@
     {
       "id": "pos-6z3-48",
       "date": "2026-03-30",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN887932) — RETAIL",
+      "description": "Transfer from SAV 00299053 Mobile# 569677634 — RETAIL",
       "debit": 49.39,
       "credit": null,
       "balance": 8317.83,
@@ -1899,7 +1899,7 @@
       "notes": "effective 2026-03-30",
       "original": {
         "date": "2026-03-30",
-        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN887932) — RETAIL",
+        "description": "Transfer from SAV 00299053 Mobile# 569677634 — RETAIL",
         "debit": 49.39,
         "credit": null,
         "balance": 8317.83
@@ -1908,7 +1908,7 @@
     {
       "id": "mtg-6z3-49",
       "date": "2026-03-31",
-      "description": "Debit Adjustment#955571-Int Tran Fee - NETFLIX — HOME LENDER · REF LN-ing-9039",
+      "description": "Transfer from SAV 00299053 Mobile# 563068476 — HOME LENDER · REF LN-ing-9039",
       "debit": 1680,
       "credit": null,
       "balance": 6637.83,
@@ -1923,7 +1923,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "Debit Adjustment#955571-Int Tran Fee - NETFLIX — HOME LENDER · REF LN-ing-9039",
+        "description": "Transfer from SAV 00299053 Mobile# 563068476 — HOME LENDER · REF LN-ing-9039",
         "debit": 1680,
         "credit": null,
         "balance": 6637.83
@@ -1932,7 +1932,7 @@
     {
       "id": "dd-6z3-50",
       "date": "2026-03-31",
-      "description": "Debit Adjustment#951911-Int Tran Fee - 7-ELEVEN — DIRECT DEBIT",
+      "description": "Ext Tfr - NET#1049925775 to 47294633 EMILY WATSON ING - ING Direct — DIRECT DEBIT",
       "debit": 304.31,
       "credit": null,
       "balance": 6333.52,
@@ -1947,7 +1947,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "Debit Adjustment#951911-Int Tran Fee - 7-ELEVEN — DIRECT DEBIT",
+        "description": "Ext Tfr - NET#1049925775 to 47294633 EMILY WATSON ING - ING Direct — DIRECT DEBIT",
         "debit": 304.31,
         "credit": null,
         "balance": 6333.52
@@ -1956,7 +1956,7 @@
     {
       "id": "pos-6z3-51",
       "date": "2026-03-31",
-      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN727954) — MALL",
+      "description": "VISA-NETFLIX AU#1234(TXN632061) Apple Pay — MALL",
       "debit": 31.55,
       "credit": null,
       "balance": 6301.97,
@@ -1971,7 +1971,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN727954) — MALL",
+        "description": "VISA-NETFLIX AU#1234(TXN632061) Apple Pay — MALL",
         "debit": 31.55,
         "credit": null,
         "balance": 6301.97
@@ -1980,7 +1980,7 @@
     {
       "id": "pos-6z3-52",
       "date": "2026-03-31",
-      "description": "Transfer from SAV 00299053 Mobile# 563421109 — METRO",
+      "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN218351) — METRO",
       "debit": 33.6,
       "credit": null,
       "balance": 6268.37,
@@ -1995,7 +1995,7 @@
       "notes": "effective 2026-03-31",
       "original": {
         "date": "2026-03-31",
-        "description": "Transfer from SAV 00299053 Mobile# 563421109 — METRO",
+        "description": "VISA-APPLE.COM/BILL SYDNEY AU#1234(TXN218351) — METRO",
         "debit": 33.6,
         "credit": null,
         "balance": 6268.37
@@ -2004,9 +2004,9 @@
   ],
   "sampleDescriptions": [
     "ING PAYROLL CREDIT",
-    "VISA-CHEMIST WAREHOUSE AU#1234(TXN430931)",
-    "Ext Tfr - NET#1069802972 to 47603454 MICHAEL CHEN ING - ING Direct",
-    "EFT Declined #51 - BIG W",
-    "Ext Tfr - NET#1071924867 to 47536556 JAMES SMITH ING - ING Direct"
+    "Transfer from SAV 00299053 Mobile# 567802966",
+    "VISA-ORIGIN ENERGY AU#1234(TXN874658)",
+    "Transfer from SAV 00299053 Mobile# 562174507",
+    "Debit Adjustment#978105-Int Tran Fee - ALDI"
   ]
 }

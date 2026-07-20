@@ -1,7 +1,39 @@
+/**
+ * Collapse FreeText / OCR doubled-glyph money garbage.
+ * e.g. "$ $4 4,,3 39 98 8..9 90 0" → "$4,398.90"
+ * e.g. "$ $1 19 90 0..5 51 1" → "$190.51"
+ */
+export function collapseDoubledMoneyGlyphs(raw: string): string {
+  const s = String(raw ?? "").trim();
+  if (!s) return s;
+  // Only for dense spaced/doubled noise (not normal "$1,234.56")
+  const looksGarbled =
+    /\$\s*\$/.test(s) ||
+    (/\d\s+\d/.test(s) && (s.match(/\d/g)?.length ?? 0) >= 6);
+  if (!looksGarbled) return s;
+  const noSpace = s.replace(/\s+/g, "");
+  // Collapse consecutive duplicate characters once
+  return noSpace.replace(/(.)\1/g, "$1");
+}
+
+/**
+ * True when token is a real money amount (currency or .cc decimals),
+ * not a bare account/BSB integer.
+ */
+export function isMoneyToken(raw: string): boolean {
+  const s = String(raw ?? "").trim();
+  if (!s) return false;
+  if (/[$£€]/.test(s)) return true;
+  if (/\(\s*[$£€]?\s*[\d,]+\.\d{2}\s*\)/.test(s)) return true;
+  // Must have exactly two decimal places (statement money)
+  if (/^-?[\d,]+\.\d{2}$/.test(s.replace(/\s/g, ""))) return true;
+  return false;
+}
+
 /** Parse currency-like strings into numbers. Returns null if unparseable. */
 export function parseAmount(raw: string | null | undefined): number | null {
   if (raw == null) return null;
-  let s = String(raw).trim();
+  let s = collapseDoubledMoneyGlyphs(String(raw).trim());
   if (!s) return null;
 
   const isParenNegative = /^\(.*\)$/.test(s);

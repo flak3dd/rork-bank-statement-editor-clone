@@ -361,6 +361,12 @@ export async function materializeCandidatePdf(params: {
   const candidatePdf = await applyReplacementsWithFallbacks(
     cloneUint8Array(params.originalPdf),
     replacements,
+    undefined,
+    {
+      burnOriginal: true,
+      chunkSize: 64,
+      engines: ["pdfium", "mupdf", "remote"],
+    },
   );
 
   notes.push(

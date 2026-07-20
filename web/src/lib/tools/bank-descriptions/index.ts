@@ -16,6 +16,12 @@ import {
   genRams,
   genOther,
 } from "./transactionalDescriptionGenerator.js";
+import {
+  formatDescriptionToStructure,
+  joinStructuredDescription,
+  type BankTransactionStructureProfile,
+} from "@/lib/statement-layout/txn-structure";
+import { assistLedgerWithBankTemplate } from "@/lib/generation/from-bank-template";
 
 export type BankId =
   | "anz"
@@ -109,17 +115,83 @@ export function generateBankDescriptions(
 /**
  * Replace transaction descriptions in-place with bank-authentic strings.
  * Mutates a copy — does not touch the original array.
+ *
+ * When `options.rawText` is provided, YAML bank templates under
+ * `parsers/templates` detect the brand and map to the right generator +
+ * descriptionCleanup rules.
  */
 export function rewriteTransactionDescriptions<
   T extends { description: string; flags?: string[] },
->(transactions: T[], bank: string): T[] {
-  const id = normalizeBankId(bank);
+>(
+  transactions: T[],
+  bank: string,
+  options?: { rawText?: string; useYamlTemplate?: boolean },
+): T[] {
+  if (options?.useYamlTemplate !== false && (options?.rawText || bank === "auto")) {
+    const assisted = assistLedgerWithBankTemplate({
+      transactions: transactions as Array<T & { description: string; flags?: string[] }>,
+      rawText: options?.rawText ?? "",
+      bankHint: bank === "auto" ? null : bank,
+      rewriteDescriptions: true,
+      applyCleanup: true,
+    });
+    return assisted.transactions as T[];
+  }
+
+  const id = normalizeBankId(bank === "auto" ? "other" : bank);
   const fn = MAP[id];
   return transactions.map((t) => ({
     ...t,
     description: fn(),
     flags: [...new Set([...(t.flags ?? []), "bank-desc", id])],
   }));
+}
+
+/**
+ * Same as rewriteTransactionDescriptions, but reshapes each generated line
+ * to match a source-document structure profile (Step 2 fidelity):
+ * multi-line primary/secondary, embedded dates, standalone refs, etc.
+ */
+export function rewriteTransactionDescriptionsWithStructure<
+  T extends { description: string; flags?: string[] },
+>(
+  transactions: T[],
+  bank: string,
+  structure: Partial<BankTransactionStructureProfile> | null,
+): T[] {
+  const id = normalizeBankId(bank);
+  const fn = MAP[id];
+  if (!structure) return rewriteTransactionDescriptions(transactions, bank);
+
+  const profile: BankTransactionStructureProfile = {
+    bankId: structure.bankId ?? id,
+    bankName: structure.bankName ?? id,
+    confidence: structure.confidence ?? 0.7,
+    dateFormat: structure.dateFormat ?? "auto",
+    amountLayout: structure.amountLayout ?? "unknown",
+    multiLineDescription: structure.multiLineDescription ?? true,
+    secondaryLineRole: structure.secondaryLineRole ?? "mixed",
+    embedsDateInDescription: structure.embedsDateInDescription ?? false,
+    hasStandaloneReference: structure.hasStandaloneReference ?? false,
+    descriptionPatterns: structure.descriptionPatterns ?? [],
+    samplePrimaries: structure.samplePrimaries ?? [],
+    sampleSecondaries: structure.sampleSecondaries ?? [],
+    recipe: structure.recipe ?? "",
+    notes: structure.notes ?? [],
+  };
+
+  return transactions.map((t) => {
+    const raw = fn();
+    const parts = formatDescriptionToStructure(profile, raw);
+    const description = joinStructuredDescription(parts);
+    return {
+      ...t,
+      description,
+      flags: [
+        ...new Set([...(t.flags ?? []), "bank-desc", id, "struct-preserve"]),
+      ],
+    };
+  });
 }
 
 export {

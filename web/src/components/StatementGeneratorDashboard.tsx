@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+} from "react";
 import {
   CheckCircle2,
   Download,
@@ -79,18 +85,30 @@ interface StatementGeneratorDashboardProps {
   pdfBytes?: Uint8Array | null;
 }
 
+/** Imperative API for stage action bar primary CTA. */
+export type StatementGeneratorHandle = {
+  apply: (andContinue?: boolean) => Promise<void>;
+  canApply: () => boolean;
+};
+
 const FREQ: Frequency[] = ["none", "weekly", "fortnightly", "monthly"];
 
-export function StatementGeneratorDashboard({
-  onApplyToWorkspace,
-  onAudit,
-  onQualityChange,
-  onAppliedAndContinue,
-  onBankReplaceRequest,
-  hasPdfBytes,
-  pdfEditCount = 0,
-  pdfBytes = null,
-}: StatementGeneratorDashboardProps) {
+export const StatementGeneratorDashboard = forwardRef<
+  StatementGeneratorHandle,
+  StatementGeneratorDashboardProps
+>(function StatementGeneratorDashboard(
+  {
+    onApplyToWorkspace,
+    onAudit,
+    onQualityChange,
+    onAppliedAndContinue,
+    onBankReplaceRequest,
+    hasPdfBytes,
+    pdfEditCount = 0,
+    pdfBytes = null,
+  },
+  ref,
+) {
   const [config, setConfig] = useState<StatementConfig>(() =>
     defaultStatementConfig(),
   );
@@ -168,6 +186,12 @@ export function StatementGeneratorDashboard({
 
   const applyToWorkspace = async (andContinue: boolean) => {
     if (applyBusy) return;
+    if (!quality.ok) {
+      toast.message("Generation not ready to apply", {
+        description: "Fix quality issues before applying to the workspace ledger.",
+      });
+      return;
+    }
     setApplyBusy(true);
     try {
       const txns = ledgerToAppTransactions(result.rows);
@@ -208,6 +232,17 @@ export function StatementGeneratorDashboard({
       setApplyBusy(false);
     }
   };
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      apply: (andContinue = false) => applyToWorkspace(andContinue),
+      canApply: () => quality.ok && !applyBusy,
+    }),
+    // applyToWorkspace closes over latest result/config/quality
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [quality.ok, applyBusy, result, config, pdfBytes],
+  );
 
   return (
     <div className="space-y-4">
@@ -1134,7 +1169,7 @@ export function StatementGeneratorDashboard({
       )}
     </div>
   );
-}
+});
 
 function CfgSection({
   title,

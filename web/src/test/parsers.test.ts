@@ -10,19 +10,19 @@ import {
 } from "@/lib/parsers";
 
 describe("document parser registry", () => {
-  it("lists all six parsers with Mindee as default", () => {
+  it("lists all six parsers with LlamaParse first (cloud required)", () => {
     const list = listDocumentParsers();
     expect(list.map((p) => p.id)).toEqual([
-      "mindee",
       "llamaparse",
       "google-docai",
       "pymupdf",
+      "mindee",
       "local-ocr",
       "offline-heuristic",
     ]);
-    expect(DEFAULT_DOCUMENT_PARSER).toBe("mindee");
-    expect(list.find((p) => p.id === "mindee")?.default).toBe(true);
-    expect(isDocumentParserId("mindee")).toBe(true);
+    expect(DEFAULT_DOCUMENT_PARSER).toBe("llamaparse");
+    expect(list[0].id).toBe("llamaparse");
+    expect(isDocumentParserId("google-docai")).toBe(true);
     expect(isDocumentParserId("nope")).toBe(false);
   });
 });

@@ -200,8 +200,12 @@ export function linkRunMatches(params: {
     }
 
     for (const c of candidates) {
-      let bestIdx = -1;
-      let bestScore = 0;
+      // Descriptions are often multi-line (St George primary + secondary).
+      // Match every run that is a strong fragment of the full description
+      // (substring). Weak token-overlap matches must NOT consume runs —
+      // that starved money linking and wiped wrong lines under redaction.
+      const multiDesc = c.field === "description";
+      const scored: Array<{ i: number; score: number }> = [];
 
       for (let i = 0; i < available.length; i++) {
         const r = available[i];
@@ -219,16 +223,31 @@ export function linkRunMatches(params: {
           score = dateMatchScore(r.text, c.target, yearHint);
         } else {
           score = descScore(r.text, c.target);
+          if (multiDesc) {
+            const rt = r.text.replace(/\s+/g, " ").trim().toLowerCase();
+            const tgt = c.target.replace(/\s+/g, " ").trim().toLowerCase();
+            // Strong fragment only: run is contained in full description
+            if (rt.length >= 4 && tgt.includes(rt)) {
+              score = Math.max(score, 0.9);
+            } else if (rt === tgt) {
+              score = 1;
+            } else {
+              // Reject weak multi-matches (token-only)
+              score = 0;
+            }
+          }
         }
 
-        if (score > bestScore) {
-          bestScore = score;
-          bestIdx = i;
-        }
+        if (score >= 0.5) scored.push({ i, score });
       }
 
-      if (bestIdx >= 0 && bestScore >= 0.5) {
+      scored.sort((a, b) => b.score - a.score);
+      // Multi-desc: all strong fragments. Other fields: single best.
+      const take = multiDesc ? scored : scored.slice(0, 1);
+
+      for (const { i: bestIdx, score: bestScore } of take) {
         const r = available[bestIdx];
+        if (r.used) continue;
         r.used = true;
         matches.push({
           transactionId: t.id,

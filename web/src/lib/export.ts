@@ -57,9 +57,9 @@ export function buildExportPayload(
       extractedAt: result.extractedAt,
       limitedExtraction: result.limitedExtraction,
       exportedAt: new Date().toISOString(),
-      tool: "Statement Lens",
+      tool: "Bank Statement Fidelity Editor",
       disclaimer:
-        "Structured data edit and export only. Original PDF file was not modified or rewritten.",
+        "Structured ledger export from the Bank Statement Fidelity Editor. Source PDF is the visual baseline; Export final PDF materializes logic-generator injection (perfect replacement) into a regenerated replica PDF with audit trail.",
       completenessScore: result.completenessScore,
       hybrid: result.hybrid ?? null,
       parser: result.parser ?? null,

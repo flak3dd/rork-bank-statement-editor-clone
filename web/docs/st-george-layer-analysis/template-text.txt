@@ -1,0 +1,65 @@
+Complete Freedom
+Transaction Listing
+{FIRSTNAME LASTNAME} 
+{ADDRESS LINE 1}  
+{ADDRESS LINE 2}  
+AUSTRALIA
+Account/Card number
+{BSB}
+   
+{ACCOUNT}
+Account Opened: 
+{DATE}
+Transactions
+This statement covers the last 
+{NUMBER OF DAYS)
+ days of transactions 
+(
+{FROM DATE}
+ to 
+{TO DATE}
+).
+Current Balance: 
+{CURRENT BALANCE} 
+Date
+ 
+Transaction
+Amount
+Balance
+{dd mmm}
+{STGEORGE TRANSACTION}
+{AMOUNT}
+{AMOUNT}
+{dd mmm}
+{STGEORGE TRANSACTION}
+$10,000.00
+$64,573.63
+St.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714
+Date created: 
+{DATE CREATE
+ 
+{TIME}
+Page 
+{X}
+ of
+ {X}
+
+-----PAGE-----
+Transaction listing continued...
+Account/Card number
+ 
+{ACCOUNT}
+Date
+Transaction
+Amount
+Balance
+St.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714
+Date created: 
+ {DATE CREATE {TIME}
+{dd mmm}{STGEORGE TRANSACTION}
+{AMOUNT}
+{AMOUNT}
+Page 
+{X}
+ of
+ {X}

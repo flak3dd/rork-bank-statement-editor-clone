@@ -156,9 +156,12 @@ async function callDocAi(input: ParserInput): Promise<{
 
   const toolkit = toolkitBase();
   const name = `projects/${c.project}/locations/${c.location}/processors/${c.processor}`;
+  // Browser: Vite proxy /api/docai → *.googleapis.com (avoids CORS)
   const url = toolkit
     ? `${toolkit}/v2/google/documentai/v1/${name}:process`
-    : `https://${c.location}-documentai.googleapis.com/v1/${name}:process`;
+    : typeof window !== "undefined"
+      ? `/api/docai/v1/${name}:process`
+      : `https://${c.location}-documentai.googleapis.com/v1/${name}:process`;
 
   // base64 content
   let binary = "";
@@ -169,23 +172,45 @@ async function callDocAi(input: ParserInput): Promise<{
   const b64 = btoa(binary);
 
   input.onProgress?.(0.35, "Calling Google Document AI…");
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${c.token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      rawDocument: {
-        content: b64,
-        mimeType: "application/pdf",
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${c.token}`,
+        "Content-Type": "application/json",
       },
-    }),
-    signal: input.signal,
-  });
+      body: JSON.stringify({
+        rawDocument: {
+          content: b64,
+          mimeType: "application/pdf",
+        },
+      }),
+      signal: input.signal,
+    });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (/NetworkError|Failed to fetch|Load failed|network/i.test(msg)) {
+      throw new Error(
+        `Document AI network/CORS error. Restart Vite (proxy /api/docai). Original: ${msg}`,
+      );
+    }
+    throw err;
+  }
 
   if (!res.ok) {
     const t = await res.text().catch(() => "");
+    if (res.status === 401) {
+      throw new Error(
+        `Document AI 401 — OAuth token expired/invalid. Run: cd web && ./scripts/refresh-docai-token.sh && restart Vite. Detail: ${t.slice(0, 120)}`,
+      );
+    }
+    if (res.status === 403) {
+      throw new Error(
+        `Document AI 403 — enable billing on GCP project ${c.project} ` +
+          `(console.cloud.google.com/billing) and ensure Document AI API is enabled. Detail: ${t.slice(0, 120)}`,
+      );
+    }
     throw new Error(`Document AI HTTP ${res.status}: ${t.slice(0, 180)}`);
   }
 

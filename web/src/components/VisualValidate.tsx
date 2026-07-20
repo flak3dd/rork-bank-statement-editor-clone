@@ -92,7 +92,7 @@ export function VisualValidate({
               <p className="text-xs text-muted-foreground leading-relaxed">
                 <strong>Baseline:</strong> original uploaded PDF ·{" "}
                 <strong>Candidate:</strong> re-rendered PDF with generator /
-                bank-desc / table updates applied (MuPDF redaction+insert).{" "}
+                bank-desc / table updates applied (cover + text insert, no redactions).{" "}
                 Pdfium @ <strong>300 DPI</strong> · per-pixel Δ · SSIM · pHash ·
                 tile-max · Applitools optional.
               </p>

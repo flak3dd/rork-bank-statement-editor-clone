@@ -59,10 +59,11 @@ export function ConfirmRenderPanel({
             Confirm &amp; Render
           </h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Apply working edits and resolve balances with the selected engine.
-            Balance fallbacks: hybrid → recompute → stated. PDF page engines
-            (when bytes available):{" "}
-            {ENGINE_CHAIN.map((e) => e.id).join(" → ")}.
+            Cascade running balances after edits (dirty amounts force{" "}
+            <strong>recompute</strong>). Balance engines: hybrid → recompute →
+            stated. PDF probe (load only):{" "}
+            {ENGINE_CHAIN.map((e) => e.id).join(" → ")}. Writing the PDF uses
+            MuPDF / remote on Export final PDF.
           </p>
         </div>
       </div>
@@ -129,7 +130,9 @@ export function ConfirmRenderPanel({
           Confirm &amp; apply render
         </Button>
         <p className="text-[11px] text-muted-foreground">
-          Updates structured data only — original PDF file is not rewritten.
+          Applies balance engines to the working ledger. Source PDF remains the
+          baseline; use Export final PDF later to rewrite matched text runs when
+          there is a generation delta or queued pdfEdits.
         </p>
       </div>
 

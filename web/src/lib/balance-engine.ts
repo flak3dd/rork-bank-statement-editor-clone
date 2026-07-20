@@ -45,6 +45,11 @@ export function recomputeBalances(
 /**
  * Hybrid: prefer stated balance when it matches the chain; otherwise recompute.
  * When a stated balance matches, re-anchor the chain to it.
+ *
+ * Important: if the row has a non-zero movement (debit/credit) that does not
+ * reconcile with stated balance, trust the movement cascade — do NOT re-anchor
+ * to stale stated balances (that left Confirm Render at "0 balances updated"
+ * after user edits).
  */
 export function hybridBalances(
   transactions: Transaction[],
@@ -57,6 +62,13 @@ export function hybridBalances(
 
   const out: Array<number | null> = [];
   for (const t of transactions) {
+    const move = movementOf(t);
+    const hasMove = Math.abs(move) > TOLERANCE;
+    const amountDirty =
+      t.original != null &&
+      (!moneyEqual(t.debit, t.original.debit) ||
+        !moneyEqual(t.credit, t.original.credit));
+
     if (running == null) {
       if (t.balance != null) {
         running = t.balance;
@@ -66,15 +78,22 @@ export function hybridBalances(
       }
       continue;
     }
-    const expected = round2(running + movementOf(t));
+    const expected = round2(running + move);
     if (t.balance != null && moneyEqual(t.balance, expected, TOLERANCE)) {
       running = t.balance;
       out.push(t.balance);
-    } else if (t.balance != null && Math.abs(t.balance - expected) > TOLERANCE * 20) {
-      // Large drift: re-anchor to stated (possible missing prior rows)
+    } else if (
+      // Only re-anchor on large drift when the row has NO movement and is not
+      // amount-dirty (missing prior rows / statement discontinuity).
+      t.balance != null &&
+      !hasMove &&
+      !amountDirty &&
+      Math.abs(t.balance - expected) > TOLERANCE * 20
+    ) {
       running = t.balance;
       out.push(t.balance);
     } else {
+      // Prefer cascade from debit/credit (user edits, generator inject)
       running = expected;
       out.push(expected);
     }
@@ -157,37 +176,61 @@ export function buildBalancePreview(
 /**
  * Apply engine balances to transactions.
  * Fallback chain: preferred → remaining engines until chain is healthy or last resort.
+ *
+ * When the ledger has dirty amount fields, prefer recompute over hybrid so
+ * cascading balances always land after generator / bank-desc edits.
  */
 export function applyRenderWithFallbacks(
   transactions: Transaction[],
   preferred: BalanceEngineId = "hybrid",
   opening?: number | null,
 ): RenderResult {
-  const order: BalanceEngineId[] = [preferred];
+  const dirtyAmounts = transactions.some(
+    (t) =>
+      t.original != null &&
+      (!moneyEqual(t.debit, t.original.debit) ||
+        !moneyEqual(t.credit, t.original.credit) ||
+        !moneyEqual(t.balance, t.original.balance)),
+  );
+  // Dirty ledgers: put recompute first so balances cascade from new amounts
+  const effectivePreferred: BalanceEngineId =
+    dirtyAmounts && preferred === "hybrid" ? "recompute" : preferred;
+
+  const order: BalanceEngineId[] = [effectivePreferred];
   for (const id of ["hybrid", "recompute", "stated"] as BalanceEngineId[]) {
     if (!order.includes(id)) order.push(id);
   }
 
   const enginesTried: BalanceEngineId[] = [];
-  let chosen: BalanceEngineId = preferred;
-  let preview = buildBalancePreview(transactions, preferred, opening);
+  let chosen: BalanceEngineId = effectivePreferred;
+  let preview = buildBalancePreview(transactions, effectivePreferred, opening);
 
   for (const eng of order) {
+    // Never fall through to "stated" when amounts/balances were edited —
+    // stated always "matches itself" and would leave 0 rows updated.
+    if (eng === "stated" && dirtyAmounts) {
+      break;
+    }
     enginesTried.push(eng);
     preview = buildBalancePreview(transactions, eng, opening);
     chosen = eng;
     if (preview.chainHealthy) break;
     if (eng === "stated") break;
     // Accept hybrid/recompute if mismatches are few relative to size
+    // (preview mismatches vs *stated* — after apply, cascade is authoritative)
     if (
-      transactions.length > 0 &&
-      preview.mismatchCount / transactions.length <= 0.1
+      (eng === "recompute" || eng === "hybrid") &&
+      (dirtyAmounts ||
+        (transactions.length > 0 &&
+          preview.mismatchCount / transactions.length <= 0.25))
     ) {
       break;
     }
   }
 
-  const expected = balancesForEngine(transactions, chosen, opening);
+  const open =
+    opening !== undefined ? opening : inferOpeningBalance(transactions);
+  const expected = balancesForEngine(transactions, chosen, open);
   let rowsUpdated = 0;
   const next = transactions.map((t, i) => {
     const bal = expected[i];
@@ -206,18 +249,24 @@ export function applyRenderWithFallbacks(
     };
   });
 
-  const fallbackUsed = chosen !== preferred || enginesTried.length > 1;
+  const fallbackUsed = chosen !== preferred && chosen !== effectivePreferred;
+
+  const dirtyNote = dirtyAmounts
+    ? effectivePreferred !== preferred
+      ? ` Dirty amounts detected → preferred ${effectivePreferred}.`
+      : " Dirty amounts detected."
+    : "";
 
   return {
     engineUsed: chosen,
     enginesTried,
-    fallbackUsed: fallbackUsed && chosen !== preferred,
+    fallbackUsed,
     transactions: next,
     appliedAt: new Date().toISOString(),
     rowsUpdated,
-    summary: fallbackUsed && chosen !== preferred
-      ? `Applied ${chosen} engine after fallback from ${preferred} (${rowsUpdated} balances updated).`
-      : `Applied ${chosen} engine (${rowsUpdated} balances updated).`,
+    summary: fallbackUsed
+      ? `Applied ${chosen} engine after fallback from ${preferred} (${rowsUpdated} balances updated).${dirtyNote}`
+      : `Applied ${chosen} engine (${rowsUpdated} balances updated).${dirtyNote}`,
   };
 }
 

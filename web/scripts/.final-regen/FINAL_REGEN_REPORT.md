@@ -1,7 +1,7 @@
 # Final statement regeneration report
 
-- Started: 2026-07-19T03:31:42.324Z
-- Duration: 261ms
+- Started: 2026-07-19T11:52:35.107Z
+- Duration: 653ms
 - Perfect: **true**
 - Stress suite: 80/80 · 3634 rows
 - Banks: anz, cba, westpac, ing, bankwest, suncorp, macquarie, other

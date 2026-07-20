@@ -1,0 +1,109 @@
+{
+  "product": "Bank Statement Fidelity Editor",
+  "model": "TEMPLATE_2_base + TEMPLATE_placement_map + FINAL_#726_structure",
+  "files": {
+    "base": {
+      "role": "Frozen visual layer — keep all static items as-is",
+      "path_desktop": "/Users/adminuser/Desktop/St George Bank TEMPLATE 2- 21.08.24 to 19.11.24.pdf",
+      "path_public": "public/templates/st-george-template-2-base.pdf",
+      "pages": 2,
+      "pageSizePt": [595, 842],
+      "staticOnly": true,
+      "residualTokens": ["{FROM DATE}", "{TO DATE}"],
+      "notes": "Logo, titles, labels, table headers, legal footer, horizontal rules. Do not strip or rewrite static chrome."
+    },
+    "placementMap": {
+      "role": "Shows where generated data is painted when placed on base",
+      "path_desktop": "/Users/adminuser/Desktop/St George Bank TEMPLATE- 21.08.24 to 19.11.24.pdf",
+      "path_public": "public/templates/st-george-template-placement-map.pdf",
+      "pages": 2,
+      "pageSizePt": [595, 842],
+      "tokenCount": 15
+    },
+    "structureTarget": {
+      "role": "How filled data should look when complete",
+      "path": "/Users/adminuser/Downloads/1132%20(2)/698/St George Bank Acc Statement #726 - 21.08.24 to 19.11.24.pdf",
+      "pages": 3,
+      "pageSizePt": [595, 842],
+      "dateRowCount": 39,
+      "rowPitchPt": 36.6,
+      "secondaryLineOffsetPt": 12
+    }
+  },
+  "visualFidelityPage1": {
+    "scale": "1x RGB pixmap",
+    "template2_vs_template": { "meanAbsDelta": 1.81, "pctPixelsDiffGt8": 1.38 },
+    "template2_vs_final": { "meanAbsDelta": 6.08, "pctPixelsDiffGt8": 5.18 },
+    "bands_template2_vs_final": {
+      "header_0_200pt": { "meanAbsDelta": 3.17, "pctDiff": 2.34 },
+      "tableBody_250_700pt": { "meanAbsDelta": 7.58, "pctDiff": 6.52 },
+      "footer_750_842pt": { "meanAbsDelta": 1.22, "pctDiff": 1.09 }
+    },
+    "interpretation": "Base and placement map are nearly pixel-identical chrome (~1.4% pixels differ). Final differs mainly in table body (injected identity + 13 txn rows on p1). Footer/logo band highly stable."
+  },
+  "sharedAnchors": {
+    "Complete Freedom": { "page": 1, "x": 225, "y": 74, "match": "exact-all-three" },
+    "Transaction Listing": { "page": 1, "x": 223, "y": 97, "match": "exact-all-three" },
+    "Account/Card number": { "page": 1, "x": 419, "y": 128, "match": "exact-all-three" },
+    "period line start": { "page": 1, "x": 70, "y": 205, "match": "exact-all-three" },
+    "table header Date": { "page": 1, "y": 254, "match": "exact-all-three" }
+  },
+  "columns": {
+    "dateX": 70,
+    "descX": 115,
+    "amountX": 385,
+    "balanceX": 474,
+    "observedFinalAmountClusterX": 394.4,
+    "observedFinalBalanceClusterX": 482.4,
+    "bsbX": 424,
+    "accountX": 459,
+    "identityX": 70,
+    "currentBalanceValueX": 153
+  },
+  "chromeSlots": [
+    { "token": "{FIRSTNAME LASTNAME}", "page": 1, "x": 70, "y": 131, "w": 127, "h": 14 },
+    { "token": "{ADDRESS LINE 1}", "page": 1, "x": 70, "y": 143, "w": 96, "h": 14 },
+    { "token": "{ADDRESS LINE 2}", "page": 1, "x": 70, "y": 155, "w": 96, "h": 14 },
+    { "token": "{BSB}", "page": 1, "x": 424, "y": 140, "w": 26, "h": 16 },
+    { "token": "{ACCOUNT}", "page": 1, "x": 459, "y": 140, "w": 56, "h": 16 },
+    { "token": "{ACCOUNT}", "page": 2, "x": 471, "y": 89, "w": 56, "h": 16 },
+    { "token": "{DATE}", "page": 1, "x": 467, "y": 164, "w": 33, "h": 16 },
+    { "token": "{FROM DATE}", "page": 1, "x": 400, "y": 206, "w": 67, "h": 14 },
+    { "token": "{TO DATE}", "page": 1, "x": 482, "y": 206, "w": 51, "h": 14 },
+    { "token": "{CURRENT BALANCE}", "page": 1, "x": 153, "y": 229, "w": 107, "h": 16 },
+    { "token": "{TIME}", "page": 1, "x": 208, "y": 800, "w": 30, "h": 16 },
+    { "token": "{X}", "page": 1, "x": 498, "y": 800, "w": 13, "h": 16 },
+    { "token": "{X}", "page": 1, "x": 522, "y": 800, "w": 16, "h": 16 },
+    { "token": "{X}", "page": 2, "x": 498, "y": 800, "w": 13, "h": 16 },
+    { "token": "{X}", "page": 2, "x": 522, "y": 800, "w": 16, "h": 16 }
+  ],
+  "transactionGrid": {
+    "page1": {
+      "firstRowY": 287,
+      "secondRowY": 324,
+      "pitch": 36.6,
+      "maxRowsBeforeFooter": 13,
+      "yMax": 726,
+      "secondaryLineOffset": 12,
+      "slots": {
+        "date": { "x": 70, "w": 45, "h": 16 },
+        "descPrimary": { "x": 115, "w": 250, "h": 16 },
+        "descSecondary": { "x": 115, "w": 250, "h": 14 },
+        "amount": { "x": 385, "w": 70, "h": 16 },
+        "balance": { "x": 474, "w": 70, "h": 16 }
+      }
+    },
+    "page2plus": {
+      "firstRowY": 155,
+      "pitch": 36.6,
+      "maxRows": 16,
+      "header": "Transaction listing continued...",
+      "accountSlot": { "page": 2, "x": 471, "y": 89 }
+    }
+  },
+  "writePolicy": {
+    "base": "Never delete/redact TEMPLATE 2 static content",
+    "inject": "FreeText (+ optional white Square cover only over token/blank zones, not over logo/rules)",
+    "compose": "edits built from placement-map geometry applied onto base PDF bytes"
+  }
+}

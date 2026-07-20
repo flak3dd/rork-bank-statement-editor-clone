@@ -1,0 +1,69 @@
+{
+  "kind": "statement-layout.three-part",
+  "score": 100,
+  "documentClass": "filled-statement",
+  "bank": "st-george",
+  "part1_staticRuns": 127,
+  "part2_varRuns": 18,
+  "part2_fields": {
+    "addressLines": [
+      "48 DENISON ST",
+      "COOMA NSW 2630"
+    ],
+    "holderName": "ELYSIA LEAVER",
+    "bsb": "116-879",
+    "currentBalance": 64474.33,
+    "periodStart": "21-Aug-2024",
+    "periodEnd": "19-Nov-2024",
+    "periodDays": 90
+  },
+  "part3_txnRows": 42,
+  "part3_pitch": 36.56999999999999,
+  "part3_columns": {
+    "dateX": 70,
+    "descriptionX": 115,
+    "amountX": 395.03,
+    "balanceX": 488.36
+  },
+  "structure": {
+    "recipe": "Date (dd mmm) | Primary type line (often embeds process date e.g. 'Visa Purchase 14Nov') | optional secondary merchant/type ('Oz Lotteries Melbourne', 'Interbank Trans') | optional pure reference digits | signed Amount | Balance",
+    "multiLine": true,
+    "embedsDate": true,
+    "hasRef": true,
+    "amountLayout": "debit_credit_balance",
+    "patterns": [
+      "embedded-date-in-primary",
+      "prefix:Visa Purchase",
+      "type:Interbank Trans",
+      "prefix:Sct Deposit",
+      "prefix:Eftpos",
+      "prefix:Osko",
+      "standalone-or-secondary-reference",
+      "prefix:BPAY"
+    ],
+    "samples": [
+      "Visa Purchase 14Nov",
+      "Elysia Anne Leav",
+      "Elysia Anne Leav",
+      "Elysia Anne Leav",
+      "Sct Deposit 17Nov09:55"
+    ]
+  },
+  "gates": [
+    {
+      "id": "has-static",
+      "pass": true,
+      "detail": "127 static run(s)"
+    },
+    {
+      "id": "has-txn-or-shell",
+      "pass": true,
+      "detail": "42 txn row(s)"
+    },
+    {
+      "id": "three-parts-present",
+      "pass": true,
+      "detail": "static=127 vars=18 txns=42"
+    }
+  ]
+}

@@ -112,9 +112,11 @@ class PdfJsDocument implements PdfEngineDocument {
       replacement: string;
       fontSpec: PdfFontSpec;
     }>,
+    _options?: { burnOriginal?: boolean },
   ): Promise<Uint8Array> {
-    // PDF.js is view-only for writes — return original bytes; overlays handle display.
-    return new Uint8Array(this.data);
+    throw new Error(
+      "pdfjs: view-only (use mupdf WASM or remote PyMuPDF for writes)",
+    );
   }
 
   async save(): Promise<Uint8Array> {

@@ -200,3 +200,83 @@ export async function probeRemoteEngine(
     };
   }
 }
+
+export interface RemoteReplaceRequest {
+  fileName?: string;
+  bytesBase64: string;
+  replacements: Array<{
+    page: number;
+    bbox: { x: number; y: number; width: number; height: number };
+    replacement: string;
+    burn?: boolean;
+  }>;
+  /** Prefer native PyMuPDF burn+insert when server supports it. */
+  engine?: "pymupdf" | "auto";
+}
+
+export interface RemoteReplaceResponse {
+  bytesBase64: string;
+  engine?: string;
+  applied?: number;
+  notes?: string[];
+}
+
+/**
+ * POST PDF + geometry replacements to hosted backend (native PyMuPDF Pro).
+ * Endpoint: POST {base}/v1/replace
+ */
+export async function remoteReplacePdf(params: {
+  fileName?: string;
+  bytes: Uint8Array;
+  replacements: RemoteReplaceRequest["replacements"];
+  signal?: AbortSignal;
+  onProgress?: (msg: string) => void;
+}): Promise<{ pdf: Uint8Array; engine: string; notes: string[] }> {
+  const cfg = getRemoteEngineConfig();
+  if (!cfg) {
+    throw new Error(
+      "Remote engine not configured. Set VITE_REMOTE_ENGINE_URL for native PyMuPDF writes.",
+    );
+  }
+
+  params.onProgress?.("Uploading to remote PDF engine (PyMuPDF)…");
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), cfg.timeoutMs);
+  const signal = params.signal ?? controller.signal;
+
+  try {
+    const res = await fetch(`${cfg.baseUrl}/v1/replace`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(cfg.apiKey ? { Authorization: `Bearer ${cfg.apiKey}` } : {}),
+      },
+      body: JSON.stringify({
+        fileName: params.fileName ?? "statement.pdf",
+        bytesBase64: bytesToBase64(params.bytes),
+        replacements: params.replacements,
+        engine: "pymupdf",
+      } satisfies RemoteReplaceRequest),
+      signal,
+    });
+    if (!res.ok) {
+      const t = await res.text().catch(() => "");
+      throw new Error(`Remote replace HTTP ${res.status}: ${t.slice(0, 200)}`);
+    }
+    params.onProgress?.("Decoding remote PDF…");
+    const json = (await res.json()) as RemoteReplaceResponse;
+    if (!json.bytesBase64) {
+      throw new Error("Remote replace returned no PDF bytes");
+    }
+    const binary = atob(json.bytesBase64);
+    const out = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) out[i] = binary.charCodeAt(i);
+    return {
+      pdf: out,
+      engine: json.engine ?? "remote-pymupdf",
+      notes: json.notes ?? [`Remote applied ${json.applied ?? params.replacements.length}`],
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+}

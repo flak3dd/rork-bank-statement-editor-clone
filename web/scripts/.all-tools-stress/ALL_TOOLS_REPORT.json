@@ -1,7 +1,7 @@
 {
   "pdf": "/Users/adminuser/Downloads/1132%20(2)/698/St George Bank Acc Statement #726 - 21.08.24 to 19.11.24.pdf",
   "baselineCount": 22,
-  "advancedEdits": 59,
+  "advancedEdits": 82,
   "allOk": true,
   "passCount": 12,
   "failCount": 0,
@@ -14,12 +14,12 @@
     {
       "tool": "advancedGenerator+run-match+font-edits",
       "ok": true,
-      "detail": "txns=22 runs=348 linked=72 edits=59"
+      "detail": "txns=22 runs=348 linked=95 edits=82"
     },
     {
       "tool": "pymupdf-replace (bank-desc)",
       "ok": true,
-      "detail": "mode=table+geometry edits=22 material=full-ledger"
+      "detail": "mode=table+geometry edits=45 material=full-ledger"
     },
     {
       "tool": "date-shift",
@@ -44,12 +44,12 @@
     {
       "tool": "run-match",
       "ok": true,
-      "detail": "fields=90 linked=72 paired=72"
+      "detail": "fields=90 linked=95 paired=95"
     },
     {
       "tool": "docai-admin",
       "ok": true,
-      "detail": "configured · snapshot ok · train soft-fail: Train HTTP 401: {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had inva"
+      "detail": "configured · snapshot ok · train soft-fail: Train HTTP 403: {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"This API method "
     },
     {
       "tool": "remote-engine",

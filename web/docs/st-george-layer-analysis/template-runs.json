@@ -1,0 +1,642 @@
+[
+  {
+    "page": 1,
+    "runs": [
+      {
+        "t": "Complete Freedom",
+        "x": 225,
+        "y": 74,
+        "by": 92,
+        "w": 144,
+        "h": 22,
+        "size": 16,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Transaction Listing",
+        "x": 223,
+        "y": 97,
+        "by": 114,
+        "w": 147,
+        "h": 22,
+        "size": 16,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "{FIRSTNAME LASTNAME} ",
+        "x": 70,
+        "y": 131,
+        "by": 141,
+        "w": 127,
+        "h": 14,
+        "size": 10,
+        "font": "COKJMO+Helvetica-Bold"
+      },
+      {
+        "t": "{ADDRESS LINE 1}  ",
+        "x": 70,
+        "y": 143,
+        "by": 153,
+        "w": 96,
+        "h": 14,
+        "size": 10,
+        "font": "COKJMO+Helvetica-Bold"
+      },
+      {
+        "t": "{ADDRESS LINE 2}  ",
+        "x": 70,
+        "y": 155,
+        "by": 165,
+        "w": 96,
+        "h": 14,
+        "size": 10,
+        "font": "COKJMO+Helvetica-Bold"
+      },
+      {
+        "t": "AUSTRALIA",
+        "x": 70,
+        "y": 166,
+        "by": 177,
+        "w": 57,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Account/Card number",
+        "x": 419,
+        "y": 128,
+        "by": 139,
+        "w": 105,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "{BSB}",
+        "x": 424,
+        "y": 140,
+        "by": 151,
+        "w": 26,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "   ",
+        "x": 451,
+        "y": 140,
+        "by": 151,
+        "w": 8,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "{ACCOUNT}",
+        "x": 459,
+        "y": 140,
+        "by": 151,
+        "w": 56,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "Account Opened: ",
+        "x": 381,
+        "y": 164,
+        "by": 175,
+        "w": 86,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "{DATE}",
+        "x": 467,
+        "y": 164,
+        "by": 175,
+        "w": 33,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "Transactions",
+        "x": 70,
+        "y": 191,
+        "by": 202,
+        "w": 62,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "This statement covers the last ",
+        "x": 70,
+        "y": 205,
+        "by": 216,
+        "w": 135,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "{NUMBER OF DAYS)",
+        "x": 205,
+        "y": 205,
+        "by": 216,
+        "w": 96,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": " days of transactions ",
+        "x": 302,
+        "y": 205,
+        "by": 216,
+        "w": 94,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "(",
+        "x": 396,
+        "y": 205,
+        "by": 216,
+        "w": 3,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "{FROM DATE}",
+        "x": 400,
+        "y": 206,
+        "by": 216,
+        "w": 67,
+        "h": 14,
+        "size": 10,
+        "font": "COKJMO+Helvetica-Bold"
+      },
+      {
+        "t": " to ",
+        "x": 467,
+        "y": 205,
+        "by": 216,
+        "w": 14,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "{TO DATE}",
+        "x": 482,
+        "y": 206,
+        "by": 216,
+        "w": 51,
+        "h": 14,
+        "size": 10,
+        "font": "COKJMO+Helvetica-Bold"
+      },
+      {
+        "t": ").",
+        "x": 534,
+        "y": 205,
+        "by": 216,
+        "w": 6,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Current Balance: ",
+        "x": 70,
+        "y": 230,
+        "by": 240,
+        "w": 83,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "{CURRENT BALANCE} ",
+        "x": 153,
+        "y": 229,
+        "by": 240,
+        "w": 107,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "Date",
+        "x": 70,
+        "y": 254,
+        "by": 265,
+        "w": 21,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": " ",
+        "x": 91,
+        "y": 255,
+        "by": 265,
+        "w": 2,
+        "h": 14,
+        "size": 10,
+        "font": "COKJMO+Helvetica-Bold"
+      },
+      {
+        "t": "Transaction",
+        "x": 115,
+        "y": 254,
+        "by": 265,
+        "w": 56,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Amount",
+        "x": 396,
+        "y": 254,
+        "by": 265,
+        "w": 37,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Balance",
+        "x": 486,
+        "y": 254,
+        "by": 265,
+        "w": 38,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "{dd mmm}",
+        "x": 70,
+        "y": 287,
+        "by": 298,
+        "w": 45,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{STGEORGE TRANSACTION}",
+        "x": 115,
+        "y": 287,
+        "by": 298,
+        "w": 137,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{AMOUNT}",
+        "x": 385,
+        "y": 287,
+        "by": 298,
+        "w": 50,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{AMOUNT}",
+        "x": 474,
+        "y": 287,
+        "by": 298,
+        "w": 50,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{dd mmm}",
+        "x": 70,
+        "y": 324,
+        "by": 335,
+        "w": 45,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{STGEORGE TRANSACTION}",
+        "x": 115,
+        "y": 324,
+        "by": 335,
+        "w": 137,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "$10,000.00",
+        "x": 384,
+        "y": 324,
+        "by": 335,
+        "w": 50,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "$64,573.63",
+        "x": 474,
+        "y": 324,
+        "by": 335,
+        "w": 50,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "St.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714",
+        "x": 70,
+        "y": 784,
+        "by": 792,
+        "w": 391,
+        "h": 9,
+        "size": 7,
+        "font": "Helvetica"
+      },
+      {
+        "t": "Date created: ",
+        "x": 70,
+        "y": 801,
+        "by": 812,
+        "w": 62,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "{DATE CREATE",
+        "x": 132,
+        "y": 800,
+        "by": 812,
+        "w": 73,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": " ",
+        "x": 206,
+        "y": 801,
+        "by": 812,
+        "w": 2,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "{TIME}",
+        "x": 208,
+        "y": 800,
+        "by": 812,
+        "w": 30,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "Page ",
+        "x": 472,
+        "y": 801,
+        "by": 812,
+        "w": 26,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "{X}",
+        "x": 498,
+        "y": 800,
+        "by": 812,
+        "w": 13,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": " of",
+        "x": 511,
+        "y": 801,
+        "by": 812,
+        "w": 11,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": " {X}",
+        "x": 522,
+        "y": 800,
+        "by": 812,
+        "w": 16,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      }
+    ]
+  },
+  {
+    "page": 2,
+    "runs": [
+      {
+        "t": "Transaction listing continued...",
+        "x": 70,
+        "y": 78,
+        "by": 89,
+        "w": 147,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Account/Card number",
+        "x": 422,
+        "y": 78,
+        "by": 89,
+        "w": 105,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": " ",
+        "x": 527,
+        "y": 79,
+        "by": 89,
+        "w": 2,
+        "h": 14,
+        "size": 10,
+        "font": "COKJMO+Helvetica-Bold"
+      },
+      {
+        "t": "{ACCOUNT}",
+        "x": 471,
+        "y": 89,
+        "by": 101,
+        "w": 56,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "Date",
+        "x": 70,
+        "y": 119,
+        "by": 130,
+        "w": 21,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Transaction",
+        "x": 115,
+        "y": 119,
+        "by": 130,
+        "w": 56,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Amount",
+        "x": 396,
+        "y": 119,
+        "by": 130,
+        "w": 37,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "Balance",
+        "x": 486,
+        "y": 119,
+        "by": 130,
+        "w": 38,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica-Bold"
+      },
+      {
+        "t": "St.George Bank - A Division of Westpac Banking Corporation ABN 33 007 457 141 AFSL and Australian credit licence 233714",
+        "x": 70,
+        "y": 784,
+        "by": 792,
+        "w": 391,
+        "h": 9,
+        "size": 7,
+        "font": "Helvetica"
+      },
+      {
+        "t": "Date created: ",
+        "x": 70,
+        "y": 801,
+        "by": 812,
+        "w": 62,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": " {DATE CREATE {TIME}",
+        "x": 132,
+        "y": 800,
+        "by": 812,
+        "w": 109,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{dd mmm}{STGEORGE TRANSACTION}",
+        "x": 70,
+        "y": 155,
+        "by": 166,
+        "w": 183,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{AMOUNT}",
+        "x": 385,
+        "y": 155,
+        "by": 166,
+        "w": 50,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "{AMOUNT}",
+        "x": 474,
+        "y": 155,
+        "by": 166,
+        "w": 50,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": "Page ",
+        "x": 472,
+        "y": 801,
+        "by": 812,
+        "w": 26,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": "{X}",
+        "x": 498,
+        "y": 800,
+        "by": 812,
+        "w": 13,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      },
+      {
+        "t": " of",
+        "x": 511,
+        "y": 801,
+        "by": 812,
+        "w": 11,
+        "h": 13,
+        "size": 10,
+        "font": "Helvetica"
+      },
+      {
+        "t": " {X}",
+        "x": 522,
+        "y": 800,
+        "by": 812,
+        "w": 16,
+        "h": 16,
+        "size": 10,
+        "font": "RJEVOK+Helvetica"
+      }
+    ]
+  }
+]
