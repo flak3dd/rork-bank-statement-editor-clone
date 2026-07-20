@@ -4,6 +4,11 @@ import { parseTransactionsHybrid } from "@/lib/parse-transactions";
 import { attachOriginals } from "@/lib/edit-utils";
 import type { DocumentParser, ParserInput, ParserResult } from "./types";
 
+/**
+ * The API key lives only on the server (Cloudflare Worker env). The browser
+ * never sees it; it calls our own backend, which injects Authorization.
+ * We keep the legacy client-key check as a fallback for local dev only.
+ */
 function llamaKey(): string | undefined {
   return envFirst(
     "VITE_LLAMAPARSE_API_KEY",
@@ -11,6 +16,19 @@ function llamaKey(): string | undefined {
     "EXPO_PUBLIC_LLAMAPARSE_API_KEY",
     "EXPO_PUBLIC_LLAMA_CLOUD_API_KEY",
   );
+}
+
+/**
+ * Base URL of the Statement Lens backend proxy (Cloudflare Worker). The
+ * Worker injects the LlamaParse Bearer token server-side so the browser
+ * bundle contains no secret.
+ */
+function backendBase(): string | undefined {
+  const base = envFirst(
+    "EXPO_PUBLIC_RORK_FUNCTIONS_URL",
+    "VITE_RORK_FUNCTIONS_URL",
+  );
+  return base ? base.replace(/\/$/, "") : undefined;
 }
 
 async function sleep(ms: number, signal?: AbortSignal) {
@@ -24,6 +42,15 @@ async function sleep(ms: number, signal?: AbortSignal) {
 }
 
 function llamaBaseUrls(): { uploadUrl: string; statusBase: string } {
+  // 1) Rork Functions backend (production) — key is server-side only.
+  const backend = backendBase();
+  if (backend) {
+    return {
+      uploadUrl: `${backend}/api/llamaparse/upload`,
+      statusBase: `${backend}/api/llamaparse`,
+    };
+  }
+  // 2) Legacy Rork toolkit proxy (if a project still wires it).
   const toolkit = toolkitBase();
   if (toolkit) {
     return {
@@ -31,7 +58,8 @@ function llamaBaseUrls(): { uploadUrl: string; statusBase: string } {
       statusBase: `${toolkit}/v2/llamaparse`,
     };
   }
-  // Browser: Vite dev proxy avoids CORS NetworkError
+  // 3) Browser local dev: Vite proxy at /api/llamaparse (only useful with a
+  //    VITE_LLAMAPARSE_API_KEY for local testing).
   if (typeof window !== "undefined") {
     return {
       uploadUrl: "/api/llamaparse/upload",
@@ -48,17 +76,23 @@ function friendlyLlamaError(err: unknown): string {
   const msg = err instanceof Error ? err.message : String(err);
   if (/NetworkError|Failed to fetch|Load failed|network/i.test(msg)) {
     return (
-      "LlamaParse network/CORS error. Restart Vite (dev proxy /api/llamaparse) " +
-      "or set VITE_TOOLKIT_BASE if using a backend proxy. Original: " +
-      msg
+      "LlamaParse network/CORS error. If the Statement Lens backend " +
+      "(EXPO_PUBLIC_RORK_FUNCTIONS_URL) is unreachable, check that the " +
+      "Worker is deployed. Original: " + msg
     );
   }
   return msg;
 }
 
 async function callLlamaParse(input: ParserInput): Promise<{ rawText: string; pageCount: number }> {
+  // The browser no longer needs a key — the Worker injects it. We only
+  // require one when talking to LlamaParse directly (legacy local-dev path
+  // with VITE_LLAMAPARSE_API_KEY and no backend).
   const key = llamaKey();
-  if (!key) throw new Error("LlamaParse API key not configured");
+  const usesProxy = Boolean(backendBase());
+  if (!key && !usesProxy) {
+    throw new Error("LlamaParse API key not configured");
+  }
 
   const { uploadUrl, statusBase } = llamaBaseUrls();
 
@@ -75,9 +109,11 @@ async function callLlamaParse(input: ParserInput): Promise<{ rawText: string; pa
   input.onProgress?.(0.2, "Uploading to LlamaParse…");
   let up: Response;
   try {
+    const headers: Record<string, string> = {};
+    if (key) headers.Authorization = `Bearer ${key}`;
     up = await fetch(uploadUrl, {
       method: "POST",
-      headers: { Authorization: `Bearer ${key}` },
+      headers,
       body: form,
       signal: input.signal,
     });
@@ -97,8 +133,10 @@ async function callLlamaParse(input: ParserInput): Promise<{ rawText: string; pa
   for (let attempt = 0; attempt < 40; attempt++) {
     input.onProgress?.(0.3 + Math.min(0.5, attempt * 0.02), "LlamaParse processing…");
     await sleep(1500, input.signal);
+    const headers: Record<string, string> = {};
+    if (key) headers.Authorization = `Bearer ${key}`;
     const st = await fetch(`${statusBase}/job/${jobId}`, {
-      headers: { Authorization: `Bearer ${key}` },
+      headers,
       signal: input.signal,
     });
     if (!st.ok) continue;
@@ -111,8 +149,10 @@ async function callLlamaParse(input: ParserInput): Promise<{ rawText: string; pa
     const status = String(body.status ?? "").toLowerCase();
     if (status === "success" || status === "completed") {
       // fetch result
+      const resHeaders: Record<string, string> = {};
+      if (key) resHeaders.Authorization = `Bearer ${key}`;
       const res = await fetch(`${statusBase}/job/${jobId}/result/markdown`, {
-        headers: { Authorization: `Bearer ${key}` },
+        headers: resHeaders,
         signal: input.signal,
       }).catch(() => null);
       if (res?.ok) {
@@ -144,14 +184,14 @@ export const llamaParseParser: DocumentParser = {
     label: "LlamaParse",
     shortLabel: "LlamaParse",
     description:
-      "LlamaCloud document parser — high-quality markdown/text extraction, then local hybrid transaction structure.",
-    availability: llamaKey() ? "ready" : "needs-config",
+      "LlamaCloud document parser — high-quality markdown/text extraction via the Statement Lens backend proxy, then local hybrid transaction structure.",
+    availability: llamaKey() || backendBase() ? "ready" : "needs-config",
     cloud: true,
-    envHints: ["VITE_LLAMAPARSE_API_KEY", "VITE_LLAMA_CLOUD_API_KEY"],
+    envHints: ["EXPO_PUBLIC_RORK_FUNCTIONS_URL", "VITE_LLAMAPARSE_API_KEY"],
   },
 
   isConfigured() {
-    return Boolean(llamaKey());
+    return Boolean(llamaKey() || backendBase());
   },
 
   async parse(input: ParserInput): Promise<ParserResult> {

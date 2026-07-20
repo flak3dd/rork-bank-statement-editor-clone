@@ -14,6 +14,12 @@ import { FindingsPanel } from "@/components/FindingsPanel";
 import { StatementCharts } from "@/components/StatementCharts";
 import { TransactionTable } from "@/components/TransactionTable";
 import { Toolbar } from "@/components/Toolbar";
+import {
+  EMPTY_FILTERS,
+  applyFilters,
+  FilterBar,
+  type FilterBarState,
+} from "@/components/FilterBar";
 import { WorkflowStepper } from "@/components/WorkflowStepper";
 import { CompletenessScoreCard } from "@/components/CompletenessScoreCard";
 import { BalanceOutPreview } from "@/components/BalanceOutPreview";
@@ -226,6 +232,7 @@ const Index = () => {
   const [sortDir, setSortDir] = useState<SortDir>("asc");
   const [includeNotes, setIncludeNotes] = useState(true);
   const [highlightId, setHighlightId] = useState<string | null>(null);
+  const [filters, setFilters] = useState<FilterBarState>(EMPTY_FILTERS);
 
   // Workflow state
   const [workflowStep, setWorkflowStep] = useState<WorkflowStep>("edit");
@@ -367,6 +374,7 @@ const Index = () => {
     setSortKey("date");
     setSortDir("asc");
     setHighlightId(null);
+    setFilters(EMPTY_FILTERS);
     setWorkflowStep("edit");
     setUnlocked(["edit"]);
     setBalanceEngine("hybrid");
@@ -949,8 +957,9 @@ const Index = () => {
         return hay.includes(q);
       });
     }
+    list = applyFilters(list, filters);
     return [...list].sort((a, b) => compareTxns(a, b, sortKey, sortDir));
-  }, [transactions, query, categoryFilter, sortKey, sortDir]);
+  }, [transactions, query, categoryFilter, filters, sortKey, sortDir]);
 
   const onSort = (key: SortKey) => {
     if (sortKey === key) {
@@ -2950,37 +2959,44 @@ const Index = () => {
                           onEngineChange={setActiveEngine}
                         />
                       ) : (
-                        <TransactionTable
-                          transactions={filtered}
-                          sortKey={sortKey}
-                          sortDir={sortDir}
-                          onSort={onSort}
-                          onCategoryChange={onCategoryChange}
-                          onTransactionChange={patchTransaction}
-                          highlightId={highlightId}
-                          editable={
-                            workflowStep === "edit" ||
-                            workflowStep === "balance"
-                          }
-                          readOnly={
-                            workflowStep === "visual" ||
-                            workflowStep === "math" ||
-                            workflowStep === "fidelity" ||
-                            workflowStep === "complete"
-                          }
-                          mismatchIds={
-                            workflowStep === "balance" ||
-                            workflowStep === "render"
-                              ? mismatchIds
-                              : undefined
-                          }
-                          expectedBalances={
-                            workflowStep === "balance" ||
-                            workflowStep === "render"
-                              ? expectedBalances
-                              : undefined
-                          }
-                        />
+                        <>
+                          <FilterBar
+                            value={filters}
+                            onChange={setFilters}
+                            transactions={transactions}
+                          />
+                          <TransactionTable
+                            transactions={filtered}
+                            sortKey={sortKey}
+                            sortDir={sortDir}
+                            onSort={onSort}
+                            onCategoryChange={onCategoryChange}
+                            onTransactionChange={patchTransaction}
+                            highlightId={highlightId}
+                            editable={
+                              workflowStep === "edit" ||
+                              workflowStep === "balance"
+                            }
+                            readOnly={
+                              workflowStep === "visual" ||
+                              workflowStep === "math" ||
+                              workflowStep === "fidelity" ||
+                              workflowStep === "complete"
+                            }
+                            mismatchIds={
+                              workflowStep === "balance" ||
+                              workflowStep === "render"
+                                ? mismatchIds
+                                : undefined
+                            }
+                            expectedBalances={
+                              workflowStep === "balance" ||
+                              workflowStep === "render"
+                                ? expectedBalances
+                                : undefined
+                            }
+                          />
+                        </>
                       )}
                     </>
                   )}
